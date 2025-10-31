@@ -1,0 +1,14 @@
+[
+  {
+    "id": "target-http-1",
+    "protocol": "http",
+    "endpoint": "http://localhost:8000/api/v1/ping",
+    "description": "Local HTTP echo endpoint"
+  },
+  {
+    "id": "target-coap-1",
+    "protocol": "coap",
+    "endpoint": "coap://localhost/test",
+    "description": "Local CoAP test resource"
+  }
+]
