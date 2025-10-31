@@ -1,0 +1,5 @@
+monitoring:
+  sample_interval: 1
+  metrics:
+    - cpu
+    - memory

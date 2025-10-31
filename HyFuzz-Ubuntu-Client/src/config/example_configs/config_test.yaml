@@ -1,0 +1,11 @@
+client:
+  id: test-runner
+  environment: ci
+protocols:
+  enabled_protocols: [coap]
+execution:
+  timeouts:
+    response: 5
+sandbox:
+  isolation:
+    type: namespace

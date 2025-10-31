@@ -1,0 +1,8 @@
+protocols:
+  enabled_protocols: [modbus]
+  modbus:
+    port: 502
+    unit_ids: [1]
+execution:
+  timeouts:
+    response: 15

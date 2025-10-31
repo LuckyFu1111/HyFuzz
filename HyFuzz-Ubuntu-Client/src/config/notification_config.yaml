@@ -1,0 +1,13 @@
+channels:
+  console:
+    enabled: true
+  email:
+    enabled: false
+    recipients: []
+  slack:
+    enabled: false
+    webhook_url: ""
+triggers:
+  on_crash: true
+  on_timeout: true
+  on_campaign_complete: true

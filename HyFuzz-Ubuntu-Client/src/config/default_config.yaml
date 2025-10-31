@@ -1,0 +1,4 @@
+client:
+  id: default-client
+protocols:
+  enabled: [coap, modbus]

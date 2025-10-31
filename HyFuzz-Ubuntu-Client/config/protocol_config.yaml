@@ -1,0 +1,6 @@
+protocols:
+  enabled:
+    - coap
+    - modbus
+    - mqtt
+    - http

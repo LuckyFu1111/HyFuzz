@@ -1,0 +1,25 @@
+enabled_protocols:
+  - coap
+  - modbus
+  - mqtt
+  - http
+  - grpc
+coap:
+  port: 5683
+  retransmission_attempts: 4
+  observe_support: true
+modbus:
+  port: 502
+  unit_ids: [1, 2, 3]
+  max_payload: 256
+mqtt:
+  port: 1883
+  keepalive: 60
+  qos_levels: [0, 1, 2]
+http:
+  port: 80
+  follow_redirects: true
+  methods: [GET, POST, PUT]
+grpc:
+  port: 50051
+  secure: false

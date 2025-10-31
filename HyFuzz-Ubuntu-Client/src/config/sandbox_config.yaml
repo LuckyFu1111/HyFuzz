@@ -1,0 +1,12 @@
+isolation:
+  type: namespace
+  user: hyfuzz
+  workdir: /tmp/hyfuzz
+seccomp:
+  profile: default.json
+resources:
+  cpu_shares: 512
+  memory_mb: 1024
+cleanup:
+  remove_temp_files: true
+  preserve_crash_dumps: true

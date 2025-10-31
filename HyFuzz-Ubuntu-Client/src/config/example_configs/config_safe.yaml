@@ -1,0 +1,17 @@
+client:
+  id: safe-mode
+protocols:
+  enabled_protocols: [coap]
+execution:
+  concurrency:
+    max_workers: 1
+  retry:
+    attempts: 1
+sandbox:
+  isolation:
+    type: namespace
+    user: nobody
+notifications:
+  triggers:
+    on_crash: true
+    on_timeout: false

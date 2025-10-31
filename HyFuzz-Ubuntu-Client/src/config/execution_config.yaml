@@ -1,0 +1,13 @@
+concurrency:
+  max_workers: 4
+  queue_size: 100
+timeouts:
+  connect: 5
+  response: 10
+retry:
+  attempts: 2
+  backoff_seconds: 1.5
+resource_limits:
+  cpu_percent: 80
+  memory_mb: 2048
+  disk_mb: 10240

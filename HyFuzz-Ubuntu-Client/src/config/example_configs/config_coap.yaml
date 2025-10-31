@@ -1,0 +1,8 @@
+protocols:
+  enabled_protocols: [coap]
+  coap:
+    port: 5683
+    observe_support: true
+execution:
+  retry:
+    attempts: 3

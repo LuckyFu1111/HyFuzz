@@ -1,0 +1,12 @@
+intervals:
+  system: 5
+  performance: 10
+  health: 30
+metrics:
+  enable_cpu: true
+  enable_memory: true
+  enable_network: true
+alerts:
+  cpu_threshold: 85
+  memory_threshold: 80
+  disk_threshold: 90

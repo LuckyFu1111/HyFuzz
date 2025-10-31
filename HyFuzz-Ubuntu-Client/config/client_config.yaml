@@ -1,0 +1,3 @@
+client:
+  id: ubuntu-client-1
+  server_url: http://localhost:8000

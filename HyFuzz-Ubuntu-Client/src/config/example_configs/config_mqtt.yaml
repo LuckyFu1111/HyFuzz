@@ -1,0 +1,13 @@
+protocols:
+  enabled_protocols: [mqtt]
+  mqtt:
+    port: 1883
+    keepalive: 30
+execution:
+  concurrency:
+    max_workers: 1
+notifications:
+  channels:
+    slack:
+      enabled: true
+      webhook_url: https://hooks.slack.com/services/T000/B000/XXXX

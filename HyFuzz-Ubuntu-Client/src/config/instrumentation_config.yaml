@@ -1,0 +1,11 @@
+ptrace:
+  enabled: true
+  follow_forks: true
+coverage:
+  enabled: true
+  format: lcov
+syscalls:
+  trace: true
+  filters: [network, file]
+memory_tracking:
+  enabled: true

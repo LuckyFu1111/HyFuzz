@@ -1,0 +1,15 @@
+client:
+  id: aggressive-mode
+protocols:
+  enabled_protocols: [coap, modbus, mqtt]
+execution:
+  concurrency:
+    max_workers: 6
+  retry:
+    attempts: 4
+sandbox:
+  cleanup:
+    preserve_crash_dumps: true
+analysis:
+  crash_analysis:
+    deduplicate: false

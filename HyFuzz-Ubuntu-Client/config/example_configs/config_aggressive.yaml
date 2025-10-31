@@ -1,0 +1,3 @@
+execution:
+  timeout: 2
+  retries: 0

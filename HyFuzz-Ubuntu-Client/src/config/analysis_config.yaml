@@ -1,0 +1,12 @@
+crash_analysis:
+  enabled: true
+  deduplicate: true
+  similarity_threshold: 0.85
+asan:
+  parse_reports: true
+  symbolize: true
+valgrind:
+  leak_check: true
+  track_origins: false
+reporting:
+  export_formats: [json, markdown]
