@@ -1,0 +1,16 @@
+[
+  {
+    "id": "vuln-coap-weak-auth",
+    "protocol": "coap",
+    "title": "Weak authentication on CoAP endpoint",
+    "impact": "Allows unauthenticated read access",
+    "severity": "MEDIUM"
+  },
+  {
+    "id": "vuln-modbus-broadcast",
+    "protocol": "modbus",
+    "title": "Broadcast write not validated",
+    "impact": "Malicious writes can disrupt PLCs",
+    "severity": "HIGH"
+  }
+]
