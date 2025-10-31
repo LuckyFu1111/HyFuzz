@@ -1,0 +1,16 @@
+[
+  {
+    "id": "payload-xss-http",
+    "protocol": "http",
+    "type": "xss",
+    "content": "<script>alert('hyfuzz')</script>",
+    "metadata": {"risk": "high"}
+  },
+  {
+    "id": "payload-modbus-read",
+    "protocol": "modbus",
+    "type": "function-read",
+    "content": "010300000002C40B",
+    "metadata": {"risk": "medium"}
+  }
+]

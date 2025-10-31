@@ -1,0 +1,24 @@
+[
+  {
+    "id": "CWE-79",
+    "name": "Cross-site Scripting",
+    "description": "The software does not neutralize user-controllable input before it is placed in output that is used as a web page.",
+    "severity": "HIGH",
+    "protocols": ["http", "coap"],
+    "remediation": [
+      "Sanitize and encode user supplied input.",
+      "Use a templating engine that automatically escapes dynamic values."
+    ]
+  },
+  {
+    "id": "CWE-89",
+    "name": "SQL Injection",
+    "description": "The software constructs SQL statements directly from external input without sanitization.",
+    "severity": "CRITICAL",
+    "protocols": ["http", "mqtt"],
+    "remediation": [
+      "Use parameterized queries.",
+      "Employ an ORM that parameterizes statements by default."
+    ]
+  }
+]
