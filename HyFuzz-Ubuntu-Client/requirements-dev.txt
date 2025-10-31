@@ -1,0 +1,204 @@
+# ============================================================================
+# HyFuzz MCP Server - Development Dependencies
+# ============================================================================
+# Includes all production dependencies plus development and testing tools
+# Use: pip install -r requirements-dev.txt
+# ============================================================================
+
+# Include all production dependencies
+-r requirements.txt
+
+# ============================================================================
+# TESTING FRAMEWORKS
+# ============================================================================
+
+# Testing framework
+pytest==7.4.3
+
+# Async testing support
+pytest-asyncio==0.21.1
+
+# Test coverage reporting
+pytest-cov==7.0.0
+
+# Parallel test execution
+pytest-xdist==3.5.0
+
+# Mock HTTP responses
+responses==0.25.8
+
+# Mock testing utilities
+pytest-mock==3.12.0
+
+# Test data generation
+factory-boy==3.3.0
+
+# ============================================================================
+# CODE QUALITY & LINTING
+# ============================================================================
+
+# Code formatter
+black==23.12.0
+
+# Style checker (PEP 8)
+flake8==6.1.0
+
+# Flake8 plugins for better checking
+flake8-docstrings==1.7.0
+flake8-bugbear==23.12.2
+
+# Import sorting
+isort==5.13.2
+
+# Static type checker
+mypy==1.7.1
+
+# Type stubs for common libraries
+types-requests==2.31.0.10
+types-PyYAML==6.0.12
+
+# Linter for complexity
+pylint==3.0.3
+
+# Code formatter with auto-fixing
+autopep8==2.0.4
+
+# ============================================================================
+# DOCUMENTATION
+# ============================================================================
+
+# Documentation generator
+Sphinx==7.2.6
+
+# ReadTheDocs theme for Sphinx
+sphinx-rtd-theme==2.0.0
+
+# Markdown support in docstrings
+sphinx-markdown-parser==0.2.8
+
+# ============================================================================
+# DEVELOPMENT UTILITIES
+# ============================================================================
+
+# Interactive Python shell
+ipython==8.18.1
+
+# Jupyter notebook support
+jupyter==1.0.0
+jupyterlab==4.0.9
+
+# Auto-reload on file changes
+watchdog==3.0.0
+
+# Environment file management
+python-dotenv==1.0.0
+
+# ============================================================================
+# DEBUGGING & PROFILING
+# ============================================================================
+
+# Remote debugging
+# debugpy==1.8.0
+
+# Line-by-line profiler
+line-profiler==5.0.0
+
+# Memory profiler
+memory-profiler==0.61.0
+
+# ============================================================================
+# BUILD & PACKAGING
+# ============================================================================
+
+# Build backend
+build==1.0.3
+
+# Package distribution
+twine==6.2.0
+
+# Wheel support
+wheel==0.42.0
+
+# Setup tools
+setuptools>=68.0.0
+
+# ============================================================================
+# VERSION CONTROL & GIT
+# ============================================================================
+
+# Git utilities
+GitPython==3.1.45
+
+# Pre-commit framework
+# pre-commit==3.6.0
+
+# ============================================================================
+# DEPLOYMENT (Optional)
+# ============================================================================
+
+# Docker/Container support (if using Docker)
+# docker==6.1.0
+
+# Kubernetes client (if using K8s)
+# kubernetes==28.1.0
+
+# ============================================================================
+# SECURITY CHECKING
+# ============================================================================
+
+# Dependency vulnerability scanner
+bandit==1.7.5
+
+# Security linter
+# safety==2.3.5
+
+# ============================================================================
+# ADDITIONAL DEVELOPMENT TOOLS
+# ============================================================================
+
+# Request/Response debugging
+requests-mock==1.11.0
+
+# Timing and benchmarking
+pytest-benchmark==4.0.0
+
+# Rich terminal output
+rich==13.7.0
+
+# More-itertools for functional programming
+more-itertools==10.1.0
+
+# Retry decorator
+tenacity==8.2.3
+
+# ============================================================================
+# ENVIRONMENT & PLATFORM
+# ============================================================================
+
+# Windows-specific tools (if on Windows)
+colorama==0.4.6
+
+# Cross-platform path utilities
+pathlib2==2.3.7.post1
+
+# ============================================================================
+# NOTES
+# ============================================================================
+
+# To use development dependencies:
+# 1. pip install -r requirements-dev.txt
+#
+# To run specific tools:
+# - Testing: pytest
+# - Format: black src tests
+# - Lint: flake8 src tests
+# - Type check: mypy src
+# - Coverage: pytest --cov=src
+#
+# To update all packages:
+# - pip install -U -r requirements-dev.txt
+#
+# To create lock file:
+# - pip freeze > requirements.lock
+
+# ============================================================================
