@@ -1,0 +1,112 @@
+# ============================================================================
+# HyFuzz MCP Server - Production Dependencies (Python 3.13 Compatible)
+# ============================================================================
+# Updated for compatibility with Python 3.13+ on macOS/Windows
+# Use: pip install -r requirements.txt
+# ============================================================================
+
+# ============================================================================
+# CORE FRAMEWORKS & LIBRARIES
+# ============================================================================
+
+# HTTP client for requests
+requests>=2.31.0
+
+# Async HTTP client
+aiohttp>=3.9.1
+
+# Configuration management
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# YAML parsing
+PyYAML>=6.0.1
+
+# ============================================================================
+# LLM INTEGRATION
+# ============================================================================
+
+# Token counting and processing (updated for Python 3.13)
+tiktoken>=0.7.0
+
+# JSON schema validation
+jsonschema>=4.20.0
+
+# ============================================================================
+# KNOWLEDGE BASE & DATA PROCESSING
+# ============================================================================
+
+# Numpy for numerical operations (updated for Python 3.13)
+numpy>=1.26.4
+
+# Pandas for data manipulation (UPDATED to 2.2.0+ for Python 3.13 support)
+pandas>=2.2.0
+
+# Graph operations for CWE/CVE relationships
+networkx>=3.2
+
+# ============================================================================
+# CACHING & PERFORMANCE
+# ============================================================================
+
+# In-memory caching
+cachetools>=5.3.2
+
+# Redis support (optional, for distributed caching)
+# redis>=5.0.1
+
+# ============================================================================
+# LOGGING & MONITORING
+# ============================================================================
+
+# Structured logging
+python-json-logger>=2.0.7
+
+# ============================================================================
+# UTILITIES & HELPERS
+# ============================================================================
+
+# Click for command-line interfaces
+click>=8.1.7
+
+# Color output for terminal
+colorama>=0.4.6
+
+# Decorators and utilities
+decorator>=5.1.1
+
+# More-itertools for functional programming
+more-itertools>=10.1.0
+
+# Retry decorator
+tenacity>=8.2.3
+
+# ============================================================================
+# WINDOWS-SPECIFIC UTILITIES (Optional)
+# ============================================================================
+
+# Windows path utilities (optional)
+pathlib2>=2.3.7.post1
+
+# ============================================================================
+# NOTES FOR PYTHON 3.13
+# ============================================================================
+
+# Key updates for Python 3.13 compatibility:
+# 1. pandas >= 2.2.0 (fixes C API compatibility issues with Python 3.13)
+# 2. numpy >= 1.26.4 (ensures C extension compatibility)
+# 3. tiktoken >= 0.7.0 (updated tokenizer support)
+#
+# If you encounter issues:
+# - Clear pip cache: pip cache purge
+# - Reinstall with no cache: pip install --no-cache-dir -r requirements.txt
+# - Use pre-built wheels: pip install --prefer-binary -r requirements.txt
+#
+# For macOS with Apple Silicon (M1/M2/M3):
+# - May need: xcode-select --install
+# - Consider using conda for compiled packages
+#
+# Version constraints explanation:
+# >= allows newer versions (automatically upgrades)
+# Use with caution in production (add specific versions for lock files)
