@@ -139,7 +139,7 @@ setup(
     packages=find_packages(
         where=".",
         include=["src*"],
-        exclude=["tests*", "docs*", "scripts*"],
+        exclude=["client_tests*", "docs*", "scripts*"],
     ),
     package_dir={
         "": ".",

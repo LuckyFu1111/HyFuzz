@@ -183,7 +183,7 @@ setup(
     packages=find_packages(
         where="src",
         include=["*"],
-        exclude=["tests", "tests.*"],
+        exclude=["server_tests", "server_tests.*"],
     ),
 
     # Package data root - maps packages to source directory
@@ -410,7 +410,7 @@ hyfuzz-server-windows/
 │   ├── config/
 │   ├── utils/
 │   └── api/
-├── tests/
+├── server_tests/
 ├── config/
 ├── data/
 ├── docs/

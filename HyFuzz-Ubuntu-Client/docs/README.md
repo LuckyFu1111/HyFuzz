@@ -40,7 +40,7 @@ recommended reading order and relationships are outlined below.
 
 - [`notebooks/`](../notebooks/) – exploratory data analysis, coverage visualisation, campaign reporting.
 - [`scripts/`](../scripts/) – operational helpers referenced throughout the guides.
-- [`tests/`](../tests/) – canonical examples of using protocol handlers, instrumentation, and analyzers.
+- [`client_tests/`](../client_tests/) – canonical examples of using protocol handlers, instrumentation, and analyzers.
 
 For missing topics or improvement ideas, open an issue or submit a pull request so the documentation
 stays aligned with the evolving architecture.

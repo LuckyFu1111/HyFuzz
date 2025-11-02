@@ -61,8 +61,8 @@ Targets are stored in the SQLite database and exported to `data/targets/*.json`.
 ## Validation
 
 ```bash
-pytest tests/unit/test_target_manager.py
-pytest tests/integration/test_target_integration.py
+pytest client_tests/unit/test_target_manager.py
+pytest client_tests/integration/test_target_integration.py
 ```
 
 For integration with campaign orchestration, consult [`USAGE.md`](USAGE.md). For mapping results into

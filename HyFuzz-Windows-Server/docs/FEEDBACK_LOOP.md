@@ -23,7 +23,7 @@ outputs, defense analytics, and execution telemetry.
 Execute the following unit test to ensure the loop runs end-to-end:
 
 ```bash
-pytest tests/unit/test_feedback_loop.py
+pytest server_tests/unit/test_feedback_loop.py
 ```
 
 This test validates that the loop can ingest mocked telemetry and produce a

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "req-http-status",
+    "method": "GET",
+    "path": "/api/v1/status",
+    "headers": {"accept": "application/json"},
+    "body": null
+  },
+  {
+    "id": "req-mcp-init",
+    "method": "POST",
+    "path": "/mcp/initialize",
+    "headers": {"content-type": "application/json"},
+    "body": {"client": "test-runner"}
+  }
+]

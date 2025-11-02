@@ -15,7 +15,7 @@ Key Features:
 - Response parsing utilities
 
 Usage:
-    >>> from tests.fixtures.mock_llm import MockLLMClient, create_mock_response
+    >>> from server_tests.fixtures.mock_llm import MockLLMClient, create_mock_response
     >>> 
     >>> # Create mock client
     >>> client = MockLLMClient(model="mistral")

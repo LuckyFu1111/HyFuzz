@@ -55,8 +55,8 @@ or configure cron/systemd timers that invoke the script with desired arguments.
 Validate report generation after template or schema changes:
 
 ```bash
-pytest tests/unit/test_reporting.py
-pytest tests/integration/test_full_campaign.py -k report
+pytest client_tests/unit/test_reporting.py
+pytest client_tests/integration/test_full_campaign.py -k report
 ```
 
 ## Troubleshooting

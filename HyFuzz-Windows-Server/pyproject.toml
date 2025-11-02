@@ -189,7 +189,7 @@ package-dir = { "" = "src" }
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["hyfuzz_server*"]
-exclude = ["tests*"]
+exclude = ["server_tests*"]
 
 
 # ==============================================================================
@@ -198,7 +198,7 @@ exclude = ["tests*"]
 
 [tool.pytest.ini_options]
 # pytest configuration
-testpaths = ["tests"]
+testpaths = ["server_tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
@@ -221,7 +221,7 @@ markers = [
 source = ["src"]
 branch = true
 omit = [
-    "*/tests/*",
+    "*/server_tests/*",
     "*/test_*.py",
     "*/__main__.py",
 ]

@@ -95,7 +95,7 @@ Run the health checks before joining a distributed campaign:
 ```bash
 python scripts/monitor_client.py --once
 python scripts/health_check.sh
-pytest tests/unit -k "monitoring or sandbox"
+pytest client_tests/unit -k "monitoring or sandbox"
 ```
 
 Ensure `logs/monitoring.log` and `logs/sandbox.log` report no errors.

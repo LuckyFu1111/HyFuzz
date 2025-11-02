@@ -176,7 +176,7 @@ dir
 
 # Expected folders:
 # - src/
-# - tests/
+# - server_tests/
 # - config/
 # - data/
 # - scripts/
@@ -673,17 +673,17 @@ print(json.dumps(result, indent=2))
 In terminal with activated venv:
 ```bash
 # Run all unit tests
-pytest tests\unit\ -v
+pytest server_tests\unit\ -v
 
 # Expected output:
-# tests\unit\test_server.py::test_initialization PASSED
-# tests\unit\test_llm_client.py::test_connection PASSED
-# tests\unit\test_cot_engine.py::test_reasoning PASSED
+# server_tests\unit\test_server.py::test_initialization PASSED
+# server_tests\unit\test_llm_client.py::test_connection PASSED
+# server_tests\unit\test_cot_engine.py::test_reasoning PASSED
 # ...
 # ======================== 12 passed in 3.45s ========================
 
 # Run with coverage
-pytest tests\unit\ --cov=src --cov-report=term-missing
+pytest server_tests\unit\ --cov=src --cov-report=term-missing
 
 # Expected:
 # src\mcp_server\server.py          95%
@@ -769,7 +769,7 @@ python scripts\test_connection.py --host <server-ip> --port 5000
 ### Step 9.5: Start End-to-End Test
 ```bash
 # From Ubuntu client, run integration test
-pytest tests/integration/test_end_to_end.py -v
+pytest server_tests/integration/test_end_to_end.py -v
 
 # Expected output:
 # test_complete_fuzzing_workflow PASSED
@@ -1156,7 +1156,7 @@ Once setup is complete:
    - Learn `docs/API.md`
 
 2. **Run Integration Tests**
-   - Complete `tests/integration/` suite
+   - Complete `server_tests/integration/` suite
    - Verify end-to-end workflow
 
 3. **Connect Client**

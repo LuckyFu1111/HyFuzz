@@ -24,7 +24,7 @@ SPHINX := sphinx-build
 
 # Directories
 SRC_DIR := src
-TESTS_DIR := tests
+TESTS_DIR := client_tests
 DOCS_DIR := docs
 BUILD_DIR := build
 DIST_DIR := dist

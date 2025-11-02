@@ -58,6 +58,6 @@ Welcome to the HyFuzz Server (Windows) knowledge base. This index surfaces the m
 - **Launch server**: `python scripts/start_server.py`
 - **Start distributed workers**: `python scripts/start_workers.py --concurrency 8`
 - **Open dashboard**: `python scripts/start_dashboard.py --host 0.0.0.0 --port 8080`
-- **Run end-to-end validation**: `pytest tests/e2e/test_complete_fuzzing_campaign.py -v`
+- **Run end-to-end validation**: `pytest server_tests/e2e/test_complete_fuzzing_campaign.py -v`
 
 If you create a new document, add it to the most relevant table above to keep the index accurate. For gaps or suggestions, open an issue in the repository or update this file directly.

@@ -56,11 +56,11 @@ built with coverage flags.
 ## Development
 
 **Q: How can I add a new protocol handler?**  
-A: Follow the steps in [PROTOCOLS.md](PROTOCOLS.md#adding-a-new-protocol) and update tests/documentation
-accordingly.
+A: Follow the steps in [PROTOCOLS.md](PROTOCOLS.md#adding-a-new-protocol) and update the
+`client_tests/` suite and documentation accordingly.
 
 **Q: Where are example datasets for testing?**  
-A: Under `data/payloads/`, `data/targets/`, and `tests/fixtures/`.
+A: Under `data/payloads/`, `data/targets/`, and `client_tests/fixtures/`.
 
 **Q: How do I contribute changes?**  
 A: Review [`CONTRIBUTING.md`](../CONTRIBUTING.md) and open a pull request with tests and documentation

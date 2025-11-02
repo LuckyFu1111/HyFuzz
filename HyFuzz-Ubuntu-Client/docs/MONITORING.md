@@ -73,8 +73,8 @@ Health checker classifications:
 - Review metric definitions periodically to ensure they align with SLAs.
 - Validate monitoring functionality with:
   ```bash
-  pytest tests/unit/test_monitoring.py
-  pytest tests/performance/test_instrumentation_perf.py -k monitor
+  pytest client_tests/unit/test_monitoring.py
+  pytest client_tests/performance/test_instrumentation_perf.py -k monitor
   ```
 
 For integration with reporting workflows, see [`REPORTING_GUIDE.md`](REPORTING_GUIDE.md). For operational

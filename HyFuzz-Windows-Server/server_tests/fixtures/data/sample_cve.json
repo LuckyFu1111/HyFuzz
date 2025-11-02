@@ -1,0 +1,12 @@
+[
+  {
+    "id": "CVE-2023-1001",
+    "title": "Example buffer overflow",
+    "cwe_ids": ["CWE-119"],
+    "severity": "HIGH",
+    "cvss": 8.7,
+    "affected_products": ["ExampleServer <= 2.0"],
+    "description": "Improper bounds checking allows remote attackers to execute arbitrary code.",
+    "references": ["https://example.com/CVE-2023-1001"]
+  }
+]

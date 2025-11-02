@@ -1,0 +1,13 @@
+[
+  {
+    "prompt": "Generate Modbus payload",
+    "response": {
+      "payload": "010300000002C40B",
+      "reasoning": [
+        "Identify function code 0x03 (Read Holding Registers)",
+        "Keep payload short for smoke testing"
+      ],
+      "score": 0.82
+    }
+  }
+]

@@ -157,7 +157,7 @@ The most important directories are summarised below:
 │   ├── reporting/          # Report generators & templates
 │   ├── targets/            # Discovery, profiling, fingerprinting
 │   └── utils/              # Shared utilities and helpers
-├── tests/                  # Unit, integration, performance, and e2e suites
+├── client_tests/           # Unit, integration, performance, and e2e suites
 ├── scripts/                # Operational scripts for campaigns, monitoring, maintenance
 ├── docs/                   # Comprehensive documentation set
 ├── data/                   # Payload corpora, results, reports, SQLite DB
@@ -185,19 +185,19 @@ The most important directories are summarised below:
 
 - **Unit tests**
   ```bash
-  pytest tests/unit
+  pytest client_tests/unit
   ```
 - **Integration tests**
   ```bash
-  pytest tests/integration
+  pytest client_tests/integration
   ```
 - **Performance benchmarks**
   ```bash
-  pytest tests/performance
+  pytest client_tests/performance
   ```
 - **End-to-end validation**
   ```bash
-  pytest tests/e2e
+  pytest client_tests/e2e
   ```
 
 ## Troubleshooting

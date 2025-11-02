@@ -183,7 +183,7 @@ ignore_missing_imports = true
 # ============================================================================
 [tool.pytest.ini_options]
 minversion = "7.0"
-testpaths = ["tests"]
+testpaths = ["client_tests"]
 python_files = "test_*.py"
 python_classes = "Test*"
 python_functions = "test_*"
@@ -195,7 +195,6 @@ markers = [
     "slow: slow tests",
     "async: async tests",
 ]
-asyncio_mode = "auto"
 
 # ============================================================================
 # Tool: Coverage (Code Coverage)
@@ -204,7 +203,7 @@ asyncio_mode = "auto"
 source = ["src"]
 branch = true
 omit = [
-    "*/tests/*",
+    "*/client_tests/*",
     "*/test_*.py",
     "*/__main__.py",
     "*/setup.py",

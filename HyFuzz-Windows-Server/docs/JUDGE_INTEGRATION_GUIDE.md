@@ -38,7 +38,7 @@ of the HyFuzz server stack.
 Run the integration test suite:
 
 ```bash
-pytest tests/integration/test_judge_mcp_integration.py
+pytest server_tests/integration/test_judge_mcp_integration.py
 ```
 
 This test ensures that MCP messages are accepted, normalized, and evaluated by

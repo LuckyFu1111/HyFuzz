@@ -19,15 +19,15 @@ Structure:
     - fixtures_loader.py: Fixture loading utilities
 
 Usage:
-    >>> from tests.fixtures import get_payload_factory
-    >>> from tests.fixtures import get_sample_cwe_data
+    >>> from server_tests.fixtures import get_payload_factory
+    >>> from server_tests.fixtures import get_sample_cwe_data
     >>>
     >>> # Create test payload
     >>> factory = get_payload_factory()
     >>> payload = factory.create_xss_payload(protocol="http")
     >>>
     >>> # Use mock LLM (async context)
-    >>> from tests.fixtures import MockLLMClient
+    >>> from server_tests.fixtures import MockLLMClient
     >>> llm = MockLLMClient()
     >>> # response = await llm.generate("test prompt")  # In async function
 

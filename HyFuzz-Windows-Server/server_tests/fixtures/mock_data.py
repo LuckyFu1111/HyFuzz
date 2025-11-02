@@ -15,7 +15,7 @@ Key Features:
 - Protocol-specific payload examples
 
 Usage:
-    >>> from tests.fixtures.mock_data import (
+    >>> from server_tests.fixtures.mock_data import (
     ...     SAMPLE_CWE_DATA,
     ...     SAMPLE_CVE_DATA,
     ...     SAMPLE_PAYLOADS,

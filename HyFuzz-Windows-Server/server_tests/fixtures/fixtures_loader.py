@@ -15,7 +15,7 @@ Key Features:
 - Integration with pytest fixtures
 
 Usage:
-    >>> from tests.fixtures.fixtures_loader import FixturesLoader
+    >>> from server_tests.fixtures.fixtures_loader import FixturesLoader
     >>> 
     >>> # Create loader
     >>> loader = FixturesLoader()

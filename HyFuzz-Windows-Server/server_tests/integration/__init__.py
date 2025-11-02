@@ -24,7 +24,7 @@ Test Categories:
 - Multi-protocol support
 
 Usage:
-    >>> from tests.integration import (
+    >>> from server_tests.integration import (
     ...     IntegrationTestBase,
     ...     create_test_server,
     ...     create_test_client
@@ -124,7 +124,7 @@ class TestResult(str, Enum):
 
 @dataclass
 class ServerConfig:
-    """Server configuration for integration tests."""
+    """Server configuration for integration server_tests."""
     host: str = DEFAULT_TEST_HOST
     port: int = DEFAULT_TEST_PORT
     timeout: int = DEFAULT_TEST_TIMEOUT
@@ -196,7 +196,7 @@ class IntegrationTestResult:
 
 class IntegrationTestBase(ABC):
     """
-    Base class for integration tests.
+    Base class for integration server_tests.
     
     Provides common setup, teardown, and utility methods.
     """

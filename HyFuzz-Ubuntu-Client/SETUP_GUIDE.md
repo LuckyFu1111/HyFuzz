@@ -157,7 +157,7 @@ dir data
 
 # Expected directories:
 # src/ - source code
-# tests/ - test suite
+# client_tests/ - test suite
 # config/ - configuration files
 # data/ - data and resources
 # logs/ - log files (created on first run)
@@ -332,10 +332,10 @@ python -c "from src.config.settings import Settings; print('Config module OK')"
 .\venv\Scripts\Activate.ps1
 
 # Run basic unit tests
-pytest tests/unit/test_config.py -v
+pytest client_tests/unit/test_config.py -v
 
 # Run all unit tests
-pytest tests/unit/ -v
+pytest client_tests/unit/ -v
 ```
 
 ## IDE Setup (PyCharm)

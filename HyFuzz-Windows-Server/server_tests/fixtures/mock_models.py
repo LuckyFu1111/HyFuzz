@@ -16,7 +16,7 @@ Key Features:
 - JSON serialization helpers
 
 Usage:
-    >>> from tests.fixtures.mock_models import (
+    >>> from server_tests.fixtures.mock_models import (
     ...     MockPayloadRequest,
     ...     MockPayloadResponse,
     ...     create_mock_payload_request

@@ -75,7 +75,7 @@ cache:
 # KNOWLEDGE BASE - TEST DATA
 # ==============================================================================
 knowledge:
-  data_dir: "tests/fixtures/data"
+  data_dir: "server_tests/fixtures/data"
   cache_dir: ":memory:"           # In-memory cache
 
   cwe:
@@ -104,7 +104,7 @@ llm:
   # Mock provider configuration
   mock:
     enabled: true
-    responses_file: "tests/fixtures/llm_responses.json"
+    responses_file: "server_tests/fixtures/llm_responses.json"
     delay: 0                      # No artificial delays
     seed: 42                      # Fixed seed for reproducibility
 
@@ -192,7 +192,7 @@ fixtures:
 
   # Auto-load fixtures
   auto_load: true
-  fixtures_dir: "tests/fixtures"
+  fixtures_dir: "server_tests/fixtures"
 
   # Available fixtures
   fixtures:
@@ -202,11 +202,11 @@ fixtures:
 
   # Test data files
   test_data:
-    cwe: "tests/fixtures/sample_cwe.json"
-    cve: "tests/fixtures/sample_cve.json"
-    vulnerabilities: "tests/fixtures/sample_vulnerabilities.json"
-    requests: "tests/fixtures/sample_requests.json"
-    responses: "tests/fixtures/expected_responses.json"
+    cwe: "server_tests/fixtures/sample_cwe.json"
+    cve: "server_tests/fixtures/sample_cve.json"
+    vulnerabilities: "server_tests/fixtures/sample_vulnerabilities.json"
+    requests: "server_tests/fixtures/sample_requests.json"
+    responses: "server_tests/fixtures/expected_responses.json"
 
 # ==============================================================================
 # PYTEST CONFIGURATION
@@ -250,19 +250,19 @@ pytest:
 test_profiles:
   # Quick smoke tests
   smoke:
-    tests_dir: "tests/unit"
+    tests_dir: "server_tests/unit"
     markers: ["smoke", "not slow"]
     timeout: 60
 
   # Full unit tests
   unit:
-    tests_dir: "tests/unit"
+    tests_dir: "server_tests/unit"
     markers: ["unit"]
     timeout: 300
 
   # Integration tests
   integration:
-    tests_dir: "tests/integration"
+    tests_dir: "server_tests/integration"
     markers: ["integration"]
     timeout: 600
 
@@ -273,7 +273,7 @@ test_profiles:
 
   # Performance tests
   performance:
-    tests_dir: "tests/performance"
+    tests_dir: "server_tests/performance"
     markers: ["performance"]
     timeout: 1200
 
@@ -290,7 +290,7 @@ mocking:
   # Mock responses
   mock_responses:
     enabled: true
-    responses_file: "tests/fixtures/mock_responses.json"
+    responses_file: "server_tests/fixtures/mock_responses.json"
 
     # Deterministic responses
     deterministic: true
@@ -369,7 +369,7 @@ isolation:
     clear_after_test: true
 
   # File system isolation
-  temp_dir: "tests/temp"
+  temp_dir: "server_tests/temp"
   cleanup_after_test: true
 
 # ==============================================================================
@@ -380,10 +380,10 @@ isolation:
 # pytest
 #
 # # Run specific test file
-# pytest tests/unit/test_server.py
+# pytest server_tests/unit/test_server.py
 #
 # # Run specific test function
-# pytest tests/unit/test_server.py::test_initialization
+# pytest server_tests/unit/test_server.py::test_initialization
 #
 # # Run with markers
 # pytest -m "unit"
@@ -416,10 +416,10 @@ isolation:
 # ==============================================================================
 #
 # 1. Test organization
-#    - Unit tests: tests/unit/
-#    - Integration tests: tests/integration/
-#    - Performance tests: tests/performance/
-#    - Fixtures: tests/fixtures/
+#    - Unit tests: server_tests/unit/
+#    - Integration tests: server_tests/integration/
+#    - Performance tests: server_tests/performance/
+#    - Fixtures: server_tests/fixtures/
 #
 # 2. Test naming
 #    - test_<feature>_<scenario>_<expected_result>

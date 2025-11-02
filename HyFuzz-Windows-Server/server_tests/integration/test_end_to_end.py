@@ -17,9 +17,9 @@ Test Coverage:
 - Multi-protocol support (HTTP, CoAP, MQTT)
 
 Usage:
-    pytest tests/integration/test_end_to_end.py -v
-    pytest tests/integration/test_end_to_end.py::TestE2EPayloadGeneration -v
-    pytest tests/integration/test_end_to_end.py -m integration -v
+    pytest server_tests/integration/test_end_to_end.py -v
+    pytest server_tests/integration/test_end_to_end.py::TestE2EPayloadGeneration -v
+    pytest server_tests/integration/test_end_to_end.py -m integration -v
 
 Author: HyFuzz Team
 Version: 1.0.0
@@ -29,7 +29,7 @@ import pytest
 import time
 import logging
 from typing import Dict, List, Any, Optional
-from tests.integration import (
+from server_tests.integration import (
     IntegrationTestBase,
     IntegrationTestLevel,
     TestResult,
@@ -38,13 +38,13 @@ from tests.integration import (
     wait_for_server,
     retry_operation,
 )
-from tests.fixtures.mock_llm import create_mock_client
-from tests.fixtures.mock_data import (
+from server_tests.fixtures.mock_llm import create_mock_client
+from server_tests.fixtures.mock_data import (
     SAMPLE_CWE_DATA,
     SAMPLE_CVE_DATA,
     SAMPLE_PAYLOADS,
 )
-from tests.fixtures.mock_models import (
+from server_tests.fixtures.mock_models import (
     create_mock_payload_request,
     create_mock_cwe_data,
     PayloadType,
@@ -71,7 +71,7 @@ RETRY_DELAY = 0.5
 # ==============================================================================
 
 class TestE2EBase(IntegrationTestBase):
-    """Base class for end-to-end tests."""
+    """Base class for end-to-end server_tests."""
 
     test_level = IntegrationTestLevel.COMPREHENSIVE
     use_mock_llm = True
@@ -822,7 +822,7 @@ class TestE2ECompleteWorkflow(TestE2EBase):
 # ==============================================================================
 
 class TestE2ESummary:
-    """Summary of end-to-end tests."""
+    """Summary of end-to-end server_tests."""
 
     @staticmethod
     def print_summary() -> None:

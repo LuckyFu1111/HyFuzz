@@ -76,8 +76,8 @@ HYFUZZ_ENABLE_COVERAGE=1 python scripts/run_campaign.py --config ...
 Run the instrumentation unit tests to verify configuration changes:
 
 ```bash
-pytest tests/unit/test_instrumentation.py
-pytest tests/performance/test_instrumentation_perf.py
+pytest client_tests/unit/test_instrumentation.py
+pytest client_tests/performance/test_instrumentation_perf.py
 ```
 
 Refer to [`CRASH_ANALYSIS.md`](CRASH_ANALYSIS.md) to see how instrumentation output feeds into crash

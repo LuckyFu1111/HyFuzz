@@ -731,7 +731,7 @@ async def my_feature_endpoint(request: MyFeatureRequest):
     handler = MyFeatureHandler()
     return await handler.process(request)
 
-# 4. Add tests (tests/unit/)
+# 4. Add tests (server_tests/unit/)
 def test_my_feature():
     # Test implementation
     pass
@@ -772,16 +772,16 @@ async def generate_payload(
 ### Running Tests
 ```bash
 # Unit tests only
-pytest tests/unit/ -v
+pytest server_tests/unit/ -v
 
 # Integration tests
-pytest tests/integration/ -v
+pytest server_tests/integration/ -v
 
 # All tests with coverage
-pytest tests/ --cov=src --cov-report=html
+pytest server_tests/ --cov=src --cov-report=html
 
 # Specific test file
-pytest tests/unit/test_cot_engine.py -v
+pytest server_tests/unit/test_cot_engine.py -v
 ```
 
 ### Performance Profiling
@@ -799,7 +799,7 @@ python -m memory_profiler src/mcp_server/server.py
 
 ### Test Suite Overview
 ```
-tests/
+server_tests/
 ├── unit/                      # Unit tests (isolated)
 │   ├── test_llm_client.py
 │   ├── test_cot_engine.py
@@ -822,14 +822,14 @@ tests/
 make test
 
 # Run specific category
-pytest tests/unit -v
-pytest tests/integration -v
+pytest server_tests/unit -v
+pytest server_tests/integration -v
 
 # With coverage report
 pytest --cov=src --cov-report=term-missing
 
 # Run specific test
-pytest tests/unit/test_cot_engine.py::test_reasoning_chain -v
+pytest server_tests/unit/test_cot_engine.py::test_reasoning_chain -v
 ```
 
 ### Test Coverage Goals
@@ -991,7 +991,7 @@ pip install -r requirements-dev.txt
 pre-commit install
 
 # Make changes and test
-pytest tests/
+pytest server_tests/
 ```
 
 ---
@@ -1091,7 +1091,7 @@ Should generate payload or return timeout error gracefully
 
 ## 📊 Statistics
 
-- **Source footprint**: ~28,000 lines (Phase 3 aggregate across src/, tests/, docs/).
+- **Source footprint**: ~28,000 lines (Phase 3 aggregate across src/, server_tests/, docs/).
 - **Automated checks**: CI workflows cover linting, unit/integration/perf suites, dependency scanning.
 - **Knowledge assets**: >5,000 CWE nodes, >100,000 CVE mappings, on-disk embeddings cache shipped in `data/knowledge_cache/`.
 - **Operational scripts**: 30+ automation helpers under `scripts/` (provisioning, monitoring, maintenance).

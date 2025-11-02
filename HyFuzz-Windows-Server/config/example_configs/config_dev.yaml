@@ -300,7 +300,7 @@ test_data:
 # mypy src/
 #
 # # Run tests
-# pytest tests/
+# pytest server_tests/
 #
 # # Run with specific log level
 # LOG_LEVEL=DEBUG python -m src

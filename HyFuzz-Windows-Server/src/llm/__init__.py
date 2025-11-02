@@ -84,8 +84,8 @@ Compatibility:
 
 See Also:
 - docs/LLM_INTEGRATION.md - Detailed integration guide
-- tests/integration/test_llm_pipeline.py - Integration tests
-- tests/unit/test_llm_*.py - Unit tests
+- server_tests/integration/test_llm_pipeline.py - Integration tests
+- server_tests/unit/test_llm_*.py - Unit tests
 
 Author: HyFuzz Team
 Version: 1.0.0

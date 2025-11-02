@@ -105,7 +105,7 @@ Targets → Protocols → Execution → Instrumentation → Analysis → Reporti
 ## Extensibility Points
 
 - **New protocol** – implement a handler in `src/protocols/`, register it in `protocol_factory.py`, and
-  add fixtures/tests under `tests/`.
+  add fixtures/tests under `client_tests/`.
 - **Custom instrumentation** – extend `instrumentor.py` with a plugin that conforms to the existing
   interface; reference it from `instrumentation_config.yaml`.
 - **Alternative storage** – swap the repository implementation in `src/storage/` to integrate remote

@@ -65,7 +65,7 @@ Select a profile in `config/execution_config.yaml` under `sandbox.profile` or ov
 Run sandbox tests before campaigns:
 
 ```bash
-pytest tests/unit/test_sandbox.py
+pytest client_tests/unit/test_sandbox.py
 python scripts/configure_sandbox.sh --validate
 ```
 

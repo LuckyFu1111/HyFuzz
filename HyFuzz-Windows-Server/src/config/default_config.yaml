@@ -549,7 +549,7 @@ development:
 
   # Test data
   load_test_data: false
-  test_data_path: "tests/fixtures/data"
+  test_data_path: "server_tests/fixtures/data"
 
 ################################################################################
 # ENVIRONMENT-SPECIFIC OVERRIDES

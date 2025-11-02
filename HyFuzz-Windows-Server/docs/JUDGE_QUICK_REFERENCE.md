@@ -5,7 +5,7 @@ A condensed checklist for operating the HyFuzz judge during Phase 3 campaigns.
 ## Key Commands
 
 - Start server: `python -m src`
-- Trigger full pipeline test: `pytest tests/integration/test_full_phase3_pipeline.py`
+- Trigger full pipeline test: `pytest server_tests/integration/test_full_phase3_pipeline.py`
 - Refresh knowledge cache: `python scripts/analyze_results.py --refresh-cache`
 
 ## Configuration Files
