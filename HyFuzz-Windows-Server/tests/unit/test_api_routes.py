@@ -7,7 +7,8 @@ from pathlib import Path
 
 
 def load_routes_module():
-    path = Path("src/api/routes.py")
+    base = Path(__file__).resolve().parents[2]
+    path = base / "src" / "api" / "routes.py"
     spec = importlib.util.spec_from_file_location("api_routes", path)
     module = importlib.util.module_from_spec(spec)
     assert spec and spec.loader

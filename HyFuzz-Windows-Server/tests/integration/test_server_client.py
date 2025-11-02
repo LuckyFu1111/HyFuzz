@@ -40,7 +40,7 @@ def event_loop():
 
 
 @pytest.fixture
-async def mock_server():
+def mock_server():
     """Mock MCP server instance"""
     server = AsyncMock()
     server.is_running = False
@@ -54,7 +54,7 @@ async def mock_server():
 
 
 @pytest.fixture
-async def mock_client():
+def mock_client():
     """Mock MCP client instance"""
     client = AsyncMock()
     client.is_connected = False
