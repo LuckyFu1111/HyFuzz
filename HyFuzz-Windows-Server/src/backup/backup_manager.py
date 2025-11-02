@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 from .snapshot_handler import SnapshotHandler
@@ -15,7 +15,7 @@ class BackupManager:
         self.handler = SnapshotHandler()
 
     def create_backup(self, name: str) -> Path:
-        timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+        timestamp = datetime.now(UTC).strftime("%Y%m%d%H%M%S")
         path = self.directory / f"{name}-{timestamp}.bak"
         self.handler.create_snapshot(path)
         return path

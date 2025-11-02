@@ -399,7 +399,7 @@ class TestMCPResourceHandling:
             "file:///path/to/local/file",
             "http://example.com/resource",
             "https://example.com/resource",
-            "data:application/json;base64,eyJrZXkiOiJ2YWx1ZSJ9"
+            "data://application/json;base64,eyJrZXkiOiJ2YWx1ZSJ9",
         ]
 
         for uri in valid_uris:

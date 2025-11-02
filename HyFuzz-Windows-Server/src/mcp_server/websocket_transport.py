@@ -10,7 +10,7 @@ import logging
 import sys
 from typing import Dict, List, Optional, Callable, Any, Set, Union
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 import uuid
 from pathlib import Path
 
@@ -57,8 +57,8 @@ class ConnectionMetadata:
     """Metadata for WebSocket connection"""
     client_id: str
     connection_time: datetime
-    last_heartbeat: datetime = field(default_factory=datetime.utcnow)
-    last_message_time: datetime = field(default_factory=datetime.utcnow)
+    last_heartbeat: datetime = field(default_factory=lambda: datetime.now(UTC))
+    last_message_time: datetime = field(default_factory=lambda: datetime.now(UTC))
     message_count: int = 0
     bytes_received: int = 0
     bytes_sent: int = 0
@@ -66,12 +66,12 @@ class ConnectionMetadata:
     
     def update_activity(self):
         """Update last activity timestamp"""
-        self.last_message_time = datetime.utcnow()
+        self.last_message_time = datetime.now(UTC)
         self.message_count += 1
     
     def get_connection_duration(self) -> timedelta:
         """Get connection duration"""
-        return datetime.utcnow() - self.connection_time
+        return datetime.now(UTC) - self.connection_time
     
     def get_stats(self) -> Dict[str, Any]:
         """Get connection statistics"""
@@ -214,7 +214,7 @@ class WebSocketTransport:
             self.connections[client_id] = websocket
             metadata = ConnectionMetadata(
                 client_id=client_id,
-                connection_time=datetime.utcnow(),
+                connection_time=datetime.now(UTC),
                 remote_address=remote_address
             )
             self.connection_metadata[client_id] = metadata
@@ -453,7 +453,7 @@ class WebSocketTransport:
             try:
                 await asyncio.sleep(60)  # Check every minute
                 
-                current_time = datetime.utcnow()
+                current_time = datetime.now(UTC)
                 stale_clients = []
                 
                 for client_id, metadata in self.connection_metadata.items():
@@ -545,7 +545,7 @@ async def run_tests():
     print("\n[TEST 2] Connection Metadata")
     metadata = ConnectionMetadata(
         client_id="test_client",
-        connection_time=datetime.utcnow()
+        connection_time=datetime.now(UTC)
     )
     metadata.update_activity()
     assert metadata.message_count == 1

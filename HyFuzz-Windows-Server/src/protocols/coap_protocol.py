@@ -12,6 +12,7 @@ class CoAPProtocolHandler(BaseProtocolHandler):
 
     def prepare_request(self, context: ProtocolContext, payload: Dict[str, Any]) -> Dict[str, Any]:
         request = super().prepare_request(context, payload)
+        request["payload"] = payload.get("payload", request["payload"])
         request["method"] = payload.get("method", "GET")
         request["path"] = payload.get("path", "/")
         return request

@@ -9,7 +9,7 @@ import json
 import uuid
 import hashlib
 import time
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any, Dict, List, Optional, Callable, TypeVar, Union
 from functools import wraps
 from enum import Enum
@@ -98,7 +98,7 @@ def get_timestamp() -> str:
     Returns:
         str: ISO formatted timestamp
     """
-    return datetime.utcnow().isoformat() + "Z"
+    return datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
 
 def get_timestamp_ms() -> int:

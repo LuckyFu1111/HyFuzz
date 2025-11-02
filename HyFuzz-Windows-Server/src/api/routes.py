@@ -25,21 +25,59 @@ Version: 1.0.0
 
 import inspect
 import logging
+from dataclasses import dataclass, field
 from typing import Dict, Any, Optional, Callable, List
 from functools import wraps
 from datetime import datetime, timezone
+from pathlib import Path
+import sys
 
-from ..mcp_server.server import MCPServer
-from ..config.settings import Settings
-from ..utils.logger import get_logger
-from ..utils.exceptions import ValidationError, ServerError
-from ..models.message_models import (
-    MCPInitializeRequest,
-    MCPToolCall,
-)
+if __package__:
+    from ..mcp_server.server import MCPServer
+    from ..config.settings import Settings
+    from ..utils.logger import get_logger
+    from ..utils.exceptions import ValidationError, ServerError
+else:  # pragma: no cover - fallback for direct execution in tests
+    package_root = Path(__file__).resolve().parents[1]
+    if str(package_root) not in sys.path:
+        sys.path.append(str(package_root))
+    from mcp_server.server import MCPServer  # type: ignore
+    from config.settings import Settings  # type: ignore
+    from utils.logger import get_logger  # type: ignore
+    from utils.exceptions import ValidationError, ServerError  # type: ignore
 
 # Initialize logger
 logger = get_logger(__name__)
+
+
+@dataclass
+class APIRoute:
+    """Lightweight data container describing a single API route."""
+
+    path: str
+    handler: str
+    methods: List[str] = field(default_factory=lambda: ["GET"])
+    description: str = ""
+    auth_required: bool = False
+    rate_limit: bool | Dict[str, Any] = False
+    tags: List[str] = field(default_factory=list)
+
+    def to_metadata(self) -> Dict[str, Any]:
+        metadata: Dict[str, Any] = {
+            "handler": self.handler,
+            "description": self.description,
+            "auth_required": self.auth_required,
+            "rate_limit": bool(self.rate_limit),
+            "methods": list(self.methods),
+        }
+        if isinstance(self.rate_limit, dict):
+            metadata["rate_limit_config"] = dict(self.rate_limit)
+        if self.tags:
+            metadata["tags"] = list(self.tags)
+        return metadata
+
+    def supports(self, method: str) -> bool:
+        return method.upper() in {m.upper() for m in self.methods}
 
 
 # ==============================================================================
@@ -64,114 +102,145 @@ class RouteRegistry:
         """
         self.settings = settings or Settings()
         self.logger = get_logger(__name__)
-        self.routes: Dict[str, Dict[str, Any]] = {}
+        self.routes: Dict[str, APIRoute] = {}
         self._initialize_routes()
 
     def _initialize_routes(self) -> None:
         """Initialize route metadata."""
-        self.routes = {
-            # Health & Status
-            "GET /health": {
-                "handler": "health_check",
-                "description": "Server health check",
-                "public": True,
-                "rate_limit": False,
-            },
-            "GET /api/v1/status": {
-                "handler": "detailed_status",
-                "description": "Detailed system status",
-                "auth_required": False,
-                "rate_limit": True,
-            },
+        self.routes = {}
+        base_routes: List[APIRoute] = [
+            APIRoute(
+                path="/health",
+                handler="health_check",
+                methods=["GET"],
+                description="Server health check",
+                auth_required=False,
+                rate_limit=False,
+                tags=["health"],
+            ),
+            APIRoute(
+                path="/api/v1/status",
+                handler="detailed_status",
+                methods=["GET"],
+                description="Detailed system status",
+                auth_required=False,
+                rate_limit=True,
+                tags=["health"],
+            ),
+            APIRoute(
+                path="/api/v1/payloads/generate",
+                handler="generate_payloads",
+                methods=["POST"],
+                description="Generate fuzzing payloads",
+                auth_required=True,
+                rate_limit=True,
+                tags=["payloads"],
+            ),
+            APIRoute(
+                path="/api/v1/payloads/refine",
+                handler="refine_payloads",
+                methods=["POST"],
+                description="Refine payload generation strategy",
+                auth_required=True,
+                rate_limit=True,
+                tags=["payloads"],
+            ),
+            APIRoute(
+                path="/api/v1/knowledge/cwe/{cwe_id}",
+                handler="get_cwe_info",
+                methods=["GET"],
+                description="Get CWE vulnerability information",
+                auth_required=False,
+                rate_limit=True,
+                tags=["knowledge"],
+            ),
+            APIRoute(
+                path="/api/v1/knowledge/cve/{cve_id}",
+                handler="get_cve_info",
+                methods=["GET"],
+                description="Get CVE vulnerability information",
+                auth_required=False,
+                rate_limit=True,
+                tags=["knowledge"],
+            ),
+            APIRoute(
+                path="/api/v1/knowledge/search",
+                handler="search_knowledge",
+                methods=["POST"],
+                description="Search knowledge base",
+                auth_required=False,
+                rate_limit=True,
+                tags=["knowledge"],
+            ),
+            APIRoute(
+                path="/api/v1/feedback",
+                handler="submit_feedback",
+                methods=["POST"],
+                description="Submit payload execution feedback",
+                auth_required=True,
+                rate_limit=True,
+                tags=["feedback"],
+            ),
+            APIRoute(
+                path="/api/v1/metrics",
+                handler="get_metrics",
+                methods=["GET"],
+                description="Get performance metrics",
+                auth_required=True,
+                rate_limit=True,
+                tags=["feedback"],
+            ),
+            APIRoute(
+                path="/mcp/initialize",
+                handler="mcp_initialize",
+                methods=["POST"],
+                description="Initialize MCP session",
+                auth_required=False,
+                rate_limit=True,
+                tags=["mcp"],
+            ),
+            APIRoute(
+                path="/mcp/tools/list",
+                handler="mcp_list_tools",
+                methods=["POST"],
+                description="List available MCP tools",
+                auth_required=False,
+                rate_limit=True,
+                tags=["mcp"],
+            ),
+            APIRoute(
+                path="/mcp/tools/call",
+                handler="mcp_call_tool",
+                methods=["POST"],
+                description="Call MCP tool",
+                auth_required=False,
+                rate_limit=True,
+                tags=["mcp"],
+            ),
+            APIRoute(
+                path="/api/v1/stream",
+                handler="websocket_stream",
+                methods=["UPGRADE"],
+                description="Real-time payload streaming",
+                auth_required=True,
+                rate_limit=False,
+                tags=["websocket"],
+            ),
+        ]
 
-            # Payloads
-            "POST /api/v1/payloads/generate": {
-                "handler": "generate_payloads",
-                "description": "Generate fuzzing payloads",
-                "auth_required": True,
-                "rate_limit": True,
-                "methods": ["POST"],
-            },
-            "POST /api/v1/payloads/refine": {
-                "handler": "refine_payloads",
-                "description": "Refine payload generation strategy",
-                "auth_required": True,
-                "rate_limit": True,
-            },
+        for route in base_routes:
+            self._register_route(route)
 
-            # Knowledge Base
-            "GET /api/v1/knowledge/cwe/{cwe_id}": {
-                "handler": "get_cwe_info",
-                "description": "Get CWE vulnerability information",
-                "auth_required": False,
-                "rate_limit": True,
-                "methods": ["GET"],
-            },
-            "GET /api/v1/knowledge/cve/{cve_id}": {
-                "handler": "get_cve_info",
-                "description": "Get CVE vulnerability information",
-                "auth_required": False,
-                "rate_limit": True,
-                "methods": ["GET"],
-            },
-            "POST /api/v1/knowledge/search": {
-                "handler": "search_knowledge",
-                "description": "Search knowledge base",
-                "auth_required": False,
-                "rate_limit": True,
-                "methods": ["POST"],
-            },
+        self.logger.debug(
+            "Route registry initialized with %d routes", len(self.routes)
+        )
 
-            # Feedback & Metrics
-            "POST /api/v1/feedback": {
-                "handler": "submit_feedback",
-                "description": "Submit payload execution feedback",
-                "auth_required": True,
-                "rate_limit": True,
-                "methods": ["POST"],
-            },
-            "GET /api/v1/metrics": {
-                "handler": "get_metrics",
-                "description": "Get performance metrics",
-                "auth_required": True,
-                "rate_limit": True,
-                "methods": ["GET"],
-            },
+    def _register_route(self, route: APIRoute) -> None:
+        """Register *route* for each supported HTTP method."""
 
-            # MCP Protocol
-            "POST /mcp/initialize": {
-                "handler": "mcp_initialize",
-                "description": "Initialize MCP session",
-                "auth_required": False,
-                "rate_limit": True,
-                "methods": ["POST"],
-            },
-            "POST /mcp/tools/list": {
-                "handler": "mcp_list_tools",
-                "description": "List available MCP tools",
-                "auth_required": False,
-                "rate_limit": True,
-                "methods": ["POST"],
-            },
-            "POST /mcp/tools/call": {
-                "handler": "mcp_call_tool",
-                "description": "Call MCP tool",
-                "auth_required": False,
-                "rate_limit": True,
-                "methods": ["POST"],
-            },
-
-            # WebSocket
-            "WS /api/v1/stream": {
-                "handler": "websocket_stream",
-                "description": "Real-time payload streaming",
-                "auth_required": True,
-                "rate_limit": False,
-                "methods": ["UPGRADE"],
-            },
-        }
-
-        self.logger.debug(f"Route registry initialized with {len(self.routes)} routes")
+        for method in route.methods:
+            key = f"{method.upper()} {route.path}"
+            self.routes[key] = route
 
     def get_route(self, path: str, method: str) -> Optional[Dict[str, Any]]:
         """
@@ -184,12 +253,20 @@ class RouteRegistry:
         Returns:
             Route metadata or None if not found
         """
-        route_key = f"{method} {path}"
-        return self.routes.get(route_key)
+        route_key = f"{method.upper()} {path}"
+        route = self.routes.get(route_key)
+        if not route:
+            return None
+        metadata = route.to_metadata()
+        metadata["path"] = route.path
+        return metadata
 
     def get_all_routes(self) -> Dict[str, Dict[str, Any]]:
         """Get all registered routes."""
-        return self.routes
+        return {
+            key: {**route.to_metadata(), "path": route.path}
+            for key, route in self.routes.items()
+        }
 
     def get_route_info(self) -> Dict[str, Any]:
         """
@@ -207,19 +284,21 @@ class RouteRegistry:
             "websocket": {},
         }
 
-        for route_path, route_info in self.routes.items():
-            if "health" in route_path:
-                categorized["health"][route_path] = route_info
-            elif "payloads" in route_path:
-                categorized["payloads"][route_path] = route_info
-            elif "knowledge" in route_path:
-                categorized["knowledge"][route_path] = route_info
-            elif "feedback" in route_path or "metrics" in route_path:
-                categorized["feedback"][route_path] = route_info
-            elif "/mcp/" in route_path:
-                categorized["mcp"][route_path] = route_info
-            elif "/api/v1/stream" in route_path:
-                categorized["websocket"][route_path] = route_info
+        for route_key, route in self.routes.items():
+            info = route.to_metadata()
+            info["path"] = route.path
+            if "health" in route_key:
+                categorized["health"][route_key] = info
+            elif "payloads" in route_key:
+                categorized["payloads"][route_key] = info
+            elif "knowledge" in route_key:
+                categorized["knowledge"][route_key] = info
+            elif "feedback" in route_key or "metrics" in route_key:
+                categorized["feedback"][route_key] = info
+            elif "/mcp/" in route_key:
+                categorized["mcp"][route_key] = info
+            elif "/api/v1/stream" in route_key:
+                categorized["websocket"][route_key] = info
 
         return categorized
 

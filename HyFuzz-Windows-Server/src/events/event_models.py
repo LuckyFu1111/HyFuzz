@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from datetime import datetime
+from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from typing import Dict, Any
 
 
@@ -11,7 +11,7 @@ from typing import Dict, Any
 class Event:
     name: str
     payload: Dict[str, Any]
-    timestamp: datetime = datetime.utcnow()
+    timestamp: datetime = field(default_factory=lambda: datetime.now(UTC))
 
 
 if __name__ == "__main__":
