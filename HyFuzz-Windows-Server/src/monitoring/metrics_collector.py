@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Dict, List
 
 from .monitoring_models import MetricSample
@@ -16,7 +16,7 @@ class MetricsCollector:
         self.samples: Dict[str, List[MetricSample]] = defaultdict(list)
 
     def observe(self, name: str, value: float) -> None:
-        sample = MetricSample(name=name, value=value, timestamp=datetime.utcnow())
+        sample = MetricSample(name=name, value=value, timestamp=datetime.now(UTC))
         self.samples[name].append(sample)
 
     def export(self) -> Dict[str, List[float]]:
