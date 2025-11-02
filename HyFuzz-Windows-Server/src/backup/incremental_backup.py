@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Dict
 
 
@@ -11,7 +11,7 @@ class IncrementalBackupTracker:
         self.last_backup: Dict[str, datetime] = {}
 
     def mark(self, name: str) -> None:
-        self.last_backup[name] = datetime.utcnow()
+        self.last_backup[name] = datetime.now(UTC)
 
     def last_run(self, name: str) -> datetime | None:
         return self.last_backup.get(name)

@@ -11,7 +11,7 @@ import logging
 import os
 import re
 import hashlib
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Any, Dict, List, Optional, Tuple, Union
 from pathlib import Path
 from urllib.parse import urlparse, quote, unquote
@@ -411,7 +411,7 @@ def get_current_timestamp() -> float:
     Returns:
         Current Unix timestamp
     """
-    return datetime.utcnow().timestamp()
+    return datetime.now(UTC).timestamp()
 
 
 def timestamp_to_datetime(timestamp: float) -> datetime:
@@ -424,7 +424,7 @@ def timestamp_to_datetime(timestamp: float) -> datetime:
     Returns:
         datetime object
     """
-    return datetime.utcfromtimestamp(timestamp)
+    return datetime.fromtimestamp(timestamp, tz=UTC)
 
 
 def datetime_to_iso_string(dt: datetime) -> str:
@@ -437,7 +437,8 @@ def datetime_to_iso_string(dt: datetime) -> str:
     Returns:
         ISO format string (YYYY-MM-DDTHH:MM:SSZ)
     """
-    return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    aware = dt if dt.tzinfo else dt.replace(tzinfo=UTC)
+    return aware.astimezone(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def get_time_difference(start_time: datetime, end_time: Optional[datetime] = None) -> float:
@@ -452,7 +453,7 @@ def get_time_difference(start_time: datetime, end_time: Optional[datetime] = Non
         Time difference in seconds
     """
     if end_time is None:
-        end_time = datetime.utcnow()
+        end_time = datetime.now(UTC)
 
     diff = end_time - start_time
     return diff.total_seconds()

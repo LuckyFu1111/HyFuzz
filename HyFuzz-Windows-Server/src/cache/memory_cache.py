@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Dict
 
 from .cache_models import CacheEntry
@@ -13,7 +13,7 @@ class MemoryCache:
         self.store: Dict[str, CacheEntry] = {}
 
     def set(self, key: str, value: object, ttl_seconds: int | None = None) -> None:
-        expires_at = datetime.utcnow() + timedelta(seconds=ttl_seconds) if ttl_seconds else None
+        expires_at = datetime.now(UTC) + timedelta(seconds=ttl_seconds) if ttl_seconds else None
         self.store[key] = CacheEntry(key=key, value=value, expires_at=expires_at)
 
     def get(self, key: str) -> object | None:

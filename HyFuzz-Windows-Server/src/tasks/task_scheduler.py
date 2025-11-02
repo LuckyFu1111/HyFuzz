@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Callable, Optional
 
 from .task_models import TaskDefinition
@@ -18,7 +18,7 @@ class TaskScheduler:
 
     def schedule(self, task: TaskDefinition, delay: Optional[timedelta] = None) -> None:
         delay = delay or self.default_delay
-        task.metadata = {"scheduled_for": datetime.utcnow() + delay}  # type: ignore[attr-defined]
+        task.metadata = {"scheduled_for": datetime.now(UTC) + delay}  # type: ignore[attr-defined]
         self.queue.enqueue(task)
 
 

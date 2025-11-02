@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any, Dict, List, Optional
 
 _SEVERITY_LEVELS = {
@@ -21,7 +21,7 @@ class DefenseEvent:
 
     source: str
     payload: Dict[str, Any]
-    created_at: datetime = field(default_factory=datetime.utcnow)
+    created_at: datetime = field(default_factory=lambda: datetime.now(UTC))
     tags: List[str] = field(default_factory=list)
 
     def tag(self, *labels: str) -> None:

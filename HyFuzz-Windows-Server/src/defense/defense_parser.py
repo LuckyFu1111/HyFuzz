@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any, Dict
 
 from .defense_models import DefenseEvent
@@ -30,10 +30,12 @@ class DefenseParser:
 
     def _parse_timestamp(self, timestamp: Any) -> datetime:
         if isinstance(timestamp, datetime):
-            return timestamp
+            return timestamp if timestamp.tzinfo else timestamp.replace(tzinfo=UTC)
         if isinstance(timestamp, (int, float)):
-            return datetime.fromtimestamp(timestamp)
-        return datetime.fromisoformat(str(timestamp))
+            return datetime.fromtimestamp(timestamp, tz=UTC)
+        iso_value = str(timestamp).replace("Z", "+00:00")
+        parsed = datetime.fromisoformat(iso_value)
+        return parsed if parsed.tzinfo else parsed.replace(tzinfo=UTC)
 
 
 if __name__ == "__main__":
@@ -41,7 +43,7 @@ if __name__ == "__main__":
     entry = {
         "source": "ids",
         "payload": {"alert": {"severity": "medium", "signature_id": "123"}},
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(UTC).isoformat(),
         "tags": ["ids", "alert"],
     }
     event = parser.parse(entry)
