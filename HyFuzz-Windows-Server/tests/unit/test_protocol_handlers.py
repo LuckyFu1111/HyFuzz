@@ -7,8 +7,11 @@ from src.protocols.protocol_registry import ProtocolRegistry
 def test_registry_lists_default_protocols() -> None:
     registry = ProtocolRegistry()
     available = registry.available_protocols()
+    specs = registry.protocol_specs()
 
     assert {"coap", "modbus"}.issubset(available.keys())
+    assert specs["coap"].stateful is False
+    assert specs["modbus"].stateful is True
 
 
 def test_base_handler_round_trip() -> None:

@@ -1,14 +1,20 @@
-"""Modbus protocol handler."""
+"""Modbus protocol handler with basic state awareness."""
 
 from __future__ import annotations
 
 from typing import Any, Dict
 
-from .base_protocol import BaseProtocolHandler, ProtocolContext
+from .base_protocol import BaseProtocolHandler, ProtocolContext, ProtocolSpec
 
 
 class ModbusProtocolHandler(BaseProtocolHandler):
     name = "modbus"
+    SPEC = ProtocolSpec(
+        name="modbus",
+        description="Modbus TCP/RTU fuzzing handler",
+        stateful=True,
+        default_parameters={"function_code": 3, "address": 0, "count": 1},
+    )
 
     def prepare_request(self, context: ProtocolContext, payload: Dict[str, Any]) -> Dict[str, Any]:
         request = super().prepare_request(context, payload)

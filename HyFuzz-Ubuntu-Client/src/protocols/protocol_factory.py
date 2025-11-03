@@ -14,6 +14,9 @@ _HANDLERS: Dict[str, Type[BaseProtocolHandler]] = {
     handler.name: handler
     for handler in (CoAPHandler, ModbusHandler, MQTTHandler, HTTPHandler, GRPCHandler)
 }
+_CAPABILITIES = {
+    name: handler().get_capabilities() for name, handler in _HANDLERS.items()
+}
 
 
 def get_handler(protocol: str) -> BaseProtocolHandler:
@@ -21,6 +24,16 @@ def get_handler(protocol: str) -> BaseProtocolHandler:
     if handler_cls is None:
         raise ValueError(f"Unsupported protocol: {protocol}")
     return handler_cls()
+
+
+def get_capabilities(protocol: str):
+    if protocol not in _CAPABILITIES:
+        raise ValueError(f"Unsupported protocol: {protocol}")
+    return _CAPABILITIES[protocol]
+
+
+def available_capabilities():
+    return dict(_CAPABILITIES)
 
 
 if __name__ == "__main__":

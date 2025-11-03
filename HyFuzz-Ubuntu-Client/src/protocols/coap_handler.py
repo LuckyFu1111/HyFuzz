@@ -3,12 +3,18 @@ from __future__ import annotations
 
 from typing import Dict
 
-from .base_handler import BaseProtocolHandler
+from .base_handler import BaseProtocolHandler, ProtocolCapabilities
 from ..models.execution_models import ExecutionRequest
 
 
 class CoAPHandler(BaseProtocolHandler):
     name = "coap"
+    capabilities = ProtocolCapabilities(
+        name="coap",
+        description="Constrained Application Protocol handler",
+        stateful=False,
+        default_parameters={"method": "GET", "path": "/", "confirmable": "true"},
+    )
 
     def execute(self, request: ExecutionRequest) -> Dict[str, str]:
         method = request.parameters.get("method", "GET").upper()

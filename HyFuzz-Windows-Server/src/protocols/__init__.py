@@ -2,7 +2,7 @@
 
 from .protocol_registry import ProtocolRegistry
 from .protocol_factory import ProtocolFactory
-from .base_protocol import ProtocolHandler, ProtocolContext
+from .base_protocol import ProtocolHandler, ProtocolContext, ProtocolSpec, ProtocolSession
 from .coap_protocol import CoAPProtocolHandler
 from .modbus_protocol import ModbusProtocolHandler
 from .mqtt_protocol import MQTTProtocolHandler
@@ -15,6 +15,8 @@ __all__ = [
     "ProtocolFactory",
     "ProtocolHandler",
     "ProtocolContext",
+    "ProtocolSpec",
+    "ProtocolSession",
     "CoAPProtocolHandler",
     "ModbusProtocolHandler",
     "MQTTProtocolHandler",

@@ -10,6 +10,8 @@ class ExecutionRequest:
     payload_id: str
     protocol: str
     parameters: Dict[str, str] = field(default_factory=dict)
+    session_id: Optional[str] = None
+    sequence: int = 0
 
 
 @dataclass
@@ -18,6 +20,7 @@ class ExecutionResult:
     success: bool
     output: str
     diagnostics: Optional[Dict[str, str]] = None
+    session_id: Optional[str] = None
 
 
 if __name__ == "__main__":

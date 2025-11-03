@@ -4,11 +4,17 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from .base_protocol import BaseProtocolHandler, ProtocolContext
+from .base_protocol import BaseProtocolHandler, ProtocolContext, ProtocolSpec
 
 
 class CoAPProtocolHandler(BaseProtocolHandler):
     name = "coap"
+    SPEC = ProtocolSpec(
+        name="coap",
+        description="Constrained Application Protocol",
+        stateful=False,
+        default_parameters={"method": "GET", "path": "/", "confirmable": True},
+    )
 
     def prepare_request(self, context: ProtocolContext, payload: Dict[str, Any]) -> Dict[str, Any]:
         request = super().prepare_request(context, payload)
