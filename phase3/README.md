@@ -45,8 +45,19 @@ Key arguments:
 
 - `--protocol`: `coap`, `modbus`, or any protocol supported by the server registry.
 - `--campaign`: Named preset defined in `HyFuzz-Windows-Server/config/fuzzing_config.yaml`.
+- `--plan`: Path to a YAML configuration file (e.g., `configs/phase3_demo.yaml`).
 - `--max-samples`: Limit the number of payload executions.
 - `--dump-json`: Write a structured report to `results/phase3/<timestamp>.json`.
+
+Example using a configuration file:
+
+```bash
+# From the project root directory
+python -m phase3.coordinator --protocol coap --plan configs/phase3_demo.yaml
+```
+
+The repository includes a sample configuration at [`../configs/phase3_demo.yaml`](../configs/phase3_demo.yaml)
+that demonstrates multi-protocol fuzzing with CoAP and Modbus targets.
 
 ### Pytest Integration
 
