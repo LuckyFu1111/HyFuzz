@@ -40,7 +40,7 @@ Detailed setup steps live in:
 1. Copy the environment templates:
    ```bash
    cp HyFuzz-Windows-Server/.env.example HyFuzz-Windows-Server/.env
-   cp HyFuzz-Ubuntu-Client/config/.env.template HyFuzz-Ubuntu-Client/.env
+   cp HyFuzz-Ubuntu-Client/.env.example HyFuzz-Ubuntu-Client/.env
    ```
 2. Populate API keys, database URLs, and queue credentials.
 3. Ensure the Windows host can reach the Ubuntu guest over the configured MCP/HTTP/WebSocket ports.
