@@ -171,10 +171,10 @@ We use automated tools for code formatting:
 
 ```bash
 # Format code with Black
-black HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3
+black HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator
 
 # Sort imports with isort
-isort HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3
+isort HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator
 
 # Lint with Ruff
 ruff check . --fix
@@ -392,7 +392,7 @@ Related to #456
 - Test on Ubuntu 22.04+
 - Ensure proper privilege handling for instrumentation
 
-### Phase 3 Coordinator (phase3/)
+### Campaign Coordinator (coordinator/)
 
 - Maintain backward compatibility
 - Update tests when changing interfaces

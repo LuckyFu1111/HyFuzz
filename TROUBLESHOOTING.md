@@ -54,7 +54,7 @@ pip install -r requirements.txt
 make install
 ```
 
-### Issue: `ImportError: cannot import name 'Phase3Coordinator'`
+### Issue: `ImportError: cannot import name 'FuzzingCoordinator'`
 
 **Cause**: Python path not configured correctly
 
@@ -63,8 +63,8 @@ make install
 # Ensure you're in the project root
 cd /path/to/HyFuzz
 
-# Verify phase3 package
-python3 -c "from phase3 import Phase3Coordinator; print('OK')"
+# Verify coordinator package
+python3 -c "from coordinator import FuzzingCoordinator; print('OK')"
 
 # If still failing, check PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:$(pwd)
@@ -238,7 +238,7 @@ yaml.scanner.ScannerError: mapping values are not allowed here
 **Solutions**:
 ```bash
 # 1. Validate YAML syntax
-python3 -c "import yaml; yaml.safe_load(open('configs/phase3_demo.yaml'))"
+python3 -c "import yaml; yaml.safe_load(open('configs/campaign_demo.yaml'))"
 
 # 2. Check indentation (use spaces, not tabs)
 # 3. Escape special characters with quotes

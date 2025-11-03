@@ -253,7 +253,7 @@ class HealthChecker:
         """Check configuration files."""
         try:
             config_files = [
-                Path(__file__).parent.parent / "configs" / "phase3_demo.yaml",
+                Path(__file__).parent.parent / "configs" / "campaign_demo.yaml",
                 Path(__file__).parent.parent / "HyFuzz-Windows-Server" / "config" / "server_config.yaml",
                 Path(__file__).parent.parent / "HyFuzz-Ubuntu-Client" / "config" / "client_config.yaml",
             ]

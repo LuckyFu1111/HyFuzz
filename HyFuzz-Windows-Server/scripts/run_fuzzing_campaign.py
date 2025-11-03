@@ -300,7 +300,7 @@ Examples:
   python run_fuzzing_campaign.py --name test-coap --protocol coap --target coap://localhost:5683
 
   # Run with configuration file
-  python run_fuzzing_campaign.py --name demo --config configs/phase3_demo.yaml
+  python run_fuzzing_campaign.py --name demo --config configs/campaign_demo.yaml
 
   # Dry run to test without execution
   python run_fuzzing_campaign.py --name test --protocol modbus --target modbus://localhost:502 --dry-run
