@@ -88,11 +88,24 @@ python -m phase3.coordinator --protocol coap --plan configs/phase3_demo.yaml
 Each component repository ships with its own documentation portal, but the most useful entry points
 are collected here for convenience:
 
+### Getting Started
+
+- **Quick Start Guide**: [`QUICKSTART.md`](QUICKSTART.md) - Get up and running in 15 minutes
+- **Deployment Guide**: [`DEPLOYMENT.md`](DEPLOYMENT.md) - Local, Docker, and production deployment
+- **Troubleshooting**: [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) - Common issues and solutions
+- **Contributing**: [`CONTRIBUTING.md`](CONTRIBUTING.md) - How to contribute to the project
+
+### Component Documentation
+
 - **Server knowledge base**: [`HyFuzz-Windows-Server/docs/README.md`](HyFuzz-Windows-Server/docs/README.md)
 - **Client knowledge base**: [`HyFuzz-Ubuntu-Client/docs/README.md`](HyFuzz-Ubuntu-Client/docs/README.md)
 - **Defense integration**: [`HyFuzz-Windows-Server/docs/DEFENSE_INTEGRATION.md`](HyFuzz-Windows-Server/docs/DEFENSE_INTEGRATION.md)
 - **Instrumentation guide**: [`HyFuzz-Ubuntu-Client/docs/INSTRUMENTATION.md`](HyFuzz-Ubuntu-Client/docs/INSTRUMENTATION.md)
 - **Protocol matrix**: [`HyFuzz-Windows-Server/docs/PROTOCOL_GUIDE.md`](HyFuzz-Windows-Server/docs/PROTOCOL_GUIDE.md) & [`HyFuzz-Ubuntu-Client/docs/PROTOCOLS.md`](HyFuzz-Ubuntu-Client/docs/PROTOCOLS.md)
+
+### API and Development
+
+- **API Documentation**: [`API.md`](API.md) - Complete API reference for server, client, and MCP
 - **Testing strategy**: [`tests/README.md`](tests/README.md)
 
 If you expand the platform (new protocol handler, additional defense integrator, etc.), update the
