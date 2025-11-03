@@ -35,22 +35,22 @@ jobs:
 
       - name: Run Ruff
         run: |
-          ruff check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests --output-format=github
+          ruff check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator tests --output-format=github
         continue-on-error: true
 
       - name: Check code formatting with Black
         run: |
-          black --check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests
+          black --check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator tests
         continue-on-error: true
 
       - name: Check import sorting with isort
         run: |
-          isort --check-only HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests
+          isort --check-only HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator tests
         continue-on-error: true
 
       - name: Type checking with mypy
         run: |
-          mypy HyFuzz-Windows-Server/src phase3 --ignore-missing-imports
+          mypy HyFuzz-Windows-Server/src coordinator --ignore-missing-imports
         continue-on-error: true
 
   # ==========================================================================
@@ -75,7 +75,7 @@ jobs:
 
       - name: Run Bandit security linter
         run: |
-          bandit -r HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 -f json -o bandit-report.json
+          bandit -r HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator -f json -o bandit-report.json
         continue-on-error: true
 
       - name: Check dependencies for vulnerabilities
@@ -188,9 +188,9 @@ jobs:
         run: |
           pytest tests/ -v -m integration
 
-      - name: Run Phase 3 coordinator tests
+      - name: Run coordinator tests
         run: |
-          pytest tests/test_phase3_coordinator.py -v
+          pytest tests/test_coordinator.py -v
 
   # ==========================================================================
   # Health Check

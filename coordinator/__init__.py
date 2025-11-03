@@ -1,22 +1,28 @@
-"""Phase 3 coordination helpers bridging the server and client stacks."""
+"""
+Campaign coordination module for HyFuzz.
+
+This module provides coordination helpers that bridge the server control plane
+and client execution agents, enabling distributed fuzzing campaigns across
+multiple targets and protocols.
+"""
 
 from .coordinator import (
     CampaignTarget,
     ExecutionDetail,
-    Phase3Coordinator,
-    Phase3RunSummary,
+    FuzzingCoordinator,
+    CampaignRunSummary,
 )
 
 __all__ = [
     "CampaignTarget",
     "ExecutionDetail",
-    "Phase3Coordinator",
-    "Phase3RunSummary",
+    "FuzzingCoordinator",
+    "CampaignRunSummary",
 ]
 
 
 if __name__ == "__main__":  # pragma: no cover - smoke test
-    coordinator = Phase3Coordinator()
+    coordinator = FuzzingCoordinator()
     summary = coordinator.run_campaign(
         [
             CampaignTarget(name="demo-coap", protocol="coap", endpoint="coap://localhost"),

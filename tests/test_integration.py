@@ -18,7 +18,7 @@ def test_project_structure():
     essential_dirs = [
         root / "HyFuzz-Windows-Server",
         root / "HyFuzz-Ubuntu-Client",
-        root / "phase3",
+        root / "coordinator",
         root / "tests",
         root / "configs",
     ]
@@ -34,7 +34,7 @@ def test_configuration_files_exist():
     root = Path(__file__).parent.parent
 
     config_files = [
-        root / "configs" / "phase3_demo.yaml",
+        root / "configs" / "campaign_demo.yaml",
         root / "HyFuzz-Windows-Server" / "config" / "server_config.yaml",
         root / "HyFuzz-Ubuntu-Client" / "config" / "client_config.yaml",
         root / "HyFuzz-Windows-Server" / ".env.example",
@@ -66,20 +66,20 @@ def test_scripts_are_executable():
 
 
 @pytest.mark.integration
-def test_phase3_coordinator_import():
-    """Test that Phase3Coordinator can be imported."""
-    from phase3 import Phase3Coordinator, CampaignTarget
+def test_coordinator_import():
+    """Test that FuzzingCoordinator can be imported."""
+    from coordinator import FuzzingCoordinator, CampaignTarget
 
-    assert Phase3Coordinator is not None
+    assert FuzzingCoordinator is not None
     assert CampaignTarget is not None
 
 
 @pytest.mark.integration
-def test_phase3_coordinator_instantiation():
-    """Test that Phase3Coordinator can be instantiated."""
-    from phase3 import Phase3Coordinator
+def test_coordinator_instantiation():
+    """Test that FuzzingCoordinator can be instantiated."""
+    from coordinator import FuzzingCoordinator
 
-    coordinator = Phase3Coordinator(model_name="test-model")
+    coordinator = FuzzingCoordinator(model_name="test-model")
     assert coordinator is not None
     assert hasattr(coordinator, "run_campaign")
 
@@ -87,7 +87,7 @@ def test_phase3_coordinator_instantiation():
 @pytest.mark.integration
 def test_campaign_target_creation():
     """Test that CampaignTarget can be created."""
-    from phase3 import CampaignTarget
+    from coordinator import CampaignTarget
 
     target = CampaignTarget(
         name="test-target",
@@ -125,7 +125,7 @@ def test_documentation_files_exist():
     docs = [
         root / "README.md",
         root / "QUICKSTART.md",
-        root / "phase3" / "README.md",
+        root / "coordinator" / "README.md",
         root / "tests" / "README.md",
         root / "HyFuzz-Windows-Server" / "SETUP_GUIDE.md",
         root / "HyFuzz-Ubuntu-Client" / "docs" / "SETUP.md",
@@ -161,11 +161,11 @@ def test_essential_imports():
 
 @pytest.mark.integration
 @pytest.mark.asyncio
-async def test_phase3_coordinator_mock_campaign():
-    """Test running a mock campaign with Phase3Coordinator."""
-    from phase3 import Phase3Coordinator, CampaignTarget
+async def test_coordinator_mock_campaign():
+    """Test running a mock campaign with FuzzingCoordinator."""
+    from coordinator import FuzzingCoordinator, CampaignTarget
 
-    coordinator = Phase3Coordinator(model_name="test-model")
+    coordinator = FuzzingCoordinator(model_name="test-model")
 
     targets = [
         CampaignTarget(

@@ -61,16 +61,16 @@ Expected output:
 
 ## 🎯 Running Your First Campaign
 
-### Option A: Using the Phase 3 Coordinator
+### Option A: Using the Campaign Coordinator
 
 ```bash
 # Run the demo test suite
-pytest tests/test_phase3_coordinator.py -v
+pytest tests/test_coordinator.py -v
 
 # Or use the coordinator directly
-python -m phase3.coordinator \
+python -m coordinator.coordinator \
     --protocol coap \
-    --plan configs/phase3_demo.yaml
+    --plan configs/campaign_demo.yaml
 ```
 
 ### Option B: Using the Campaign Runner
@@ -138,9 +138,9 @@ Example output:
 ### Generate Custom Payloads
 
 ```python
-from phase3 import Phase3Coordinator, CampaignTarget
+from coordinator import FuzzingCoordinator, CampaignTarget
 
-coordinator = Phase3Coordinator(model_name="mistral")
+coordinator = FuzzingCoordinator(model_name="mistral")
 targets = [
     CampaignTarget(
         name="my-coap-server",
@@ -181,7 +181,7 @@ python scripts/run_mqtt_test.py
 
 ### Edit Campaign Settings
 
-Edit `configs/phase3_demo.yaml`:
+Edit `configs/campaign_demo.yaml`:
 
 ```yaml
 campaign:
@@ -304,7 +304,7 @@ After following this guide, you should have:
 **Ready to fuzz?** Start with the demo campaign:
 
 ```bash
-python -m phase3.coordinator --protocol coap --plan configs/phase3_demo.yaml
+python -m coordinator.coordinator --protocol coap --plan configs/campaign_demo.yaml
 ```
 
 Happy fuzzing! 🎯

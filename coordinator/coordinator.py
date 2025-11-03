@@ -110,7 +110,7 @@ class ExecutionDetail:
 
 
 @dataclass
-class Phase3RunSummary:
+class CampaignRunSummary:
     """Aggregated summary for a full campaign run."""
 
     executions: List[ExecutionDetail] = field(default_factory=list)
@@ -156,8 +156,14 @@ class _BaselineDefenseModule(BaseDefenseModule):
         )
 
 
-class Phase3Coordinator:
-    """Coordinate the server payload generation and client execution flows."""
+class FuzzingCoordinator:
+    """
+    Campaign coordination engine for distributed fuzzing.
+
+    Coordinates the server payload generation and client execution flows,
+    integrating LLM-driven payload generation, defense system analysis,
+    and judgment feedback loops across multiple targets and protocols.
+    """
 
     def __init__(self, *, model_name: str = "mistral") -> None:
         self.logger = logging.getLogger(__name__)
@@ -245,7 +251,7 @@ class Phase3Coordinator:
             )
         return plans
 
-    def run_campaign(self, targets: Sequence[CampaignTarget]) -> Phase3RunSummary:
+    def run_campaign(self, targets: Sequence[CampaignTarget]) -> CampaignRunSummary:
         details = self._plan_requests(targets)
         requests: List[ExecutionRequest] = []
         for detail in details:
@@ -293,7 +299,7 @@ class Phase3Coordinator:
             )
             self.feedback_loop.add_feedback(feedback_entry)
 
-        summary = Phase3RunSummary(
+        summary = CampaignRunSummary(
             executions=details,
             feedback_history=list(self.feedback_loop.history),
         )
@@ -301,7 +307,7 @@ class Phase3Coordinator:
 
 
 if __name__ == "__main__":  # pragma: no cover - example usage
-    coordinator = Phase3Coordinator()
+    coordinator = FuzzingCoordinator()
     run_summary = coordinator.run_campaign(
         [
             CampaignTarget(name="coap-demo", protocol="coap", endpoint="coap://127.0.0.1"),
