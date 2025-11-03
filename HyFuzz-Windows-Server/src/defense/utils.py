@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Iterable
 
 from .defense_models import DefenseEvent
@@ -22,7 +22,7 @@ def format_event(event: DefenseEvent) -> str:
 
 
 def utc_now() -> datetime:
-    return datetime.utcnow()
+    return datetime.now(UTC)
 
 
 if __name__ == "__main__":

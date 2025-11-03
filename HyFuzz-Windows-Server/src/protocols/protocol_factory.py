@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
-from .base_protocol import ProtocolHandler
+from .base_protocol import ProtocolHandler, ProtocolSpec
 from .protocol_registry import ProtocolRegistry
 
 
@@ -20,7 +20,13 @@ class ProtocolFactory:
         return handler
 
     def create_all(self) -> Dict[str, ProtocolHandler]:
-        return {name: self.create(name) for name in self.registry.available_protocols()}
+        return {name: self.create(name) for name in self.registry.available_protocols().keys()}
+
+    def describe(self, name: str) -> ProtocolSpec:
+        return self.registry.describe(name)
+
+    def available_specs(self) -> Dict[str, ProtocolSpec]:
+        return self.registry.protocol_specs()
 
 
 if __name__ == "__main__":

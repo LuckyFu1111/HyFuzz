@@ -3,16 +3,38 @@ from __future__ import annotations
 
 from typing import Dict
 
-from .base_handler import BaseProtocolHandler
+from .base_handler import BaseProtocolHandler, ProtocolCapabilities
 from ..models.execution_models import ExecutionRequest
 
 
 class CoAPHandler(BaseProtocolHandler):
     name = "coap"
+    capabilities = ProtocolCapabilities(
+        name="coap",
+        description="Constrained Application Protocol handler",
+        stateful=False,
+        default_parameters={"method": "GET", "path": "/", "confirmable": "true"},
+    )
 
     def execute(self, request: ExecutionRequest) -> Dict[str, str]:
-        return {"status": "ok", "message": f"CoAP payload {request.payload_id}"}
+        method = request.parameters.get("method", "GET").upper()
+        path = request.parameters.get("path", "/")
+        confirmable = request.parameters.get("confirmable", "True")
+        is_confirmable = str(confirmable).lower() in {"true", "1", "yes"}
+        allowed_methods = {"GET", "POST", "PUT", "DELETE"}
+        success = method in allowed_methods and not path.endswith("forbidden")
+        status = "ok" if success else "error"
+        mode = "confirmable" if is_confirmable else "non-confirmable"
+        message = f"CoAP {method} {path} ({mode}) -> {request.payload_id}"
+        if not success:
+            message += " rejected"
+        return {"status": status, "message": message}
 
 
 if __name__ == "__main__":
-    print(CoAPHandler().execute(ExecutionRequest(payload_id="1", protocol="coap")))
+    sample = ExecutionRequest(
+        payload_id="1",
+        protocol="coap",
+        parameters={"method": "GET", "path": "/demo", "confirmable": "true"},
+    )
+    print(CoAPHandler().execute(sample))

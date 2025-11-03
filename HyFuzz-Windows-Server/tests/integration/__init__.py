@@ -42,6 +42,7 @@ Version: 1.0.0
 import logging
 import time
 from pathlib import Path
+import json
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass, field
 from enum import Enum
@@ -57,6 +58,9 @@ except ImportError:
 
 # Initialize logger
 logger = logging.getLogger(__name__)
+
+
+from tests.fixtures.mock_data import SAMPLE_CVE_DATA, SAMPLE_CWE_DATA, SAMPLE_PAYLOADS
 
 
 # ==============================================================================
@@ -379,6 +383,22 @@ class TestServerManager:
 class TestClient:
     """Test client for communicating with server."""
 
+    _SUPPORTED_PROTOCOLS = {"HTTP", "HTTPS", "COAP", "MQTT"}
+    _CWE_CATEGORY_MAP = {
+        "CWE-22": "path_traversal",
+        "CWE-78": "command_injection",
+        "CWE-79": "xss",
+        "CWE-80": "xss",
+        "CWE-81": "xss",
+        "CWE-82": "xss",
+        "CWE-83": "xss",
+        "CWE-89": "sql_injection",
+        "CWE-200": "coap",
+        "CWE-287": "mqtt",
+        "CWE-611": "xxe",
+    }
+    _SESSION_COUNTER = 0
+
     def __init__(
         self,
         host: str = DEFAULT_TEST_HOST,
@@ -392,6 +412,44 @@ class TestClient:
         self.connected = False
         self.request_count = 0
         self.response_cache: Dict[str, Any] = {}
+        self.session_id: Optional[str] = None
+        self.tools: List[Dict[str, Any]] = [
+            {
+                "name": "generate_payloads",
+                "description": "Generate fuzzing payloads for a CWE and protocol",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "cwe_id": {"type": "string"},
+                        "protocol": {"type": "string"},
+                        "count": {"type": "integer", "minimum": 1, "maximum": 100},
+                    },
+                    "required": ["cwe_id", "protocol"],
+                },
+            },
+            {
+                "name": "generate_cot",
+                "description": "Produce chain-of-thought reasoning for a vulnerability",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "cwe_id": {"type": "string"},
+                        "protocol": {"type": "string"},
+                        "context": {"type": "object"},
+                    },
+                    "required": ["cwe_id"],
+                },
+            },
+            {
+                "name": "get_cwe_data",
+                "description": "Retrieve CWE reference information",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {"cwe_id": {"type": "string"}},
+                    "required": ["cwe_id"],
+                },
+            },
+        ]
 
     def connect(self) -> bool:
         """Connect to server."""
@@ -400,6 +458,7 @@ class TestClient:
             # Simulate connection
             time.sleep(0.1)
             self.connected = True
+            self.session_id = self._create_session_id()
             logger.info("Connected successfully")
             return True
         except Exception as e:
@@ -435,12 +494,13 @@ class TestClient:
             Response dictionary
         """
         if not self.connected:
-            return {"success": False, "error": "Not connected"}
+            return self._error_response("Not connected", status="disconnected")
 
         self.request_count += 1
 
         # Simulate method call
-        cache_key = f"{method}:{str(params)}"
+        params_key = json.dumps(params, sort_keys=True, default=str) if params else "{}"
+        cache_key = f"{method}:{params_key}"
         if cache_key in self.response_cache:
             return self.response_cache[cache_key]
 
@@ -457,35 +517,226 @@ class TestClient:
     ) -> Dict[str, Any]:
         """Generate mock response for method call."""
         method_lower = method.lower()
+        params = params or {}
 
-        if "payload" in method_lower:
-            return {
-                "success": True,
-                "payloads": [
-                    '<img src=x onerror="alert(1)">',
-                    '<svg onload="alert(1)">',
-                ],
-            }
+        if method_lower in {"initialize", "mcp/initialize"}:
+            return self._handle_initialize(params)
+        if method_lower in {"list_tools", "tools/list"}:
+            return self._handle_list_tools()
+        if method_lower in {"call_tool", "tools/call"}:
+            return self._handle_call_tool(params)
+        if method_lower.startswith("generate_payload"):
+            return self._handle_generate_payloads(params)
+        if method_lower.startswith("generate_cot"):
+            return self._handle_generate_cot(params)
+        if method_lower == "get_cwe_data":
+            return self._handle_get_cwe(params)
+        if method_lower == "get_cve_data":
+            return self._handle_get_cve(params)
+        if "health" in method_lower:
+            return self._handle_health()
+        if "metrics" in method_lower:
+            return self._handle_metrics()
 
-        elif "analyze" in method_lower:
-            return {
-                "success": True,
-                "vulnerability_type": "xss",
-                "confidence": 0.92,
-            }
+        return self._success_response(result="ok")
 
-        elif "health" in method_lower:
-            return {
-                "success": True,
-                "status": "healthy",
-                "uptime": 3600,
-            }
+    # ------------------------------------------------------------------
+    # Response helpers
+    # ------------------------------------------------------------------
+    @classmethod
+    def _create_session_id(cls) -> str:
+        cls._SESSION_COUNTER += 1
+        return f"sess-{cls._SESSION_COUNTER:05d}"
 
-        else:
-            return {
-                "success": True,
-                "result": "ok",
-            }
+    @staticmethod
+    def _success_response(**payload: Any) -> Dict[str, Any]:
+        response = {"success": True, "status": "ok"}
+        response.update(payload)
+        return response
+
+    @staticmethod
+    def _error_response(message: str, *, status: str = "error", **extra: Any) -> Dict[str, Any]:
+        response = {"success": False, "status": status, "error": message}
+        response.update(extra)
+        return response
+
+    @classmethod
+    def _extract_cwe_number(cls, cwe_id: str) -> Optional[int]:
+        if not cwe_id or "-" not in cwe_id:
+            return None
+        try:
+            return int(cwe_id.split("-", 1)[1])
+        except ValueError:
+            return None
+
+    # ------------------------------------------------------------------
+    # Handlers for simulated endpoints
+    # ------------------------------------------------------------------
+    def _handle_initialize(self, params: Dict[str, Any]) -> Dict[str, Any]:
+        protocol_version = params.get("protocol_version", "2024.01")
+        client_info = params.get("client_info", {})
+        if not self.session_id:
+            self.session_id = self._create_session_id()
+        return self._success_response(
+            session_id=self.session_id,
+            protocol_version=protocol_version,
+            negotiated_protocol=self.protocol.upper(),
+            available_tools=self.tools,
+            client_info=client_info,
+        )
+
+    def _handle_list_tools(self) -> Dict[str, Any]:
+        return self._success_response(tools=self.tools, tool_count=len(self.tools))
+
+    def _handle_call_tool(self, params: Dict[str, Any]) -> Dict[str, Any]:
+        tool_name = (params.get("tool_name") or params.get("name") or "").lower()
+        arguments = params.get("arguments") or {}
+
+        if tool_name in {"generate_payloads", "generate_payload"}:
+            result = self._handle_generate_payloads(arguments)
+            return result if result.get("success") else result
+        if tool_name == "generate_cot":
+            return self._handle_generate_cot(arguments)
+        if tool_name == "get_cwe_data":
+            return self._handle_get_cwe(arguments)
+
+        return self._error_response(f"Unknown tool: {tool_name}", tool_name=tool_name or None)
+
+    def _handle_generate_payloads(self, params: Dict[str, Any]) -> Dict[str, Any]:
+        cwe_id = str(params.get("cwe_id") or "").strip()
+        protocol = str(params.get("protocol") or "").strip()
+        count = int(params.get("count") or 2)
+        encoding = params.get("encoding")
+
+        if not cwe_id or not protocol:
+            return self._error_response(
+                "cwe_id and protocol are required", status="validation_error"
+            )
+
+        protocol_upper = protocol.upper()
+        if protocol_upper not in self._SUPPORTED_PROTOCOLS:
+            return self._error_response(
+                f"Unsupported protocol: {protocol}", status="validation_error"
+            )
+
+        known_cwe = cwe_id in SAMPLE_CWE_DATA
+        cwe_number = self._extract_cwe_number(cwe_id)
+        if not known_cwe and (cwe_number is None or cwe_number >= 9000):
+            return self._error_response(
+                f"Unknown CWE id: {cwe_id}", status="validation_error"
+            )
+
+        template_payloads = self._select_payload_templates(cwe_id, protocol_upper)
+        if not template_payloads:
+            template_payloads = [f"{protocol_upper.lower()}::{cwe_id.lower()}::1"]
+
+        selected = [
+            template_payloads[i % len(template_payloads)]
+            for i in range(max(1, count))
+        ]
+
+        response = self._success_response(
+            payloads=selected,
+            cwe_id=cwe_id,
+            protocol=protocol_upper,
+            requested_count=count,
+        )
+        if encoding:
+            response["encoding"] = encoding
+        if not known_cwe:
+            response.setdefault("warnings", []).append(
+                "Payloads generated using heuristic templates"
+            )
+        return response
+
+    def _handle_generate_cot(self, params: Dict[str, Any]) -> Dict[str, Any]:
+        cwe_id = str(params.get("cwe_id") or "").strip()
+        if not cwe_id:
+            return self._error_response("cwe_id is required", status="validation_error")
+
+        protocol = str(params.get("protocol") or self.protocol or "HTTP").upper()
+        context = params.get("context") or {}
+        cwe_info = SAMPLE_CWE_DATA.get(cwe_id)
+
+        affected_protocols = cwe_info.get("affected_protocols", [protocol]) if cwe_info else [protocol]
+        remediation = ", ".join(cwe_info.get("remediation", [])[:2]) if cwe_info else "Input validation"
+
+        reasoning_chain = [
+            f"Analyzing vulnerability {cwe_id}",
+            f"Assessing impact across {', '.join(affected_protocols)}",
+            f"Recommended mitigations include: {remediation}",
+        ]
+        if context:
+            reasoning_chain.append(f"Context considered: {context}")
+
+        summary = {
+            "cwe_id": cwe_id,
+            "protocol": protocol,
+            "confidence": 0.91 if cwe_info else 0.75,
+        }
+
+        return self._success_response(reasoning_chain=reasoning_chain, summary=summary)
+
+    def _handle_get_cwe(self, params: Dict[str, Any]) -> Dict[str, Any]:
+        cwe_id = str(params.get("cwe_id") or "").strip()
+        if not cwe_id:
+            return self._error_response("cwe_id is required", status="validation_error")
+
+        data = SAMPLE_CWE_DATA.get(cwe_id)
+        if not data:
+            return self._error_response(f"CWE {cwe_id} not found", status="not_found")
+
+        return self._success_response(data=data)
+
+    def _handle_get_cve(self, params: Dict[str, Any]) -> Dict[str, Any]:
+        cve_id = str(params.get("cve_id") or "").strip()
+        if not cve_id:
+            return self._error_response("cve_id is required", status="validation_error")
+
+        data = SAMPLE_CVE_DATA.get(cve_id)
+        if not data:
+            return self._error_response(f"CVE {cve_id} not found", status="not_found")
+
+        return self._success_response(data=data)
+
+    def _handle_health(self) -> Dict[str, Any]:
+        return self._success_response(server_status="healthy", uptime=3600)
+
+    def _handle_metrics(self) -> Dict[str, Any]:
+        metrics = {
+            "requests_sent": self.request_count,
+            "cached_responses": len(self.response_cache),
+        }
+        return self._success_response(metrics=metrics)
+
+    @classmethod
+    def _select_payload_templates(cls, cwe_id: str, protocol: str) -> List[str]:
+        category = cls._CWE_CATEGORY_MAP.get(cwe_id.upper())
+        payload_sets: List[Dict[str, Any]] = []
+
+        if category:
+            payload_sets.extend(SAMPLE_PAYLOADS.get(category, []))
+
+        filtered = [
+            entry
+            for entry in payload_sets
+            if entry.get("protocol", "").upper() == protocol
+        ]
+        if filtered:
+            payload_sets = filtered
+
+        if not payload_sets:
+            if protocol == "COAP":
+                payload_sets = SAMPLE_PAYLOADS.get("coap", [])
+            elif protocol == "MQTT":
+                payload_sets = SAMPLE_PAYLOADS.get("mqtt", [])
+            elif protocol in {"HTTP", "HTTPS"}:
+                payload_sets = SAMPLE_PAYLOADS.get("xss", []) + SAMPLE_PAYLOADS.get("sql_injection", [])
+
+        payloads = [entry.get("payload", "") for entry in payload_sets if entry.get("payload")]
+        if not payloads:
+            payloads = [f"{cwe_id.lower()}::{protocol.lower()}::{i}" for i in range(1, 4)]
+        return payloads
 
     def get_stats(self) -> Dict[str, Any]:
         """Get client statistics."""
