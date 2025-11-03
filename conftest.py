@@ -1,4 +1,9 @@
-"""Project-wide pytest configuration."""
+"""
+Project-wide pytest configuration for HyFuzz.
+
+This configuration ensures all test modules can access the coordinator,
+server, and client components from the repository root.
+"""
 from __future__ import annotations
 
 import sys
@@ -6,16 +11,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 
-_PHASE3_SRC = ROOT / "phase3"
+_COORDINATOR_SRC = ROOT / "coordinator"
 _ROOT_TESTS = ROOT / "tests"
 
-# Only the shared phase3 tests run from the repository root.  They require
-# access to the coordinating package as well as the client fixtures directory
-# for illustrative imports in documentation-driven examples.
-if _PHASE3_SRC.exists():
-    str_phase3 = str(_PHASE3_SRC)
-    if str_phase3 not in sys.path:
-        sys.path.insert(0, str_phase3)
+# The coordinator module must be accessible for integration tests that
+# orchestrate campaigns across server and client components.
+if _COORDINATOR_SRC.exists():
+    str_coordinator = str(_COORDINATOR_SRC)
+    if str_coordinator not in sys.path:
+        sys.path.insert(0, str_coordinator)
 
 if _ROOT_TESTS.exists():
     str_root_tests = str(_ROOT_TESTS)

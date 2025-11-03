@@ -100,7 +100,7 @@ test-integration:
 
 test-cov:
 	@echo "Running tests with coverage..."
-	pytest tests/ -v --cov=HyFuzz-Windows-Server/src --cov=HyFuzz-Ubuntu-Client/src --cov=phase3 --cov-report=html --cov-report=term
+	pytest tests/ -v --cov=HyFuzz-Windows-Server/src --cov=HyFuzz-Ubuntu-Client/src --cov=coordinator --cov-report=html --cov-report=term
 	@echo "✓ Coverage report generated in htmlcov/"
 
 health-check:
@@ -112,25 +112,25 @@ health-check:
 # ============================================================================
 lint:
 	@echo "Running linters..."
-	ruff check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests
-	mypy HyFuzz-Windows-Server/src phase3 --ignore-missing-imports
+	ruff check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator tests
+	mypy HyFuzz-Windows-Server/src coordinator --ignore-missing-imports
 	@echo "✓ Linting complete"
 
 format:
 	@echo "Formatting code..."
-	black HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests scripts
-	isort HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests scripts
+	black HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator tests scripts
+	isort HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator tests scripts
 	@echo "✓ Code formatted"
 
 format-check:
 	@echo "Checking code formatting..."
-	black --check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests scripts
-	isort --check-only HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests scripts
+	black --check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator tests scripts
+	isort --check-only HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator tests scripts
 	@echo "✓ Format check passed"
 
 security:
 	@echo "Running security checks..."
-	bandit -r HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 -f screen
+	bandit -r HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src coordinator -f screen
 	safety check
 	@echo "✓ Security check complete"
 
@@ -193,9 +193,9 @@ run-campaign:
 		--target coap://localhost:5683 \
 		--payloads 10
 
-run-phase3:
-	@echo "Running Phase 3 coordinator..."
-	python -m phase3.coordinator --protocol coap --plan configs/phase3_demo.yaml
+run-coordinator:
+	@echo "Running campaign coordinator..."
+	python -m coordinator.coordinator --protocol coap --plan configs/campaign_demo.yaml
 
 # ============================================================================
 # Cleanup
