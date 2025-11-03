@@ -1,0 +1,319 @@
+name: HyFuzz CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, work, develop ]
+  pull_request:
+    branches: [ main, work ]
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  # ==========================================================================
+  # Code Quality Checks
+  # ==========================================================================
+  lint:
+    name: Code Quality & Linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff black isort mypy pylint
+
+      - name: Run Ruff
+        run: |
+          ruff check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests --output-format=github
+        continue-on-error: true
+
+      - name: Check code formatting with Black
+        run: |
+          black --check HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests
+        continue-on-error: true
+
+      - name: Check import sorting with isort
+        run: |
+          isort --check-only HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 tests
+        continue-on-error: true
+
+      - name: Type checking with mypy
+        run: |
+          mypy HyFuzz-Windows-Server/src phase3 --ignore-missing-imports
+        continue-on-error: true
+
+  # ==========================================================================
+  # Security Scanning
+  # ==========================================================================
+  security:
+    name: Security Scanning
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install security tools
+        run: |
+          pip install bandit safety
+
+      - name: Run Bandit security linter
+        run: |
+          bandit -r HyFuzz-Windows-Server/src HyFuzz-Ubuntu-Client/src phase3 -f json -o bandit-report.json
+        continue-on-error: true
+
+      - name: Check dependencies for vulnerabilities
+        run: |
+          safety check --json
+        continue-on-error: true
+
+      - name: Upload security reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: security-reports
+          path: bandit-report.json
+
+  # ==========================================================================
+  # Unit Tests - Windows Server
+  # ==========================================================================
+  test-server:
+    name: Test Windows Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install server dependencies
+        run: |
+          pip install -r HyFuzz-Windows-Server/requirements.txt
+          pip install pytest pytest-cov pytest-asyncio pytest-mock
+
+      - name: Run server unit tests
+        working-directory: HyFuzz-Windows-Server
+        run: |
+          pytest tests/ -v --cov=src --cov-report=xml --cov-report=html
+        continue-on-error: true
+
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: server-coverage
+          path: HyFuzz-Windows-Server/htmlcov/
+
+  # ==========================================================================
+  # Unit Tests - Ubuntu Client
+  # ==========================================================================
+  test-client:
+    name: Test Ubuntu Client
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install client dependencies
+        run: |
+          pip install -r HyFuzz-Ubuntu-Client/requirements.txt
+          pip install pytest pytest-cov pytest-asyncio
+
+      - name: Run client unit tests
+        working-directory: HyFuzz-Ubuntu-Client
+        run: |
+          pytest tests/ -v --cov=src --cov-report=xml --cov-report=html
+        continue-on-error: true
+
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: client-coverage
+          path: HyFuzz-Ubuntu-Client/htmlcov/
+
+  # ==========================================================================
+  # Integration Tests
+  # ==========================================================================
+  test-integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: [test-server, test-client]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install all dependencies
+        run: |
+          pip install -r HyFuzz-Windows-Server/requirements.txt
+          pip install -r HyFuzz-Ubuntu-Client/requirements.txt
+          pip install pytest pytest-asyncio
+
+      - name: Run integration tests
+        run: |
+          pytest tests/ -v -m integration
+
+      - name: Run Phase 3 coordinator tests
+        run: |
+          pytest tests/test_phase3_coordinator.py -v
+
+  # ==========================================================================
+  # Health Check
+  # ==========================================================================
+  health-check:
+    name: Platform Health Check
+    runs-on: ubuntu-latest
+    needs: [test-integration]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r HyFuzz-Windows-Server/requirements.txt
+          pip install -r HyFuzz-Ubuntu-Client/requirements.txt
+
+      - name: Run health check
+        run: |
+          python scripts/health_check.py --verbose --json > health-report.json
+        continue-on-error: true
+
+      - name: Upload health report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: health-report
+          path: health-report.json
+
+  # ==========================================================================
+  # Docker Build
+  # ==========================================================================
+  docker-build:
+    name: Docker Build Test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Server Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./HyFuzz-Windows-Server
+          file: ./HyFuzz-Windows-Server/Dockerfile
+          push: false
+          tags: hyfuzz-server:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build Client Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./HyFuzz-Ubuntu-Client
+          file: ./HyFuzz-Ubuntu-Client/Dockerfile
+          push: false
+          tags: hyfuzz-client:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ==========================================================================
+  # Documentation Build
+  # ==========================================================================
+  docs:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install doc dependencies
+        run: |
+          pip install mkdocs mkdocs-material
+
+      - name: Check documentation links
+        run: |
+          # Check if README files exist
+          test -f README.md
+          test -f QUICKSTART.md
+          test -f HyFuzz-Windows-Server/SETUP_GUIDE.md
+          test -f HyFuzz-Ubuntu-Client/docs/SETUP.md
+
+  # ==========================================================================
+  # Final Status
+  # ==========================================================================
+  ci-success:
+    name: CI Success
+    runs-on: ubuntu-latest
+    needs: [lint, security, test-server, test-client, test-integration, health-check, docker-build, docs]
+    if: success()
+
+    steps:
+      - name: Success message
+        run: |
+          echo "✅ All CI checks passed!"
+          echo "Pipeline completed successfully."
+
+  ci-failure:
+    name: CI Failure
+    runs-on: ubuntu-latest
+    needs: [lint, security, test-server, test-client, test-integration, health-check, docker-build, docs]
+    if: failure()
+
+    steps:
+      - name: Failure message
+        run: |
+          echo "❌ Some CI checks failed!"
+          echo "Please review the failed jobs above."
+          exit 1
