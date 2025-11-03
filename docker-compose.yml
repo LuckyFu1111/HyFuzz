@@ -1,0 +1,244 @@
+version: '3.8'
+
+# ============================================================================
+# HyFuzz Phase 3 Docker Compose Configuration
+# ============================================================================
+# This file orchestrates the complete HyFuzz distributed fuzzing platform:
+# - Windows Server (control plane, LLM integration, defense system)
+# - Ubuntu Client (execution engine with instrumentation)
+# - Supporting services (Ollama for LLM, databases, monitoring)
+#
+# Usage:
+#   docker-compose up -d                 # Start all services
+#   docker-compose up server client      # Start only server and client
+#   docker-compose logs -f server        # View server logs
+#   docker-compose down                  # Stop all services
+# ============================================================================
+
+services:
+  # --------------------------------------------------------------------------
+  # Ollama LLM Service
+  # --------------------------------------------------------------------------
+  ollama:
+    image: ollama/ollama:latest
+    container_name: hyfuzz-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - hyfuzz-network
+    restart: unless-stopped
+
+  # --------------------------------------------------------------------------
+  # HyFuzz Windows Server (Control Plane)
+  # --------------------------------------------------------------------------
+  server:
+    build:
+      context: ./HyFuzz-Windows-Server
+      dockerfile: Dockerfile
+    container_name: hyfuzz-server
+    ports:
+      - "8080:8080"    # MCP Server HTTP
+      - "8888:8888"    # Dashboard
+      - "9090:9090"    # Metrics
+    volumes:
+      - ./HyFuzz-Windows-Server/data:/app/data
+      - ./HyFuzz-Windows-Server/logs:/app/logs
+      - ./HyFuzz-Windows-Server/results:/app/results
+      - ./HyFuzz-Windows-Server/.env:/app/.env:ro
+    environment:
+      - MCP_SERVER_HOST=0.0.0.0
+      - MCP_SERVER_PORT=8080
+      - OLLAMA_ENDPOINT=http://ollama:11434
+      - DATABASE_URL=sqlite:////app/data/hyfuzz.db
+      - LOG_LEVEL=INFO
+      - CLIENT_ENDPOINTS=http://client:8001
+      - DASHBOARD_ENABLED=true
+      - DASHBOARD_PORT=8888
+    depends_on:
+      - ollama
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - hyfuzz-network
+    restart: unless-stopped
+    command: ["python", "scripts/start_server.py", "--host", "0.0.0.0", "--port", "8080"]
+
+  # --------------------------------------------------------------------------
+  # HyFuzz Ubuntu Client (Execution Engine)
+  # --------------------------------------------------------------------------
+  client:
+    build:
+      context: ./HyFuzz-Ubuntu-Client
+      dockerfile: Dockerfile
+    container_name: hyfuzz-client
+    ports:
+      - "8001:8001"    # Client API
+    volumes:
+      - ./HyFuzz-Ubuntu-Client/data:/app/data
+      - ./HyFuzz-Ubuntu-Client/logs:/app/logs
+      - ./HyFuzz-Ubuntu-Client/results:/app/results
+      - ./HyFuzz-Ubuntu-Client/.env:/app/.env:ro
+    environment:
+      - SERVER_URL=http://server:8080
+      - CLIENT_ID=ubuntu-client-docker
+      - LOG_LEVEL=INFO
+    depends_on:
+      - server
+    cap_add:
+      - SYS_PTRACE  # For instrumentation (strace, ltrace)
+    security_opt:
+      - seccomp:unconfined  # For comprehensive instrumentation
+    networks:
+      - hyfuzz-network
+    restart: unless-stopped
+    command: ["python", "scripts/start_client.py", "--config", "config/client_config.yaml"]
+
+  # --------------------------------------------------------------------------
+  # Task Workers (Optional)
+  # --------------------------------------------------------------------------
+  workers:
+    build:
+      context: ./HyFuzz-Windows-Server
+      dockerfile: Dockerfile
+    container_name: hyfuzz-workers
+    volumes:
+      - ./HyFuzz-Windows-Server/data:/app/data
+      - ./HyFuzz-Windows-Server/logs:/app/logs
+      - ./HyFuzz-Windows-Server/.env:/app/.env:ro
+    environment:
+      - OLLAMA_ENDPOINT=http://ollama:11434
+      - DATABASE_URL=sqlite:////app/data/hyfuzz.db
+      - LOG_LEVEL=INFO
+      - WORKER_CONCURRENCY=4
+    depends_on:
+      - server
+      - ollama
+    networks:
+      - hyfuzz-network
+    restart: unless-stopped
+    command: ["python", "scripts/start_workers.py", "--concurrency", "4"]
+
+  # --------------------------------------------------------------------------
+  # Dashboard (Optional - can be integrated with server)
+  # --------------------------------------------------------------------------
+  dashboard:
+    build:
+      context: ./HyFuzz-Windows-Server
+      dockerfile: Dockerfile
+    container_name: hyfuzz-dashboard
+    ports:
+      - "8889:8888"
+    volumes:
+      - ./HyFuzz-Windows-Server/data:/app/data:ro
+      - ./HyFuzz-Windows-Server/logs:/app/logs
+    environment:
+      - DATABASE_URL=sqlite:////app/data/hyfuzz.db
+      - LOG_LEVEL=INFO
+    depends_on:
+      - server
+    networks:
+      - hyfuzz-network
+    restart: unless-stopped
+    command: ["python", "scripts/start_dashboard.py", "--host", "0.0.0.0", "--port", "8888"]
+    profiles:
+      - monitoring
+
+  # --------------------------------------------------------------------------
+  # Redis (Optional - for distributed task queue)
+  # --------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: hyfuzz-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - hyfuzz-network
+    restart: unless-stopped
+    profiles:
+      - queue
+
+  # --------------------------------------------------------------------------
+  # PostgreSQL (Optional - alternative to SQLite)
+  # --------------------------------------------------------------------------
+  postgres:
+    image: postgres:15-alpine
+    container_name: hyfuzz-postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=hyfuzz
+      - POSTGRES_USER=hyfuzz
+      - POSTGRES_PASSWORD=hyfuzz_password_change_me
+    networks:
+      - hyfuzz-network
+    restart: unless-stopped
+    profiles:
+      - database
+
+# ============================================================================
+# Networks
+# ============================================================================
+networks:
+  hyfuzz-network:
+    driver: bridge
+    name: hyfuzz-network
+
+# ============================================================================
+# Volumes
+# ============================================================================
+volumes:
+  ollama_data:
+    name: hyfuzz-ollama-data
+  redis_data:
+    name: hyfuzz-redis-data
+  postgres_data:
+    name: hyfuzz-postgres-data
+
+# ============================================================================
+# Usage Examples
+# ============================================================================
+# Start core services:
+#   docker-compose up -d server client ollama
+#
+# Start with monitoring:
+#   docker-compose --profile monitoring up -d
+#
+# Start with Redis queue:
+#   docker-compose --profile queue up -d
+#
+# Start with PostgreSQL:
+#   docker-compose --profile database up -d
+#
+# View logs:
+#   docker-compose logs -f server
+#   docker-compose logs -f client
+#
+# Execute commands in containers:
+#   docker-compose exec server python scripts/health_check.py
+#   docker-compose exec client python scripts/run_campaign.py --protocol coap
+#
+# Scale workers:
+#   docker-compose up -d --scale workers=3
+#
+# Stop all services:
+#   docker-compose down
+#
+# Clean up everything (including volumes):
+#   docker-compose down -v
+# ============================================================================
