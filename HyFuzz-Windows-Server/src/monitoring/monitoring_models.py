@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 
 
@@ -21,5 +21,5 @@ class HealthStatus(str, Enum):
 
 
 if __name__ == "__main__":
-    sample = MetricSample(name="requests", value=10, timestamp=datetime.utcnow())
+    sample = MetricSample(name="requests", value=10, timestamp=datetime.now(UTC))
     print(sample)

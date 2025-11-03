@@ -1,7 +1,7 @@
 # hyfuzz-server-windows/src/models/message_models.py
 
 from typing import Any, Dict, List, Optional, Union
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from pydantic import BaseModel, Field, ConfigDict
 
@@ -333,7 +333,7 @@ class PingResponse(MCPResponse):
 class RequestMetadata(BaseModel):
     """Request metadata for logging"""
     request_id: str = Field(..., description="Unique request ID")
-    timestamp: datetime = Field(default_factory=datetime.utcnow, description="Request timestamp")
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(UTC), description="Request timestamp")
     client_info: Optional[Dict[str, str]] = Field(default=None, description="Client information")
     method: str = Field(..., description="Request method")
 
@@ -341,7 +341,7 @@ class RequestMetadata(BaseModel):
 class ResponseMetadata(BaseModel):
     """Response metadata for logging"""
     response_id: str = Field(..., description="Response ID")
-    timestamp: datetime = Field(default_factory=datetime.utcnow, description="Response timestamp")
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(UTC), description="Response timestamp")
     request_id: str = Field(..., description="Corresponding request ID")
     status_code: StatusCode = Field(..., description="Response status code")
     duration_ms: float = Field(..., description="Processing duration in milliseconds")
