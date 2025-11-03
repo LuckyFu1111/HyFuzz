@@ -7,7 +7,7 @@ tests but focuses on the execution agent, instrumentation hooks, and crash analy
 
 | Subdirectory | Focus |
 | ------------ | ----- |
-| `unit/` | Handler-level tests for protocol logic, state tracking, orchestrator helpers, judge metrics, etc. |
+| `unit/` | Handler-level tests for protocol logic, orchestrator helpers, judge metrics, etc. |
 | `integration/` | End-to-end client pipelines including MCP message handling and execution flows. |
 | `performance/` | Benchmarks for execution throughput, instrumentation overhead, distributed runs. |
 | `e2e/` | Complete campaign walkthroughs from target discovery to reporting. |

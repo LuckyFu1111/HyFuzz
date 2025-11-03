@@ -54,24 +54,26 @@ class ModbusHandler(BaseProtocolHandler):
         }
 
     def execute(self, request: ExecutionRequest) -> Dict[str, str]:
-        simulated = self._simulate(request)
-        return {"status": simulated["status"], "message": simulated["message"]}
+        function_code_raw = request.parameters.get("function_code", "3")
+        address_raw = request.parameters.get("address", "0")
+        count_raw = request.parameters.get("count", "1")
 
-    def execute_stateful(
-        self, request: ExecutionRequest, session: ProtocolSessionState
-    ) -> Dict[str, str]:
-        simulated = self._simulate(request)
-        history = session.attributes.setdefault("history", [])
-        history.append(
-            {
-                "function_code": simulated["function_code"],
-                "address": simulated["address"],
-                "count": simulated["count"],
-                "success": simulated["success"],
-            }
+        try:
+            function_code = int(function_code_raw)
+            address = int(address_raw)
+            count = int(count_raw)
+        except (TypeError, ValueError):
+            return {"status": "error", "message": "Invalid Modbus parameters"}
+
+        valid_function_codes = {1, 2, 3, 4}
+        success = function_code in valid_function_codes and count > 0
+        status = "ok" if success else "error"
+        message = (
+            f"Modbus fc={function_code} addr={address} count={count} -> {request.payload_id}"
         )
-        session.attributes["request_count"] = len(history)
-        return {"status": simulated["status"], "message": simulated["message"]}
+        if not success:
+            message += " rejected"
+        return {"status": status, "message": message}
 
 
 if __name__ == "__main__":

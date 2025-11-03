@@ -81,23 +81,6 @@ python -m phase3.coordinator --protocol coap --plan configs/phase3_demo.yaml
 
 (See the coordinator README for configuration examples.)
 
-### 5. Understand Stateful vs. Stateless Protocols
-
-Phase 3 introduces an explicit capability model so that fuzzing campaigns can mix stateless
-protocols (e.g. CoAP, HTTP) and stateful transports (e.g. Modbus). The Windows server publishes
-`ProtocolSpec` descriptors through `src/protocols/`, while the Ubuntu client exposes matching
-`ProtocolCapabilities` records in `src/protocols/`.
-
-- **Stateless protocols** run with a single request/response template and do not require session
-  correlation. Their specs declare `stateful=False`, so the coordinator omits session identifiers.
-- **Stateful protocols** declare `stateful=True`. The coordinator automatically provisions session
-  identifiers, the client `ProtocolStateManager` keeps per-session telemetry, and diagnostics emitted
-  by `ExecutionResult` include the captured state snapshot. Modbus serves as the reference
-  implementation.
-
-When adding a new protocol, register its metadata on both sides so that the coordinator can decide
-whether to allocate sessions and which default parameters to seed into generated payloads.
-
 ---
 
 ## Documentation Map

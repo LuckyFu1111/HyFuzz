@@ -9,7 +9,7 @@ LLM feedback aggregation into a single Python API.
 
 | Module | Description |
 | ------ | ----------- |
-| [`coordinator.py`](coordinator.py) | High-level façade that loads protocol templates, attaches client/server shims, assigns request IDs, allocates sessions, and aggregates verdicts. |
+| [`coordinator.py`](coordinator.py) | High-level façade that loads protocol templates, attaches client/server shims, assigns request IDs, and aggregates verdicts. |
 | [`__init__.py`](__init__.py) | Exposes the public `Phase3Coordinator` class and convenience helpers for scripts and tests. |
 
 The coordinator avoids import conflicts by dynamically adding both component repositories to
@@ -59,13 +59,10 @@ pytest tests/test_phase3_coordinator.py -v
 
 ## Extending the Coordinator
 
-1. Register the new protocol inside `HyFuzz-Windows-Server/src/protocols/` with an accurate
-   `ProtocolSpec` (including statefulness and default parameters) and update the Ubuntu client handler
-   in `HyFuzz-Ubuntu-Client/src/protocols/` with matching `ProtocolCapabilities`.
-2. Use the factory helpers in `coordinator.py` to introspect those specs instead of hard-coding
-   metadata.
-3. Add fixtures and assertions to `tests/test_phase3_coordinator.py` to cover the new workflow,
-   including stateful session tracking when relevant.
+1. Register the new protocol inside `HyFuzz-Windows-Server/src/protocols/` and update the Ubuntu client
+   handler in `HyFuzz-Ubuntu-Client/src/protocols/`.
+2. Expand the protocol metadata map inside `coordinator.py` (`_PROTOCOL_LIBRARY`).
+3. Add fixtures and assertions to `tests/test_phase3_coordinator.py` to cover the new workflow.
 4. Update the root [`README.md`](../README.md) and the relevant docs/READMEs to mention the addition.
 
 Keep this README up-to-date whenever you expose new entry points or configuration knobs so that other

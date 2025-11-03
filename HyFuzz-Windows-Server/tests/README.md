@@ -7,7 +7,7 @@ recursively, and each subfolder focuses on a specific depth of validation.
 
 | Subdirectory | Focus |
 | ------------ | ----- |
-| `unit/` | Module-level tests for API routes, LLM services, protocol specs/handlers, defense utilities, etc. |
+| `unit/` | Module-level tests for API routes, LLM services, protocol handlers, defense utilities, etc. |
 | `integration/` | MCP transport flows, dashboard asset loading, server-client message exchange. |
 | `performance/` | Benchmark runners for payload generation, fuzzing throughput, distributed scheduling. |
 | `e2e/` | Full campaign simulations covering payload generation → execution → defense feedback. |

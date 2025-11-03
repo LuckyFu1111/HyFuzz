@@ -30,13 +30,6 @@ def test_phase3_coordinator_generates_feedback() -> None:
         assert detail.defense is not None
         verdict = detail.defense.verdict
         assert verdict in {"monitor", "investigate", "block", "escalate"}
-        assert detail.spec.name == detail.target.protocol
-        if detail.target.protocol == "modbus":
-            assert detail.spec.stateful is True
-            assert detail.session_id is not None
-            assert detail.execution.session_id == detail.session_id
-        else:
-            assert detail.session_id is None
 
         template = json.loads(detail.request_parameters["payload_template"])
         assert template["target"] == detail.target.endpoint
@@ -46,7 +39,6 @@ def test_phase3_coordinator_generates_feedback() -> None:
         if detail.target.protocol == "modbus":
             assert int(template["function_code"]) == 3
             assert int(template["count"]) == 1
-            assert detail.request_parameters["session_id"].startswith("modbus")
 
 
 if __name__ == "__main__":  # pragma: no cover - smoke run

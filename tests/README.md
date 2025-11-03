@@ -9,7 +9,7 @@ evolve independently.
 
 | Path | Purpose |
 | ---- | ------- |
-| [`tests/test_phase3_coordinator.py`](test_phase3_coordinator.py) | Executes CoAP and Modbus campaigns through the shared `Phase3Coordinator` and validates payload templates, verdict correlation, stateful session handling, and feedback aggregation. |
+| [`tests/test_phase3_coordinator.py`](test_phase3_coordinator.py) | Executes CoAP and Modbus campaigns through the shared `Phase3Coordinator` and validates payload templates, verdict correlation, and feedback aggregation. |
 
 The directory also exposes an empty `tests/__init__.py` to allow relative imports from pytest and a
 repository-level `conftest.py` that primes `sys.path` for both component packages.

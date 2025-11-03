@@ -50,7 +50,7 @@ from hyfuzz_server.defense.defense_models import (
 from hyfuzz_server.learning.feedback_loop import FeedbackLoop
 from hyfuzz_server.llm.llm_judge import Judgment, LLMJudge
 from hyfuzz_server.llm.payload_generator import PayloadGenerationRequest, PayloadGenerator
-from hyfuzz_server.protocols.base_protocol import ProtocolContext, ProtocolSession, ProtocolSpec
+from hyfuzz_server.protocols.base_protocol import ProtocolContext
 from hyfuzz_server.protocols.protocol_factory import ProtocolFactory
 from hyfuzz_server.protocols.protocol_registry import ProtocolRegistry
 
@@ -78,8 +78,6 @@ class ExecutionDetail:
     execution: ExecutionResult
     defense: Optional[DefenseResult]
     judgment: Judgment
-    spec: ProtocolSpec
-    session_id: Optional[str] = None
 
     def to_dict(self) -> Dict[str, object]:
         verdict = self.defense.verdict if self.defense else "none"
@@ -91,7 +89,6 @@ class ExecutionDetail:
                 "endpoint": self.target.endpoint,
             },
             "request_id": self.request_id,
-            "session_id": self.session_id,
             "payload": self.payload,
             "parameters": dict(self.request_parameters),
             "execution": {
@@ -108,11 +105,6 @@ class ExecutionDetail:
             "judgment": {
                 "score": self.judgment.score,
                 "reasoning": self.judgment.reasoning,
-            },
-            "spec": {
-                "name": self.spec.name,
-                "description": self.spec.description,
-                "stateful": self.spec.stateful,
             },
         }
 
@@ -190,21 +182,27 @@ class Phase3Coordinator:
         return normalised
 
     def _payload_defaults(
-        self, target: CampaignTarget, spec: ProtocolSpec, raw_payload: str
+        self, target: CampaignTarget, raw_payload: str
     ) -> Dict[str, object]:
         base: Dict[str, object] = {"raw": raw_payload, "target": target.endpoint}
-        base.update(spec.default_parameters)
         protocol = target.protocol.lower()
         if protocol == "coap":
             parsed = urlparse(target.endpoint)
-            base.setdefault("path", parsed.path or "/")
+            path = parsed.path or "/"
+            base.update(
+                {
+                    "method": "GET",
+                    "path": path,
+                    "confirmable": True,
+                }
+            )
+        elif protocol == "modbus":
+            base.update({"function_code": 3, "address": 0, "count": 1})
         elif protocol == "mqtt":
-            base.setdefault("topic", "hyfuzz/demo")
-            base.setdefault("qos", 1)
+            base.update({"topic": "hyfuzz/demo", "qos": 1})
         elif protocol == "http":
             parsed = urlparse(target.endpoint)
-            base.setdefault("method", "POST")
-            base.setdefault("path", parsed.path or "/")
+            base.update({"method": "POST", "path": parsed.path or "/"})
         else:
             base.setdefault("notes", "Using generic payload defaults")
         return base
@@ -213,42 +211,27 @@ class Phase3Coordinator:
         plans: List[ExecutionDetail] = []
         for index, target in enumerate(targets):
             handler = self.protocol_factory.create(target.protocol)
-            spec = handler.get_spec()
             prompt = f"{target.protocol}:{target.endpoint}"
             payload = self.payload_generator.generate(
                 PayloadGenerationRequest(prompt=prompt)
             )
-            payload_template = self._payload_defaults(target, spec, payload)
+            payload_template = self._payload_defaults(target, payload)
             if not handler.validate(payload_template):
                 self.logger.debug(
                     "Payload template failed validation for protocol %s, applying fallback",
                     target.protocol,
                 )
                 payload_template.setdefault("auto_generated", True)
-            context = ProtocolContext(target=target.endpoint)
-            session_id = None
-            if spec.stateful:
-                context = handler.start_session(context)
-                session = context.session or ProtocolSession(session_id=f"{spec.name}-session")
-                default_session = f"{spec.name}-session"
-                if session.session_id == default_session:
-                    session = ProtocolSession(
-                        session_id=f"{spec.name}-{target.name}-{index}",
-                        attributes=session.attributes,
-                    )
-                context = context.with_session(session)
-                session_id = session.session_id
-            protocol_request = handler.prepare_request(context, payload_template)
+            protocol_request = handler.prepare_request(
+                ProtocolContext(target=target.endpoint),
+                payload_template,
+            )
             protocol_request.setdefault("payload_template", payload_template)
             params = self._normalise_parameters(protocol_request)
             request_id = f"{target.name}-{index}"
             execution = ExecutionResult(
                 payload_id=request_id, success=False, output="", diagnostics={}
             )
-            if session_id is None and spec.stateful:
-                session_id = protocol_request.get("session_id")
-            if session_id is not None:
-                params.setdefault("session_id", session_id)
             plans.append(
                 ExecutionDetail(
                     target=target,
@@ -258,8 +241,6 @@ class Phase3Coordinator:
                     execution=execution,
                     defense=None,
                     judgment=Judgment(score=0.0, reasoning=""),
-                    spec=spec,
-                    session_id=session_id,
                 )
             )
         return plans
@@ -272,8 +253,6 @@ class Phase3Coordinator:
                 payload_id=detail.request_id,
                 protocol=detail.target.protocol,
                 parameters=detail.request_parameters,
-                session_id=detail.session_id,
-                sequence=len(requests),
             )
             requests.append(request)
 
@@ -298,7 +277,6 @@ class Phase3Coordinator:
                     "protocol": detail.target.protocol,
                     "payload_id": execution.payload_id,
                     "parameters": detail.request_parameters,
-                    "session_id": detail.session_id,
                 },
             )
             severity = "low" if execution.success else "high"

@@ -37,14 +37,10 @@ LLM-driven fuzzing orchestration, defense intelligence, distributed scheduling, 
 - `__main__.py`: Allows `python -m src` to boot the MCP server in development environments.
 - `mcp_server/server.py`: Primary server runner used by `scripts/start_server.py`.
 - `llm/llm_judge.py`: Defense-aware judge that leverages graph + vector knowledge stores.
-- `protocols/base_protocol.py`: Defines `ProtocolSpec` and `ProtocolSession`, enabling stateful vs.
-  stateless campaign planning.
 
 ## Development Tips
 
 1. Run `pytest` from the repository root to execute unit, integration, performance, and e2e suites.
 2. Use the Makefile targets (`make lint`, `make test`, `make docs`) to align with CI expectations.
 3. Update this README whenever you add a new package so downstream contributors can locate it quickly.
-4. When registering new protocols, populate `ProtocolSpec` with the correct defaults/statefulness so
-   the Ubuntu client can mirror the behaviour.
 

@@ -30,8 +30,6 @@ analysis stack, and auxiliary services that cooperate with the Windows control p
 - `__main__.py`: Enables `python -m src` to bootstrap the client orchestrator locally.
 - `execution/orchestrator.py`: Coordinates payload execution flows and instrumentation hooks.
 - `mcp_client/client.py`: Maintains the MCP session with the server.
-- `protocols/base_handler.py`: Publishes `ProtocolCapabilities` so the coordinator can distinguish
-  stateless and stateful handlers.
 
 ## Development Tips
 
@@ -40,6 +38,4 @@ analysis stack, and auxiliary services that cooperate with the Windows control p
    integration coverage in `tests/integration/`.
 3. Keep this README current whenever new packages appear so collaborators can navigate the tree
    quickly.
-4. For stateful protocols mirror the server-side `ProtocolSpec` defaults inside
-   `protocols/protocol_factory.py` so session-aware diagnostics stay aligned.
 
