@@ -1,8 +1,6 @@
 """Crash analysis logic."""
 from __future__ import annotations
 
-from typing import List
-
 from .analysis_models import CrashAnalysis
 from .backtrace_parser import BacktraceParser
 from .exploitability_checker import ExploitabilityChecker

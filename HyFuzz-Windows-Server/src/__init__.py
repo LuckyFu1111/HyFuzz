@@ -14,10 +14,9 @@ Type hints and imports configured to work with Python 3.8+
 Compatible with PyCharm, VS Code, and other IDEs
 """
 
-import sys
 import logging
 from pathlib import Path
-from typing import Optional, Dict, Any, Callable, Type
+from typing import Any, Callable, Dict, Optional, Type
 
 # Version information
 __version__ = "1.0.0-phase3"
@@ -430,13 +429,13 @@ if __name__ == "__main__":
     # Test 3: __all__ export list
     print("✓ Test 3: Public API (__all__)")
     print(f"  - Total exported items: {len(__all__)}")
-    print(f"  - MCP Components: 7")
-    print(f"  - LLM Components: 8")
-    print(f"  - Knowledge Components: 5")
-    print(f"  - Config Components: 2")
-    print(f"  - Utility Components: 4")
-    print(f"  - Model Components: 4")
-    print(f"  - Functions: 4")
+    print("  - MCP Components: 7")
+    print("  - LLM Components: 8")
+    print("  - Knowledge Components: 5")
+    print("  - Config Components: 2")
+    print("  - Utility Components: 4")
+    print("  - Model Components: 4")
+    print("  - Functions: 4")
     assert len(__all__) > 0, "__all__ is empty"
     print("  ✓ PASSED\n")
 

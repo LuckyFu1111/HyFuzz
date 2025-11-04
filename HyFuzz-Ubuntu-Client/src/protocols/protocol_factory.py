@@ -5,7 +5,7 @@ import importlib
 import inspect
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional, Type
+from typing import Dict, List, Type
 
 from .base_handler import BaseProtocolHandler
 from .protocol_metadata import ProtocolMetadata
