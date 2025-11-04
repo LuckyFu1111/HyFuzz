@@ -75,6 +75,30 @@ class ModbusHandler(BaseProtocolHandler):
             message += " rejected"
         return {"status": status, "message": message}
 
+    def execute_stateful(self, request: ExecutionRequest, session: ProtocolSessionState) -> Dict[str, str]:
+        """Execute a stateful Modbus request and track session state."""
+        result = self._simulate(request)
+
+        # Update session state
+        if "request_count" not in session.attributes:
+            session.attributes["request_count"] = 0
+            session.attributes["history"] = []
+
+        session.attributes["request_count"] += 1
+
+        # Record request in history if successful
+        if result.get("success", False):
+            session.attributes["history"].append({
+                "function_code": result.get("function_code"),
+                "address": result.get("address"),
+                "count": result.get("count"),
+            })
+
+        return {
+            "status": result["status"],
+            "message": result["message"],
+        }
+
 
 if __name__ == "__main__":
     sample = ExecutionRequest(
