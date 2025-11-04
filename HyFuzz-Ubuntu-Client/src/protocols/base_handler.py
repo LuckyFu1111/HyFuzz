@@ -3,7 +3,10 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Dict
+from typing import TYPE_CHECKING, Dict
+
+if TYPE_CHECKING:
+    from .state_manager import ProtocolSessionState
 
 from ..models.execution_models import ExecutionRequest
 

@@ -26,16 +26,14 @@ Version: 1.0.0-phase3-fixed
 License: MIT
 """
 
-import sys
-import os
-import logging
 import argparse
+import logging
 import signal
-import asyncio
-from pathlib import Path
-from typing import Optional, Dict, Any, Tuple
+import sys
 from dataclasses import dataclass
 from enum import Enum
+from pathlib import Path
+from typing import Any, Dict, Optional, Tuple
 
 # Add project root to path for imports
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -386,7 +384,7 @@ class HyFuzzServer:
             self.logger.info(f"  ✓ Loaded {len(self.components)} components")
             tests_passed += 1
         else:
-            self.logger.error(f"  ✗ No components loaded")
+            self.logger.error("  ✗ No components loaded")
             tests_failed += 1
 
         # Test 2: Config available
@@ -642,8 +640,8 @@ def run_verification_tests() -> int:
             config = create_config_from_args(args)
             assert config.mode == RunMode.SERVER
             assert config.transport == TransportMode.STDIO
-            assert config.enable_llm == True
-            assert config.enable_knowledge == True
+            assert config.enable_llm is True
+            assert config.enable_knowledge is True
             print("  - Configuration created correctly: ✓")
             tests_passed += 1
         else:
