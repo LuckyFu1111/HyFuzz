@@ -311,6 +311,17 @@ class ProtocolRegistry:
         """
         return {name: reg.metadata for name, reg in self._registry.items()}
 
+    def protocol_specs(self) -> Dict[str, ProtocolMetadata]:
+        """
+        Get all protocol specifications.
+
+        This is an alias for protocol_metadata_dict() for backward compatibility.
+
+        Returns:
+            Dictionary mapping protocol names to metadata/specs
+        """
+        return self.protocol_metadata_dict()
+
     def check_version_compatibility(
         self, protocol_name: str, server_version: str, client_version: str
     ) -> tuple[bool, List[str]]:
