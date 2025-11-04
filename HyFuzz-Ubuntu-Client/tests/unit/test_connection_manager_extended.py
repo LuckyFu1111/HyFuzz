@@ -1,7 +1,7 @@
 """Extended tests for connection manager."""
 
 import pytest
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch
 from src.mcp_client.connection_manager import ConnectionManager
 
 

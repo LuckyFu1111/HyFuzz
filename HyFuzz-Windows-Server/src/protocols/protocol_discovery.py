@@ -10,8 +10,7 @@ import pkgutil
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Type
 
-from .base_protocol import BaseProtocolHandler, ProtocolHandler
-from .protocol_metadata import ProtocolMetadata
+from .base_protocol import ProtocolHandler
 
 logger = logging.getLogger(__name__)
 
@@ -314,7 +313,7 @@ if __name__ == "__main__":
         if errors:
             print(f"  Validation errors: {', '.join(errors)}")
         else:
-            print(f"  Status: ✓ Valid")
+            print("  Status: ✓ Valid")
 
             # Get metadata
             try:

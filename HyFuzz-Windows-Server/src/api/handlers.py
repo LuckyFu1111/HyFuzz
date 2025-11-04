@@ -41,7 +41,6 @@ from ..models.message_models import (
     MCPResourceList,
     MCPToolList,
 )
-from ..models.common_models import ErrorResponse
 
 from ..config.settings import Settings
 
@@ -52,7 +51,6 @@ from ..utils.exceptions import (
     AuthenticationError,
     ServerError,
 )
-from ..utils.validators import validate_request_payload
 
 
 # Initialize logger
@@ -352,14 +350,14 @@ class RequestHandlers:
                 {
                     "name": "cwe_repository",
                     "description": "CWE (Common Weakness Enumeration) database",
-                    "uri": f"cwe://",
+                    "uri": "cwe://",
                     "type": "knowledge_base",
                     "read_only": True,
                 },
                 {
                     "name": "cve_repository",
                     "description": "CVE (Common Vulnerabilities and Exposures) database",
-                    "uri": f"cve://",
+                    "uri": "cve://",
                     "type": "knowledge_base",
                     "read_only": True,
                 },

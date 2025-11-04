@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from importlib import import_module
-from typing import List, Type
+from typing import Type
 
 from .plugin_interface import Plugin
 

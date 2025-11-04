@@ -328,7 +328,7 @@ if __name__ == "__main__":
     try:
         expected_count = len(__all__)
         print(f"  ✓ Total exported models: {expected_count}")
-        print(f"  ✓ Export categories: Message, LLM, Knowledge, Config, Common")
+        print("  ✓ Export categories: Message, LLM, Knowledge, Config, Common")
         print()
     except Exception as e:
         print(f"  ✗ Export list verification failed: {str(e)}")

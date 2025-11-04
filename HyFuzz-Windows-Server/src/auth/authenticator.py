@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import hashlib
-from typing import Dict
+import os
+import warnings
+from typing import Dict, Optional
 
 from .auth_models import SessionToken, User
 from .user_manager import UserManager
@@ -11,9 +13,35 @@ from .jwt_handler import JWTHandler
 
 
 class Authenticator:
-    def __init__(self) -> None:
+    def __init__(self, jwt_secret: Optional[str] = None) -> None:
+        """
+        Initialize the authenticator.
+
+        Args:
+            jwt_secret: JWT secret key. If None, will try to read from
+                       JWT_SECRET environment variable. Falls back to
+                       a default value for development ONLY.
+
+        Security Warning:
+            In production, ALWAYS set JWT_SECRET environment variable.
+            The default value is insecure and only for development/testing.
+        """
         self.users = UserManager()
-        self.jwt = JWTHandler(secret="hyfuzz-secret")
+
+        # Get JWT secret from parameter, environment, or fallback to development default
+        if jwt_secret is None:
+            jwt_secret = os.getenv("JWT_SECRET")
+            if jwt_secret is None:
+                # Development-only fallback
+                warnings.warn(
+                    "JWT_SECRET not set! Using insecure default. "
+                    "Set JWT_SECRET environment variable in production.",
+                    UserWarning,
+                    stacklevel=2,
+                )
+                jwt_secret = "hyfuzz-dev-secret-CHANGE-IN-PRODUCTION"
+
+        self.jwt = JWTHandler(secret=jwt_secret)
 
     def _hash(self, password: str) -> str:
         return hashlib.sha256(password.encode()).hexdigest()
@@ -34,6 +62,7 @@ class Authenticator:
 
 
 if __name__ == "__main__":
-    auth = Authenticator()
+    # DEMO ONLY - For production, set JWT_SECRET environment variable
+    auth = Authenticator(jwt_secret="demo-only-testing")
     auth.register("demo", "password")
-    print(auth.login("demo", "password"))
+    print("Demo login result:", auth.login("demo", "password"))

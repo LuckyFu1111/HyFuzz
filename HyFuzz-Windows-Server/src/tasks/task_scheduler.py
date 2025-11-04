@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
-from typing import Callable, Optional
+from typing import Optional
 
 from .task_models import TaskDefinition
 from .task_queue import InMemoryTaskQueue

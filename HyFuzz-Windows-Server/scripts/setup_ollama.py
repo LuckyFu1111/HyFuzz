@@ -7,14 +7,12 @@ This is a startup script, not a test module. Run with --test flag to execute tes
 """
 
 import sys
-import os
 import asyncio
 import signal
 import argparse
 import logging
 from pathlib import Path
 from typing import Optional
-from contextlib import asynccontextmanager
 
 # Prevent pytest from treating this as a test module
 __test__ = False
@@ -434,7 +432,7 @@ async def test_configuration_loading():
         assert manager.settings.llm is not None, "LLM config not found"
         assert manager.settings.cache is not None, "Cache config not found"
 
-        print(f"✓ Configuration loaded successfully")
+        print("✓ Configuration loaded successfully")
         print(f"✓ Server: {manager.settings.server.host}:{manager.settings.server.port}")
         print(f"✓ LLM Model: {manager.settings.llm.model}")
         print(f"✓ Transport Mode: {manager.settings.server.transport_mode}")

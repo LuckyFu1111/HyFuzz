@@ -33,11 +33,10 @@ import asyncio
 import logging
 import time
 import uuid
-from typing import Dict, Any, Optional, List, Callable, Coroutine, Tuple
+from typing import Dict, Any, Optional, List, Callable
 from enum import Enum
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from pathlib import Path
 import signal
 
 # Optional imports with fallbacks

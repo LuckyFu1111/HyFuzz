@@ -13,9 +13,6 @@ Tests for MCP server protocol implementation, including:
 import json
 import asyncio
 import pytest
-from unittest.mock import Mock, AsyncMock, patch, MagicMock
-from typing import Dict, Any, List
-import logging
 
 # Mock imports (adjust based on actual project structure)
 # from src.mcp_server.server import MCPServer

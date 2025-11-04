@@ -15,9 +15,8 @@ import re
 from typing import Optional, Dict, List, Any, Tuple
 from dataclasses import dataclass, field, asdict
 from enum import Enum
-from datetime import datetime, timedelta
+from datetime import datetime
 from abc import ABC, abstractmethod
-import math
 
 
 # ============================================================================
@@ -716,7 +715,7 @@ def run_tests():
     print("[TEST 9] Complete Text Estimation")
     print("-" * 80)
     estimation = counter.estimate_from_text(test_text)
-    print(f"✓ Text estimation:")
+    print("✓ Text estimation:")
     for key, value in estimation.items():
         if isinstance(value, float):
             print(f"  {key}: {value:.4f}")
@@ -728,13 +727,13 @@ def run_tests():
     print("[TEST 10] Budget Management")
     print("-" * 80)
     counter.set_budget(daily_limit=10000, monthly_limit=100000, cost_limit=100.0)
-    print(f"✓ Budget set:")
-    print(f"  Daily limit: 10,000 tokens")
-    print(f"  Monthly limit: 100,000 tokens")
-    print(f"  Cost limit: $100.00")
+    print("✓ Budget set:")
+    print("  Daily limit: 10,000 tokens")
+    print("  Monthly limit: 100,000 tokens")
+    print("  Cost limit: $100.00")
     short_text = "test"
     counter.count_tokens(short_text)
-    print(f"✓ Budget not exceeded yet")
+    print("✓ Budget not exceeded yet")
     print()
 
     # Test 11: Statistics Tracking
@@ -751,7 +750,7 @@ def run_tests():
         counter.count_tokens(text)
 
     stats = counter.get_statistics()
-    print(f"✓ Statistics:")
+    print("✓ Statistics:")
     print(f"  Total tokens: {stats['total_tokens_counted']}")
     print(f"  Texts processed: {stats['total_texts_processed']}")
     print(f"  Average tokens per text: {stats['average_tokens_per_text']:.1f}")
@@ -784,7 +783,7 @@ def run_tests():
     print("[TEST 14] Model Information")
     print("-" * 80)
     mistral_info = counter.get_model_info("mistral")
-    print(f"✓ Mistral model info:")
+    print("✓ Mistral model info:")
     print(f"  Vocab size: {mistral_info['vocab_size']}")
     print(f"  Avg token length: {mistral_info['avg_token_length']}")
     print(f"  Cost per 1K tokens: ${mistral_info['cost_per_1k_tokens']}")
@@ -796,7 +795,7 @@ def run_tests():
     initial_count = counter.stats["total_tokens_counted"]
     counter.clear_statistics()
     cleared_count = counter.stats["total_tokens_counted"]
-    print(f"✓ Statistics cleared")
+    print("✓ Statistics cleared")
     print(f"  Before: {initial_count} tokens counted")
     print(f"  After: {cleared_count} tokens counted")
     assert cleared_count == 0, "Statistics should be cleared"

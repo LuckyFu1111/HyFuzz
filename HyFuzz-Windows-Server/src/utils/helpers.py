@@ -11,8 +11,8 @@ import logging
 import os
 import re
 import hashlib
-from datetime import UTC, datetime, timedelta
-from typing import Any, Dict, List, Optional, Tuple, Union
+from datetime import UTC, datetime
+from typing import Any, Dict, Optional, Union
 from pathlib import Path
 from urllib.parse import urlparse, quote, unquote
 
@@ -806,7 +806,7 @@ if __name__ == "__main__":
     try:
         assert is_valid_email("test@example.com") == True
         assert is_valid_email("invalid.email") == False
-        print(f"✓ Email validation working")
+        print("✓ Email validation working")
         test_results.append(("is_valid_email", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -817,7 +817,7 @@ if __name__ == "__main__":
     try:
         assert is_valid_url("http://example.com") == True
         assert is_valid_url("not a url") == False
-        print(f"✓ URL validation working")
+        print("✓ URL validation working")
         test_results.append(("is_valid_url", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -830,7 +830,7 @@ if __name__ == "__main__":
         assert is_valid_port(65535) == True
         assert is_valid_port(99999) == False
         assert is_valid_port(0) == False
-        print(f"✓ Port validation working")
+        print("✓ Port validation working")
         test_results.append(("is_valid_port", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -870,7 +870,7 @@ if __name__ == "__main__":
         assert convert_to_bool("1") == True
         assert convert_to_bool("0") == False
         assert convert_to_bool(True) == True
-        print(f"✓ Boolean conversion working")
+        print("✓ Boolean conversion working")
         test_results.append(("convert_to_bool", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -882,7 +882,7 @@ if __name__ == "__main__":
         assert convert_to_int("42") == 42
         assert convert_to_int("invalid", default=0) == 0
         assert convert_to_int(3.14) == 3
-        print(f"✓ Integer conversion working")
+        print("✓ Integer conversion working")
         test_results.append(("convert_to_int", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")

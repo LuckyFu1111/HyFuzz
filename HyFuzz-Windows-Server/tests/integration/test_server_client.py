@@ -17,9 +17,7 @@ Tests for server-client interaction patterns, including:
 import json
 import asyncio
 import pytest
-from unittest.mock import Mock, AsyncMock, patch, MagicMock, call
-from typing import Dict, Any, List, Tuple
-import logging
+from unittest.mock import AsyncMock
 from datetime import datetime
 import time
 

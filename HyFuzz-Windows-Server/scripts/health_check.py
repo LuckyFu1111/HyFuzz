@@ -5,16 +5,13 @@ Provides detailed reporting and alerting capabilities.
 """
 
 import sys
-import time
 import json
 import logging
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional, Any
+from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, asdict
 from datetime import datetime
-import subprocess
 import socket
-import threading
 
 try:
     import psutil
@@ -518,7 +515,6 @@ def quick_health_check() -> bool:
     # Check 2: Core modules
     checks_total += 1
     try:
-        import json
         import logging
         print("✓ Core modules available")
         checks_passed += 1

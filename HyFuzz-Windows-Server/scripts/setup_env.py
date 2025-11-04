@@ -6,7 +6,6 @@
 # Usage: python scripts/setup_env.py
 # ==============================================================================
 
-import os
 import sys
 import json
 import logging
@@ -41,7 +40,6 @@ def download_cwe_data():
     """Download CWE data."""
     logger.info("Downloading CWE data...")
     try:
-        import requests
         # This would normally download from MITRE
         # For now, create sample file
         cwe_data = {
@@ -61,7 +59,6 @@ def download_cve_data():
     """Download CVE data."""
     logger.info("Downloading CVE data...")
     try:
-        import requests
         # This would normally download from NVD
         cve_data = {
             "CVE-2023-1234": {

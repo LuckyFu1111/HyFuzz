@@ -37,7 +37,7 @@ import sys
 import argparse
 from pathlib import Path
 from datetime import datetime, timedelta
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, asdict, field
 import random
 import logging
@@ -365,7 +365,7 @@ class CVEGraphGenerator:
             metadata=metadata,
         )
 
-        logger.info(f"✓ CVE graph generation complete")
+        logger.info("✓ CVE graph generation complete")
         return graph
 
 
@@ -484,7 +484,7 @@ class CVEGraphPersistence:
             # Check required keys
             required_keys = {"nodes", "edges", "metadata"}
             if not required_keys.issubset(data.keys()):
-                logger.error(f"Missing required keys in pickle file")
+                logger.error("Missing required keys in pickle file")
                 return False
 
             # Check data structure
@@ -500,7 +500,7 @@ class CVEGraphPersistence:
                 logger.error("Metadata should be a dictionary")
                 return False
 
-            logger.info(f"✓ Pickle file verified")
+            logger.info("✓ Pickle file verified")
             logger.info(f"  Nodes: {len(data['nodes'])}")
             logger.info(f"  Edges: {len(data['edges'])}")
             logger.info(f"  Metadata: {len(data['metadata'])} keys")
@@ -627,7 +627,7 @@ def main(
     # Optionally save JSON file
     if generate_json:
         json_path = final_output_path.with_suffix('.json')
-        logger.info(f"\nSaving JSON file...")
+        logger.info("\nSaving JSON file...")
         persistence.save_json(graph, json_path, pretty=True)
 
     # Verify output

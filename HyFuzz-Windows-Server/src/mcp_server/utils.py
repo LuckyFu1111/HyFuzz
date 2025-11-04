@@ -10,7 +10,7 @@ import uuid
 import hashlib
 import time
 from datetime import UTC, datetime
-from typing import Any, Dict, List, Optional, Callable, TypeVar, Union
+from typing import Any, Dict, List, Optional, Callable, TypeVar
 from functools import wraps
 from enum import Enum
 import logging
@@ -531,7 +531,7 @@ def run_tests():
     parsed = safe_json_loads(json_str)
     assert parsed == test_dict
     print(f"✓ JSON Serialization: {json_str[:50]}...")
-    print(f"✓ JSON Deserialization successful")
+    print("✓ JSON Deserialization successful")
 
     # Test 5: Message Creation and Validation
     print("\n[TEST 5] Message Creation and Validation")

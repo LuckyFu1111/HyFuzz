@@ -22,7 +22,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Optional
+from typing import Optional
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
@@ -247,11 +247,11 @@ def main() -> int:
     # Create and run worker manager
     manager = WorkerManager(config)
 
-    print(f"🚀 Starting HyFuzz workers...")
+    print("🚀 Starting HyFuzz workers...")
     print(f"   Concurrency: {config.concurrency}")
     print(f"   Queue: {config.queue_name}")
     print(f"   Log level: {config.log_level}")
-    print(f"   Press Ctrl+C to stop")
+    print("   Press Ctrl+C to stop")
     print()
 
     try:

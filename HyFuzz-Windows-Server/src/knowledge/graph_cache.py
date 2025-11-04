@@ -21,6 +21,17 @@ Architecture:
 - Disk persistence with configurable cache directory
 - Hybrid caching combining both strategies
 
+Security Note - Pickle Usage:
+    This module uses pickle for serialization, which can execute arbitrary code
+    during deserialization. This is acceptable here because:
+    1. Cache files are stored locally and controlled by the application
+    2. No untrusted/external data is deserialized
+    3. Cache directory has restricted permissions
+    4. Data source is internal knowledge graphs (CWE/CVE)
+
+    IMPORTANT: Never deserialize pickle data from untrusted sources!
+    For external data, use JSON or msgpack instead.
+
 Example Usage:
      cache = GraphCache(strategy="hybrid", max_size=10000, ttl=3600)
      await cache.initialize()
@@ -34,17 +45,14 @@ Date: 2025
 """
 
 import asyncio
-import json
 import logging
 import pickle
-from typing import Dict, Any, Optional, List, Tuple
+from typing import Dict, Any, Optional
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime
 from collections import OrderedDict
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from enum import Enum
-import hashlib
-import os
 from concurrent.futures import ThreadPoolExecutor
 
 # ==============================================================================

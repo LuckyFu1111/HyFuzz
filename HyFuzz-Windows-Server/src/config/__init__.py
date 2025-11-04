@@ -192,7 +192,7 @@ def load_config(
     if environment:
         config["environment"] = environment
 
-    logger.debug(f"Configuration loaded successfully")
+    logger.debug("Configuration loaded successfully")
     return config
 
 

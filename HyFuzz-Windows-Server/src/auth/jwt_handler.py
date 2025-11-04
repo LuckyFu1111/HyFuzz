@@ -49,7 +49,9 @@ class JWTHandler:
 
 
 if __name__ == "__main__":
-    handler = JWTHandler(secret="demo")
+    # DEMO ONLY - Never use hardcoded secrets in production!
+    # In production, use: secret = os.getenv("JWT_SECRET")
+    handler = JWTHandler(secret="demo-only-for-testing-DO-NOT-USE-IN-PRODUCTION")
     token = handler.issue({"sub": "user"})
-    print(token)
-    print(handler.verify(token))
+    print("Demo token:", token)
+    print("Verified payload:", handler.verify(token))

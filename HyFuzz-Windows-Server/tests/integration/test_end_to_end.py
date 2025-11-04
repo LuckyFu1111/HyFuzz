@@ -28,28 +28,15 @@ Version: 1.0.0
 import pytest
 import time
 import logging
-from typing import Dict, List, Any, Optional
+from typing import Dict, Any, Optional
 from tests.integration import (
     IntegrationTestBase,
     IntegrationTestLevel,
     TestResult,
     create_test_server,
     create_test_client,
-    wait_for_server,
-    retry_operation,
 )
 from tests.fixtures.mock_llm import create_mock_client
-from tests.fixtures.mock_data import (
-    SAMPLE_CWE_DATA,
-    SAMPLE_CVE_DATA,
-    SAMPLE_PAYLOADS,
-)
-from tests.fixtures.mock_models import (
-    create_mock_payload_request,
-    create_mock_cwe_data,
-    PayloadType,
-    Severity,
-)
 
 # Initialize logger
 logger = logging.getLogger(__name__)
