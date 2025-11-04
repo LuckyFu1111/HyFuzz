@@ -245,17 +245,18 @@ class ProtocolDiscovery:
                 if not callable(method):
                     errors.append(f"'{method_name}' is not callable")
 
-        # Check if it has metadata
+        # Check if it has metadata (allow both ProtocolMetadata and legacy ProtocolSpec)
         if hasattr(handler_cls, "get_spec"):
             try:
                 # Try to instantiate and get spec
                 instance = handler_cls()
                 spec = instance.get_spec()
-                if not isinstance(spec, ProtocolMetadata):
-                    errors.append("get_spec() must return ProtocolMetadata")
+                # Accept both ProtocolMetadata and legacy objects with name attribute
+                if not hasattr(spec, 'name'):
+                    errors.append("get_spec() must return an object with 'name' attribute")
             except Exception as e:
                 errors.append(f"Failed to get protocol metadata: {e}")
-        else:
+        elif not hasattr(handler_cls, "SPEC"):
             errors.append("Missing 'get_spec()' method or 'SPEC' attribute")
 
         return errors

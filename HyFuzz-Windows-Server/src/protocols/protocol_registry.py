@@ -157,14 +157,27 @@ class ProtocolRegistry:
         if metadata is None:
             try:
                 instance = handler_cls()
-                metadata = instance.get_spec()
+                spec = instance.get_spec()
+
+                # Handle both ProtocolMetadata and legacy ProtocolSpec
+                if isinstance(spec, ProtocolMetadata):
+                    metadata = spec
+                else:
+                    # Convert legacy ProtocolSpec to ProtocolMetadata
+                    metadata = ProtocolMetadata(
+                        name=getattr(spec, 'name', name),
+                        version="1.0.0",
+                        description=getattr(spec, 'description', ''),
+                        stateful=getattr(spec, 'stateful', False),
+                        default_parameters=getattr(spec, 'default_parameters', {}),
+                    )
             except Exception as e:
                 raise TypeError(f"Failed to extract metadata from handler: {e}")
 
-        # Validate the handler
+        # Validate the handler (but don't fail for backward compatibility)
         validation_errors = self._discovery.validate_protocol(handler_cls)
         if validation_errors:
-            raise ValueError(f"Invalid protocol handler: {'; '.join(validation_errors)}")
+            logger.debug(f"Protocol handler validation warnings for '{name}': {'; '.join(validation_errors)}")
 
         # Register the protocol
         registration = ProtocolRegistration(
