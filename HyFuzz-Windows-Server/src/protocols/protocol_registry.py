@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib
 import logging
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Type
@@ -51,42 +52,75 @@ class ProtocolRegistry:
 
     def _discover_builtin_protocols(self) -> None:
         """Discover and register built-in protocol handlers."""
-        try:
-            protocols = discover_protocols("src.protocols")
-            for name, handler_cls in protocols.items():
-                try:
-                    self.register(name, handler_cls, source="builtin")
-                except Exception as e:
-                    logger.error(f"Failed to register built-in protocol '{name}': {e}")
-        except Exception as e:
-            logger.error(f"Failed to discover built-in protocols: {e}")
-            # Fallback to manual registration
-            self._register_defaults_manual()
+        # Try multiple package names for compatibility
+        package_names = [
+            "hyfuzz_server.protocols",
+            "HyFuzz_Windows_Server.src.protocols",
+            "src.protocols",
+            __package__,  # Try current package
+        ]
+
+        discovered_count = 0
+        for package_name in package_names:
+            if not package_name:
+                continue
+
+            try:
+                protocols = discover_protocols(package_name)
+                for name, handler_cls in protocols.items():
+                    try:
+                        self.register(name, handler_cls, source="builtin")
+                        discovered_count += 1
+                    except Exception as e:
+                        logger.debug(f"Failed to register protocol '{name}': {e}")
+
+                if discovered_count > 0:
+                    logger.info(f"Discovered {discovered_count} protocols from {package_name}")
+                    return  # Success, no need to try other packages
+
+            except Exception as e:
+                logger.debug(f"Failed to discover from {package_name}: {e}")
+                continue
+
+        # If no protocols discovered, fall back to manual registration
+        logger.info("Falling back to manual protocol registration")
+        self._register_defaults_manual()
 
     def _register_defaults_manual(self) -> None:
         """Manual fallback registration of built-in protocols."""
-        try:
-            from .coap_protocol import CoAPProtocolHandler
-            from .modbus_protocol import ModbusProtocolHandler
-            from .mqtt_protocol import MQTTProtocolHandler
-            from .http_protocol import HTTPProtocolHandler
-            from .grpc_protocol import GRPCProtocolHandler
-            from .jsonrpc_protocol import JSONRPCProtocolHandler
+        # List of protocol handlers to try importing
+        protocol_imports = [
+            ("coap", ".coap_protocol", "CoAPProtocolHandler"),
+            ("modbus", ".modbus_protocol", "ModbusProtocolHandler"),
+            ("mqtt", ".mqtt_protocol", "MQTTProtocolHandler"),
+            ("http", ".http_protocol", "HTTPProtocolHandler"),
+            ("grpc", ".grpc_protocol", "GRPCProtocolHandler"),
+            ("jsonrpc", ".jsonrpc_protocol", "JSONRPCProtocolHandler"),
+        ]
 
-            for handler_cls in [
-                CoAPProtocolHandler,
-                ModbusProtocolHandler,
-                MQTTProtocolHandler,
-                HTTPProtocolHandler,
-                GRPCProtocolHandler,
-                JSONRPCProtocolHandler,
-            ]:
-                try:
-                    self.register(handler_cls.name, handler_cls, source="builtin")
-                except Exception as e:
-                    logger.error(f"Failed to register {handler_cls.name}: {e}")
-        except ImportError as e:
-            logger.error(f"Failed to import built-in protocols: {e}")
+        registered_count = 0
+        for protocol_name, module_name, class_name in protocol_imports:
+            try:
+                # Try to import the protocol handler
+                module = importlib.import_module(module_name, package=__package__)
+                handler_cls = getattr(module, class_name)
+
+                # Register the handler
+                self.register(protocol_name, handler_cls, source="builtin")
+                registered_count += 1
+                logger.debug(f"Manually registered protocol: {protocol_name}")
+
+            except ImportError as e:
+                logger.debug(f"Failed to import {protocol_name} protocol: {e}")
+            except AttributeError as e:
+                logger.debug(f"Failed to find {class_name} in module: {e}")
+            except Exception as e:
+                logger.debug(f"Failed to register {protocol_name}: {e}")
+
+        if registered_count > 0:
+            logger.info(f"Manually registered {registered_count} built-in protocol(s)")
+        else:
+            logger.warning("No built-in protocols could be registered")
 
     def register(
         self,
