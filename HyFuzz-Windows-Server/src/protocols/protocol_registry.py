@@ -398,4 +398,5 @@ class ProtocolRegistry:
 
 if __name__ == "__main__":
     registry = ProtocolRegistry()
-    print(sorted(registry.protocol_specs()))
+    print("Registered protocols:", registry.list_protocols())
+    print("Registry info:", registry.get_info())

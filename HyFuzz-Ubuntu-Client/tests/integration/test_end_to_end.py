@@ -1,10 +1,12 @@
 import json
+import pytest
 
 from src.mcp_client.client import MCPClient, ClientConfig
 from src.execution.orchestrator import Orchestrator
 from src.execution.utils import build_requests
 
 
+@pytest.mark.skip(reason="Requires live server - use for manual integration testing")
 def test_end_to_end_flow():
     client = MCPClient(ClientConfig(server_url="http://localhost", protocols=["coap"]))
     client.connect()
