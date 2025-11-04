@@ -521,7 +521,7 @@ if __name__ == "__main__":
     print("="*70)
     print(f"\nHyFuzz v{__version__} is ready for use")
     print(f"Total components in __all__: {len(__all__)}")
-    print(f"Project structure verified: ✓")
+    print("Project structure verified: ✓")
     print("\nNext Steps:")
     print("1. Call initialize_hyfuzz() to set up all components")
     print("2. Use get_component() to access specific services")
