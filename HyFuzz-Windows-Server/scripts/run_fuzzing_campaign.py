@@ -13,7 +13,6 @@ against protocol implementations with integrated defense awareness.
 from __future__ import annotations
 
 import argparse
-import asyncio
 import json
 import logging
 import sys
@@ -394,7 +393,7 @@ def main() -> int:
     print(f"   Target: {config.target}")
     print(f"   Payloads: {config.payload_count}")
     if config.dry_run:
-        print(f"   Mode: DRY RUN")
+        print("   Mode: DRY RUN")
     print()
 
     return runner.run()

@@ -29,12 +29,17 @@ Example Usage:
     >>> kb_graph = km.get_knowledge_graph()
 """
 
-import os
-import sys
 import logging
-from typing import Dict, Any, Optional, List, Set, Tuple
+from typing import Dict, Any, Optional, TYPE_CHECKING
 from pathlib import Path
 from enum import Enum
+
+# Type checking imports - only used by static analyzers, not at runtime
+if TYPE_CHECKING:
+    from .vulnerability_db import VulnerabilityDB
+    from .cwe_repository import CWERepository
+    from .cve_repository import CVERepository
+    from .graph_cache import GraphCache
 
 # ==============================================================================
 # VERSION AND METADATA

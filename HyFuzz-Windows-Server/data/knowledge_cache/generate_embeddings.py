@@ -67,7 +67,6 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Any, Optional, Tuple
 import random
-import math
 
 # ============================================================================
 # LOGGING SETUP
@@ -457,7 +456,7 @@ class EmbeddingStorage:
                 logger.error(f"Invalid shape: {embeddings.shape}")
                 return False
 
-            logger.info(f"✓ Embeddings verified")
+            logger.info("✓ Embeddings verified")
             logger.info(f"  Shape: {embeddings.shape}")
             logger.info(f"  Dtype: {embeddings.dtype}")
             logger.info(f"  Memory: {embeddings.nbytes / (1024 ** 2):.2f} MB")

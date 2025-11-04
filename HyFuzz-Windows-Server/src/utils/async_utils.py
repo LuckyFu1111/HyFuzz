@@ -8,10 +8,8 @@ including timeout handling, concurrent task management, and event loop utilities
 import asyncio
 import logging
 import sys
-import time
 from contextlib import asynccontextmanager
-from functools import wraps
-from typing import Any, Awaitable, Callable, List, Optional, TypeVar, Union
+from typing import Awaitable, Callable, List, Optional, TypeVar
 
 # Type variables
 T = TypeVar('T')
@@ -609,7 +607,7 @@ async def _test_timeout_and_retry():
             delay=0.05
         )
         if result == "success":
-            print(f"✓ Succeeded after timeout and retry")
+            print("✓ Succeeded after timeout and retry")
             return True
     except Exception as e:
         print(f"✗ Failed: {e}")

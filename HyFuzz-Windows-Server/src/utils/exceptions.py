@@ -741,7 +741,7 @@ if __name__ == "__main__":
         assert isinstance(exc, MCPServerException)
         assert isinstance(exc, MCPException)
         assert isinstance(exc, Exception)
-        print(f"✓ Exception hierarchy correct")
+        print("✓ Exception hierarchy correct")
         test_results.append(("Exception hierarchy", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")

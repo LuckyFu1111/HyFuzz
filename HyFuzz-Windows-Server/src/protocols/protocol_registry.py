@@ -7,7 +7,6 @@ import logging
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Type
 
-from packaging import version
 
 from .base_protocol import ProtocolHandler
 from .protocol_metadata import ProtocolMetadata

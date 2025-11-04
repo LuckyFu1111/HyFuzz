@@ -18,8 +18,8 @@ Author: HyFuzz Team
 Version: 1.0.0
 """
 
-from dataclasses import dataclass, field, asdict
-from typing import Dict, List, Optional, Any, Tuple
+from dataclasses import dataclass, field
+from typing import Dict, List, Optional, Any
 from datetime import datetime, timezone
 from enum import Enum
 import json

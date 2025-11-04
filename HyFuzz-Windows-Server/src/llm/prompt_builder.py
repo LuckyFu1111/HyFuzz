@@ -13,7 +13,7 @@ This module provides sophisticated LLM response parsing capabilities:
 import json
 import re
 import logging
-from typing import Optional, Dict, List, Any, Tuple, Union
+from typing import Optional, Dict, List, Any
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 from abc import ABC, abstractmethod
@@ -46,7 +46,6 @@ class PromptBuilder:
 
 
 from datetime import datetime
-from enum import auto
 
 
 # ============================================================================
@@ -735,7 +734,7 @@ async def run_tests():
     assert parsed.format_detected == ResponseFormat.JSON
     assert parsed.is_valid == True
     assert len(parsed.security_indicators.cve_ids) > 0
-    print(f"✓ JSON parsed successfully")
+    print("✓ JSON parsed successfully")
     print(f"  Format: {parsed.format_detected.value}")
     print(f"  CVE IDs: {parsed.security_indicators.cve_ids}")
     print(f"  Quality: {parsed.quality_score:.2f}")
@@ -758,7 +757,7 @@ async def run_tests():
     assert parsed.format_detected == ResponseFormat.COT_CHAIN
     assert parsed.cot_chain is not None
     assert len(parsed.cot_chain) > 0
-    print(f"✓ CoT chain parsed successfully")
+    print("✓ CoT chain parsed successfully")
     print(f"  Steps extracted: {len(parsed.cot_chain)}")
     for step in parsed.cot_chain:
         print(f"    - Step {step.step_number}: {step.title}")
@@ -786,7 +785,7 @@ async def run_tests():
     parsed = await parser.parse(report_response)
     assert parsed.format_detected == ResponseFormat.TECHNICAL_REPORT
     assert "analysis" in parsed.parsed_content or "assessment" in parsed.parsed_content
-    print(f"✓ Technical report parsed successfully")
+    print("✓ Technical report parsed successfully")
     print(f"  Sections found: {parsed.extraction_metadata.get('sections_found', 0)}")
     print(f"  CWE IDs: {parsed.security_indicators.cwe_ids}")
     print()
@@ -797,7 +796,7 @@ async def run_tests():
     free_text = "This is a vulnerability that affects systems running the affected software. It has high impact."
     parsed = await parser.parse(free_text)
     assert parsed.format_detected == ResponseFormat.FREE_TEXT
-    print(f"✓ Free text parsed successfully")
+    print("✓ Free text parsed successfully")
     print(f"  Sentences: {parsed.parsed_content.get('sentence_count', 0)}")
     print()
 
@@ -818,7 +817,7 @@ async def run_tests():
     assert len(indicators.cve_ids) > 0
     assert len(indicators.cwe_ids) > 0
     assert indicators.severity_level != SeverityLevel.UNKNOWN
-    print(f"✓ Security indicators extracted:")
+    print("✓ Security indicators extracted:")
     print(f"  CVE IDs: {indicators.cve_ids}")
     print(f"  CWE IDs: {indicators.cwe_ids}")
     print(f"  Severity: {indicators.severity_level.value}")
@@ -853,7 +852,7 @@ async def run_tests():
     parsed = await parser.parse(empty_response)
     assert parsed.is_valid == False
     assert parsed.format_detected == ResponseFormat.ERROR
-    print(f"✓ Empty response handled correctly")
+    print("✓ Empty response handled correctly")
     print(f"  Error: {parsed.error_message}")
     print()
 
@@ -861,7 +860,7 @@ async def run_tests():
     print("[TEST 9] Parser Statistics")
     print("-" * 80)
     stats = parser.get_statistics()
-    print(f"✓ Statistics:")
+    print("✓ Statistics:")
     print(f"  Total parsed: {stats['total_parsed']}")
     print(f"  Format distribution: {stats['format_distribution']}")
     print(f"  Average quality: {stats['average_quality']:.2f}")
@@ -909,7 +908,7 @@ async def run_tests():
     parsed = await parser.parse(complex_response)
     assert len(parsed.security_indicators.cve_ids) >= 3
     assert len(parsed.security_indicators.cwe_ids) >= 3
-    print(f"✓ Complex extraction successful")
+    print("✓ Complex extraction successful")
     print(f"  CVE IDs found: {len(parsed.security_indicators.cve_ids)}")
     print(f"  CWE IDs found: {len(parsed.security_indicators.cwe_ids)}")
     print(f"  CVEs: {parsed.security_indicators.cve_ids}")

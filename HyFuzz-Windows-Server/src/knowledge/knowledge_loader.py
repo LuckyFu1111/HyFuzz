@@ -38,12 +38,11 @@ import asyncio
 import json
 import logging
 import pickle
-from typing import Dict, Any, Optional, List, Tuple, Set
+from typing import Dict, Any, Optional, List
 from pathlib import Path
-from datetime import datetime, timedelta
-from dataclasses import dataclass, field, asdict
+from datetime import datetime
+from dataclasses import dataclass, field
 from enum import Enum
-import hashlib
 from concurrent.futures import ThreadPoolExecutor
 import time
 
@@ -295,7 +294,7 @@ class KnowledgeLoader:
                 if self.enable_cache:
                     self.cache_dir.mkdir(parents=True, exist_ok=True)
 
-                logger.info(f"KnowledgeLoader directories created")
+                logger.info("KnowledgeLoader directories created")
 
                 # Try to load from cache
                 if self.enable_cache:

@@ -117,9 +117,8 @@ import asyncio
 import json
 import logging
 import time
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional
 from dataclasses import dataclass, field
-from datetime import datetime
 from enum import Enum
 import hashlib
 
@@ -768,7 +767,7 @@ async def run_tests():
         ]
         
         if all(s in stages for s in expected_stages):
-            print(f"✓ PASSED: All reasoning stages present\n")
+            print("✓ PASSED: All reasoning stages present\n")
             test_passed += 1
         else:
             print(f"✗ FAILED: Missing stages. Got: {stages}\n")
@@ -796,7 +795,7 @@ async def run_tests():
         sql_result = await engine.reason(sql_vuln, sql_context)
         
         if sql_result and "SELECT" in sql_result.payload.upper():
-            print(f"✓ PASSED: Generated SQL injection payload\n")
+            print("✓ PASSED: Generated SQL injection payload\n")
             test_passed += 1
         else:
             print("✗ FAILED: SQL injection payload generation\n")
@@ -830,7 +829,7 @@ async def run_tests():
         stats_after = engine.get_stats()
         
         if stats_after["cache_hits"] > stats_before["cache_hits"]:
-            print(f"✓ PASSED: Cache hit detected\n")
+            print("✓ PASSED: Cache hit detected\n")
             test_passed += 1
         else:
             print("✗ FAILED: Cache not working\n")
@@ -857,7 +856,7 @@ async def run_tests():
         optimized_result = await engine.reason(vuln_data, defended_context)
         
         if optimized_result.optimization_notes:
-            print(f"✓ PASSED: Optimizations applied")
+            print("✓ PASSED: Optimizations applied")
             print(f"  - Notes: {optimized_result.optimization_notes}\n")
             test_passed += 1
         else:
@@ -869,7 +868,7 @@ async def run_tests():
         stats = engine.get_stats()
         
         if stats and stats["total_reasonings"] > 0:
-            print(f"✓ PASSED: Statistics retrieved")
+            print("✓ PASSED: Statistics retrieved")
             print(f"  - Total reasonings: {stats['total_reasonings']}")
             print(f"  - Success rate: {stats['success_rate']}")
             print(f"  - Cache hit rate: {stats['cache_hit_rate']}\n")

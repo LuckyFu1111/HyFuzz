@@ -20,7 +20,6 @@ Features:
 """
 
 import os
-import sys
 import logging
 from pathlib import Path
 from typing import Dict, Any, Optional, List, Union, Tuple
@@ -28,7 +27,6 @@ from dataclasses import dataclass, field
 from enum import Enum
 from copy import deepcopy
 import json
-from urllib.parse import urlparse
 
 try:
     import yaml

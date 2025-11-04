@@ -30,15 +30,11 @@ Version: 1.0.0
 
 import asyncio
 import logging
-import time
 import uuid
-import json
-from typing import Dict, Any, Optional, List, Tuple, Callable
+from typing import Dict, Any, Optional, List
 from enum import Enum
-from dataclasses import dataclass, asdict, field
-from datetime import datetime, timedelta, timezone
-from collections import OrderedDict
-import threading
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
 
 
 # ============================================================================
@@ -416,7 +412,7 @@ class SessionManager:
             await self._transition_state_unsafe(
                 session,
                 SessionState.ACTIVE,
-                f"Session activated",
+                "Session activated",
             )
 
     async def get_session(self, session_id: str) -> Optional[Session]:

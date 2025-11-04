@@ -124,7 +124,6 @@ License: MIT
 
 import asyncio
 import logging
-import json
 import hashlib
 import pickle
 import time
@@ -772,7 +771,7 @@ async def run_tests():
 
         # Check if cache hit occurred (stats should increase)
         if stats_after > stats_before and len(cached_embedding) == 768:
-            print(f"✓ PASSED: Cache hit detected for repeated text\n")
+            print("✓ PASSED: Cache hit detected for repeated text\n")
             test_passed += 1
         else:
             print("✗ FAILED: Cache functionality failed\n")
@@ -803,7 +802,7 @@ async def run_tests():
         sim_orthogonal = SimilarityComputer.cosine_similarity(vec1, vec3)
 
         if abs(sim_identical - 1.0) < 0.01 and abs(sim_orthogonal - 0.0) < 0.01:
-            print(f"✓ PASSED: Cosine similarity correct")
+            print("✓ PASSED: Cosine similarity correct")
             print(f"  - Identical vectors: {sim_identical:.3f}")
             print(f"  - Orthogonal vectors: {sim_orthogonal:.3f}\n")
             test_passed += 1
@@ -817,7 +816,7 @@ async def run_tests():
         dist_unit = SimilarityComputer.euclidean_distance(vec1, vec3)
 
         if abs(dist_identical - 0.0) < 0.01 and abs(dist_unit - math.sqrt(2)) < 0.01:
-            print(f"✓ PASSED: Euclidean distance correct")
+            print("✓ PASSED: Euclidean distance correct")
             print(f"  - Identical vectors: {dist_identical:.3f}")
             print(f"  - Unit distance: {dist_unit:.3f}\n")
             test_passed += 1
@@ -847,7 +846,7 @@ async def run_tests():
         cache_info = manager.get_cache_info()
 
         if cache_info and "cache_hit_rate" in cache_info:
-            print(f"✓ PASSED: Cache info retrieved")
+            print("✓ PASSED: Cache info retrieved")
             print(f"  - Total embeddings: {cache_info['total_embeddings']}")
             print(f"  - Cache hit rate: {cache_info['cache_hit_rate']}")
             print(f"  - Size: {cache_info['total_size_mb']} MB\n")
@@ -861,7 +860,7 @@ async def run_tests():
         stats = manager.get_stats()
 
         if stats and stats["dimension"] == 768:
-            print(f"✓ PASSED: Manager statistics retrieved")
+            print("✓ PASSED: Manager statistics retrieved")
             print(f"  - Model: {stats['model']}")
             print(f"  - Dimension: {stats['dimension']}")
             print(f"  - Total searches: {stats['total_searches']}\n")

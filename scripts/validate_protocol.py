@@ -176,7 +176,7 @@ def validate_protocol_file(file_path: Path, protocol_type: str) -> bool:
     try:
         module = load_protocol_module(file_path)
         if module is None:
-            print(f"❌ Failed to load module")
+            print("❌ Failed to load module")
             return False
     except Exception as e:
         print(f"❌ Failed to load module: {e}")
@@ -191,7 +191,7 @@ def validate_protocol_file(file_path: Path, protocol_type: str) -> bool:
                 handlers_found.append((name, obj))
 
     if not handlers_found:
-        print(f"❌ No protocol handler classes found in module")
+        print("❌ No protocol handler classes found in module")
         return False
 
     print(f"Found {len(handlers_found)} handler class(es):\n")
@@ -208,7 +208,7 @@ def validate_protocol_file(file_path: Path, protocol_type: str) -> bool:
             is_valid, issues = validate_client_handler(handler_cls)
 
         if is_valid:
-            print(f"  ✅ Valid protocol handler")
+            print("  ✅ Valid protocol handler")
 
             # Get metadata
             try:
@@ -226,7 +226,7 @@ def validate_protocol_file(file_path: Path, protocol_type: str) -> bool:
                 print(f"  ⚠️  Could not extract metadata: {e}")
 
         else:
-            print(f"  ❌ Invalid protocol handler")
+            print("  ❌ Invalid protocol handler")
             for issue in issues:
                 print(f"     - {issue}")
             all_valid = False
@@ -248,7 +248,7 @@ def check_compatibility(server_file: Path, client_file: Path) -> bool:
         True if compatible
     """
     print(f"\n{'=' * 70}")
-    print(f"Checking compatibility")
+    print("Checking compatibility")
     print(f"{'=' * 70}\n")
 
     try:
@@ -283,7 +283,7 @@ def check_compatibility(server_file: Path, client_file: Path) -> bool:
         client_name = getattr(client_handler, "name", None)
 
         if server_name != client_name:
-            print(f"❌ Protocol name mismatch:")
+            print("❌ Protocol name mismatch:")
             print(f"   Server: {server_name}")
             print(f"   Client: {client_name}")
             return False
@@ -298,13 +298,13 @@ def check_compatibility(server_file: Path, client_file: Path) -> bool:
         client_metadata = client_instance.get_capabilities()
 
         # Check version compatibility
-        print(f"\nVersion information:")
+        print("\nVersion information:")
         print(f"  Server handler: {server_metadata.version}")
         print(f"  Client handler: {client_metadata.version}")
 
         # Check stateful flag matches
         if server_metadata.stateful != client_metadata.stateful:
-            print(f"⚠️  Stateful flag mismatch:")
+            print("⚠️  Stateful flag mismatch:")
             print(f"   Server: {server_metadata.stateful}")
             print(f"   Client: {client_metadata.stateful}")
             return False
@@ -316,13 +316,13 @@ def check_compatibility(server_file: Path, client_file: Path) -> bool:
         client_params = set(client_metadata.default_parameters.keys())
 
         if server_params != client_params:
-            print(f"⚠️  Default parameters differ:")
+            print("⚠️  Default parameters differ:")
             print(f"   Server only: {server_params - client_params}")
             print(f"   Client only: {client_params - server_params}")
         else:
-            print(f"✅ Default parameters match")
+            print("✅ Default parameters match")
 
-        print(f"\n✅ Protocols are compatible")
+        print("\n✅ Protocols are compatible")
         return True
 
     except Exception as e:

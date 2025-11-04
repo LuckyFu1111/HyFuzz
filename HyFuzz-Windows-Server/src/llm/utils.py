@@ -16,13 +16,11 @@ import logging
 import time
 import hashlib
 import re
-import math
-from typing import Optional, Dict, List, Any, Callable, TypeVar, Tuple
-from functools import wraps, lru_cache
+from typing import Optional, Dict, List, Any, Callable, Tuple
+from functools import wraps
 from datetime import datetime, timedelta
 from dataclasses import dataclass, field, asdict
 from enum import Enum
-import asyncio
 
 
 # ============================================================================
@@ -801,19 +799,19 @@ def run_tests():
     print("[TEST 4] Validation")
     print("-" * 80)
     assert Validator.is_valid_json('{"key": "value"}')
-    print(f"✓ JSON validation: True")
+    print("✓ JSON validation: True")
 
     assert Validator.is_valid_email("test@example.com")
-    print(f"✓ Email validation: True")
+    print("✓ Email validation: True")
 
     assert Validator.is_valid_url("https://example.com")
-    print(f"✓ URL validation: True")
+    print("✓ URL validation: True")
 
     assert Validator.is_valid_cve_id("CVE-2023-12345")
-    print(f"✓ CVE ID validation: True")
+    print("✓ CVE ID validation: True")
 
     assert Validator.is_valid_cwe_id("CWE-78")
-    print(f"✓ CWE ID validation: True")
+    print("✓ CWE ID validation: True")
 
     is_valid, error = Validator.validate_required_fields(
         {"name": "John", "age": 30},

@@ -10,11 +10,8 @@ from tkinter import ttk, messagebox, scrolledtext, filedialog
 import requests
 import threading
 import time
-import json
-import os
-import sys
 from datetime import datetime
-from typing import Dict, List, Optional, Any
+from typing import Dict, Optional
 
 
 class HyFuzzGUI:
@@ -971,7 +968,7 @@ Payload:
             status = result.get('status', 'unknown')
             components = result.get('components', {})
 
-            log_text = f"\n========== 健康检查结果 ==========\n"
+            log_text = "\n========== 健康检查结果 ==========\n"
             log_text += f"总体状态: {status}\n"
             log_text += f"时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
 
@@ -1074,9 +1071,9 @@ Payload:
                 self.connection_indicator.config(text="● 连接异常", foreground='orange')
                 self.log_message("服务器响应异常")
                 return False
-        except:
+        except (requests.RequestException, ConnectionError, TimeoutError, OSError) as e:
             self.connection_indicator.config(text="● 未连接", foreground='red')
-            self.log_message("无法连接到服务器")
+            self.log_message(f"无法连接到服务器: {type(e).__name__}")
             return False
 
     def log_message(self, message: str):

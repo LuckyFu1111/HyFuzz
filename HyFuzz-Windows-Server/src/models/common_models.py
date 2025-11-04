@@ -17,11 +17,11 @@ Author: HyFuzz Team
 Version: 1.0.0
 """
 
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List, Optional, Generic, TypeVar
-from uuid import uuid4, UUID
+from uuid import uuid4
 import json
 
 # ============================================================================

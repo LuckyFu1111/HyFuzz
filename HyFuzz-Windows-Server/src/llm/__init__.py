@@ -406,7 +406,7 @@ async def initialize_llm_service(
     try:
         service = LLMService(**config)
         await service.initialize()
-        logger.info(f"LLM service initialized successfully")
+        logger.info("LLM service initialized successfully")
         return service
     except Exception as e:
         logger.error(f"Failed to initialize LLM service: {e}")
@@ -589,7 +589,7 @@ async def run_tests():
             info = get_model_info("mistral")
             assert info["provider"] == LLMProvider.OLLAMA
             assert info["context_length"] == 32768
-            print(f"✓ PASSED: Retrieved model info for 'mistral'")
+            print("✓ PASSED: Retrieved model info for 'mistral'")
             print(f"  - Parameters: {info['parameters']}B")
             print(f"  - Context Length: {info['context_length']}\n")
             test_passed += 1
@@ -608,7 +608,7 @@ async def run_tests():
                 print()
                 test_passed += 1
             else:
-                print(f"✗ FAILED: Expected at least 2 recommended models\n")
+                print("✗ FAILED: Expected at least 2 recommended models\n")
                 test_failed += 1
         except Exception as e:
             print(f"✗ FAILED: {e}\n")
@@ -632,7 +632,7 @@ async def run_tests():
             assert LLM_CONFIG["model"] == ModelType.MISTRAL
             assert LLM_CONFIG["temperature"] == 0.7
             assert LLM_CONFIG["max_tokens"] == 2048
-            print(f"✓ PASSED: Default settings properly configured")
+            print("✓ PASSED: Default settings properly configured")
             print(f"  - Provider: {LLM_CONFIG['provider'].value}")
             print(f"  - Model: {LLM_CONFIG['model'].value}")
             print(f"  - Temperature: {LLM_CONFIG['temperature']}\n")
@@ -648,7 +648,7 @@ async def run_tests():
             print("✗ FAILED: Should have raised ValueError for invalid model\n")
             test_failed += 1
         except ValueError as e:
-            print(f"✓ PASSED: Correctly raised ValueError")
+            print("✓ PASSED: Correctly raised ValueError")
             print(f"  - Error message: {str(e)[:50]}...\n")
             test_passed += 1
         except Exception as e:
@@ -664,7 +664,7 @@ async def run_tests():
                 "ResponseParser", "__version__"
             ])
             if exports_present:
-                print(f"✓ PASSED: All major components in __all__")
+                print("✓ PASSED: All major components in __all__")
                 print(f"  - Total exports: {len(__all__)}\n")
                 test_passed += 1
             else:
@@ -681,7 +681,7 @@ async def run_tests():
             assert __description__
             assert __url__
             assert __docs_url__
-            print(f"✓ PASSED: Module metadata complete")
+            print("✓ PASSED: Module metadata complete")
             print(f"  - Title: {__title__}")
             print(f"  - License: {__license__}\n")
             test_passed += 1

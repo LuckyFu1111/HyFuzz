@@ -7,7 +7,6 @@ deprecation warnings, and authentication requirements.
 
 import asyncio
 import functools
-import inspect
 import logging
 import time
 import warnings
@@ -674,7 +673,7 @@ if __name__ == "__main__":
 
         result = slow_function()
         assert result == "done"
-        print(f"✓ Function timed and executed successfully")
+        print("✓ Function timed and executed successfully")
         test_results.append(("@timing", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -695,7 +694,7 @@ if __name__ == "__main__":
             assert len(w) == 1
             assert issubclass(w[0].category, DeprecationWarning)
 
-        print(f"✓ Deprecation warning raised correctly")
+        print("✓ Deprecation warning raised correctly")
         test_results.append(("@deprecated", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -719,7 +718,7 @@ if __name__ == "__main__":
 
         result = protected_function(MockRequest())
         assert result == "protected"
-        print(f"✓ Authentication passed")
+        print("✓ Authentication passed")
         test_results.append(("@require_auth", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -739,10 +738,10 @@ if __name__ == "__main__":
 
         try:
             protected_function(None)
-            print(f"✗ Should have raised AuthenticationError")
+            print("✗ Should have raised AuthenticationError")
             test_results.append(("@require_auth failure", False, "No exception raised"))
         except AuthenticationError:
-            print(f"✓ Correctly raised AuthenticationError")
+            print("✓ Correctly raised AuthenticationError")
             test_results.append(("@require_auth failure", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -824,7 +823,7 @@ if __name__ == "__main__":
 
         result = admin_function(MockUser())
         assert result == "admin_access"
-        print(f"✓ Permission check passed")
+        print("✓ Permission check passed")
         test_results.append(("@require_permission", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -848,10 +847,10 @@ if __name__ == "__main__":
 
         try:
             admin_function(MockUser())
-            print(f"✗ Should have raised AuthorizationError")
+            print("✗ Should have raised AuthorizationError")
             test_results.append(("@require_permission failure", False, "No exception raised"))
         except AuthorizationError:
-            print(f"✓ Correctly raised AuthorizationError")
+            print("✓ Correctly raised AuthorizationError")
             test_results.append(("@require_permission failure", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")

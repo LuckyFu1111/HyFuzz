@@ -7,7 +7,6 @@ HyFuzz GUI 启动脚本
 import sys
 import os
 import platform
-import subprocess
 from pathlib import Path
 
 
@@ -72,7 +71,7 @@ def check_server_status():
         else:
             print("⚠ HyFuzz 服务器响应异常")
             return False
-    except:
+    except (ImportError, requests.RequestException, ConnectionError, TimeoutError, OSError):
         print("⚠ HyFuzz 服务器未运行")
         print("\n提示: 请先启动 HyFuzz 服务器")
         print("  - Windows: cd HyFuzz-Windows-Server && python scripts/start_server.py")

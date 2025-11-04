@@ -233,7 +233,7 @@ if __name__ == "__main__":
     try:
         logger_func = get_logger
         assert callable(logger_func), "get_logger must be callable"
-        print(f"✓ get_logger is callable")
+        print("✓ get_logger is callable")
         test_results.append(("get_logger function", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -244,7 +244,7 @@ if __name__ == "__main__":
     try:
         setup_func = setup_logging
         assert callable(setup_func), "setup_logging must be callable"
-        print(f"✓ setup_logging is callable")
+        print("✓ setup_logging is callable")
         test_results.append(("setup_logging function", True, None))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -268,14 +268,15 @@ if __name__ == "__main__":
                 exc_class = globals()[exc_name] if exc_name in globals() else None
                 if exc_class is not None:
                     found_exceptions.append(exc_name)
-            except:
+            except (KeyError, TypeError, AttributeError):
+                # Exception class not found or not accessible
                 pass
 
         if len(exc_classes) > 0:
-            print(f"✓ Exception classes are defined in __all__")
+            print("✓ Exception classes are defined in __all__")
             test_results.append(("Exception classes", True, None))
         else:
-            print(f"✗ No exception classes found")
+            print("✗ No exception classes found")
             test_results.append(("Exception classes", False, "No exception classes"))
     except Exception as e:
         print(f"✗ Failed: {e}")
@@ -367,7 +368,7 @@ if __name__ == "__main__":
     print("\n[Test 11] Check for duplicate exports:")
     try:
         if len(__all__) == len(set(__all__)):
-            print(f"✓ No duplicate exports found")
+            print("✓ No duplicate exports found")
             test_results.append(("Duplicate check", True, None))
         else:
             duplicates = [item for item in __all__ if __all__.count(item) > 1]

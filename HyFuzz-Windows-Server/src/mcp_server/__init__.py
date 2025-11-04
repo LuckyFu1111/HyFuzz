@@ -514,11 +514,11 @@ def run_tests():
     print("-" * 80)
     assert validate_transport_type("stdio")
     assert not validate_transport_type("invalid")
-    print(f"✓ Transport validation: stdio=True, invalid=False")
+    print("✓ Transport validation: stdio=True, invalid=False")
 
     assert validate_server_mode("development")
     assert not validate_server_mode("invalid")
-    print(f"✓ Mode validation: development=True, invalid=False")
+    print("✓ Mode validation: development=True, invalid=False")
     print()
 
     # Test 5: Logging Configuration
@@ -526,7 +526,7 @@ def run_tests():
     print("-" * 80)
     try:
         configure_logging(level="DEBUG")
-        print(f"✓ Logging configured to DEBUG level")
+        print("✓ Logging configured to DEBUG level")
     except Exception as e:
         print(f"✗ Logging configuration failed: {str(e)}")
     print()
@@ -538,14 +538,14 @@ def run_tests():
     assert "MCPServer" in __all__
     assert "create_server" in __all__
     assert "TransportType" in __all__
-    print(f"✓ All required exports present")
+    print("✓ All required exports present")
     print()
 
     # Test 7: Module Information
     print("[TEST 7] Module Information")
     print("-" * 80)
     module_info = get_module_info()
-    print(f"✓ Module info:")
+    print("✓ Module info:")
     for key, value in module_info.items():
         if isinstance(value, list):
             print(f"  {key}: {', '.join(value)}")
@@ -558,7 +558,7 @@ def run_tests():
     print("-" * 80)
     test_logger = logging.getLogger("mcp_server")
     assert test_logger is not None
-    print(f"✓ Logger instance created")
+    print("✓ Logger instance created")
     print(f"✓ Logger level: {logging.getLevelName(test_logger.level)}")
     print(f"✓ Logger handlers: {len(test_logger.handlers)}")
     print()

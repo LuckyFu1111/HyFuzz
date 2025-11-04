@@ -22,7 +22,7 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
@@ -99,7 +99,7 @@ class ClientCampaignRunner:
 
     def run(self) -> int:
         """Run the campaign."""
-        self.logger.info(f"Starting client campaign")
+        self.logger.info("Starting client campaign")
         self.logger.info(f"Server: {self.config.server_url}")
         self.logger.info(f"Protocol: {self.config.protocol}")
         self.logger.info(f"Target: {self.config.target}")
@@ -189,7 +189,7 @@ def main() -> int:
 
     runner = ClientCampaignRunner(config)
 
-    print(f"🚀 Starting HyFuzz Client Campaign")
+    print("🚀 Starting HyFuzz Client Campaign")
     print(f"   Server: {config.server_url}")
     print(f"   Protocol: {config.protocol}")
     print(f"   Target: {config.target}")

@@ -11,7 +11,7 @@ This module provides capability management for MCP server features:
 """
 
 import logging
-from typing import Optional, Dict, List, Any, Set, Tuple
+from typing import Optional, Dict, List, Any, Tuple
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 from datetime import datetime
@@ -633,15 +633,15 @@ def run_tests():
     print("-" * 80)
     success = manager.disable("caching")
     assert success, "Should disable caching"
-    print(f"✓ Disabled caching capability")
+    print("✓ Disabled caching capability")
 
     available = manager.check_capability("caching")
     assert not available, "caching should be disabled"
-    print(f"✓ caching is now unavailable")
+    print("✓ caching is now unavailable")
 
     success = manager.enable("caching")
     assert success, "Should enable caching"
-    print(f"✓ Re-enabled caching capability")
+    print("✓ Re-enabled caching capability")
     print()
 
     # Test 4: Register New Capability
@@ -655,7 +655,7 @@ def run_tests():
     )
     success = manager.register(new_cap)
     assert success, "Should register new capability"
-    print(f"✓ Registered new capability: custom_feature")
+    print("✓ Registered new capability: custom_feature")
 
     retrieved = manager.get("custom_feature")
     assert retrieved is not None, "Should retrieve registered capability"
@@ -711,11 +711,11 @@ def run_tests():
     assert VersionUtils.compare_versions("1.0.0", "2.0.0") < 0
     assert VersionUtils.compare_versions("2.0.0", "1.0.0") > 0
     assert VersionUtils.compare_versions("1.0.0", "1.0.0") == 0
-    print(f"✓ Version comparison working correctly")
+    print("✓ Version comparison working correctly")
 
     compatible = VersionUtils.is_compatible("1.0.0", "1.5.0")
     assert compatible, "1.5.0 should meet 1.0.0 requirement"
-    print(f"✓ Version compatibility check working")
+    print("✓ Version compatibility check working")
     print()
 
     # Test 9: Dependency Management
@@ -733,7 +733,7 @@ def run_tests():
     print("[TEST 10] Statistics")
     print("-" * 80)
     stats = manager.get_statistics()
-    print(f"✓ Capability statistics:")
+    print("✓ Capability statistics:")
     print(f"  Total: {stats['total_capabilities']}")
     print(f"  Enabled: {stats['enabled_capabilities']}")
     print(f"  Disabled: {stats['disabled_capabilities']}")
@@ -753,7 +753,7 @@ def run_tests():
     initial_count = len(new_manager.capabilities)
     success = new_manager.import_capabilities(exported)
     assert success, "Should import capabilities"
-    print(f"✓ Successfully imported capabilities")
+    print("✓ Successfully imported capabilities")
     print()
 
     # Test 12: Capability Info
@@ -761,7 +761,7 @@ def run_tests():
     print("-" * 80)
     info = manager.get_capability_info("message_handling")
     assert info is not None, "Should get capability info"
-    print(f"✓ Capability info retrieved:")
+    print("✓ Capability info retrieved:")
     for key, value in list(info.items())[:5]:
         print(f"  {key}: {value}")
     print()
@@ -770,7 +770,7 @@ def run_tests():
     print("[TEST 13] Capability Summary")
     print("-" * 80)
     summary = manager.get_summary()
-    print(f"✓ Capability summary:")
+    print("✓ Capability summary:")
     print(f"  Total: {summary['total']}")
     print(f"  Enabled: {summary['enabled']}")
     print(f"  Core: {summary['core']}")

@@ -20,7 +20,7 @@ print("-" * 70)
 
 try:
     from execution.orchestrator import Orchestrator
-    from models.execution_models import ExecutionRequest, ExecutionResult
+    from models.execution_models import ExecutionRequest
     orchestrator = Orchestrator()
     print("✓ 执行编排器 (Orchestrator) 已初始化")
     print("✓ 可以排队和执行payload")
@@ -47,17 +47,17 @@ print("\n【2】Windows Server (控制平面)")
 print("-" * 70)
 
 try:
-    from scanning.vulnerability_scanner import VulnerabilityScanner, ScanResult
+    from scanning.vulnerability_scanner import VulnerabilityScanner
     scanner = VulnerabilityScanner(patterns=['sql injection', 'xss', 'buffer overflow', 'format string'])
     result = scanner.scan('test sql injection and buffer overflow vulnerability')
-    print(f"✓ 漏洞扫描器运行正常")
+    print("✓ 漏洞扫描器运行正常")
     print(f"✓ 检测到 {len(result.issues)} 个漏洞模式: {result.issues}")
 except Exception as e:
     print(f"✗ 漏洞扫描器错误: {e}")
 
 try:
-    from defense.defense_integrator import DefenseIntegrator, BaseDefenseModule
-    from defense.defense_models import DefenseEvent, DefenseSignal, DefenseAction, DefenseResult
+    from defense.defense_integrator import DefenseIntegrator
+    from defense.defense_models import DefenseEvent, DefenseSignal
     integrator = DefenseIntegrator()
     print("✓ 防御系统已初始化")
 
@@ -91,7 +91,7 @@ print("-" * 70)
 try:
     from scanning.vulnerability_scanner import VulnerabilityScanner
     from defense.defense_integrator import DefenseIntegrator
-    from defense.defense_models import DefenseEvent, DefenseSignal, DefenseAction, DefenseResult
+    from defense.defense_models import DefenseEvent, DefenseSignal
 
     # Simulate vulnerability scanning
     scanner = VulnerabilityScanner(patterns=[
@@ -146,7 +146,7 @@ try:
     print("模拟完整的漏洞扫描流程:")
     print()
     print("步骤 1: Ubuntu Client 执行fuzzing payload")
-    from models.execution_models import ExecutionRequest, ExecutionResult
+    from models.execution_models import ExecutionRequest
     exec_request = ExecutionRequest(
         payload_id="test-001",
         protocol="http",

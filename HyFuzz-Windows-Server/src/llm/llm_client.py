@@ -108,8 +108,8 @@ import asyncio
 import json
 import logging
 import time
-from typing import Any, AsyncGenerator, Dict, List, Optional, Tuple
-from dataclasses import dataclass, field
+from typing import Any, AsyncGenerator, Dict, List, Optional
+from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
 import hashlib
@@ -822,7 +822,7 @@ async def run_tests():
         stats = client.get_stats()
 
         if stats and stats["total_requests"] > 0:
-            print(f"✓ PASSED: Statistics retrieved")
+            print("✓ PASSED: Statistics retrieved")
             print(f"  - Total requests: {stats['total_requests']}")
             print(f"  - Success rate: {stats['success_rate']}")
             print(f"  - Avg response time: {stats['avg_response_time_ms']}ms\n")

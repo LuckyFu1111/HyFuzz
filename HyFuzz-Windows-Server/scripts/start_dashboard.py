@@ -24,10 +24,10 @@ import asyncio
 import json
 import logging
 import sys
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
@@ -464,11 +464,11 @@ def main() -> int:
     # Create and start dashboard
     dashboard = DashboardApp(config)
 
-    print(f"🚀 Starting HyFuzz Dashboard...")
+    print("🚀 Starting HyFuzz Dashboard...")
     print(f"   URL: http://{config.host}:{config.port}")
     print(f"   Log level: {config.log_level}")
     print(f"   Refresh interval: {config.data_refresh_interval}s")
-    print(f"   Press Ctrl+C to stop")
+    print("   Press Ctrl+C to stop")
     print()
 
     try:

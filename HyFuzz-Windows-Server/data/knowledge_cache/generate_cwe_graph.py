@@ -31,7 +31,7 @@ import sys
 import argparse
 from pathlib import Path
 from datetime import datetime, timedelta
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, asdict, field
 import random
 import logging
@@ -336,7 +336,7 @@ class CWEGraphGenerator:
         references = [
             f"https://cwe.mitre.org/data/definitions/{cwe_id}.html",
             f"https://owasp.org/www-community/attacks/{cwe_str}",
-            f"https://capec.mitre.org/",
+            "https://capec.mitre.org/",
         ]
 
         # Attack patterns (CAPEC references)
@@ -512,7 +512,7 @@ class CWEGraphGenerator:
             metadata=metadata,
         )
 
-        logger.info(f"✓ CWE graph generation complete")
+        logger.info("✓ CWE graph generation complete")
         return graph
 
 
@@ -564,7 +564,7 @@ class CWEGraphPersistence:
                 logger.error("Missing required keys")
                 return False
 
-            logger.info(f"✓ Pickle file verified")
+            logger.info("✓ Pickle file verified")
             logger.info(f"  Nodes: {len(data['nodes'])}")
             logger.info(f"  Edges: {len(data['edges'])}")
             logger.info(f"  Metadata: {len(data['metadata'])} keys")
@@ -646,7 +646,7 @@ def main(
     # Optionally save JSON file
     if generate_json:
         json_path = final_output_path.with_suffix('.json')
-        logger.info(f"\nSaving JSON file...")
+        logger.info("\nSaving JSON file...")
         persistence.save_json(graph, json_path)
 
     # Verify output
