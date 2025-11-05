@@ -62,10 +62,10 @@ __all__: list[str] = [
 
     # Utilities
     "get_logger",
-    "CustomException",
+    "MCPException",
     "ValidationError",
-    "ConfigError",
-    "LLMError",
+    "ConfigurationException",
+    "LLMException",
 
     # Models
     "MCPRequest",
@@ -203,18 +203,18 @@ except ImportError as e:
 # ============================================================================
 
 get_logger: Callable = logging.getLogger
-CustomException: Type[Exception] = Exception
+MCPException: Type[Exception] = Exception
 ValidationError: Type[Exception] = Exception
-ConfigError: Type[Exception] = Exception
-LLMError: Type[Exception] = Exception
+ConfigurationException: Type[Exception] = Exception
+LLMException: Type[Exception] = Exception
 
 try:
     from src.utils.logger import get_logger
     from src.utils.exceptions import (
-        CustomException,
+        MCPException,
         ValidationError,
-        ConfigError,
-        LLMError,
+        ConfigurationException,
+        LLMException,
     )
 except ImportError as e:
     _logger.warning(f"Utility components import failed: {e}")
@@ -505,10 +505,10 @@ if __name__ == "__main__":
     # Test 9: Error handling capability
     print("✓ Test 9: Error Handling")
     exception_classes: list[tuple[str, Type[Exception]]] = [
-        ("CustomException", CustomException),
+        ("MCPException", MCPException),
         ("ValidationError", ValidationError),
-        ("ConfigError", ConfigError),
-        ("LLMError", LLMError),
+        ("ConfigurationException", ConfigurationException),
+        ("LLMException", LLMException),
     ]
     for exc_name, exc_class in exception_classes:
         if exc_class is not None:
