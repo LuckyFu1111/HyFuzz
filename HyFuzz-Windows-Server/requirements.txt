@@ -15,6 +15,9 @@ requests>=2.31.0
 # Async HTTP client
 aiohttp>=3.9.1
 
+# WebSocket support for MCP Server
+websockets>=11.0
+
 # Configuration management
 python-dotenv>=1.0.0
 pydantic>=2.5.0
