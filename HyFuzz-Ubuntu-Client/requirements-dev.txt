@@ -61,7 +61,7 @@ types-PyYAML==6.0.12
 pylint==3.0.3
 
 # Code formatter with auto-fixing
-autopep8==2.0.4
+autopep8==2.3.2
 
 # ============================================================================
 # DOCUMENTATION
