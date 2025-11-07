@@ -1,0 +1,164 @@
+# HyFuzz Campaign Demo Configuration
+#
+# This configuration file defines a sample fuzzing campaign that exercises
+# multiple protocols across the Windows server and Ubuntu client for
+# end-to-end validation of the campaign coordinator.
+
+campaign:
+  name: "hyfuzz-demo"
+  description: "Demonstration campaign for coordinator validation"
+  version: "1.0.0"
+
+  # Campaign metadata
+  metadata:
+    author: "HyFuzz Team"
+    created_at: "2024-01-01"
+    tags:
+      - demo
+      - coordinator
+      - multi-protocol
+
+# Target systems to fuzz
+targets:
+  # CoAP protocol target
+  - name: "demo-coap-server"
+    protocol: "coap"
+    endpoint: "coap://localhost:5683"
+    description: "Sample CoAP server for demonstration"
+    enabled: true
+    config:
+      timeout: 5
+      max_retries: 3
+      methods: ["GET", "POST", "PUT", "DELETE"]
+      paths: ["/", "/test", "/api", "/resource"]
+
+  # Modbus protocol target
+  - name: "demo-modbus-server"
+    protocol: "modbus"
+    endpoint: "modbus://localhost:502"
+    description: "Sample Modbus TCP server"
+    enabled: true
+    config:
+      timeout: 5
+      unit_id: 1
+      function_codes: [3, 4, 6, 16]  # Read holding, read input, write single, write multiple
+      address_range: [0, 100]
+
+  # MQTT protocol target (optional)
+  - name: "demo-mqtt-broker"
+    protocol: "mqtt"
+    endpoint: "mqtt://localhost:1883"
+    description: "Sample MQTT broker"
+    enabled: false  # Disabled by default, enable if MQTT broker is running
+    config:
+      timeout: 5
+      topics: ["test/#", "demo/#"]
+      qos: [0, 1, 2]
+
+# Fuzzing strategy configuration
+fuzzing:
+  # Payload generation settings
+  generation:
+    model: "mistral-test"  # LLM model for payload generation
+    max_samples: 10  # Maximum number of payloads per target
+    seed_payloads: []  # Empty = generate from scratch
+    mutation_rate: 0.3
+    creativity: 0.7  # LLM temperature/creativity parameter
+
+  # Execution settings
+  execution:
+    parallel_targets: 2  # Number of targets to fuzz in parallel
+    payloads_per_target: 5
+    timeout_per_payload: 10  # seconds
+    retry_failed: true
+    max_retries: 2
+
+  # Defense integration
+  defense:
+    enabled: true
+    modules:
+      - "signature_detector"
+      - "anomaly_detector"
+    thresholds:
+      block_score: 0.8
+      investigate_score: 0.5
+      monitor_score: 0.2
+
+# LLM Judge configuration
+judge:
+  enabled: true
+  model: "mistral-test"
+  criteria:
+    - "protocol_conformance"
+    - "security_impact"
+    - "crash_potential"
+    - "state_coverage"
+  scoring:
+    min_score: 0.0
+    max_score: 1.0
+    pass_threshold: 0.6
+
+# Feedback loop configuration
+feedback:
+  enabled: true
+  mode: "incremental"  # incremental, batch, or disabled
+  aggregation_window: 10  # Number of executions before feedback update
+  learning_rate: 0.1
+  history_size: 100
+
+# Output and reporting
+reporting:
+  output_dir: "results/campaigns"
+  formats:
+    - "json"
+    - "html"
+  metrics:
+    - "execution_count"
+    - "crash_count"
+    - "coverage"
+    - "defense_verdicts"
+    - "judgment_scores"
+
+  # Save detailed execution traces
+  save_traces: true
+  save_payloads: true
+  save_responses: true
+
+# Resource limits
+limits:
+  max_execution_time: 3600  # Maximum campaign duration in seconds (1 hour)
+  max_payloads: 50  # Total payload limit across all targets
+  memory_limit_mb: 2048
+  cpu_limit_percent: 80
+
+# Logging configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  console: true
+  file: true
+  file_path: "logs/campaign_demo.log"
+  structured: true  # Use structured JSON logging
+
+# Advanced settings
+advanced:
+  # Protocol-specific overrides
+  protocol_overrides:
+    coap:
+      payload_size_range: [1, 512]
+      header_fuzzing: true
+    modbus:
+      register_fuzzing: true
+      exception_testing: true
+
+  # Instrumentation settings (Ubuntu client)
+  instrumentation:
+    enabled: true
+    tools: ["strace", "ltrace"]
+    sanitizers: ["asan", "ubsan"]
+    coverage_tracking: true
+
+  # Coordinator behavior
+  coordinator:
+    fail_fast: false  # Stop on first error
+    continue_on_crash: true
+    validate_before_start: true
