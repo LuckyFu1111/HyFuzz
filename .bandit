@@ -1,0 +1,14 @@
+[bandit]
+exclude_dirs = [
+    '/tests/',
+    '/venv/',
+    '/.venv/',
+    '/build/',
+    '/dist/'
+]
+
+# Skip test files
+tests = ['B201', 'B301', 'B403', 'B404']
+
+# Ignore common false positives
+skips = ['B101', 'B601']

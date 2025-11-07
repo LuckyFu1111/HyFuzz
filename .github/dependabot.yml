@@ -1,0 +1,63 @@
+version: 2
+updates:
+  # Windows Server dependencies
+  - package-ecosystem: "pip"
+    directory: "/HyFuzz-Windows-Server"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "windows-server"
+    reviewers:
+      - "LuckyFu1111"
+    commit-message:
+      prefix: "[Windows Server]"
+
+  # Mac Server dependencies
+  - package-ecosystem: "pip"
+    directory: "/HyFuzz-Mac-Server"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "mac-server"
+    reviewers:
+      - "LuckyFu1111"
+    commit-message:
+      prefix: "[Mac Server]"
+
+  # Ubuntu Client dependencies
+  - package-ecosystem: "pip"
+    directory: "/HyFuzz-Ubuntu-Client"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "ubuntu-client"
+    reviewers:
+      - "LuckyFu1111"
+    commit-message:
+      prefix: "[Ubuntu Client]"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "[CI]"
