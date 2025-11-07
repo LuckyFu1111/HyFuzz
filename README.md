@@ -108,7 +108,7 @@ HyFuzz employs a distributed architecture with three main components:
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌───────────────────────────────────────────────────────────────┐ │
-│  │              Windows Server (Control Plane)                    │ │
+│  │        Control Plane Server (Windows/macOS/Linux)             │ │
 │  ├───────────────────────────────────────────────────────────────┤ │
 │  │  • LLM Payload Generator (Ollama/OpenAI)                      │ │
 │  │  • Defense System Integrator                                  │ │
@@ -145,7 +145,7 @@ HyFuzz employs a distributed architecture with three main components:
 
 | Component | Technology Stack | Purpose |
 |-----------|-----------------|---------|
-| **Windows Server** | Python 3.11, FastAPI, SQLAlchemy, Celery | Control plane for campaign orchestration and LLM integration |
+| **Control Plane Server** | Python 3.11, FastAPI, SQLAlchemy, Celery | Available for Windows, macOS, and Linux - orchestrates campaigns and LLM integration |
 | **Ubuntu Client** | Python 3.11, instrumentation tools (strace, perf, gdb) | Payload execution engine with comprehensive instrumentation |
 | **Campaign Coordinator** | Python dataclasses, async/await | Bridges server and client for distributed campaign execution |
 | **LLM Integration** | Ollama, OpenAI API, Azure OpenAI | Intelligent payload generation and quality assessment |
@@ -161,10 +161,10 @@ For detailed architecture documentation, see [ARCHITECTURE.md](ARCHITECTURE.md).
 ### Prerequisites
 
 **System Requirements:**
-- **Server**: Windows 10/11 or Ubuntu 22.04+ with Python 3.10+
+- **Server**: Windows 10/11, macOS 12+, or Ubuntu 22.04+ with Python 3.10+
 - **Client**: Ubuntu 22.04+ with Python 3.10+
 - **LLM Service**: Ollama (local) or OpenAI API key (cloud)
-- **Memory**: Minimum 8GB RAM (16GB recommended)
+- **Memory**: Minimum 8GB RAM (16GB recommended, 32GB for Apple Silicon)
 - **Storage**: 20GB+ available space
 
 **Software Dependencies:**
@@ -197,6 +197,7 @@ The `make quickstart` command will:
 
 #### Option 2: Manual Installation
 
+**For Windows Server:**
 ```bash
 # Clone the repository
 git clone https://github.com/your-org/HyFuzz.git
@@ -220,16 +221,55 @@ python scripts/init_database.py --demo-data
 python scripts/health_check.py --verbose
 ```
 
+**For macOS Server:**
+```bash
+# Clone the repository
+git clone https://github.com/your-org/HyFuzz.git
+cd HyFuzz
+
+# Install Ollama via Homebrew (if not already installed)
+brew install ollama
+
+# Install server dependencies
+cd HyFuzz-Mac-Server
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+# Install client dependencies
+cd ../HyFuzz-Ubuntu-Client
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+# Initialize database
+cd ..
+python scripts/init_database.py --demo-data
+
+# Verify installation
+python scripts/health_check.py --verbose
+```
+
 ### Configuration
 
 #### 1. Configure the Server
 
+**For Windows:**
 ```bash
 # Copy environment template
 cp HyFuzz-Windows-Server/.env.example HyFuzz-Windows-Server/.env
 
 # Edit configuration
 nano HyFuzz-Windows-Server/.env
+```
+
+**For macOS:**
+```bash
+# Copy environment template
+cp HyFuzz-Mac-Server/.env.example HyFuzz-Mac-Server/.env
+
+# Edit configuration
+nano HyFuzz-Mac-Server/.env
 ```
 
 **Key Configuration Options:**
@@ -340,10 +380,20 @@ python create_campaign.py
 #### Method 2: Using the Web Dashboard
 
 1. **Start the server**:
-```bash
-cd HyFuzz-Windows-Server
-python scripts/start_server.py
-```
+
+   **On Windows:**
+   ```bash
+   cd HyFuzz-Windows-Server
+   python scripts/start_server.py
+   ```
+
+   **On macOS:**
+   ```bash
+   cd HyFuzz-Mac-Server
+   ./scripts/start_server.sh
+   # Or
+   python scripts/start_server.py
+   ```
 
 2. **Start the client** (in a new terminal):
 ```bash
@@ -352,10 +402,18 @@ python scripts/start_client.py
 ```
 
 3. **Start the dashboard** (in a new terminal):
-```bash
-cd HyFuzz-Windows-Server
-python scripts/start_dashboard.py
-```
+
+   **On Windows:**
+   ```bash
+   cd HyFuzz-Windows-Server
+   python scripts/start_dashboard.py
+   ```
+
+   **On macOS:**
+   ```bash
+   cd HyFuzz-Mac-Server
+   python scripts/start_dashboard.py
+   ```
 
 4. **Access the dashboard**: Open http://localhost:8888 in your browser
 
@@ -413,6 +471,26 @@ HyFuzz/
 │   │   └── utils/               # Utilities and helpers
 │   ├── scripts/                 # Executable scripts
 │   │   ├── start_server.py      # Server startup
+│   │   ├── start_server.bat     # Windows batch script
+│   │   ├── start_workers.py     # Worker pool management
+│   │   ├── start_dashboard.py   # Web dashboard
+│   │   └── run_fuzzing_campaign.py  # Campaign runner
+│   ├── config/                  # Configuration files
+│   ├── docs/                    # Server documentation
+│   ├── tests/                   # Server tests
+│   ├── requirements.txt         # Python dependencies
+│   └── .env.example             # Environment template
+│
+├── HyFuzz-Mac-Server/           # macOS server control plane
+│   ├── src/                     # Source code (same structure as Windows)
+│   │   ├── llm/                 # LLM integration (generation, judge)
+│   │   ├── defense/             # Defense system modules
+│   │   ├── protocols/           # Protocol handlers
+│   │   ├── learning/            # Feedback loop implementation
+│   │   └── utils/               # Utilities and helpers
+│   ├── scripts/                 # Executable scripts
+│   │   ├── start_server.py      # Server startup
+│   │   ├── start_server.sh      # macOS shell script
 │   │   ├── start_workers.py     # Worker pool management
 │   │   ├── start_dashboard.py   # Web dashboard
 │   │   └── run_fuzzing_campaign.py  # Campaign runner
