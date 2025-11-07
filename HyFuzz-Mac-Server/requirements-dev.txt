@@ -1,0 +1,196 @@
+# ============================================================================
+# HyFuzz MCP Server - Development Dependencies
+# ============================================================================
+# Use: pip install -r requirements-dev.txt
+# ============================================================================
+
+# Install production dependencies first
+-r requirements.txt
+
+# ============================================================================
+# TESTING FRAMEWORKS
+# ============================================================================
+
+# Pytest and extensions
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+pytest-timeout>=2.2.0
+pytest-xdist>=3.5.0
+
+# Test fixtures and utilities
+factory-boy>=3.3.0
+faker>=22.0.0
+
+# Coverage reporting
+coverage>=7.4.0
+coverage[toml]>=7.4.0
+
+# ============================================================================
+# CODE QUALITY & LINTING
+# ============================================================================
+
+# Linters
+ruff>=0.1.0
+pylint>=3.0.0
+flake8>=7.0.0
+mypy>=1.8.0
+
+# Code formatters
+black>=24.0.0
+isort>=5.13.0
+
+# Security linters
+bandit>=1.7.6
+safety>=3.0.0
+
+# Type checking
+types-requests>=2.31.0
+types-PyYAML>=6.0.12
+
+# ============================================================================
+# WEB FRAMEWORKS & DASHBOARD
+# ============================================================================
+
+# FastAPI for dashboard
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+
+# Additional web utilities
+jinja2>=3.1.3
+python-multipart>=0.0.6
+
+# ============================================================================
+# DEVELOPMENT TOOLS
+# ============================================================================
+
+# Debugging
+ipdb>=0.13.13
+pdb++>=0.10.3
+
+# Interactive shell
+ipython>=8.20.0
+
+# Documentation generation
+sphinx>=7.2.0
+sphinx-rtd-theme>=2.0.0
+sphinx-autodoc-typehints>=1.25.0
+myst-parser>=2.0.0
+
+# API documentation
+mkdocs>=1.5.3
+mkdocs-material>=9.5.0
+
+# ============================================================================
+# PERFORMANCE & PROFILING
+# ============================================================================
+
+# Profiling tools
+py-spy>=0.3.14
+memory-profiler>=0.61.0
+line-profiler>=4.1.0
+
+# Performance testing
+locust>=2.20.0
+
+# ============================================================================
+# DATABASE TOOLS
+# ============================================================================
+
+# Database migrations
+alembic>=1.13.0
+
+# SQLAlchemy extras (if using)
+# sqlalchemy>=2.0.25
+
+# ============================================================================
+# TASK QUEUE & DISTRIBUTED SYSTEMS
+# ============================================================================
+
+# Celery for distributed tasks
+celery>=5.3.0
+redis>=5.0.0
+
+# Task monitoring
+flower>=2.0.1
+
+# ============================================================================
+# MOCKING & TESTING UTILITIES
+# ============================================================================
+
+# HTTP mocking
+responses>=0.24.0
+requests-mock>=1.11.0
+
+# Time/date mocking
+freezegun>=1.4.0
+
+# Mock LLM responses for testing
+# openai>=1.0.0  # Only for OpenAI API testing
+
+# ============================================================================
+# MONITORING & LOGGING
+# ============================================================================
+
+# Enhanced logging
+rich>=13.7.0
+loguru>=0.7.2
+
+# Metrics and monitoring
+prometheus-client>=0.19.0
+
+# ============================================================================
+# JUPYTER & NOTEBOOKS (Optional)
+# ============================================================================
+
+# jupyter>=1.0.0
+# notebook>=7.0.0
+# jupyterlab>=4.0.0
+
+# ============================================================================
+# BUILD & DEPLOYMENT
+# ============================================================================
+
+# Build tools
+build>=1.0.0
+wheel>=0.42.0
+setuptools>=69.0.0
+
+# Version management
+bump2version>=1.0.1
+
+# ============================================================================
+# DEVELOPMENT UTILITIES
+# ============================================================================
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# Configuration validation
+pydantic-settings>=2.1.0
+
+# Pre-commit hooks
+pre-commit>=3.6.0
+
+# ============================================================================
+# NOTES FOR PYTHON 3.13
+# ============================================================================
+
+# All packages listed here are compatible with Python 3.11+
+# If using Python 3.13, ensure you have the latest versions installed
+#
+# To install all development dependencies:
+#   pip install -r requirements-dev.txt
+#
+# To run tests:
+#   pytest
+#
+# To check code quality:
+#   ruff check .
+#   mypy src
+#   black --check .
+#
+# To format code:
+#   black .
+#   isort .

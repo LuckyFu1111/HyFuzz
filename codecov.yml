@@ -1,0 +1,36 @@
+# Codecov configuration
+coverage:
+  status:
+    project:
+      default:
+        target: 70%
+        threshold: 5%
+    patch:
+      default:
+        target: 80%
+
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
+
+flags:
+  windows-server:
+    paths:
+      - HyFuzz-Windows-Server/src/
+    carryforward: true
+  
+  mac-server:
+    paths:
+      - HyFuzz-Mac-Server/src/
+    carryforward: true
+  
+  ubuntu-client:
+    paths:
+      - HyFuzz-Ubuntu-Client/src/
+    carryforward: true
+
+ignore:
+  - "*/tests/*"
+  - "*/test_*.py"
+  - "*/__pycache__/*"
+  - "*/venv/*"

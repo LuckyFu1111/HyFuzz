@@ -1,310 +1,263 @@
 # HyFuzz Quick Start Guide
 
-Get up and running with HyFuzz in 15 minutes.
+Get HyFuzz up and running in 5 minutes!
 
-## Prerequisites
+## 📋 Prerequisites
 
-- **Python 3.10+** installed on both Windows and Ubuntu systems
-- **Ollama** or OpenAI API access for LLM functionality
-- **Git** for repository cloning
+- **Python 3.9+** installed on all machines
+- **Ollama** installed on server machines (for LLM support)
+- Network connectivity between server and clients
 
-## 🚀 Quick Setup
+## 🚀 Quick Start
 
-### 1. Clone and Install
+### Option 1: Windows Server + Ubuntu Client (Recommended)
 
-```bash
-# Clone the repository
-git clone https://github.com/your-org/HyFuzz.git
-cd HyFuzz
+#### Step 1: Start Windows Server
 
-# Install Windows Server dependencies
+```powershell
+# On Windows machine
 cd HyFuzz-Windows-Server
+python -m venv venv
+.\venv\Scripts\activate
 pip install -r requirements.txt
-
-# Install Ubuntu Client dependencies
-cd ../HyFuzz-Ubuntu-Client
-pip install -r requirements.txt
-
-# Install testing dependencies (optional)
-cd ..
-pip install pytest pytest-asyncio
+python -m src
 ```
 
-### 2. Configure Environment
+Server starts at: `http://0.0.0.0:8080`
+
+#### Step 2: Start Ubuntu Client
 
 ```bash
-# Copy environment templates
-cp HyFuzz-Windows-Server/.env.example HyFuzz-Windows-Server/.env
-cp HyFuzz-Ubuntu-Client/.env.example HyFuzz-Ubuntu-Client/.env
-
-# Edit .env files with your settings
-# At minimum, configure:
-# - OLLAMA_ENDPOINT (e.g., http://localhost:11434)
-# - DATABASE_URL (default SQLite works out of the box)
-```
-
-### 3. Run Health Check
-
-```bash
-# Verify your installation
-python scripts/health_check.py --verbose
-```
-
-Expected output:
-```
-✓ Windows Server: Server components available
-✓ Ubuntu Client: Client components available
-✓ Database: Data directory accessible
-✓ Dependencies: All required packages installed
-✓ Configuration: Configuration files present
-```
-
-## 🎯 Running Your First Campaign
-
-### Option A: Using the Campaign Coordinator
-
-```bash
-# Run the demo test suite
-pytest tests/test_coordinator.py -v
-
-# Or use the coordinator directly
-python -m coordinator.coordinator \
-    --protocol coap \
-    --plan configs/campaign_demo.yaml
-```
-
-### Option B: Using the Campaign Runner
-
-```bash
-# Run a simple CoAP fuzzing campaign
-cd HyFuzz-Windows-Server
-python scripts/run_fuzzing_campaign.py \
-    --name my-first-campaign \
-    --protocol coap \
-    --target coap://localhost:5683 \
-    --payloads 10 \
-    --dry-run  # Remove --dry-run for actual execution
-```
-
-### Option C: Start the Full Stack
-
-```bash
-# Terminal 1: Start Windows Server
-cd HyFuzz-Windows-Server
-python scripts/start_server.py
-
-# Terminal 2: Start Workers (optional)
-cd HyFuzz-Windows-Server
-python scripts/start_workers.py --concurrency 4
-
-# Terminal 3: Start Dashboard (optional)
-cd HyFuzz-Windows-Server
-python scripts/start_dashboard.py
-
-# Terminal 4: Start Ubuntu Client
+# On Ubuntu machine
 cd HyFuzz-Ubuntu-Client
-python scripts/start_client.py
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+export MCP_SERVER_HOST=<WINDOWS_SERVER_IP>
+python -m src
 ```
 
-Then visit `http://localhost:8888` to view the monitoring dashboard.
+### Option 2: macOS Server + Ubuntu Client
 
-## 📊 Understanding Results
-
-Campaign results are saved in `results/<protocol>/<campaign_name>_<timestamp>.json`
+#### Step 1: Start macOS Server
 
 ```bash
-# View latest campaign results
-cat results/coap/my-first-campaign_*.json | jq '.statistics'
+# On macOS machine
+cd HyFuzz-Mac-Server
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# Optional: Run performance optimization
+python scripts/optimize_macos.py
+
+# Start server
+./scripts/start_server.sh
+# Or manually:
+python -m src
 ```
 
-Example output:
+Server starts at: `http://0.0.0.0:8080`
+
+#### Step 2: Start Ubuntu Client
+
+```bash
+# On Ubuntu machine
+cd HyFuzz-Ubuntu-Client
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+export MCP_SERVER_HOST=<MACOS_SERVER_IP>
+python -m src
+```
+
+## 🔧 Configuration
+
+### Server Configuration
+
+Edit `.env` file (copy from `.env.example`):
+
+```bash
+MCP_SERVER_HOST=0.0.0.0
+MCP_SERVER_PORT=8080
+DATABASE_URL=sqlite:///data/hyfuzz.db
+OLLAMA_ENDPOINT=http://localhost:11434
+LOG_LEVEL=INFO
+```
+
+### Client Configuration
+
+Set environment variables:
+
+```bash
+export MCP_SERVER_HOST=<SERVER_IP>
+export MCP_SERVER_PORT=8080
+export LOG_LEVEL=INFO
+```
+
+## ✅ Verify Installation
+
+### Check Server Health
+
+```bash
+curl http://localhost:8080/health
+```
+
+Expected response:
 ```json
 {
-  "total_executions": 10,
-  "successful_executions": 10,
-  "success_rate": 1.0,
-  "defense_verdicts": {
-    "monitor": 5,
-    "investigate": 3,
-    "block": 2
-  },
-  "average_judge_score": 0.65,
-  "average_execution_time_ms": 12.5
+  "status": "healthy",
+  "version": "1.0.0"
 }
 ```
 
-## 🔧 Common Tasks
-
-### Generate Custom Payloads
-
-```python
-from coordinator import FuzzingCoordinator, CampaignTarget
-
-coordinator = FuzzingCoordinator(model_name="mistral")
-targets = [
-    CampaignTarget(
-        name="my-coap-server",
-        protocol="coap",
-        endpoint="coap://192.168.1.100:5683"
-    )
-]
-
-result = coordinator.run_campaign(targets)
-print(result.summary)
-```
-
-### Monitor Campaign Progress
+### Check Client Connection
 
 ```bash
-# Watch campaign logs in real-time
-tail -f HyFuzz-Windows-Server/logs/campaigns/*.log
-
-# Check defense verdicts
-grep -i "verdict" HyFuzz-Windows-Server/logs/campaigns/*.log
+# From client machine
+curl http://<SERVER_IP>:8080/health
 ```
 
-### Test Protocol Support
+## 🎯 First Fuzzing Campaign
+
+### Using the GUI (Windows/Mac Server)
+
+1. Start the GUI:
+   ```bash
+   cd ui
+   python launch_gui.py
+   ```
+
+2. Create a new campaign:
+   - Campaign name: `my-first-test`
+   - Protocol: `coap`
+   - Target: `localhost:5683`
+   - Payload count: `10`
+
+3. Start the campaign and monitor progress
+
+### Using the API
 
 ```bash
-# Test CoAP
-cd HyFuzz-Ubuntu-Client
-python scripts/run_coap_test.py
+# Create campaign
+curl -X POST http://localhost:8080/api/campaigns \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "my-first-test",
+    "protocol": "coap",
+    "target": "localhost:5683",
+    "payload_count": 10
+  }'
 
-# Test Modbus
-python scripts/run_modbus_test.py
+# Start campaign
+curl -X POST http://localhost:8080/api/campaigns/<campaign_id>/start
 
-# Test MQTT
-python scripts/run_mqtt_test.py
+# Check status
+curl http://localhost:8080/api/campaigns/<campaign_id>/status
 ```
 
-## ⚙️ Configuration Customization
+## 📊 Supported Protocols
 
-### Edit Campaign Settings
+| Protocol | Default Port | Example Target |
+|----------|-------------|----------------|
+| CoAP | 5683 | `localhost:5683` |
+| Modbus | 502 | `localhost:502` |
+| MQTT | 1883 | `localhost:1883` |
+| HTTP | 80/443 | `http://localhost:8000` |
+| gRPC | 50051 | `localhost:50051` |
+| JSON-RPC | 8545 | `localhost:8545` |
 
-Edit `configs/campaign_demo.yaml`:
+## 🐛 Common Issues
 
-```yaml
-campaign:
-  name: "my-custom-campaign"
+### Server won't start
 
-fuzzing:
-  generation:
-    model: "mistral"
-    max_samples: 50
-    creativity: 0.8
-
-  defense:
-    enabled: true
-    thresholds:
-      block_score: 0.9
-      investigate_score: 0.6
-```
-
-### Enable Defense Modules
-
-Edit `HyFuzz-Windows-Server/.env`:
-
+**Problem**: Port 8080 already in use
 ```bash
-DEFENSE_ENABLED=true
-DEFENSE_MODULES=signature_detector,anomaly_detector,behavior_analyzer
-DEFENSE_BLOCK_THRESHOLD=0.8
+# Solution: Change port in .env
+MCP_SERVER_PORT=8081
 ```
 
-### Configure LLM Models
-
+**Problem**: Ollama not running
 ```bash
-# Use Ollama (local)
-OLLAMA_ENDPOINT=http://localhost:11434
-OLLAMA_MODEL=mistral
-
-# Or use OpenAI API
-OPENAI_API_KEY=your-key-here
-OPENAI_MODEL=gpt-4
-```
-
-## 🐛 Troubleshooting
-
-### "ModuleNotFoundError: No module named 'pydantic'"
-
-```bash
-pip install -r HyFuzz-Windows-Server/requirements.txt
-pip install -r HyFuzz-Ubuntu-Client/requirements.txt
-```
-
-### "Connection refused" when starting server
-
-Check if the port is already in use:
-
-```bash
-# Linux/Mac
-lsof -i :8080
-
-# Windows
-netstat -ano | findstr :8080
-```
-
-### Dashboard not loading
-
-```bash
-# Install dashboard dependencies
-pip install fastapi uvicorn
-# Or
-pip install -r HyFuzz-Windows-Server/requirements-dev.txt
-```
-
-### LLM endpoint not responding
-
-```bash
-# Test Ollama connectivity
-curl http://localhost:11434/api/version
-
-# If Ollama isn't running, start it:
+# Solution: Start Ollama
 ollama serve
-
-# Download a model if needed:
-ollama pull mistral
 ```
 
-## 📚 Next Steps
+### Client can't connect
 
-- Read the [Full Documentation](README.md)
-- Explore [Protocol Integration Guide](HyFuzz-Windows-Server/docs/PROTOCOL_GUIDE.md)
-- Set up [Defense Integration](HyFuzz-Windows-Server/docs/DEFENSE_INTEGRATION.md)
-- Configure [Instrumentation](HyFuzz-Ubuntu-Client/docs/INSTRUMENTATION.md)
-- Review [Testing Strategy](tests/README.md)
+**Problem**: Firewall blocking connection
+```bash
+# Solution: Allow port 8080 through firewall
+# Windows:
+netsh advfirewall firewall add rule name="HyFuzz" dir=in action=allow protocol=TCP localport=8080
 
-## 💡 Tips
+# Ubuntu:
+sudo ufw allow 8080/tcp
 
-1. **Start Small**: Begin with 10-20 payloads to validate your setup
-2. **Use Dry Run**: Test campaigns with `--dry-run` first
-3. **Monitor Resources**: Watch CPU/memory usage during campaigns
-4. **Check Logs**: Logs are your friend - check them first when debugging
-5. **Incremental Testing**: Test one protocol at a time initially
+# macOS:
+# System Preferences → Security & Privacy → Firewall → Firewall Options
+```
+
+**Problem**: Wrong server IP
+```bash
+# Solution: Check server IP
+# Windows:
+ipconfig
+
+# Linux/macOS:
+ifconfig
+# or
+ip addr show
+```
+
+### Performance issues on macOS
+
+```bash
+# Run optimization script
+cd HyFuzz-Mac-Server
+python scripts/optimize_macos.py
+
+# Monitor performance
+python scripts/monitor_performance_macos.py
+```
+
+## 📖 Next Steps
+
+- **Detailed Setup**: See component-specific README files
+  - [Windows Server Setup](HyFuzz-Windows-Server/SETUP_GUIDE.md)
+  - [macOS Server Setup](HyFuzz-Mac-Server/README.md)
+  - [Ubuntu Client Setup](HyFuzz-Ubuntu-Client/docs/SETUP.md)
+
+- **Architecture**: Read [ARCHITECTURE.md](HyFuzz-Windows-Server/docs/ARCHITECTURE.md)
+- **API Documentation**: See [API.md](HyFuzz-Windows-Server/docs/API.md)
+- **Deployment**: Read [DEPLOYMENT.md](HyFuzz-Windows-Server/docs/DEPLOYMENT.md)
 
 ## 🆘 Getting Help
 
-- **GitHub Issues**: https://github.com/your-org/HyFuzz/issues
-- **Documentation**: See `docs/` directories in each component
-- **Health Check**: Run `python scripts/health_check.py -v` for diagnostics
+- **Documentation**: See `/docs` in each component directory
+- **GUI Help**: Press F1 in the GUI
+- **Issues**: https://github.com/LuckyFu1111/HyFuzz/issues
 
-## ✅ Checklist
+## 🚦 System Requirements
 
-After following this guide, you should have:
+### Windows Server
+- Windows 10/11 or Windows Server 2019+
+- 8GB+ RAM recommended
+- Python 3.9+
+- Ollama
 
-- [ ] Installed all dependencies
-- [ ] Configured environment variables
-- [ ] Run health check successfully
-- [ ] Executed a test campaign
-- [ ] Viewed results in `results/` directory
-- [ ] (Optional) Started the monitoring dashboard
-- [ ] (Optional) Run the full test suite
+### macOS Server
+- macOS 12 (Monterey) or later
+- 8GB+ RAM (16GB+ recommended for Apple Silicon)
+- Python 3.9+
+- Ollama with Metal support
+
+### Ubuntu Client
+- Ubuntu 20.04 LTS or later
+- 4GB+ RAM recommended
+- Python 3.9+
+- System tools: `strace`, `ltrace`, `gdb`
 
 ---
 
-**Ready to fuzz?** Start with the demo campaign:
-
-```bash
-python -m coordinator.coordinator --protocol coap --plan configs/campaign_demo.yaml
-```
-
-Happy fuzzing! 🎯
+**Happy Fuzzing! 🚀**
