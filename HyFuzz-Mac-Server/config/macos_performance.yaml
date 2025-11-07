@@ -1,0 +1,158 @@
+# macOS Performance Optimization Configuration
+# Optimized for Apple Silicon (M1/M2/M3/M4) and Intel processors
+
+performance:
+  # Apple Silicon specific optimizations
+  apple_silicon:
+    enabled: true
+    # Use Metal Performance Shaders for acceleration when available
+    use_mps: true
+    # Optimize for unified memory architecture
+    unified_memory_optimization: true
+    # Efficient cores usage for background tasks
+    use_efficiency_cores: true
+    # Performance cores for critical LLM inference
+    performance_cores_priority: high
+
+  # Memory management optimizations for macOS
+  memory:
+    # Take advantage of macOS memory compression
+    enable_memory_compression: true
+    # Larger cache for Apple Silicon (more RAM typically available)
+    cache_size_mb: 2048
+    # Aggressive caching on macOS
+    cache_strategy: aggressive
+    # Use memory-mapped files for large datasets
+    use_mmap: true
+    # APFS optimizations
+    apfs_optimizations: true
+
+  # CPU and threading optimizations
+  cpu:
+    # Detect CPU architecture automatically
+    auto_detect_architecture: true
+    # Worker pool size (auto-adjust based on available cores)
+    worker_pool_size: auto  # Will use: (P-cores * 2) + E-cores
+    # Use Grand Central Dispatch optimizations
+    use_gcd_optimization: true
+    # Thread priority for LLM inference
+    llm_thread_priority: high
+    # Background task priority
+    background_thread_priority: low
+
+  # I/O optimizations for macOS
+  io:
+    # Use async I/O for better performance
+    async_io: true
+    # Batch size for file operations
+    batch_size: 128
+    # Use APFS snapshots for backups
+    use_apfs_snapshots: true
+    # Enable filesystem caching
+    fs_cache_enabled: true
+    # Read-ahead buffer size (KB)
+    read_ahead_kb: 512
+
+  # LLM inference optimizations
+  llm:
+    # Ollama optimizations for macOS
+    ollama:
+      # Use Metal acceleration
+      metal_acceleration: true
+      # Batch processing size
+      batch_size: 8
+      # Context size optimized for Apple Silicon
+      context_size: 4096
+      # Thread count (auto on macOS)
+      num_threads: auto
+      # GPU layers (auto-detect for Apple Silicon)
+      num_gpu_layers: auto
+      # Use FP16 on Apple Silicon for faster inference
+      use_fp16: true
+
+    # Caching strategy for LLM responses
+    cache:
+      # Larger cache on macOS
+      ttl_seconds: 7200
+      max_entries: 10000
+      # Use Redis if available, otherwise memory
+      backend: redis_fallback
+
+  # Network optimizations
+  network:
+    # Connection pool size
+    max_connections: 200
+    # Keep-alive timeout
+    keepalive_timeout: 120
+    # Use HTTP/2 when possible
+    http2_enabled: true
+    # Request timeout
+    timeout_seconds: 60
+
+  # Database optimizations for macOS
+  database:
+    # Use WAL mode for SQLite
+    sqlite_wal_mode: true
+    # Larger cache for database
+    cache_size_mb: 512
+    # Use memory-mapped I/O
+    mmap_size_mb: 1024
+    # Synchronous mode (NORMAL for better performance)
+    synchronous: NORMAL
+    # Journal mode
+    journal_mode: WAL
+
+  # Monitoring and telemetry
+  monitoring:
+    # Enable performance metrics collection
+    enabled: true
+    # Collect system-level metrics
+    collect_system_metrics: true
+    # Sample rate (per second)
+    sample_rate: 1
+    # Include Apple Silicon specific metrics
+    include_silicon_metrics: true
+
+# macOS specific system settings
+system:
+  # File descriptor limits
+  max_open_files: 10240
+  # Process priority
+  process_nice: -10
+  # Enable macOS App Nap prevention
+  prevent_app_nap: true
+  # Enable Sudden Motion Sensor (for mechanical drives)
+  enable_sms: false
+
+# Resource limits (adjusted for macOS)
+limits:
+  # Maximum memory usage (percentage)
+  max_memory_percent: 75
+  # Maximum CPU usage (percentage)
+  max_cpu_percent: 90
+  # Swap usage threshold
+  swap_threshold_percent: 10
+
+# Optimization profiles
+profiles:
+  # Maximum performance (for Apple Silicon with 16GB+ RAM)
+  max_performance:
+    worker_pool_size: 16
+    cache_size_mb: 4096
+    llm_batch_size: 16
+    num_gpu_layers: 99
+
+  # Balanced (default for most Macs)
+  balanced:
+    worker_pool_size: 8
+    cache_size_mb: 2048
+    llm_batch_size: 8
+    num_gpu_layers: auto
+
+  # Power saving (for MacBooks on battery)
+  power_saving:
+    worker_pool_size: 4
+    cache_size_mb: 1024
+    llm_batch_size: 4
+    num_gpu_layers: 20
+    use_efficiency_cores_only: true

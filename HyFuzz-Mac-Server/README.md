@@ -247,6 +247,36 @@ python scripts/health_check.py
 # Expected output: All checks passed ✓
 ```
 
+### Step 8: Performance Optimization (Recommended)
+
+Apply macOS-specific optimizations for best performance:
+
+```bash
+# Run automatic optimization
+python3 scripts/optimize_macos.py
+
+# This will:
+# - Detect your Mac's hardware (Apple Silicon vs Intel)
+# - Configure optimal settings for your system
+# - Set up Ollama with Metal acceleration (Apple Silicon)
+# - Create LaunchD service configuration
+# - Generate performance-tuned environment variables
+```
+
+**For Apple Silicon Macs:**
+- Automatically enables Metal Performance Shaders acceleration
+- Optimizes for unified memory architecture
+- Configures efficient/performance core usage
+- Recommended for M1/M2/M3/M4 processors
+
+**Performance Monitoring:**
+```bash
+# Real-time performance monitoring
+python3 scripts/monitor_performance_macos.py
+```
+
+See [docs/MACOS_PERFORMANCE.md](docs/MACOS_PERFORMANCE.md) for detailed optimization guide.
+
 ---
 
 ## 🚀 Quick Start
