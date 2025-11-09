@@ -68,7 +68,7 @@ autopep8==2.3.2
 # ============================================================================
 
 # Documentation generator
-Sphinx==7.2.6
+Sphinx==7.4.7
 
 # ReadTheDocs theme for Sphinx
 sphinx-rtd-theme==2.0.0
