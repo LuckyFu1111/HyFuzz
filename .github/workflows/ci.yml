@@ -257,7 +257,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Server Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./HyFuzz-Windows-Server
           file: ./HyFuzz-Windows-Server/Dockerfile
@@ -267,7 +267,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Build Client Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./HyFuzz-Ubuntu-Client
           file: ./HyFuzz-Ubuntu-Client/Dockerfile
