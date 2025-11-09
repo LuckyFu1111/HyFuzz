@@ -56,7 +56,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}/HyFuzz-Windows-Server
       
       - name: Upload coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           file: ./HyFuzz-Windows-Server/coverage.xml
           flags: windows-server

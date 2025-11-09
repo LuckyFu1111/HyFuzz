@@ -61,7 +61,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}/HyFuzz-Ubuntu-Client
       
       - name: Upload coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           file: ./HyFuzz-Ubuntu-Client/coverage.xml
           flags: ubuntu-client

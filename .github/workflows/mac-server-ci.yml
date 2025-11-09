@@ -56,7 +56,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}/HyFuzz-Mac-Server
       
       - name: Upload coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           file: ./HyFuzz-Mac-Server/coverage.xml
           flags: mac-server
