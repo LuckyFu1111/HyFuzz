@@ -163,7 +163,7 @@ requests-mock==1.11.0
 pytest-benchmark==4.0.0
 
 # Rich terminal output
-rich==13.7.0
+rich==14.2.0
 
 # More-itertools for functional programming
 more-itertools==10.1.0
