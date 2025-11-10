@@ -84,7 +84,7 @@ sphinx-markdown-parser==0.2.8
 ipython==8.18.1
 
 # Jupyter notebook support
-jupyter==1.0.0
+jupyter==1.1.1
 jupyterlab==4.0.9
 
 # Auto-reload on file changes
