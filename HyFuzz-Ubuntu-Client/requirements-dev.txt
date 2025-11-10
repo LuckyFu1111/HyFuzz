@@ -71,7 +71,7 @@ autopep8==2.3.2
 Sphinx==7.4.7
 
 # ReadTheDocs theme for Sphinx
-sphinx-rtd-theme==2.0.0
+sphinx-rtd-theme==3.0.2
 
 # Markdown support in docstrings
 sphinx-markdown-parser==0.2.8
