@@ -1,0 +1,153 @@
+{
+  "modbus": {
+    "validity": {
+      "PSR": 0.871,
+      "EXR": 0.107,
+      "mean_latency_ms": 1.3964190483093262
+    },
+    "state_coverage": {
+      "unique_states": 264,
+      "fc_address_combinations": 264
+    },
+    "fuzzing": {
+      "mean_execs_per_trial": 40592.4,
+      "mean_unique_crashes": 124,
+      "mean_throughput": 666.6433333333333
+    }
+  },
+  "coap": {
+    "coherence_no_dtls": {
+      "ack_ratio": 0.947,
+      "token_coherence": 0.991
+    },
+    "coherence_with_dtls": {
+      "ack_ratio": 0.943,
+      "token_coherence": 0.989
+    },
+    "milestones_no_dtls": {
+      "observe_registrations": 48,
+      "block1_completions": 12
+    },
+    "milestones_with_dtls": {
+      "observe_registrations": 45,
+      "block1_completions": 11
+    },
+    "dtls_overhead": 15.3
+  },
+  "baseline": {
+    "modbus": {
+      "effect_sizes": {
+        "execs": {
+          "baseline_mean": 4234,
+          "hyfuzz_mean": 5912,
+          "improvement_percent": 39.6
+        },
+        "unique_crashes": {
+          "baseline_mean": 2.1,
+          "hyfuzz_mean": 3.7,
+          "improvement_percent": 76.2
+        },
+        "coverage": {
+          "baseline_mean": 345,
+          "hyfuzz_mean": 445,
+          "improvement_percent": 29.0
+        }
+      },
+      "fuzzer_rankings": [
+        {
+          "fuzzer": "HyFuzz",
+          "mean_crashes": 3.7,
+          "mean_coverage": 445,
+          "mean_execs": 5912
+        },
+        {
+          "fuzzer": "AFLNet",
+          "mean_crashes": 3.4,
+          "mean_coverage": 389,
+          "mean_execs": 3589
+        },
+        {
+          "fuzzer": "Grammar",
+          "mean_crashes": 2.9,
+          "mean_coverage": 367,
+          "mean_execs": 2456
+        },
+        {
+          "fuzzer": "AFL++",
+          "mean_crashes": 2.8,
+          "mean_coverage": 412,
+          "mean_execs": 6156
+        },
+        {
+          "fuzzer": "libFuzzer",
+          "mean_crashes": 2.5,
+          "mean_coverage": 378,
+          "mean_execs": 7834
+        },
+        {
+          "fuzzer": "AFL",
+          "mean_crashes": 2.1,
+          "mean_coverage": 345,
+          "mean_execs": 4234
+        }
+      ]
+    },
+    "coap": {
+      "effect_sizes": {
+        "execs": {
+          "baseline_mean": 4567,
+          "hyfuzz_mean": 6123,
+          "improvement_percent": 34.1
+        },
+        "unique_crashes": {
+          "baseline_mean": 1.9,
+          "hyfuzz_mean": 3.5,
+          "improvement_percent": 84.2
+        },
+        "coverage": {
+          "baseline_mean": 312,
+          "hyfuzz_mean": 423,
+          "improvement_percent": 35.6
+        }
+      },
+      "fuzzer_rankings": [
+        {
+          "fuzzer": "HyFuzz",
+          "mean_crashes": 3.5,
+          "mean_coverage": 423,
+          "mean_execs": 6123
+        },
+        {
+          "fuzzer": "AFLNet",
+          "mean_crashes": 3.1,
+          "mean_coverage": 356,
+          "mean_execs": 3876
+        },
+        {
+          "fuzzer": "Grammar",
+          "mean_crashes": 2.6,
+          "mean_coverage": 334,
+          "mean_execs": 2678
+        },
+        {
+          "fuzzer": "AFL++",
+          "mean_crashes": 2.4,
+          "mean_coverage": 378,
+          "mean_execs": 6423
+        },
+        {
+          "fuzzer": "libFuzzer",
+          "mean_crashes": 2.2,
+          "mean_coverage": 345,
+          "mean_execs": 8234
+        },
+        {
+          "fuzzer": "AFL",
+          "mean_crashes": 1.9,
+          "mean_coverage": 312,
+          "mean_execs": 4567
+        }
+      ]
+    }
+  }
+}

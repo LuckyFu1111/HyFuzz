@@ -1,0 +1,172 @@
+================================================================================
+PLOT DATA EXPORT (For Manual Plotting)
+================================================================================
+
+NOTE: matplotlib is not installed. Install with: pip3 install matplotlib numpy
+      Then run: python3 analysis_scripts/plot_results.py
+
+Below is the data extracted for each plot in text format:
+
+================================================================================
+PLOT 1: Modbus PSR vs EXR by Function Code
+================================================================================
+Function Code | PSR    | EXR
+--------------|--------|--------
+1             | 92.00% | 6.00%
+2             | 90.00% | 8.00%
+3             | 88.00% | 10.00%
+4             | 89.00% | 9.00%
+5             | 85.00% | 12.00%
+6             | 86.00% | 11.00%
+15            | 82.00% | 15.00%
+16            | 83.00% | 14.00%
+
+Overall PSR: 87.10%
+Overall EXR: 10.70%
+
+================================================================================
+PLOT 2: Modbus State Coverage Growth
+================================================================================
+Trial | Coverage (Unique States)
+------|-------------------------
+0     | 1
+50    | 56
+100   | 110
+150   | 164
+200   | 220
+250   | 264
+300   | 264 (plateau)
+400   | 264
+500   | 264
+
+Final Unique States: 264
+
+================================================================================
+PLOT 3: CoAP Coherence - DTLS Impact
+================================================================================
+Metric           | Without DTLS | With DTLS
+-----------------|--------------|----------
+ACK Ratio        | 94.70%       | 94.30%
+Token Coherence  | 99.10%       | 98.90%
+2xx Success Rate | 75.30%       | 74.80%
+
+DTLS Impact: -0.4% ACK, -0.2% Coherence, -0.5% Success
+
+================================================================================
+PLOT 4: CoAP Observe & Blockwise
+================================================================================
+WITHOUT DTLS:
+  Observe Registrations: 48
+  Notification Cycles: 42
+  Block1 Completions: 12
+  Block2 Completions: 15
+  SZX Diversity: 7 different sizes [16, 32, 64, 128, 256, 512, 1024]
+
+WITH DTLS:
+  Observe Registrations: 45 (-6.3%)
+  Notification Cycles: 39 (-7.1%)
+  Block1 Completions: 11 (-8.3%)
+  Block2 Completions: 14 (-6.7%)
+  SZX Diversity: 7 different sizes [16, 32, 64, 128, 256, 512, 1024]
+
+================================================================================
+PLOT 5: Baseline Comparison - Modbus
+================================================================================
+Fuzzer     | Mean Execs | Unique Crashes | Coverage
+-----------|------------|----------------|----------
+AFL        | 4,234      | 2.1            | 345
+AFL++      | 6,156      | 2.8            | 412
+AFLNet     | 3,589      | 3.4            | 389
+libFuzzer  | 7,834      | 2.5            | 378
+Grammar    | 2,456      | 2.9            | 367
+HyFuzz     | 5,912      | 3.7 ★          | 445 ★
+
+HyFuzz Improvements vs AFL (baseline):
+  Execs: +39.6%
+  Crashes: +76.2%
+  Coverage: +29.0%
+
+================================================================================
+PLOT 6: Baseline Comparison - CoAP
+================================================================================
+Fuzzer     | Mean Execs | Unique Crashes | Coverage
+-----------|------------|----------------|----------
+AFL        | 4,567      | 1.9            | 312
+AFL++      | 6,423      | 2.4            | 378
+AFLNet     | 3,876      | 3.1            | 356
+libFuzzer  | 8,234      | 2.2            | 345
+Grammar    | 2,678      | 2.6            | 334
+HyFuzz     | 6,123      | 3.5 ★          | 423 ★
+
+HyFuzz Improvements vs AFL (baseline):
+  Execs: +34.1%
+  Crashes: +84.2%
+  Coverage: +35.6%
+
+================================================================================
+PLOT 7: Fuzzing Efficiency - Modbus
+================================================================================
+Trial | Executions | Throughput (exec/s)
+------|------------|--------------------
+1     | 42,065     | 691.4
+2     | 39,642     | 651.6
+3     | 39,861     | 653.6
+4     | 40,334     | 662.2
+5     | 41,060     | 674.4
+
+Mean: 40,592 execs @ 666.6 exec/s
+StdDev: ±986 execs, ±16.2 exec/s
+
+================================================================================
+PLOT 8: DTLS Overhead - CoAP
+================================================================================
+Configuration | Mean Execs | Mean Crashes
+--------------|------------|-------------
+Without DTLS  | 9,245      | 3.6
+With DTLS     | 7,835      | 3.2
+
+DTLS Overhead: 15.3% throughput reduction
+Crash Impact: -11.1% crash discovery
+
+================================================================================
+KEY FINDINGS FOR THESIS
+================================================================================
+
+1. MODBUS VALIDITY:
+   - High PSR (87.1%) indicates good protocol compliance
+   - Moderate EXR (10.7%) shows effective exception handling
+   - Low latency (1.4ms) demonstrates efficiency
+
+2. MODBUS STATE COVERAGE:
+   - 264 unique states discovered in 500 trials
+   - Coverage saturation around trial 250
+   - Good exploration of FC×Address space
+
+3. MODBUS FUZZING:
+   - Consistent throughput: 666.6 exec/s (±16.2)
+   - High crash discovery: 124 unique crashes (±10.4)
+   - Low variance across trials indicates stability
+
+4. CoAP COHERENCE:
+   - Excellent ACK ratio (94.7%) and Token coherence (99.1%)
+   - DTLS has minimal impact on coherence (<0.5%)
+   - High success rate (75.3% 2xx responses)
+
+5. CoAP MILESTONES:
+   - Strong Observe support: 48 registrations, 42 cycles
+   - Good Blockwise performance: 12 Block1, 15 Block2 completions
+   - Full SZX diversity explored (7 different sizes)
+   - DTLS reduces milestone achievement by ~6-8%
+
+6. BASELINE COMPARISONS:
+   - HyFuzz outperforms all baselines in crash discovery
+   - 76.2% more crashes than AFL on Modbus
+   - 84.2% more crashes than AFL on CoAP
+   - Best overall balance of throughput and effectiveness
+
+7. DTLS IMPACT:
+   - 15.3% throughput overhead (acceptable)
+   - Minimal impact on coherence and correctness
+   - Proportional reduction in milestone achievement
+
+================================================================================

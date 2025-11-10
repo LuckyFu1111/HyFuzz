@@ -1,0 +1,13 @@
+{
+  "comparison": {
+    "no_dtls": {
+      "mean_execs": 9245.3,
+      "mean_crashes": 3.6
+    },
+    "with_dtls": {
+      "mean_execs": 7834.7,
+      "mean_crashes": 3.2
+    },
+    "dtls_overhead_percent": 15.3
+  }
+}

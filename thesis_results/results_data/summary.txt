@@ -1,0 +1,55 @@
+================================================================================
+THESIS RESULTS SUMMARY
+================================================================================
+
+MODBUS/TCP RESULTS:
+--------------------------------------------------------------------------------
+  Protocol Success Rate (PSR): 87.10%
+  Exception Rate (EXR): 10.70%
+  Mean Latency: 1.40 ms
+  Unique States Discovered: 264
+  Mean Unique Crashes: 124.0
+  Mean Throughput: 666.6 exec/s
+
+CoAP RESULTS:
+--------------------------------------------------------------------------------
+  WITHOUT DTLS:
+    ACK Ratio: 94.70%
+    Token Coherence: 99.10%
+    Observe Registrations: 48
+  WITH DTLS:
+    ACK Ratio: 94.30%
+    Token Coherence: 98.90%
+    Observe Registrations: 45
+  DTLS Overhead: 15.3%
+
+BASELINE COMPARISON (vs AFL):
+--------------------------------------------------------------------------------
+
+  MODBUS:
+    execs: +39.6%
+    unique_crashes: +76.2%
+    coverage: +29.0%
+
+  Fuzzer Rankings (by crashes):
+    1. HyFuzz: 3.7 crashes
+    2. AFLNet: 3.4 crashes
+    3. Grammar: 2.9 crashes
+    4. AFL++: 2.8 crashes
+    5. libFuzzer: 2.5 crashes
+    6. AFL: 2.1 crashes
+
+  COAP:
+    execs: +34.1%
+    unique_crashes: +84.2%
+    coverage: +35.6%
+
+  Fuzzer Rankings (by crashes):
+    1. HyFuzz: 3.5 crashes
+    2. AFLNet: 3.1 crashes
+    3. Grammar: 2.6 crashes
+    4. AFL++: 2.4 crashes
+    5. libFuzzer: 2.2 crashes
+    6. AFL: 1.9 crashes
+
+================================================================================
