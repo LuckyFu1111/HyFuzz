@@ -1,0 +1,753 @@
+{
+  "test_date": "2025-11-10 15:59:21",
+  "protocols": {
+    "Modbus": [
+      {
+        "protocol_name": "Modbus",
+        "version": "TCP",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 52241,
+            "crashes_found": 166,
+            "unique_bugs": 166,
+            "version_specific_bugs": 46,
+            "throughput": 870.6755039109177,
+            "bug_density": 0.003
+          },
+          {
+            "executions": 52013,
+            "crashes_found": 148,
+            "unique_bugs": 148,
+            "version_specific_bugs": 36,
+            "throughput": 866.8743117975291,
+            "bug_density": 0.003
+          },
+          {
+            "executions": 52340,
+            "crashes_found": 179,
+            "unique_bugs": 179,
+            "version_specific_bugs": 51,
+            "throughput": 872.3277144303914,
+            "bug_density": 0.003
+          },
+          {
+            "executions": 51910,
+            "crashes_found": 151,
+            "unique_bugs": 151,
+            "version_specific_bugs": 43,
+            "throughput": 865.1595537856548,
+            "bug_density": 0.003
+          },
+          {
+            "executions": 51521,
+            "crashes_found": 162,
+            "unique_bugs": 162,
+            "version_specific_bugs": 60,
+            "throughput": 858.6790477558613,
+            "bug_density": 0.003
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 52005,
+            "stdev": 320.6501208482542,
+            "min": 51521,
+            "max": 52340
+          },
+          "crashes_found": {
+            "mean": 161.2,
+            "stdev": 12.437845472588892,
+            "min": 148,
+            "max": 179
+          },
+          "unique_bugs": {
+            "mean": 161.2,
+            "stdev": 12.437845472588892,
+            "min": 148,
+            "max": 179
+          },
+          "version_specific_bugs": {
+            "mean": 47.2,
+            "stdev": 8.983317872590282,
+            "min": 36,
+            "max": 60
+          },
+          "throughput": {
+            "mean": 866.7432263360708,
+            "stdev": 5.343348494153929,
+            "min": 858.6790477558613,
+            "max": 872.3277144303914
+          }
+        }
+      },
+      {
+        "protocol_name": "Modbus",
+        "version": "RTU",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 51038,
+            "crashes_found": 104,
+            "unique_bugs": 104,
+            "version_specific_bugs": 33,
+            "throughput": 850.623385776582,
+            "bug_density": 0.002
+          },
+          {
+            "executions": 51133,
+            "crashes_found": 96,
+            "unique_bugs": 96,
+            "version_specific_bugs": 29,
+            "throughput": 852.2063653478488,
+            "bug_density": 0.002
+          },
+          {
+            "executions": 51695,
+            "crashes_found": 96,
+            "unique_bugs": 96,
+            "version_specific_bugs": 32,
+            "throughput": 861.573908198002,
+            "bug_density": 0.002
+          },
+          {
+            "executions": 51095,
+            "crashes_found": 109,
+            "unique_bugs": 109,
+            "version_specific_bugs": 29,
+            "throughput": 851.5803216835408,
+            "bug_density": 0.002
+          },
+          {
+            "executions": 50634,
+            "crashes_found": 106,
+            "unique_bugs": 106,
+            "version_specific_bugs": 40,
+            "throughput": 843.8906777696443,
+            "bug_density": 0.002
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 51119,
+            "stdev": 378.9241348871829,
+            "min": 50634,
+            "max": 51695
+          },
+          "crashes_found": {
+            "mean": 102.2,
+            "stdev": 5.932958789676531,
+            "min": 96,
+            "max": 109
+          },
+          "unique_bugs": {
+            "mean": 102.2,
+            "stdev": 5.932958789676531,
+            "min": 96,
+            "max": 109
+          },
+          "version_specific_bugs": {
+            "mean": 32.6,
+            "stdev": 4.505552130427524,
+            "min": 29,
+            "max": 40
+          },
+          "throughput": {
+            "mean": 851.9749317551235,
+            "stdev": 6.3152883228166985,
+            "min": 843.8906777696443,
+            "max": 861.573908198002
+          }
+        }
+      },
+      {
+        "protocol_name": "Modbus",
+        "version": "ASCII",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 51208,
+            "crashes_found": 122,
+            "unique_bugs": 122,
+            "version_specific_bugs": 39,
+            "throughput": 853.4645775867311,
+            "bug_density": 0.0025
+          },
+          {
+            "executions": 49967,
+            "crashes_found": 119,
+            "unique_bugs": 119,
+            "version_specific_bugs": 37,
+            "throughput": 832.7685977992774,
+            "bug_density": 0.0025
+          },
+          {
+            "executions": 50994,
+            "crashes_found": 126,
+            "unique_bugs": 126,
+            "version_specific_bugs": 34,
+            "throughput": 849.8931038152457,
+            "bug_density": 0.0025
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 50723,
+            "stdev": 663.4010853171707,
+            "min": 49967,
+            "max": 51208
+          },
+          "crashes_found": {
+            "mean": 122.33333333333333,
+            "stdev": 3.511884584284246,
+            "min": 119,
+            "max": 126
+          },
+          "unique_bugs": {
+            "mean": 122.33333333333333,
+            "stdev": 3.511884584284246,
+            "min": 119,
+            "max": 126
+          },
+          "version_specific_bugs": {
+            "mean": 36.666666666666664,
+            "stdev": 2.516611478423583,
+            "min": 34,
+            "max": 39
+          },
+          "throughput": {
+            "mean": 845.3754264004181,
+            "stdev": 11.062908829010867,
+            "min": 832.7685977992774,
+            "max": 853.4645775867311
+          }
+        }
+      }
+    ],
+    "CoAP": [
+      {
+        "protocol_name": "CoAP",
+        "version": "RFC 7252",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 49921,
+            "crashes_found": 127,
+            "unique_bugs": 127,
+            "version_specific_bugs": 36,
+            "throughput": 832.0063053617438,
+            "bug_density": 0.0025
+          },
+          {
+            "executions": 50399,
+            "crashes_found": 132,
+            "unique_bugs": 132,
+            "version_specific_bugs": 36,
+            "throughput": 839.9718982071747,
+            "bug_density": 0.0025
+          },
+          {
+            "executions": 50951,
+            "crashes_found": 121,
+            "unique_bugs": 121,
+            "version_specific_bugs": 41,
+            "throughput": 849.1696573073822,
+            "bug_density": 0.0025
+          },
+          {
+            "executions": 50132,
+            "crashes_found": 128,
+            "unique_bugs": 128,
+            "version_specific_bugs": 40,
+            "throughput": 835.5292662169492,
+            "bug_density": 0.0025
+          },
+          {
+            "executions": 51229,
+            "crashes_found": 136,
+            "unique_bugs": 136,
+            "version_specific_bugs": 42,
+            "throughput": 853.8046360999758,
+            "bug_density": 0.0025
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 50526.4,
+            "stdev": 550.5050408488554,
+            "min": 49921,
+            "max": 51229
+          },
+          "crashes_found": {
+            "mean": 128.8,
+            "stdev": 5.630275304103699,
+            "min": 121,
+            "max": 136
+          },
+          "unique_bugs": {
+            "mean": 128.8,
+            "stdev": 5.630275304103699,
+            "min": 121,
+            "max": 136
+          },
+          "version_specific_bugs": {
+            "mean": 39,
+            "stdev": 2.8284271247461903,
+            "min": 36,
+            "max": 42
+          },
+          "throughput": {
+            "mean": 842.0963526386452,
+            "stdev": 9.172847503626794,
+            "min": 832.0063053617438,
+            "max": 853.8046360999758
+          }
+        }
+      },
+      {
+        "protocol_name": "CoAP",
+        "version": "Draft-23",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 51397,
+            "crashes_found": 173,
+            "unique_bugs": 173,
+            "version_specific_bugs": 54,
+            "throughput": 856.6036435860779,
+            "bug_density": 0.0035
+          },
+          {
+            "executions": 51945,
+            "crashes_found": 188,
+            "unique_bugs": 188,
+            "version_specific_bugs": 53,
+            "throughput": 865.7443581392473,
+            "bug_density": 0.0035
+          },
+          {
+            "executions": 51652,
+            "crashes_found": 174,
+            "unique_bugs": 174,
+            "version_specific_bugs": 44,
+            "throughput": 860.8600611973676,
+            "bug_density": 0.0035
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 51664.666666666664,
+            "stdev": 274.2194984557687,
+            "min": 51397,
+            "max": 51945
+          },
+          "crashes_found": {
+            "mean": 178.33333333333334,
+            "stdev": 8.386497083606082,
+            "min": 173,
+            "max": 188
+          },
+          "unique_bugs": {
+            "mean": 178.33333333333334,
+            "stdev": 8.386497083606082,
+            "min": 173,
+            "max": 188
+          },
+          "version_specific_bugs": {
+            "mean": 50.333333333333336,
+            "stdev": 5.507570547286102,
+            "min": 44,
+            "max": 54
+          },
+          "throughput": {
+            "mean": 861.0693543075643,
+            "stdev": 4.573949971317224,
+            "min": 856.6036435860779,
+            "max": 865.7443581392473
+          }
+        }
+      },
+      {
+        "protocol_name": "CoAP",
+        "version": "RFC 7252 + Observe",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 51336,
+            "crashes_found": 153,
+            "unique_bugs": 153,
+            "version_specific_bugs": 44,
+            "throughput": 855.5915140612161,
+            "bug_density": 0.003
+          },
+          {
+            "executions": 51649,
+            "crashes_found": 169,
+            "unique_bugs": 169,
+            "version_specific_bugs": 46,
+            "throughput": 860.8043253977854,
+            "bug_density": 0.003
+          },
+          {
+            "executions": 51653,
+            "crashes_found": 151,
+            "unique_bugs": 151,
+            "version_specific_bugs": 45,
+            "throughput": 860.8800459157462,
+            "bug_density": 0.003
+          },
+          {
+            "executions": 50634,
+            "crashes_found": 146,
+            "unique_bugs": 146,
+            "version_specific_bugs": 46,
+            "throughput": 843.8967942025849,
+            "bug_density": 0.003
+          },
+          {
+            "executions": 50347,
+            "crashes_found": 151,
+            "unique_bugs": 151,
+            "version_specific_bugs": 48,
+            "throughput": 839.1060068849563,
+            "bug_density": 0.003
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 51123.8,
+            "stdev": 600.8824344245719,
+            "min": 50347,
+            "max": 51653
+          },
+          "crashes_found": {
+            "mean": 154,
+            "stdev": 8.774964387392123,
+            "min": 146,
+            "max": 169
+          },
+          "unique_bugs": {
+            "mean": 154,
+            "stdev": 8.774964387392123,
+            "min": 146,
+            "max": 169
+          },
+          "version_specific_bugs": {
+            "mean": 45.8,
+            "stdev": 1.4832396974191326,
+            "min": 44,
+            "max": 48
+          },
+          "throughput": {
+            "mean": 852.0557372924578,
+            "stdev": 10.014636836213366,
+            "min": 839.1060068849563,
+            "max": 860.8800459157462
+          }
+        }
+      },
+      {
+        "protocol_name": "CoAP",
+        "version": "RFC 7252 + Blockwise",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 50684,
+            "crashes_found": 198,
+            "unique_bugs": 198,
+            "version_specific_bugs": 59,
+            "throughput": 844.7222564719266,
+            "bug_density": 0.0032
+          },
+          {
+            "executions": 51392,
+            "crashes_found": 149,
+            "unique_bugs": 149,
+            "version_specific_bugs": 53,
+            "throughput": 856.5241812645459,
+            "bug_density": 0.0032
+          },
+          {
+            "executions": 49947,
+            "crashes_found": 157,
+            "unique_bugs": 157,
+            "version_specific_bugs": 51,
+            "throughput": 832.44553772199,
+            "bug_density": 0.0032
+          },
+          {
+            "executions": 51050,
+            "crashes_found": 158,
+            "unique_bugs": 158,
+            "version_specific_bugs": 53,
+            "throughput": 850.8189985253265,
+            "bug_density": 0.0032
+          },
+          {
+            "executions": 50654,
+            "crashes_found": 166,
+            "unique_bugs": 166,
+            "version_specific_bugs": 61,
+            "throughput": 844.224440165397,
+            "bug_density": 0.0032
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 50745.4,
+            "stdev": 538.6184178061496,
+            "min": 49947,
+            "max": 51392
+          },
+          "crashes_found": {
+            "mean": 165.6,
+            "stdev": 19.086644545335883,
+            "min": 149,
+            "max": 198
+          },
+          "unique_bugs": {
+            "mean": 165.6,
+            "stdev": 19.086644545335883,
+            "min": 149,
+            "max": 198
+          },
+          "version_specific_bugs": {
+            "mean": 55.4,
+            "stdev": 4.33589667773576,
+            "min": 51,
+            "max": 61
+          },
+          "throughput": {
+            "mean": 845.7470828298372,
+            "stdev": 8.97454722391449,
+            "min": 832.44553772199,
+            "max": 856.5241812645459
+          }
+        }
+      }
+    ],
+    "DTLS": [
+      {
+        "protocol_name": "DTLS",
+        "version": "1.0",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 51580,
+            "crashes_found": 206,
+            "unique_bugs": 206,
+            "version_specific_bugs": 75,
+            "throughput": 859.6606716136985,
+            "bug_density": 0.004
+          },
+          {
+            "executions": 51691,
+            "crashes_found": 243,
+            "unique_bugs": 243,
+            "version_specific_bugs": 75,
+            "throughput": 861.5041168129752,
+            "bug_density": 0.004
+          },
+          {
+            "executions": 51547,
+            "crashes_found": 206,
+            "unique_bugs": 206,
+            "version_specific_bugs": 57,
+            "throughput": 859.1144203770614,
+            "bug_density": 0.004
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 51606,
+            "stdev": 75.43871685016919,
+            "min": 51547,
+            "max": 51691
+          },
+          "crashes_found": {
+            "mean": 218.33333333333334,
+            "stdev": 21.361959960016154,
+            "min": 206,
+            "max": 243
+          },
+          "unique_bugs": {
+            "mean": 218.33333333333334,
+            "stdev": 21.361959960016154,
+            "min": 206,
+            "max": 243
+          },
+          "version_specific_bugs": {
+            "mean": 69,
+            "stdev": 10.392304845413264,
+            "min": 57,
+            "max": 75
+          },
+          "throughput": {
+            "mean": 860.093069601245,
+            "stdev": 1.252153456522223,
+            "min": 859.1144203770614,
+            "max": 861.5041168129752
+          }
+        }
+      },
+      {
+        "protocol_name": "DTLS",
+        "version": "1.2",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 51435,
+            "crashes_found": 153,
+            "unique_bugs": 153,
+            "version_specific_bugs": 47,
+            "throughput": 857.2439809238343,
+            "bug_density": 0.0028
+          },
+          {
+            "executions": 51980,
+            "crashes_found": 155,
+            "unique_bugs": 155,
+            "version_specific_bugs": 48,
+            "throughput": 866.3201969549195,
+            "bug_density": 0.0028
+          },
+          {
+            "executions": 51276,
+            "crashes_found": 153,
+            "unique_bugs": 153,
+            "version_specific_bugs": 45,
+            "throughput": 854.5961490947681,
+            "bug_density": 0.0028
+          },
+          {
+            "executions": 51412,
+            "crashes_found": 129,
+            "unique_bugs": 129,
+            "version_specific_bugs": 40,
+            "throughput": 856.8657950177053,
+            "bug_density": 0.0028
+          },
+          {
+            "executions": 50708,
+            "crashes_found": 129,
+            "unique_bugs": 129,
+            "version_specific_bugs": 47,
+            "throughput": 845.1224997314448,
+            "bug_density": 0.0028
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 51362.2,
+            "stdev": 454.1103390146496,
+            "min": 50708,
+            "max": 51980
+          },
+          "crashes_found": {
+            "mean": 143.8,
+            "stdev": 13.535139452550904,
+            "min": 129,
+            "max": 155
+          },
+          "unique_bugs": {
+            "mean": 143.8,
+            "stdev": 13.535139452550904,
+            "min": 129,
+            "max": 155
+          },
+          "version_specific_bugs": {
+            "mean": 45.4,
+            "stdev": 3.2093613071762426,
+            "min": 40,
+            "max": 48
+          },
+          "throughput": {
+            "mean": 856.0297243445344,
+            "stdev": 7.567858787548933,
+            "min": 845.1224997314448,
+            "max": 866.3201969549195
+          }
+        }
+      },
+      {
+        "protocol_name": "DTLS",
+        "version": "1.3",
+        "duration_seconds": 60,
+        "trials": [
+          {
+            "executions": 49732,
+            "crashes_found": 76,
+            "unique_bugs": 76,
+            "version_specific_bugs": 25,
+            "throughput": 828.858103342578,
+            "bug_density": 0.0015
+          },
+          {
+            "executions": 50136,
+            "crashes_found": 85,
+            "unique_bugs": 85,
+            "version_specific_bugs": 21,
+            "throughput": 835.5844476479182,
+            "bug_density": 0.0015
+          },
+          {
+            "executions": 50551,
+            "crashes_found": 67,
+            "unique_bugs": 67,
+            "version_specific_bugs": 21,
+            "throughput": 842.505297486026,
+            "bug_density": 0.0015
+          },
+          {
+            "executions": 50786,
+            "crashes_found": 70,
+            "unique_bugs": 70,
+            "version_specific_bugs": 18,
+            "throughput": 846.4077249987199,
+            "bug_density": 0.0015
+          },
+          {
+            "executions": 51161,
+            "crashes_found": 68,
+            "unique_bugs": 68,
+            "version_specific_bugs": 23,
+            "throughput": 852.6701227155985,
+            "bug_density": 0.0015
+          }
+        ],
+        "aggregate": {
+          "executions": {
+            "mean": 50473.2,
+            "stdev": 556.7869430940349,
+            "min": 49732,
+            "max": 51161
+          },
+          "crashes_found": {
+            "mean": 73.2,
+            "stdev": 7.463243262818116,
+            "min": 67,
+            "max": 85
+          },
+          "unique_bugs": {
+            "mean": 73.2,
+            "stdev": 7.463243262818116,
+            "min": 67,
+            "max": 85
+          },
+          "version_specific_bugs": {
+            "mean": 21.6,
+            "stdev": 2.6076809620810595,
+            "min": 18,
+            "max": 25
+          },
+          "throughput": {
+            "mean": 841.2051392381682,
+            "stdev": 9.27691524110813,
+            "min": 828.858103342578,
+            "max": 852.6701227155985
+          }
+        }
+      }
+    ]
+  }
+}

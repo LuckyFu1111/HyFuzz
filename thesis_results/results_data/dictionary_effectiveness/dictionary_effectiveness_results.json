@@ -1,0 +1,430 @@
+{
+  "test_date": "2025-11-10 15:44:09",
+  "dictionaries": {
+    "none": {
+      "dictionary_name": "none",
+      "dictionary_size": 0,
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "executions": 50566,
+          "crashes_found": 136,
+          "unique_crashes": 136,
+          "coverage": 13719,
+          "throughput": 842.7583816836823,
+          "crashes_per_1k_execs": 2.6895542459360042
+        },
+        {
+          "executions": 50484,
+          "crashes_found": 141,
+          "unique_crashes": 141,
+          "coverage": 13903,
+          "throughput": 841.3868170888433,
+          "crashes_per_1k_execs": 2.7929641074399814
+        },
+        {
+          "executions": 50782,
+          "crashes_found": 144,
+          "unique_crashes": 144,
+          "coverage": 14383,
+          "throughput": 846.3629941130099,
+          "crashes_per_1k_execs": 2.8356504273167658
+        },
+        {
+          "executions": 51434,
+          "crashes_found": 149,
+          "unique_crashes": 149,
+          "coverage": 14072,
+          "throughput": 857.2037366737209,
+          "crashes_per_1k_execs": 2.8969164365983593
+        },
+        {
+          "executions": 50987,
+          "crashes_found": 154,
+          "unique_crashes": 154,
+          "coverage": 13941,
+          "throughput": 849.7815335370803,
+          "crashes_per_1k_execs": 3.020377743346343
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 50850.6,
+          "stdev": 380.479697224438,
+          "min": 50484,
+          "max": 51434
+        },
+        "crashes_found": {
+          "mean": 144.8,
+          "stdev": 6.97853852894716,
+          "min": 136,
+          "max": 154
+        },
+        "unique_crashes": {
+          "mean": 144.8,
+          "stdev": 6.97853852894716,
+          "min": 136,
+          "max": 154
+        },
+        "coverage": {
+          "mean": 14003.6,
+          "stdev": 246.8092380766976,
+          "min": 13719,
+          "max": 14383
+        },
+        "throughput": {
+          "mean": 847.4986926192673,
+          "stdev": 6.334718307025667,
+          "min": 841.3868170888433,
+          "max": 857.2037366737209
+        },
+        "crashes_per_1k_execs": {
+          "mean": 2.8470925921274906,
+          "stdev": 0.12287117809078354,
+          "min": 2.6895542459360042,
+          "max": 3.020377743346343
+        }
+      }
+    },
+    "protocol_keywords": {
+      "dictionary_name": "protocol_keywords",
+      "dictionary_size": 138,
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "executions": 51017,
+          "crashes_found": 177,
+          "unique_crashes": 177,
+          "coverage": 18174,
+          "throughput": 850.2806134704994,
+          "crashes_per_1k_execs": 3.4694317580414373
+        },
+        {
+          "executions": 51638,
+          "crashes_found": 187,
+          "unique_crashes": 187,
+          "coverage": 18271,
+          "throughput": 860.6275025292563,
+          "crashes_per_1k_execs": 3.6213641117006854
+        },
+        {
+          "executions": 51368,
+          "crashes_found": 210,
+          "unique_crashes": 210,
+          "coverage": 19196,
+          "throughput": 856.1330747838272,
+          "crashes_per_1k_execs": 4.088148263510357
+        },
+        {
+          "executions": 51021,
+          "crashes_found": 184,
+          "unique_crashes": 184,
+          "coverage": 18243,
+          "throughput": 850.3401773973477,
+          "crashes_per_1k_execs": 3.6063581662452715
+        },
+        {
+          "executions": 50336,
+          "crashes_found": 141,
+          "unique_crashes": 141,
+          "coverage": 17626,
+          "throughput": 838.92870962572,
+          "crashes_per_1k_execs": 2.801176096630642
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 51076,
+          "stdev": 488.6752500383051,
+          "min": 50336,
+          "max": 51638
+        },
+        "crashes_found": {
+          "mean": 179.8,
+          "stdev": 24.973986465920895,
+          "min": 141,
+          "max": 210
+        },
+        "unique_crashes": {
+          "mean": 179.8,
+          "stdev": 24.973986465920895,
+          "min": 141,
+          "max": 210
+        },
+        "coverage": {
+          "mean": 18302,
+          "stdev": 565.0305301485929,
+          "min": 17626,
+          "max": 19196
+        },
+        "throughput": {
+          "mean": 851.2620155613301,
+          "stdev": 8.14498212185401,
+          "min": 838.92870962572,
+          "max": 860.6275025292563
+        },
+        "crashes_per_1k_execs": {
+          "mean": 3.5172956792256787,
+          "stdev": 0.46361440059160064,
+          "min": 2.801176096630642,
+          "max": 4.088148263510357
+        }
+      }
+    },
+    "protocol_with_values": {
+      "dictionary_name": "protocol_with_values",
+      "dictionary_size": 155,
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "executions": 50310,
+          "crashes_found": 188,
+          "unique_crashes": 188,
+          "coverage": 18776,
+          "throughput": 838.4953753488024,
+          "crashes_per_1k_execs": 3.736831643808388
+        },
+        {
+          "executions": 49887,
+          "crashes_found": 176,
+          "unique_crashes": 176,
+          "coverage": 17873,
+          "throughput": 831.4376667785244,
+          "crashes_per_1k_execs": 3.527973219476016
+        },
+        {
+          "executions": 50409,
+          "crashes_found": 179,
+          "unique_crashes": 179,
+          "coverage": 18320,
+          "throughput": 840.1452260348271,
+          "crashes_per_1k_execs": 3.550953202801087
+        },
+        {
+          "executions": 50565,
+          "crashes_found": 164,
+          "unique_crashes": 164,
+          "coverage": 17198,
+          "throughput": 842.737850773642,
+          "crashes_per_1k_execs": 3.2433501433798084
+        },
+        {
+          "executions": 50198,
+          "crashes_found": 170,
+          "unique_crashes": 170,
+          "coverage": 18215,
+          "throughput": 836.6207603306947,
+          "crashes_per_1k_execs": 3.3865891071357423
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 50273.8,
+          "stdev": 254.82680392768734,
+          "min": 49887,
+          "max": 50565
+        },
+        "crashes_found": {
+          "mean": 175.4,
+          "stdev": 9.09945053286186,
+          "min": 164,
+          "max": 188
+        },
+        "unique_crashes": {
+          "mean": 175.4,
+          "stdev": 9.09945053286186,
+          "min": 164,
+          "max": 188
+        },
+        "coverage": {
+          "mean": 18076.4,
+          "stdev": 587.5689746744632,
+          "min": 17198,
+          "max": 18776
+        },
+        "throughput": {
+          "mean": 837.8873758532982,
+          "stdev": 4.248462069177711,
+          "min": 831.4376667785244,
+          "max": 842.737850773642
+        },
+        "crashes_per_1k_execs": {
+          "mean": 3.489139463320208,
+          "stdev": 0.18547869192382496,
+          "min": 3.2433501433798084,
+          "max": 3.736831643808388
+        }
+      }
+    },
+    "learned": {
+      "dictionary_name": "learned",
+      "dictionary_size": 10,
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "executions": 51190,
+          "crashes_found": 189,
+          "unique_crashes": 189,
+          "coverage": 18739,
+          "throughput": 853.1581574003892,
+          "crashes_per_1k_execs": 3.692127368626685
+        },
+        {
+          "executions": 51560,
+          "crashes_found": 164,
+          "unique_crashes": 164,
+          "coverage": 18017,
+          "throughput": 859.3186641018351,
+          "crashes_per_1k_execs": 3.1807602792862686
+        },
+        {
+          "executions": 51903,
+          "crashes_found": 175,
+          "unique_crashes": 175,
+          "coverage": 18133,
+          "throughput": 865.044830181501,
+          "crashes_per_1k_execs": 3.371674084349652
+        },
+        {
+          "executions": 51619,
+          "crashes_found": 197,
+          "unique_crashes": 197,
+          "coverage": 18472,
+          "throughput": 860.3025857196228,
+          "crashes_per_1k_execs": 3.8164241848931595
+        },
+        {
+          "executions": 51025,
+          "crashes_found": 208,
+          "unique_crashes": 208,
+          "coverage": 17475,
+          "throughput": 850.4146188447514,
+          "crashes_per_1k_execs": 4.076433121019108
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 51459.4,
+          "stdev": 351.30229148128257,
+          "min": 51025,
+          "max": 51903
+        },
+        "crashes_found": {
+          "mean": 186.6,
+          "stdev": 17.4441967427566,
+          "min": 164,
+          "max": 208
+        },
+        "unique_crashes": {
+          "mean": 186.6,
+          "stdev": 17.4441967427566,
+          "min": 164,
+          "max": 208
+        },
+        "coverage": {
+          "mean": 18167.2,
+          "stdev": 480.2938683764347,
+          "min": 17475,
+          "max": 18739
+        },
+        "throughput": {
+          "mean": 857.64777124962,
+          "stdev": 5.853023361107934,
+          "min": 850.4146188447514,
+          "max": 865.044830181501
+        },
+        "crashes_per_1k_execs": {
+          "mean": 3.6274838076349747,
+          "stdev": 0.35582062455395613,
+          "min": 3.1807602792862686,
+          "max": 4.076433121019108
+        }
+      }
+    },
+    "combined": {
+      "dictionary_name": "combined",
+      "dictionary_size": 149,
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "executions": 50376,
+          "crashes_found": 178,
+          "unique_crashes": 178,
+          "coverage": 17733,
+          "throughput": 839.594408447629,
+          "crashes_per_1k_execs": 3.5334286168016518
+        },
+        {
+          "executions": 50658,
+          "crashes_found": 177,
+          "unique_crashes": 177,
+          "coverage": 17927,
+          "throughput": 844.2992988167069,
+          "crashes_per_1k_execs": 3.4940187137273484
+        },
+        {
+          "executions": 51010,
+          "crashes_found": 192,
+          "unique_crashes": 192,
+          "coverage": 18163,
+          "throughput": 850.1630620797982,
+          "crashes_per_1k_execs": 3.763967849441286
+        },
+        {
+          "executions": 50857,
+          "crashes_found": 185,
+          "unique_crashes": 185,
+          "coverage": 17653,
+          "throughput": 847.6078624766965,
+          "crashes_per_1k_execs": 3.637650667558055
+        },
+        {
+          "executions": 50265,
+          "crashes_found": 167,
+          "unique_crashes": 167,
+          "coverage": 18058,
+          "throughput": 837.7480026531156,
+          "crashes_per_1k_execs": 3.3223913259723465
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 50633.2,
+          "stdev": 314.0074839872451,
+          "min": 50265,
+          "max": 51010
+        },
+        "crashes_found": {
+          "mean": 179.8,
+          "stdev": 9.364827814754525,
+          "min": 167,
+          "max": 192
+        },
+        "unique_crashes": {
+          "mean": 179.8,
+          "stdev": 9.364827814754525,
+          "min": 167,
+          "max": 192
+        },
+        "coverage": {
+          "mean": 17906.8,
+          "stdev": 214.20130718555384,
+          "min": 17653,
+          "max": 18163
+        },
+        "throughput": {
+          "mean": 843.8825268947893,
+          "stdev": 5.232525531027461,
+          "min": 837.7480026531156,
+          "max": 850.1630620797982
+        },
+        "crashes_per_1k_execs": {
+          "mean": 3.5502914347001373,
+          "stdev": 0.16483224737096566,
+          "min": 3.3223913259723465,
+          "max": 3.763967849441286
+        }
+      }
+    }
+  }
+}
