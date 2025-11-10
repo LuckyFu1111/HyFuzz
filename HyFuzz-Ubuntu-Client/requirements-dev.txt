@@ -91,7 +91,7 @@ jupyterlab==4.0.9
 watchdog==3.0.0
 
 # Environment file management
-python-dotenv==1.0.0
+python-dotenv==1.2.1
 
 # ============================================================================
 # DEBUGGING & PROFILING
