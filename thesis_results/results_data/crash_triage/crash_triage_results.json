@@ -1,0 +1,3171 @@
+{
+  "triage_date": "2025-11-10 12:01:31",
+  "total_crashes": 150,
+  "unique_crashes": 146,
+  "crash_groups": [
+    {
+      "group_id": "group_1",
+      "crashes": [
+        {
+          "id": "crash_1",
+          "type": "exception",
+          "function_code": 6,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762774995.8746088,
+          "signature": "exception_6_buffer overflow detected_03e4ad7d"
+        },
+        {
+          "id": "crash_69",
+          "type": "exception",
+          "function_code": 5,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762774805.874766,
+          "signature": "exception_5_buffer overflow detected_9979dad1"
+        },
+        {
+          "id": "crash_146",
+          "type": "exception",
+          "function_code": 7,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762774992.8749423,
+          "signature": "exception_7_buffer overflow detected_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_1",
+        "type": "exception",
+        "function_code": 6,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_1",
+        "timestamp": 1762774995.8746088,
+        "signature": "exception_6_buffer overflow detected_03e4ad7d"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_2",
+      "crashes": [
+        {
+          "id": "crash_2",
+          "type": "timeout",
+          "function_code": 8,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762773705.8746152,
+          "signature": "timeout_8_buffer overflow detected_ad9fa0b4"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_2",
+        "type": "timeout",
+        "function_code": 8,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_4",
+        "timestamp": 1762773705.8746152,
+        "signature": "timeout_8_buffer overflow detected_ad9fa0b4"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_3",
+      "crashes": [
+        {
+          "id": "crash_3",
+          "type": "exception",
+          "function_code": 6,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762774608.8746195,
+          "signature": "exception_6_stack overflow_e682984e"
+        },
+        {
+          "id": "crash_13",
+          "type": "exception",
+          "function_code": 7,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762773762.8746436,
+          "signature": "exception_7_stack overflow_14cf195b"
+        },
+        {
+          "id": "crash_44",
+          "type": "exception",
+          "function_code": 6,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762775707.8747115,
+          "signature": "exception_6_stack overflow_f1ce1a23"
+        },
+        {
+          "id": "crash_54",
+          "type": "exception",
+          "function_code": 4,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762772501.874732,
+          "signature": "exception_4_stack overflow_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_3",
+        "type": "exception",
+        "function_code": 6,
+        "error": "stack overflow",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762774608.8746195,
+        "signature": "exception_6_stack overflow_e682984e"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_6",
+      "crashes": [
+        {
+          "id": "crash_6",
+          "type": "timeout",
+          "function_code": 14,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762774456.8746266,
+          "signature": "timeout_14_buffer overflow detected_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_6",
+        "type": "timeout",
+        "function_code": 14,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_0",
+        "timestamp": 1762774456.8746266,
+        "signature": "timeout_14_buffer overflow detected_14cf195b"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_9",
+      "crashes": [
+        {
+          "id": "crash_9",
+          "type": "exception",
+          "function_code": 12,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762774656.8746357,
+          "signature": "exception_12_buffer overflow detected_b8d55ea5"
+        },
+        {
+          "id": "crash_115",
+          "type": "exception",
+          "function_code": 11,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762775445.8748672,
+          "signature": "exception_11_buffer overflow detected_83d3cf60"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_9",
+        "type": "exception",
+        "function_code": 12,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762774656.8746357,
+        "signature": "exception_12_buffer overflow detected_b8d55ea5"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_13",
+      "crashes": [
+        {
+          "id": "crash_14",
+          "type": "hang",
+          "function_code": 14,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762773226.8746455,
+          "signature": "hang_14_buffer overflow detected_b8d55ea5"
+        },
+        {
+          "id": "crash_24",
+          "type": "hang",
+          "function_code": 15,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762773991.8746731,
+          "signature": "hang_15_buffer overflow detected_82b06324"
+        },
+        {
+          "id": "crash_38",
+          "type": "hang",
+          "function_code": 13,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762775699.8747008,
+          "signature": "hang_13_buffer overflow detected_82b06324"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_14",
+        "type": "hang",
+        "function_code": 14,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762773226.8746455,
+        "signature": "hang_14_buffer overflow detected_b8d55ea5"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_27",
+      "crashes": [
+        {
+          "id": "crash_31",
+          "type": "segfault",
+          "function_code": 5,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762774906.874686,
+          "signature": "segfault_5_buffer overflow detected_ad9fa0b4"
+        },
+        {
+          "id": "crash_96",
+          "type": "segfault",
+          "function_code": 6,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762774561.8748226,
+          "signature": "segfault_6_buffer overflow detected_03e4ad7d"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_31",
+        "type": "segfault",
+        "function_code": 5,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_4",
+        "timestamp": 1762774906.874686,
+        "signature": "segfault_5_buffer overflow detected_ad9fa0b4"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_29",
+      "crashes": [
+        {
+          "id": "crash_33",
+          "type": "assertion",
+          "function_code": 2,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762775666.8746896,
+          "signature": "assertion_2_buffer overflow detected_9979dad1"
+        },
+        {
+          "id": "crash_72",
+          "type": "assertion",
+          "function_code": 2,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762775142.8747714,
+          "signature": "assertion_2_buffer overflow detected_e682984e"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_33",
+        "type": "assertion",
+        "function_code": 2,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_5",
+        "timestamp": 1762775666.8746896,
+        "signature": "assertion_2_buffer overflow detected_9979dad1"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_32",
+      "crashes": [
+        {
+          "id": "crash_37",
+          "type": "hang",
+          "function_code": 7,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762773822.874699,
+          "signature": "hang_7_buffer overflow detected_82b06324"
+        },
+        {
+          "id": "crash_73",
+          "type": "hang",
+          "function_code": 7,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762775533.8747733,
+          "signature": "hang_7_buffer overflow detected_9979dad1"
+        },
+        {
+          "id": "crash_136",
+          "type": "hang",
+          "function_code": 5,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762772547.8749065,
+          "signature": "hang_5_buffer overflow detected_9979dad1"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_37",
+        "type": "hang",
+        "function_code": 7,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_6",
+        "timestamp": 1762773822.874699,
+        "signature": "hang_7_buffer overflow detected_82b06324"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_33",
+      "crashes": [
+        {
+          "id": "crash_39",
+          "type": "segfault",
+          "function_code": 12,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762772508.8747025,
+          "signature": "segfault_12_buffer overflow detected_ed8a8bea"
+        },
+        {
+          "id": "crash_53",
+          "type": "segfault",
+          "function_code": 10,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762775462.8747303,
+          "signature": "segfault_10_buffer overflow detected_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_39",
+        "type": "segfault",
+        "function_code": 12,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762772508.8747025,
+        "signature": "segfault_12_buffer overflow detected_ed8a8bea"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_36",
+      "crashes": [
+        {
+          "id": "crash_43",
+          "type": "exception",
+          "function_code": 1,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762774709.8747098,
+          "signature": "exception_1_buffer overflow detected_e682984e"
+        },
+        {
+          "id": "crash_111",
+          "type": "exception",
+          "function_code": 3,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762774965.874857,
+          "signature": "exception_3_buffer overflow detected_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_43",
+        "type": "exception",
+        "function_code": 1,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762774709.8747098,
+        "signature": "exception_1_buffer overflow detected_e682984e"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_51",
+      "crashes": [
+        {
+          "id": "crash_67",
+          "type": "segfault",
+          "function_code": 13,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762772720.8747628,
+          "signature": "segfault_13_stack overflow_e682984e"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_67",
+        "type": "segfault",
+        "function_code": 13,
+        "error": "stack overflow",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762772720.8747628,
+        "signature": "segfault_13_stack overflow_e682984e"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_54",
+      "crashes": [
+        {
+          "id": "crash_76",
+          "type": "exception",
+          "function_code": 2,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762774320.8747818,
+          "signature": "exception_2_stack overflow_83d3cf60"
+        },
+        {
+          "id": "crash_102",
+          "type": "exception",
+          "function_code": 2,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762773228.8748336,
+          "signature": "exception_2_stack overflow_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_76",
+        "type": "exception",
+        "function_code": 2,
+        "error": "stack overflow",
+        "stack_trace": "frame0->frame1->frame2->crash_site_2",
+        "timestamp": 1762774320.8747818,
+        "signature": "exception_2_stack overflow_83d3cf60"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_57",
+      "crashes": [
+        {
+          "id": "crash_79",
+          "type": "assertion",
+          "function_code": 14,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762774923.8747904,
+          "signature": "assertion_14_buffer overflow detected_83d3cf60"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_79",
+        "type": "assertion",
+        "function_code": 14,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_2",
+        "timestamp": 1762774923.8747904,
+        "signature": "assertion_14_buffer overflow detected_83d3cf60"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_59",
+      "crashes": [
+        {
+          "id": "crash_85",
+          "type": "segfault",
+          "function_code": 8,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762775049.874801,
+          "signature": "segfault_8_stack overflow_82b06324"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_85",
+        "type": "segfault",
+        "function_code": 8,
+        "error": "stack overflow",
+        "stack_trace": "frame0->frame1->frame2->crash_site_6",
+        "timestamp": 1762775049.874801,
+        "signature": "segfault_8_stack overflow_82b06324"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_61",
+      "crashes": [
+        {
+          "id": "crash_88",
+          "type": "timeout",
+          "function_code": 2,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762772697.874806,
+          "signature": "timeout_2_stack overflow_9979dad1"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_88",
+        "type": "timeout",
+        "function_code": 2,
+        "error": "stack overflow",
+        "stack_trace": "frame0->frame1->frame2->crash_site_5",
+        "timestamp": 1762772697.874806,
+        "signature": "timeout_2_stack overflow_9979dad1"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_64",
+      "crashes": [
+        {
+          "id": "crash_93",
+          "type": "assertion",
+          "function_code": 4,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762774650.874815,
+          "signature": "assertion_4_stack overflow_ed8a8bea"
+        },
+        {
+          "id": "crash_126",
+          "type": "assertion",
+          "function_code": 3,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762774069.8748868,
+          "signature": "assertion_3_stack overflow_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_93",
+        "type": "assertion",
+        "function_code": 4,
+        "error": "stack overflow",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762774650.874815,
+        "signature": "assertion_4_stack overflow_ed8a8bea"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_68",
+      "crashes": [
+        {
+          "id": "crash_99",
+          "type": "timeout",
+          "function_code": 4,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762775211.874828,
+          "signature": "timeout_4_buffer overflow detected_ed8a8bea"
+        },
+        {
+          "id": "crash_132",
+          "type": "timeout",
+          "function_code": 2,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762775797.874897,
+          "signature": "timeout_2_buffer overflow detected_ad9fa0b4"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_99",
+        "type": "timeout",
+        "function_code": 4,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762775211.874828,
+        "signature": "timeout_4_buffer overflow detected_ed8a8bea"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_74",
+      "crashes": [
+        {
+          "id": "crash_112",
+          "type": "assertion",
+          "function_code": 10,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762772978.874859,
+          "signature": "assertion_10_buffer overflow detected_83d3cf60"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_112",
+        "type": "assertion",
+        "function_code": 10,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_2",
+        "timestamp": 1762772978.874859,
+        "signature": "assertion_10_buffer overflow detected_83d3cf60"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_76",
+      "crashes": [
+        {
+          "id": "crash_114",
+          "type": "hang",
+          "function_code": 4,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762774225.8748627,
+          "signature": "hang_4_buffer overflow detected_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_114",
+        "type": "hang",
+        "function_code": 4,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_8",
+        "timestamp": 1762774225.8748627,
+        "signature": "hang_4_buffer overflow detected_04335fec"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_79",
+      "crashes": [
+        {
+          "id": "crash_120",
+          "type": "segfault",
+          "function_code": 9,
+          "error": "buffer overflow detected",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762772803.8748763,
+          "signature": "segfault_9_buffer overflow detected_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_120",
+        "type": "segfault",
+        "function_code": 9,
+        "error": "buffer overflow detected",
+        "stack_trace": "frame0->frame1->frame2->crash_site_0",
+        "timestamp": 1762772803.8748763,
+        "signature": "segfault_9_buffer overflow detected_14cf195b"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_89",
+      "crashes": [
+        {
+          "id": "crash_139",
+          "type": "exception",
+          "function_code": 16,
+          "error": "stack overflow",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762773163.874912,
+          "signature": "exception_16_stack overflow_82b06324"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_139",
+        "type": "exception",
+        "function_code": 16,
+        "error": "stack overflow",
+        "stack_trace": "frame0->frame1->frame2->crash_site_6",
+        "timestamp": 1762773163.874912,
+        "signature": "exception_16_stack overflow_82b06324"
+      },
+      "root_cause": "Buffer Overflow",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0
+    },
+    {
+      "group_id": "group_0",
+      "crashes": [
+        {
+          "id": "crash_0",
+          "type": "timeout",
+          "function_code": 1,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762772896.8746018,
+          "signature": "timeout_1_null pointer dereference_ed8a8bea"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_0",
+        "type": "timeout",
+        "function_code": 1,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762772896.8746018,
+        "signature": "timeout_1_null pointer dereference_ed8a8bea"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_4",
+      "crashes": [
+        {
+          "id": "crash_4",
+          "type": "exception",
+          "function_code": 10,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762775159.874622,
+          "signature": "exception_10_assertion failed: x > 0_b8d55ea5"
+        },
+        {
+          "id": "crash_41",
+          "type": "exception",
+          "function_code": 12,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762773126.8747063,
+          "signature": "exception_12_assertion failed: x > 0_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_4",
+        "type": "exception",
+        "function_code": 10,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762775159.874622,
+        "signature": "exception_10_assertion failed: x > 0_b8d55ea5"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_14",
+      "crashes": [
+        {
+          "id": "crash_15",
+          "type": "exception",
+          "function_code": 8,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762774182.8746495,
+          "signature": "exception_8_null pointer dereference_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_15",
+        "type": "exception",
+        "function_code": 8,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762774182.8746495,
+        "signature": "exception_8_null pointer dereference_b8d55ea5"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_19",
+      "crashes": [
+        {
+          "id": "crash_21",
+          "type": "assertion",
+          "function_code": 5,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762773607.8746684,
+          "signature": "assertion_5_assertion failed: x > 0_ad9fa0b4"
+        },
+        {
+          "id": "crash_121",
+          "type": "assertion",
+          "function_code": 7,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762772723.8748777,
+          "signature": "assertion_7_assertion failed: x > 0_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_21",
+        "type": "assertion",
+        "function_code": 5,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_4",
+        "timestamp": 1762773607.8746684,
+        "signature": "assertion_5_assertion failed: x > 0_ad9fa0b4"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_21",
+      "crashes": [
+        {
+          "id": "crash_23",
+          "type": "exception",
+          "function_code": 3,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762775457.8746717,
+          "signature": "exception_3_null pointer dereference_9979dad1"
+        },
+        {
+          "id": "crash_59",
+          "type": "exception",
+          "function_code": 2,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762774663.8747442,
+          "signature": "exception_2_null pointer dereference_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_23",
+        "type": "exception",
+        "function_code": 3,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_5",
+        "timestamp": 1762775457.8746717,
+        "signature": "exception_3_null pointer dereference_9979dad1"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_23",
+      "crashes": [
+        {
+          "id": "crash_27",
+          "type": "segfault",
+          "function_code": 5,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762773374.8746789,
+          "signature": "segfault_5_null pointer dereference_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_27",
+        "type": "segfault",
+        "function_code": 5,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_8",
+        "timestamp": 1762773374.8746789,
+        "signature": "segfault_5_null pointer dereference_04335fec"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_25",
+      "crashes": [
+        {
+          "id": "crash_29",
+          "type": "timeout",
+          "function_code": 10,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762773874.8746824,
+          "signature": "timeout_10_assertion failed: x > 0_e682984e"
+        },
+        {
+          "id": "crash_51",
+          "type": "timeout",
+          "function_code": 10,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762775661.874726,
+          "signature": "timeout_10_assertion failed: x > 0_82b06324"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_29",
+        "type": "timeout",
+        "function_code": 10,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762773874.8746824,
+        "signature": "timeout_10_assertion failed: x > 0_e682984e"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_26",
+      "crashes": [
+        {
+          "id": "crash_30",
+          "type": "hang",
+          "function_code": 3,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762774714.874684,
+          "signature": "hang_3_assertion failed: x > 0_ed8a8bea"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_30",
+        "type": "hang",
+        "function_code": 3,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762774714.874684,
+        "signature": "hang_3_assertion failed: x > 0_ed8a8bea"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_40",
+      "crashes": [
+        {
+          "id": "crash_49",
+          "type": "segfault",
+          "function_code": 13,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762776045.8747225,
+          "signature": "segfault_13_assertion failed: x > 0_e682984e"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_49",
+        "type": "segfault",
+        "function_code": 13,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762776045.8747225,
+        "signature": "segfault_13_assertion failed: x > 0_e682984e"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_41",
+      "crashes": [
+        {
+          "id": "crash_50",
+          "type": "assertion",
+          "function_code": 16,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762775295.8747244,
+          "signature": "assertion_16_null pointer dereference_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_50",
+        "type": "assertion",
+        "function_code": 16,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_8",
+        "timestamp": 1762775295.8747244,
+        "signature": "assertion_16_null pointer dereference_04335fec"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_42",
+      "crashes": [
+        {
+          "id": "crash_52",
+          "type": "timeout",
+          "function_code": 5,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762773371.8747282,
+          "signature": "timeout_5_null pointer dereference_b8d55ea5"
+        },
+        {
+          "id": "crash_71",
+          "type": "timeout",
+          "function_code": 5,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762775335.8747697,
+          "signature": "timeout_5_null pointer dereference_82b06324"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_52",
+        "type": "timeout",
+        "function_code": 5,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762773371.8747282,
+        "signature": "timeout_5_null pointer dereference_b8d55ea5"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_46",
+      "crashes": [
+        {
+          "id": "crash_58",
+          "type": "segfault",
+          "function_code": 5,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762774104.8747423,
+          "signature": "segfault_5_assertion failed: x > 0_03e4ad7d"
+        },
+        {
+          "id": "crash_141",
+          "type": "segfault",
+          "function_code": 6,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762772969.874918,
+          "signature": "segfault_6_assertion failed: x > 0_ad9fa0b4"
+        },
+        {
+          "id": "crash_145",
+          "type": "segfault",
+          "function_code": 7,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762773397.8749394,
+          "signature": "segfault_7_assertion failed: x > 0_83d3cf60"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_58",
+        "type": "segfault",
+        "function_code": 5,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_1",
+        "timestamp": 1762774104.8747423,
+        "signature": "segfault_5_assertion failed: x > 0_03e4ad7d"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_50",
+      "crashes": [
+        {
+          "id": "crash_66",
+          "type": "hang",
+          "function_code": 11,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762774669.8747609,
+          "signature": "hang_11_assertion failed: x > 0_e682984e"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_66",
+        "type": "hang",
+        "function_code": 11,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762774669.8747609,
+        "signature": "hang_11_assertion failed: x > 0_e682984e"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_62",
+      "crashes": [
+        {
+          "id": "crash_90",
+          "type": "exception",
+          "function_code": 15,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762775507.8748095,
+          "signature": "exception_15_null pointer dereference_ad9fa0b4"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_90",
+        "type": "exception",
+        "function_code": 15,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_4",
+        "timestamp": 1762775507.8748095,
+        "signature": "exception_15_null pointer dereference_ad9fa0b4"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_63",
+      "crashes": [
+        {
+          "id": "crash_91",
+          "type": "assertion",
+          "function_code": 9,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762773066.8748114,
+          "signature": "assertion_9_assertion failed: x > 0_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_91",
+        "type": "assertion",
+        "function_code": 9,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762773066.8748114,
+        "signature": "assertion_9_assertion failed: x > 0_b8d55ea5"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_66",
+      "crashes": [
+        {
+          "id": "crash_95",
+          "type": "exception",
+          "function_code": 7,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762775903.8748186,
+          "signature": "exception_7_assertion failed: x > 0_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_95",
+        "type": "exception",
+        "function_code": 7,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762775903.8748186,
+        "signature": "exception_7_assertion failed: x > 0_b8d55ea5"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_72",
+      "crashes": [
+        {
+          "id": "crash_109",
+          "type": "hang",
+          "function_code": 7,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762773885.874851,
+          "signature": "hang_7_null pointer dereference_83d3cf60"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_109",
+        "type": "hang",
+        "function_code": 7,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_2",
+        "timestamp": 1762773885.874851,
+        "signature": "hang_7_null pointer dereference_83d3cf60"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_73",
+      "crashes": [
+        {
+          "id": "crash_110",
+          "type": "assertion",
+          "function_code": 8,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762772807.874853,
+          "signature": "assertion_8_null pointer dereference_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_110",
+        "type": "assertion",
+        "function_code": 8,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762772807.874853,
+        "signature": "assertion_8_null pointer dereference_b8d55ea5"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_80",
+      "crashes": [
+        {
+          "id": "crash_123",
+          "type": "timeout",
+          "function_code": 3,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762774147.8748813,
+          "signature": "timeout_3_assertion failed: x > 0_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_123",
+        "type": "timeout",
+        "function_code": 3,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_9",
+        "timestamp": 1762774147.8748813,
+        "signature": "timeout_3_assertion failed: x > 0_f1ce1a23"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_85",
+      "crashes": [
+        {
+          "id": "crash_134",
+          "type": "hang",
+          "function_code": 6,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762775118.8749003,
+          "signature": "hang_6_assertion failed: x > 0_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_134",
+        "type": "hang",
+        "function_code": 6,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_0",
+        "timestamp": 1762775118.8749003,
+        "signature": "hang_6_assertion failed: x > 0_14cf195b"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_86",
+      "crashes": [
+        {
+          "id": "crash_135",
+          "type": "segfault",
+          "function_code": 2,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762774232.8749049,
+          "signature": "segfault_2_null pointer dereference_9979dad1"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_135",
+        "type": "segfault",
+        "function_code": 2,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_5",
+        "timestamp": 1762774232.8749049,
+        "signature": "segfault_2_null pointer dereference_9979dad1"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_88",
+      "crashes": [
+        {
+          "id": "crash_138",
+          "type": "assertion",
+          "function_code": 1,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762772898.87491,
+          "signature": "assertion_1_null pointer dereference_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_138",
+        "type": "assertion",
+        "function_code": 1,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762772898.87491,
+        "signature": "assertion_1_null pointer dereference_b8d55ea5"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_90",
+      "crashes": [
+        {
+          "id": "crash_143",
+          "type": "assertion",
+          "function_code": 14,
+          "error": "assertion failed: x > 0",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762773508.8749304,
+          "signature": "assertion_14_assertion failed: x > 0_ed8a8bea"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_143",
+        "type": "assertion",
+        "function_code": 14,
+        "error": "assertion failed: x > 0",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762773508.8749304,
+        "signature": "assertion_14_assertion failed: x > 0_ed8a8bea"
+      },
+      "root_cause": "Assertion Failure",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_92",
+      "crashes": [
+        {
+          "id": "crash_149",
+          "type": "segfault",
+          "function_code": 14,
+          "error": "null pointer dereference",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762776078.8749518,
+          "signature": "segfault_14_null pointer dereference_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_149",
+        "type": "segfault",
+        "function_code": 14,
+        "error": "null pointer dereference",
+        "stack_trace": "frame0->frame1->frame2->crash_site_8",
+        "timestamp": 1762776078.8749518,
+        "signature": "segfault_14_null pointer dereference_04335fec"
+      },
+      "root_cause": "Null Pointer Dereference",
+      "severity": "high",
+      "exploitability": "probably_not_exploitable",
+      "priority_score": 57.0
+    },
+    {
+      "group_id": "group_8",
+      "crashes": [
+        {
+          "id": "crash_8",
+          "type": "hang",
+          "function_code": 7,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762774798.8746336,
+          "signature": "hang_7_invalid memory access_14cf195b"
+        },
+        {
+          "id": "crash_36",
+          "type": "hang",
+          "function_code": 9,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762773921.8746948,
+          "signature": "hang_9_invalid memory access_b8d55ea5"
+        },
+        {
+          "id": "crash_63",
+          "type": "hang",
+          "function_code": 9,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762774226.874755,
+          "signature": "hang_9_invalid memory access_82b06324"
+        },
+        {
+          "id": "crash_68",
+          "type": "hang",
+          "function_code": 9,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762773602.8747644,
+          "signature": "hang_9_invalid memory access_ad9fa0b4"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_8",
+        "type": "hang",
+        "function_code": 7,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_0",
+        "timestamp": 1762774798.8746336,
+        "signature": "hang_7_invalid memory access_14cf195b"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_22",
+      "crashes": [
+        {
+          "id": "crash_25",
+          "type": "hang",
+          "function_code": 13,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762775069.874675,
+          "signature": "hang_13_invalid memory access_9979dad1"
+        },
+        {
+          "id": "crash_60",
+          "type": "hang",
+          "function_code": 12,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762775486.8747497,
+          "signature": "hang_12_invalid memory access_82b06324"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_25",
+        "type": "hang",
+        "function_code": 13,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_5",
+        "timestamp": 1762775069.874675,
+        "signature": "hang_13_invalid memory access_9979dad1"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_24",
+      "crashes": [
+        {
+          "id": "crash_28",
+          "type": "timeout",
+          "function_code": 12,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762772580.8746805,
+          "signature": "timeout_12_invalid memory access_82b06324"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_28",
+        "type": "timeout",
+        "function_code": 12,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_6",
+        "timestamp": 1762772580.8746805,
+        "signature": "timeout_12_invalid memory access_82b06324"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_34",
+      "crashes": [
+        {
+          "id": "crash_40",
+          "type": "timeout",
+          "function_code": 9,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762774221.8747041,
+          "signature": "timeout_9_invalid memory access_82b06324"
+        },
+        {
+          "id": "crash_98",
+          "type": "timeout",
+          "function_code": 8,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762774432.8748264,
+          "signature": "timeout_8_invalid memory access_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_40",
+        "type": "timeout",
+        "function_code": 9,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_6",
+        "timestamp": 1762774221.8747041,
+        "signature": "timeout_9_invalid memory access_82b06324"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_37",
+      "crashes": [
+        {
+          "id": "crash_45",
+          "type": "assertion",
+          "function_code": 10,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762774414.8747134,
+          "signature": "assertion_10_invalid memory access_83d3cf60"
+        },
+        {
+          "id": "crash_70",
+          "type": "assertion",
+          "function_code": 10,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762774938.8747678,
+          "signature": "assertion_10_invalid memory access_e682984e"
+        },
+        {
+          "id": "crash_82",
+          "type": "assertion",
+          "function_code": 9,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762773494.8747954,
+          "signature": "assertion_9_invalid memory access_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_45",
+        "type": "assertion",
+        "function_code": 10,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_2",
+        "timestamp": 1762774414.8747134,
+        "signature": "assertion_10_invalid memory access_83d3cf60"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_43",
+      "crashes": [
+        {
+          "id": "crash_55",
+          "type": "exception",
+          "function_code": 6,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_6",
+          "timestamp": 1762773306.874734,
+          "signature": "exception_6_invalid memory access_82b06324"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_55",
+        "type": "exception",
+        "function_code": 6,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_6",
+        "timestamp": 1762773306.874734,
+        "signature": "exception_6_invalid memory access_82b06324"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_49",
+      "crashes": [
+        {
+          "id": "crash_65",
+          "type": "assertion",
+          "function_code": 13,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762772927.874759,
+          "signature": "assertion_13_invalid memory access_ad9fa0b4"
+        },
+        {
+          "id": "crash_81",
+          "type": "assertion",
+          "function_code": 13,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762772751.8747938,
+          "signature": "assertion_13_invalid memory access_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_65",
+        "type": "assertion",
+        "function_code": 13,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_4",
+        "timestamp": 1762772927.874759,
+        "signature": "assertion_13_invalid memory access_ad9fa0b4"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_52",
+      "crashes": [
+        {
+          "id": "crash_74",
+          "type": "assertion",
+          "function_code": 16,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762772678.8747756,
+          "signature": "assertion_16_invalid memory access_14cf195b"
+        },
+        {
+          "id": "crash_128",
+          "type": "assertion",
+          "function_code": 16,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762773720.87489,
+          "signature": "assertion_16_invalid memory access_83d3cf60"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_74",
+        "type": "assertion",
+        "function_code": 16,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_0",
+        "timestamp": 1762772678.8747756,
+        "signature": "assertion_16_invalid memory access_14cf195b"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_55",
+      "crashes": [
+        {
+          "id": "crash_77",
+          "type": "segfault",
+          "function_code": 14,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762776066.8747842,
+          "signature": "segfault_14_invalid memory access_e682984e"
+        },
+        {
+          "id": "crash_122",
+          "type": "segfault",
+          "function_code": 13,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762775891.8748796,
+          "signature": "segfault_13_invalid memory access_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_77",
+        "type": "segfault",
+        "function_code": 14,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762776066.8747842,
+        "signature": "segfault_14_invalid memory access_e682984e"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_75",
+      "crashes": [
+        {
+          "id": "crash_113",
+          "type": "hang",
+          "function_code": 16,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762775323.8748608,
+          "signature": "hang_16_invalid memory access_9979dad1"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_113",
+        "type": "hang",
+        "function_code": 16,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_5",
+        "timestamp": 1762775323.8748608,
+        "signature": "hang_16_invalid memory access_9979dad1"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_77",
+      "crashes": [
+        {
+          "id": "crash_118",
+          "type": "exception",
+          "function_code": 9,
+          "error": "invalid memory access",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762774652.874873,
+          "signature": "exception_9_invalid memory access_e682984e"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_118",
+        "type": "exception",
+        "function_code": 9,
+        "error": "invalid memory access",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762774652.874873,
+        "signature": "exception_9_invalid memory access_e682984e"
+      },
+      "root_cause": "Memory Error",
+      "severity": "high",
+      "exploitability": "unknown",
+      "priority_score": 52.0
+    },
+    {
+      "group_id": "group_7",
+      "crashes": [
+        {
+          "id": "crash_7",
+          "type": "exception",
+          "function_code": 16,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762775174.8746305,
+          "signature": "exception_16_unhandled exception_ed8a8bea"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_7",
+        "type": "exception",
+        "function_code": 16,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762775174.8746305,
+        "signature": "exception_16_unhandled exception_ed8a8bea"
+      },
+      "root_cause": "Unhandled Exception",
+      "severity": "medium",
+      "exploitability": "unknown",
+      "priority_score": 42.0
+    },
+    {
+      "group_id": "group_11",
+      "crashes": [
+        {
+          "id": "crash_11",
+          "type": "exception",
+          "function_code": 11,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762772887.87464,
+          "signature": "exception_11_unhandled exception_f1ce1a23"
+        },
+        {
+          "id": "crash_46",
+          "type": "exception",
+          "function_code": 10,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762774288.874715,
+          "signature": "exception_10_unhandled exception_03e4ad7d"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_11",
+        "type": "exception",
+        "function_code": 11,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_9",
+        "timestamp": 1762772887.87464,
+        "signature": "exception_11_unhandled exception_f1ce1a23"
+      },
+      "root_cause": "Unhandled Exception",
+      "severity": "medium",
+      "exploitability": "unknown",
+      "priority_score": 42.0
+    },
+    {
+      "group_id": "group_69",
+      "crashes": [
+        {
+          "id": "crash_100",
+          "type": "exception",
+          "function_code": 6,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762775272.87483,
+          "signature": "exception_6_unhandled exception_03e4ad7d"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_100",
+        "type": "exception",
+        "function_code": 6,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_1",
+        "timestamp": 1762775272.87483,
+        "signature": "exception_6_unhandled exception_03e4ad7d"
+      },
+      "root_cause": "Unhandled Exception",
+      "severity": "medium",
+      "exploitability": "unknown",
+      "priority_score": 42.0
+    },
+    {
+      "group_id": "group_12",
+      "crashes": [
+        {
+          "id": "crash_12",
+          "type": "hang",
+          "function_code": 10,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762774171.8746417,
+          "signature": "hang_10_division by zero_03e4ad7d"
+        },
+        {
+          "id": "crash_84",
+          "type": "hang",
+          "function_code": 12,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762773196.874799,
+          "signature": "hang_12_division by zero_ad9fa0b4"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_12",
+        "type": "hang",
+        "function_code": 10,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_1",
+        "timestamp": 1762774171.8746417,
+        "signature": "hang_10_division by zero_03e4ad7d"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_15",
+      "crashes": [
+        {
+          "id": "crash_16",
+          "type": "exception",
+          "function_code": 15,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762775148.8746533,
+          "signature": "exception_15_division by zero_ed8a8bea"
+        },
+        {
+          "id": "crash_127",
+          "type": "exception",
+          "function_code": 16,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762773815.8748882,
+          "signature": "exception_16_division by zero_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_16",
+        "type": "exception",
+        "function_code": 15,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762775148.8746533,
+        "signature": "exception_15_division by zero_ed8a8bea"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_16",
+      "crashes": [
+        {
+          "id": "crash_17",
+          "type": "exception",
+          "function_code": 12,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762774971.874658,
+          "signature": "exception_12_division by zero_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_17",
+        "type": "exception",
+        "function_code": 12,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_8",
+        "timestamp": 1762774971.874658,
+        "signature": "exception_12_division by zero_04335fec"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_39",
+      "crashes": [
+        {
+          "id": "crash_48",
+          "type": "exception",
+          "function_code": 3,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762775526.8747208,
+          "signature": "exception_3_division by zero_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_48",
+        "type": "exception",
+        "function_code": 3,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_0",
+        "timestamp": 1762775526.8747208,
+        "signature": "exception_3_division by zero_14cf195b"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_44",
+      "crashes": [
+        {
+          "id": "crash_56",
+          "type": "assertion",
+          "function_code": 16,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762775403.8747356,
+          "signature": "assertion_16_division by zero_83d3cf60"
+        },
+        {
+          "id": "crash_104",
+          "type": "assertion",
+          "function_code": 16,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762775823.8748417,
+          "signature": "assertion_16_division by zero_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_56",
+        "type": "assertion",
+        "function_code": 16,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_2",
+        "timestamp": 1762775403.8747356,
+        "signature": "assertion_16_division by zero_83d3cf60"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_58",
+      "crashes": [
+        {
+          "id": "crash_83",
+          "type": "hang",
+          "function_code": 3,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762775787.8747973,
+          "signature": "hang_3_division by zero_14cf195b"
+        },
+        {
+          "id": "crash_89",
+          "type": "hang",
+          "function_code": 2,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762772625.8748078,
+          "signature": "hang_2_division by zero_03e4ad7d"
+        },
+        {
+          "id": "crash_133",
+          "type": "hang",
+          "function_code": 5,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762773385.8748987,
+          "signature": "hang_5_division by zero_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_83",
+        "type": "hang",
+        "function_code": 3,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_0",
+        "timestamp": 1762775787.8747973,
+        "signature": "hang_3_division by zero_14cf195b"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_65",
+      "crashes": [
+        {
+          "id": "crash_94",
+          "type": "segfault",
+          "function_code": 5,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762773719.8748167,
+          "signature": "segfault_5_division by zero_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_94",
+        "type": "segfault",
+        "function_code": 5,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_9",
+        "timestamp": 1762773719.8748167,
+        "signature": "segfault_5_division by zero_f1ce1a23"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_67",
+      "crashes": [
+        {
+          "id": "crash_97",
+          "type": "timeout",
+          "function_code": 11,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762775477.8748248,
+          "signature": "timeout_11_division by zero_ed8a8bea"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_97",
+        "type": "timeout",
+        "function_code": 11,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762775477.8748248,
+        "signature": "timeout_11_division by zero_ed8a8bea"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_71",
+      "crashes": [
+        {
+          "id": "crash_105",
+          "type": "assertion",
+          "function_code": 4,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762774681.8748434,
+          "signature": "assertion_4_division by zero_e682984e"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_105",
+        "type": "assertion",
+        "function_code": 4,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762774681.8748434,
+        "signature": "assertion_4_division by zero_e682984e"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_78",
+      "crashes": [
+        {
+          "id": "crash_119",
+          "type": "timeout",
+          "function_code": 3,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762773993.8748744,
+          "signature": "timeout_3_division by zero_ad9fa0b4"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_119",
+        "type": "timeout",
+        "function_code": 3,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_4",
+        "timestamp": 1762773993.8748744,
+        "signature": "timeout_3_division by zero_ad9fa0b4"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_81",
+      "crashes": [
+        {
+          "id": "crash_124",
+          "type": "segfault",
+          "function_code": 9,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762772844.8748832,
+          "signature": "segfault_9_division by zero_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_124",
+        "type": "segfault",
+        "function_code": 9,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762772844.8748832,
+        "signature": "segfault_9_division by zero_b8d55ea5"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_82",
+      "crashes": [
+        {
+          "id": "crash_125",
+          "type": "segfault",
+          "function_code": 2,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762773362.8748848,
+          "signature": "segfault_2_division by zero_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_125",
+        "type": "segfault",
+        "function_code": 2,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762773362.8748848,
+        "signature": "segfault_2_division by zero_b8d55ea5"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_91",
+      "crashes": [
+        {
+          "id": "crash_147",
+          "type": "timeout",
+          "function_code": 6,
+          "error": "division by zero",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762775733.8749452,
+          "signature": "timeout_6_division by zero_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_147",
+        "type": "timeout",
+        "function_code": 6,
+        "error": "division by zero",
+        "stack_trace": "frame0->frame1->frame2->crash_site_9",
+        "timestamp": 1762775733.8749452,
+        "signature": "timeout_6_division by zero_f1ce1a23"
+      },
+      "root_cause": "Division by Zero",
+      "severity": "medium",
+      "exploitability": "not_exploitable",
+      "priority_score": 37.0
+    },
+    {
+      "group_id": "group_35",
+      "crashes": [
+        {
+          "id": "crash_42",
+          "type": "hang",
+          "function_code": 11,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762773759.8747077,
+          "signature": "hang_11_unhandled exception_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_42",
+        "type": "hang",
+        "function_code": 11,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_8",
+        "timestamp": 1762773759.8747077,
+        "signature": "hang_11_unhandled exception_04335fec"
+      },
+      "root_cause": "Infinite Loop / Hang",
+      "severity": "low",
+      "exploitability": "unknown",
+      "priority_score": 32.0
+    },
+    {
+      "group_id": "group_56",
+      "crashes": [
+        {
+          "id": "crash_78",
+          "type": "hang",
+          "function_code": 15,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762773728.8747861,
+          "signature": "hang_15_unhandled exception_e682984e"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_78",
+        "type": "hang",
+        "function_code": 15,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762773728.8747861,
+        "signature": "hang_15_unhandled exception_e682984e"
+      },
+      "root_cause": "Infinite Loop / Hang",
+      "severity": "low",
+      "exploitability": "unknown",
+      "priority_score": 32.0
+    },
+    {
+      "group_id": "group_17",
+      "crashes": [
+        {
+          "id": "crash_18",
+          "type": "assertion",
+          "function_code": 14,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762775048.8746624,
+          "signature": "assertion_14_unhandled exception_9979dad1"
+        },
+        {
+          "id": "crash_26",
+          "type": "assertion",
+          "function_code": 16,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762775120.874677,
+          "signature": "assertion_16_unhandled exception_03e4ad7d"
+        },
+        {
+          "id": "crash_80",
+          "type": "assertion",
+          "function_code": 15,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762775844.8747919,
+          "signature": "assertion_15_unhandled exception_03e4ad7d"
+        },
+        {
+          "id": "crash_92",
+          "type": "assertion",
+          "function_code": 13,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762774167.874813,
+          "signature": "assertion_13_unhandled exception_03e4ad7d"
+        },
+        {
+          "id": "crash_140",
+          "type": "assertion",
+          "function_code": 14,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762773091.874915,
+          "signature": "assertion_14_unhandled exception_03e4ad7d"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_18",
+        "type": "assertion",
+        "function_code": 14,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_5",
+        "timestamp": 1762775048.8746624,
+        "signature": "assertion_14_unhandled exception_9979dad1"
+      },
+      "root_cause": "Unknown",
+      "severity": "info",
+      "exploitability": "unknown",
+      "priority_score": 30.0
+    },
+    {
+      "group_id": "group_5",
+      "crashes": [
+        {
+          "id": "crash_5",
+          "type": "exception",
+          "function_code": 10,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762775160.8746245,
+          "signature": "exception_10_timeout after 10 seconds_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_5",
+        "type": "exception",
+        "function_code": 10,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_8",
+        "timestamp": 1762775160.8746245,
+        "signature": "exception_10_timeout after 10 seconds_04335fec"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_10",
+      "crashes": [
+        {
+          "id": "crash_10",
+          "type": "segfault",
+          "function_code": 14,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762773672.874638,
+          "signature": "segfault_14_timeout after 10 seconds_e682984e"
+        },
+        {
+          "id": "crash_20",
+          "type": "segfault",
+          "function_code": 16,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762775288.8746665,
+          "signature": "segfault_16_timeout after 10 seconds_9979dad1"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_10",
+        "type": "segfault",
+        "function_code": 14,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762773672.874638,
+        "signature": "segfault_14_timeout after 10 seconds_e682984e"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_18",
+      "crashes": [
+        {
+          "id": "crash_19",
+          "type": "timeout",
+          "function_code": 2,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762774061.8746648,
+          "signature": "timeout_2_timeout after 10 seconds_83d3cf60"
+        },
+        {
+          "id": "crash_116",
+          "type": "timeout",
+          "function_code": 1,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762774860.874869,
+          "signature": "timeout_1_timeout after 10 seconds_ed8a8bea"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_19",
+        "type": "timeout",
+        "function_code": 2,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_2",
+        "timestamp": 1762774061.8746648,
+        "signature": "timeout_2_timeout after 10 seconds_83d3cf60"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_20",
+      "crashes": [
+        {
+          "id": "crash_22",
+          "type": "assertion",
+          "function_code": 12,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762774931.8746698,
+          "signature": "assertion_12_timeout after 10 seconds_f1ce1a23"
+        },
+        {
+          "id": "crash_86",
+          "type": "assertion",
+          "function_code": 12,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762774780.8748024,
+          "signature": "assertion_12_timeout after 10 seconds_ed8a8bea"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_22",
+        "type": "assertion",
+        "function_code": 12,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_9",
+        "timestamp": 1762774931.8746698,
+        "signature": "assertion_12_timeout after 10 seconds_f1ce1a23"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_28",
+      "crashes": [
+        {
+          "id": "crash_32",
+          "type": "segfault",
+          "function_code": 5,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762773528.8746877,
+          "signature": "segfault_5_timeout after 10 seconds_04335fec"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_32",
+        "type": "segfault",
+        "function_code": 5,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_8",
+        "timestamp": 1762773528.8746877,
+        "signature": "segfault_5_timeout after 10 seconds_04335fec"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_30",
+      "crashes": [
+        {
+          "id": "crash_34",
+          "type": "assertion",
+          "function_code": 15,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762772925.8746915,
+          "signature": "assertion_15_timeout after 10 seconds_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_34",
+        "type": "assertion",
+        "function_code": 15,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_0",
+        "timestamp": 1762772925.8746915,
+        "signature": "assertion_15_timeout after 10 seconds_14cf195b"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_31",
+      "crashes": [
+        {
+          "id": "crash_35",
+          "type": "hang",
+          "function_code": 1,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762774636.8746934,
+          "signature": "hang_1_timeout after 10 seconds_ed8a8bea"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_35",
+        "type": "hang",
+        "function_code": 1,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_3",
+        "timestamp": 1762774636.8746934,
+        "signature": "hang_1_timeout after 10 seconds_ed8a8bea"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_38",
+      "crashes": [
+        {
+          "id": "crash_47",
+          "type": "timeout",
+          "function_code": 6,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762772563.874719,
+          "signature": "timeout_6_unhandled exception_03e4ad7d"
+        },
+        {
+          "id": "crash_106",
+          "type": "timeout",
+          "function_code": 5,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_1",
+          "timestamp": 1762775421.8748455,
+          "signature": "timeout_5_unhandled exception_03e4ad7d"
+        },
+        {
+          "id": "crash_108",
+          "type": "timeout",
+          "function_code": 5,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_5",
+          "timestamp": 1762772659.874849,
+          "signature": "timeout_5_unhandled exception_9979dad1"
+        },
+        {
+          "id": "crash_142",
+          "type": "timeout",
+          "function_code": 8,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762775567.874924,
+          "signature": "timeout_8_unhandled exception_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_47",
+        "type": "timeout",
+        "function_code": 6,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_1",
+        "timestamp": 1762772563.874719,
+        "signature": "timeout_6_unhandled exception_03e4ad7d"
+      },
+      "root_cause": "Unknown",
+      "severity": "info",
+      "exploitability": "unknown",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_45",
+      "crashes": [
+        {
+          "id": "crash_57",
+          "type": "exception",
+          "function_code": 15,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762774589.8747404,
+          "signature": "exception_15_timeout after 10 seconds_83d3cf60"
+        },
+        {
+          "id": "crash_103",
+          "type": "exception",
+          "function_code": 14,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_2",
+          "timestamp": 1762774730.8748398,
+          "signature": "exception_14_timeout after 10 seconds_83d3cf60"
+        },
+        {
+          "id": "crash_117",
+          "type": "exception",
+          "function_code": 15,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_3",
+          "timestamp": 1762776009.8748708,
+          "signature": "exception_15_timeout after 10 seconds_ed8a8bea"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_57",
+        "type": "exception",
+        "function_code": 15,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_2",
+        "timestamp": 1762774589.8747404,
+        "signature": "exception_15_timeout after 10 seconds_83d3cf60"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_47",
+      "crashes": [
+        {
+          "id": "crash_61",
+          "type": "timeout",
+          "function_code": 15,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_7",
+          "timestamp": 1762775529.8747516,
+          "signature": "timeout_15_timeout after 10 seconds_b8d55ea5"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_61",
+        "type": "timeout",
+        "function_code": 15,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_7",
+        "timestamp": 1762775529.8747516,
+        "signature": "timeout_15_timeout after 10 seconds_b8d55ea5"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_48",
+      "crashes": [
+        {
+          "id": "crash_62",
+          "type": "assertion",
+          "function_code": 9,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_8",
+          "timestamp": 1762772551.8747532,
+          "signature": "assertion_9_unhandled exception_04335fec"
+        },
+        {
+          "id": "crash_107",
+          "type": "assertion",
+          "function_code": 7,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762775955.8748474,
+          "signature": "assertion_7_unhandled exception_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_62",
+        "type": "assertion",
+        "function_code": 9,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_8",
+        "timestamp": 1762772551.8747532,
+        "signature": "assertion_9_unhandled exception_04335fec"
+      },
+      "root_cause": "Unknown",
+      "severity": "info",
+      "exploitability": "unknown",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_53",
+      "crashes": [
+        {
+          "id": "crash_75",
+          "type": "segfault",
+          "function_code": 12,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762773306.874777,
+          "signature": "segfault_12_unhandled exception_e682984e"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_75",
+        "type": "segfault",
+        "function_code": 12,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762773306.874777,
+        "signature": "segfault_12_unhandled exception_e682984e"
+      },
+      "root_cause": "Unknown",
+      "severity": "info",
+      "exploitability": "unknown",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_60",
+      "crashes": [
+        {
+          "id": "crash_87",
+          "type": "segfault",
+          "function_code": 5,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762772676.8748043,
+          "signature": "segfault_5_unhandled exception_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_87",
+        "type": "segfault",
+        "function_code": 5,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_9",
+        "timestamp": 1762772676.8748043,
+        "signature": "segfault_5_unhandled exception_f1ce1a23"
+      },
+      "root_cause": "Unknown",
+      "severity": "info",
+      "exploitability": "unknown",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_70",
+      "crashes": [
+        {
+          "id": "crash_101",
+          "type": "exception",
+          "function_code": 3,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_4",
+          "timestamp": 1762775461.874832,
+          "signature": "exception_3_timeout after 10 seconds_ad9fa0b4"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_101",
+        "type": "exception",
+        "function_code": 3,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_4",
+        "timestamp": 1762775461.874832,
+        "signature": "exception_3_timeout after 10 seconds_ad9fa0b4"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_83",
+      "crashes": [
+        {
+          "id": "crash_130",
+          "type": "segfault",
+          "function_code": 10,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_9",
+          "timestamp": 1762773074.8748937,
+          "signature": "segfault_10_timeout after 10 seconds_f1ce1a23"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_130",
+        "type": "segfault",
+        "function_code": 10,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_9",
+        "timestamp": 1762773074.8748937,
+        "signature": "segfault_10_timeout after 10 seconds_f1ce1a23"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_84",
+      "crashes": [
+        {
+          "id": "crash_131",
+          "type": "assertion",
+          "function_code": 1,
+          "error": "timeout after 10 seconds",
+          "stack_trace": "frame0->frame1->frame2->crash_site_0",
+          "timestamp": 1762775987.8748953,
+          "signature": "assertion_1_timeout after 10 seconds_14cf195b"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_131",
+        "type": "assertion",
+        "function_code": 1,
+        "error": "timeout after 10 seconds",
+        "stack_trace": "frame0->frame1->frame2->crash_site_0",
+        "timestamp": 1762775987.8748953,
+        "signature": "assertion_1_timeout after 10 seconds_14cf195b"
+      },
+      "root_cause": "Timeout",
+      "severity": "low",
+      "exploitability": "not_exploitable",
+      "priority_score": 27.0
+    },
+    {
+      "group_id": "group_87",
+      "crashes": [
+        {
+          "id": "crash_137",
+          "type": "timeout",
+          "function_code": 9,
+          "error": "unhandled exception",
+          "stack_trace": "frame0->frame1->frame2->crash_site_10",
+          "timestamp": 1762773490.8749084,
+          "signature": "timeout_9_unhandled exception_e682984e"
+        }
+      ],
+      "representative_crash": {
+        "id": "crash_137",
+        "type": "timeout",
+        "function_code": 9,
+        "error": "unhandled exception",
+        "stack_trace": "frame0->frame1->frame2->crash_site_10",
+        "timestamp": 1762773490.8749084,
+        "signature": "timeout_9_unhandled exception_e682984e"
+      },
+      "root_cause": "Unknown",
+      "severity": "info",
+      "exploitability": "unknown",
+      "priority_score": 27.0
+    }
+  ],
+  "severity_distribution": {
+    "high": 52,
+    "critical": 39,
+    "low": 19,
+    "medium": 22,
+    "info": 14
+  },
+  "exploitability_distribution": {
+    "probably_not_exploitable": 31,
+    "exploitable": 39,
+    "not_exploitable": 35,
+    "unknown": 41
+  },
+  "priority_queue": [
+    {
+      "group_id": "group_1",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 3,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_2",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 1,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_3",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 4,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_6",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 1,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_9",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 2,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_13",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 3,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_27",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 2,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_29",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 2,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_32",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 3,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_33",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 2,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_36",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 2,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_51",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 1,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_54",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 2,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_57",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 1,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_59",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 1,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_61",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 1,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_64",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 2,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_68",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 2,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_74",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 1,
+      "root_cause": "Buffer Overflow"
+    },
+    {
+      "group_id": "group_76",
+      "severity": "critical",
+      "exploitability": "exploitable",
+      "priority_score": 82.0,
+      "crash_count": 1,
+      "root_cause": "Buffer Overflow"
+    }
+  ],
+  "duplicates": 4
+}

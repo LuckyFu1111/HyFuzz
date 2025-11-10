@@ -61,7 +61,7 @@ class CoverageAnalyzer:
         # Aggregate results
         results['aggregate'] = self._aggregate_coverage_results(results['trials'])
 
-        print(f"    Coverage: {results['aggregate']['final_coverage']['mean']:.1f}% "
+        print(f"    Coverage: {results['aggregate']['line_coverage_percent']['mean']:.1f}% "
               f"(Lines: {results['aggregate']['lines_covered']['mean']:.0f}/{self.total_lines}, "
               f"Branches: {results['aggregate']['branches_covered']['mean']:.0f}/{self.total_branches})")
 

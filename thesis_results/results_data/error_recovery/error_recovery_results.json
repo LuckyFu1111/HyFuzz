@@ -1,0 +1,551 @@
+{
+  "test_date": "2025-11-10 12:01:20",
+  "scenarios": [
+    {
+      "scenario_name": "Target Crash Recovery",
+      "failure_type": "target_crash",
+      "duration_seconds": 120,
+      "trials": [
+        {
+          "executions": 265,
+          "failures_injected": 33,
+          "successful_recoveries": 32,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 96.96969696969697,
+          "mean_recovery_time_seconds": 0.05050835464939927,
+          "max_recovery_time_seconds": 0.05120730400085449,
+          "total_test_cases_lost": 79,
+          "test_cases_lost_per_recovery": 2.393939393939394
+        },
+        {
+          "executions": 18,
+          "failures_injected": 2,
+          "successful_recoveries": 1,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 50.0,
+          "mean_recovery_time_seconds": 0.05060768127441406,
+          "max_recovery_time_seconds": 0.050969600677490234,
+          "total_test_cases_lost": 6,
+          "test_cases_lost_per_recovery": 3.0
+        },
+        {
+          "executions": 10,
+          "failures_injected": 1,
+          "successful_recoveries": 0,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 0.0,
+          "mean_recovery_time_seconds": 0.050153255462646484,
+          "max_recovery_time_seconds": 0.050153255462646484,
+          "total_test_cases_lost": 2,
+          "test_cases_lost_per_recovery": 2.0
+        },
+        {
+          "executions": 121,
+          "failures_injected": 13,
+          "successful_recoveries": 12,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 92.3076923076923,
+          "mean_recovery_time_seconds": 0.050421494704026446,
+          "max_recovery_time_seconds": 0.051039934158325195,
+          "total_test_cases_lost": 28,
+          "test_cases_lost_per_recovery": 2.1538461538461537
+        },
+        {
+          "executions": 477,
+          "failures_injected": 45,
+          "successful_recoveries": 44,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 97.77777777777777,
+          "mean_recovery_time_seconds": 0.05040557649400499,
+          "max_recovery_time_seconds": 0.05113863945007324,
+          "total_test_cases_lost": 123,
+          "test_cases_lost_per_recovery": 2.7333333333333334
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 178.2,
+          "stdev": 196.24143293402645,
+          "min": 10,
+          "max": 477
+        },
+        "failures_injected": {
+          "mean": 18.8,
+          "stdev": 19.498717906570164,
+          "min": 1,
+          "max": 45
+        },
+        "successful_recoveries": {
+          "mean": 17.8,
+          "stdev": 19.498717906570164,
+          "min": 0,
+          "max": 44
+        },
+        "failed_recoveries": {
+          "mean": 1,
+          "stdev": 0.0,
+          "min": 1,
+          "max": 1
+        },
+        "recovery_success_rate": {
+          "mean": 67.41103341103342,
+          "stdev": 42.611878886672066,
+          "min": 0.0,
+          "max": 97.77777777777777
+        },
+        "mean_recovery_time_seconds": {
+          "mean": 0.05041927251689825,
+          "stdev": 0.00016910875092015015,
+          "min": 0.050153255462646484,
+          "max": 0.05060768127441406
+        },
+        "max_recovery_time_seconds": {
+          "mean": 0.05090174674987793,
+          "stdev": 0.00042820045172715357,
+          "min": 0.050153255462646484,
+          "max": 0.05120730400085449
+        },
+        "total_test_cases_lost": {
+          "mean": 47.6,
+          "stdev": 52.118135039542615,
+          "min": 2,
+          "max": 123
+        },
+        "test_cases_lost_per_recovery": {
+          "mean": 2.4562237762237764,
+          "stdev": 0.4110760248934977,
+          "min": 2.0,
+          "max": 3.0
+        }
+      }
+    },
+    {
+      "scenario_name": "Target Restart Recovery",
+      "failure_type": "target_restart",
+      "duration_seconds": 120,
+      "trials": [
+        {
+          "executions": 326,
+          "failures_injected": 33,
+          "successful_recoveries": 32,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 96.96969696969697,
+          "mean_recovery_time_seconds": 0.3005325505227754,
+          "max_recovery_time_seconds": 0.3011441230773926,
+          "total_test_cases_lost": 333,
+          "test_cases_lost_per_recovery": 10.090909090909092
+        },
+        {
+          "executions": 202,
+          "failures_injected": 26,
+          "successful_recoveries": 25,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 96.15384615384616,
+          "mean_recovery_time_seconds": 0.3007688889136681,
+          "max_recovery_time_seconds": 0.3012573719024658,
+          "total_test_cases_lost": 265,
+          "test_cases_lost_per_recovery": 10.192307692307692
+        },
+        {
+          "executions": 577,
+          "failures_injected": 61,
+          "successful_recoveries": 60,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 98.36065573770492,
+          "mean_recovery_time_seconds": 0.3006553024542136,
+          "max_recovery_time_seconds": 0.30133962631225586,
+          "total_test_cases_lost": 660,
+          "test_cases_lost_per_recovery": 10.819672131147541
+        },
+        {
+          "executions": 271,
+          "failures_injected": 34,
+          "successful_recoveries": 33,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 97.05882352941177,
+          "mean_recovery_time_seconds": 0.300604266278884,
+          "max_recovery_time_seconds": 0.30112552642822266,
+          "total_test_cases_lost": 348,
+          "test_cases_lost_per_recovery": 10.235294117647058
+        },
+        {
+          "executions": 272,
+          "failures_injected": 23,
+          "successful_recoveries": 22,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 95.65217391304348,
+          "mean_recovery_time_seconds": 0.300752826358961,
+          "max_recovery_time_seconds": 0.3012533187866211,
+          "total_test_cases_lost": 227,
+          "test_cases_lost_per_recovery": 9.869565217391305
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 329.6,
+          "stdev": 145.13200887467934,
+          "min": 202,
+          "max": 577
+        },
+        "failures_injected": {
+          "mean": 35.4,
+          "stdev": 15.043270920913443,
+          "min": 23,
+          "max": 61
+        },
+        "successful_recoveries": {
+          "mean": 34.4,
+          "stdev": 15.043270920913443,
+          "min": 22,
+          "max": 60
+        },
+        "failed_recoveries": {
+          "mean": 1,
+          "stdev": 0.0,
+          "min": 1,
+          "max": 1
+        },
+        "recovery_success_rate": {
+          "mean": 96.83903926074066,
+          "stdev": 1.031846913540739,
+          "min": 95.65217391304348,
+          "max": 98.36065573770492
+        },
+        "mean_recovery_time_seconds": {
+          "mean": 0.30066276690570043,
+          "stdev": 9.975837490241132e-05,
+          "min": 0.3005325505227754,
+          "max": 0.3007688889136681
+        },
+        "max_recovery_time_seconds": {
+          "mean": 0.3012239933013916,
+          "stdev": 8.862855929167797e-05,
+          "min": 0.30112552642822266,
+          "max": 0.30133962631225586
+        },
+        "total_test_cases_lost": {
+          "mean": 366.6,
+          "stdev": 171.2959427423779,
+          "min": 227,
+          "max": 660
+        },
+        "test_cases_lost_per_recovery": {
+          "mean": 10.241549649880538,
+          "stdev": 0.3527585936008553,
+          "min": 9.869565217391305,
+          "max": 10.819672131147541
+        }
+      }
+    },
+    {
+      "scenario_name": "Network Disconnect Recovery",
+      "failure_type": "network_disconnect",
+      "duration_seconds": 120,
+      "trials": [
+        {
+          "executions": 112,
+          "failures_injected": 12,
+          "successful_recoveries": 11,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 91.66666666666666,
+          "mean_recovery_time_seconds": 0.20076537132263184,
+          "max_recovery_time_seconds": 0.20125436782836914,
+          "total_test_cases_lost": 65,
+          "test_cases_lost_per_recovery": 5.416666666666667
+        },
+        {
+          "executions": 29,
+          "failures_injected": 2,
+          "successful_recoveries": 1,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 50.0,
+          "mean_recovery_time_seconds": 0.20053696632385254,
+          "max_recovery_time_seconds": 0.20080828666687012,
+          "total_test_cases_lost": 9,
+          "test_cases_lost_per_recovery": 4.5
+        },
+        {
+          "executions": 191,
+          "failures_injected": 24,
+          "successful_recoveries": 23,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 95.83333333333334,
+          "mean_recovery_time_seconds": 0.20064338048299155,
+          "max_recovery_time_seconds": 0.2011270523071289,
+          "total_test_cases_lost": 124,
+          "test_cases_lost_per_recovery": 5.166666666666667
+        },
+        {
+          "executions": 47,
+          "failures_injected": 4,
+          "successful_recoveries": 3,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 75.0,
+          "mean_recovery_time_seconds": 0.20046257972717285,
+          "max_recovery_time_seconds": 0.200667142868042,
+          "total_test_cases_lost": 9,
+          "test_cases_lost_per_recovery": 2.25
+        },
+        {
+          "executions": 39,
+          "failures_injected": 6,
+          "successful_recoveries": 5,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 83.33333333333334,
+          "mean_recovery_time_seconds": 0.20065104961395264,
+          "max_recovery_time_seconds": 0.20107483863830566,
+          "total_test_cases_lost": 43,
+          "test_cases_lost_per_recovery": 7.166666666666667
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 83.6,
+          "stdev": 68.28469813948071,
+          "min": 29,
+          "max": 191
+        },
+        "failures_injected": {
+          "mean": 9.6,
+          "stdev": 8.87693640846886,
+          "min": 2,
+          "max": 24
+        },
+        "successful_recoveries": {
+          "mean": 8.6,
+          "stdev": 8.87693640846886,
+          "min": 1,
+          "max": 23
+        },
+        "failed_recoveries": {
+          "mean": 1,
+          "stdev": 0.0,
+          "min": 1,
+          "max": 1
+        },
+        "recovery_success_rate": {
+          "mean": 79.16666666666667,
+          "stdev": 18.162078931419476,
+          "min": 50.0,
+          "max": 95.83333333333334
+        },
+        "mean_recovery_time_seconds": {
+          "mean": 0.20061186949412027,
+          "stdev": 0.00011617740205983442,
+          "min": 0.20046257972717285,
+          "max": 0.20076537132263184
+        },
+        "max_recovery_time_seconds": {
+          "mean": 0.20098633766174318,
+          "stdev": 0.00024138179177462596,
+          "min": 0.200667142868042,
+          "max": 0.20125436782836914
+        },
+        "total_test_cases_lost": {
+          "mean": 50,
+          "stdev": 47.7283982551269,
+          "min": 9,
+          "max": 124
+        },
+        "test_cases_lost_per_recovery": {
+          "mean": 4.9,
+          "stdev": 1.7789275795639725,
+          "min": 2.25,
+          "max": 7.166666666666667
+        }
+      }
+    },
+    {
+      "scenario_name": "Resource Exhaustion Recovery",
+      "failure_type": "resource_exhaustion",
+      "duration_seconds": 120,
+      "trials": [
+        {
+          "executions": 78,
+          "failures_injected": 7,
+          "successful_recoveries": 6,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 85.71428571428571,
+          "mean_recovery_time_seconds": 0.10034091132027763,
+          "max_recovery_time_seconds": 0.1007843017578125,
+          "total_test_cases_lost": 226,
+          "test_cases_lost_per_recovery": 32.285714285714285
+        },
+        {
+          "executions": 96,
+          "failures_injected": 13,
+          "successful_recoveries": 12,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 92.3076923076923,
+          "mean_recovery_time_seconds": 0.10039127790010892,
+          "max_recovery_time_seconds": 0.10084986686706543,
+          "total_test_cases_lost": 383,
+          "test_cases_lost_per_recovery": 29.46153846153846
+        },
+        {
+          "executions": 115,
+          "failures_injected": 7,
+          "successful_recoveries": 6,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 85.71428571428571,
+          "mean_recovery_time_seconds": 0.10055712291172572,
+          "max_recovery_time_seconds": 0.10106587409973145,
+          "total_test_cases_lost": 234,
+          "test_cases_lost_per_recovery": 33.42857142857143
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 96.33333333333333,
+          "stdev": 18.502252115170556,
+          "min": 78,
+          "max": 115
+        },
+        "failures_injected": {
+          "mean": 9,
+          "stdev": 3.4641016151377544,
+          "min": 7,
+          "max": 13
+        },
+        "successful_recoveries": {
+          "mean": 8,
+          "stdev": 3.4641016151377544,
+          "min": 6,
+          "max": 12
+        },
+        "failed_recoveries": {
+          "mean": 1,
+          "stdev": 0.0,
+          "min": 1,
+          "max": 1
+        },
+        "recovery_success_rate": {
+          "mean": 87.91208791208791,
+          "stdev": 3.806705071579953,
+          "min": 85.71428571428571,
+          "max": 92.3076923076923
+        },
+        "mean_recovery_time_seconds": {
+          "mean": 0.1004297707107041,
+          "stdev": 0.00011312884433143482,
+          "min": 0.10034091132027763,
+          "max": 0.10055712291172572
+        },
+        "max_recovery_time_seconds": {
+          "mean": 0.10090001424153645,
+          "stdev": 0.0001473323294738227,
+          "min": 0.1007843017578125,
+          "max": 0.10106587409973145
+        },
+        "total_test_cases_lost": {
+          "mean": 281,
+          "stdev": 88.42510955605314,
+          "min": 226,
+          "max": 383
+        },
+        "test_cases_lost_per_recovery": {
+          "mean": 31.725274725274726,
+          "stdev": 2.042035018323846,
+          "min": 29.46153846153846,
+          "max": 33.42857142857143
+        }
+      }
+    },
+    {
+      "scenario_name": "Corrupted State Recovery",
+      "failure_type": "corrupted_state",
+      "duration_seconds": 120,
+      "trials": [
+        {
+          "executions": 110,
+          "failures_injected": 10,
+          "successful_recoveries": 9,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 90.0,
+          "mean_recovery_time_seconds": 0.150496506690979,
+          "max_recovery_time_seconds": 0.15105581283569336,
+          "total_test_cases_lost": 455,
+          "test_cases_lost_per_recovery": 45.5
+        },
+        {
+          "executions": 186,
+          "failures_injected": 12,
+          "successful_recoveries": 11,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 91.66666666666666,
+          "mean_recovery_time_seconds": 0.15064146121342978,
+          "max_recovery_time_seconds": 0.1512138843536377,
+          "total_test_cases_lost": 770,
+          "test_cases_lost_per_recovery": 64.16666666666667
+        },
+        {
+          "executions": 2,
+          "failures_injected": 1,
+          "successful_recoveries": 0,
+          "failed_recoveries": 1,
+          "recovery_success_rate": 0.0,
+          "mean_recovery_time_seconds": 0.1502223014831543,
+          "max_recovery_time_seconds": 0.1502223014831543,
+          "total_test_cases_lost": 94,
+          "test_cases_lost_per_recovery": 94.0
+        }
+      ],
+      "aggregate": {
+        "executions": {
+          "mean": 99.33333333333333,
+          "stdev": 92.46260505379098,
+          "min": 2,
+          "max": 186
+        },
+        "failures_injected": {
+          "mean": 7.666666666666667,
+          "stdev": 5.8594652770823155,
+          "min": 1,
+          "max": 12
+        },
+        "successful_recoveries": {
+          "mean": 6.666666666666667,
+          "stdev": 5.8594652770823155,
+          "min": 0,
+          "max": 11
+        },
+        "failed_recoveries": {
+          "mean": 1,
+          "stdev": 0.0,
+          "min": 1,
+          "max": 1
+        },
+        "recovery_success_rate": {
+          "mean": 60.55555555555555,
+          "stdev": 52.44927002281276,
+          "min": 0.0,
+          "max": 91.66666666666666
+        },
+        "mean_recovery_time_seconds": {
+          "mean": 0.1504534231291877,
+          "stdev": 0.00021287523304420032,
+          "min": 0.1502223014831543,
+          "max": 0.15064146121342978
+        },
+        "max_recovery_time_seconds": {
+          "mean": 0.15083066622416177,
+          "stdev": 0.0005327545351962165,
+          "min": 0.1502223014831543,
+          "max": 0.1512138843536377
+        },
+        "total_test_cases_lost": {
+          "mean": 439.6666666666667,
+          "stdev": 338.26074755036734,
+          "min": 94,
+          "max": 770
+        },
+        "test_cases_lost_per_recovery": {
+          "mean": 67.88888888888889,
+          "stdev": 24.463313424466925,
+          "min": 45.5,
+          "max": 94.0
+        }
+      }
+    }
+  ]
+}
