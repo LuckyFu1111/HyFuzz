@@ -19,7 +19,7 @@ class MasterAnalyzer:
         self.scripts_dir = Path('analysis_scripts')
         self.start_time = time.time()
         self.steps_completed = 0
-        self.steps_total = 6
+        self.steps_total = 10  # Updated from 6 to 10
 
     def print_header(self, message):
         """Print formatted header"""
@@ -132,17 +132,62 @@ class MasterAnalyzer:
         else:
             results['failures'] += 1
 
-        # Step 6: Analysis Summary (already exists from previous run)
-        self.print_step(6, "Analysis Verification")
+        # Step 6: Advanced Statistical Tests
+        self.print_step(6, "Advanced Statistical Tests")
+        success = self.run_script('advanced_statistical_tests.py',
+                                  'Normality, variance, ANOVA/Kruskal-Wallis')
+        results['steps'].append(('Advanced Tests', success))
+        if success:
+            results['successes'] += 1
+        else:
+            results['failures'] += 1
+
+        # Step 7: Performance Benchmarking
+        self.print_step(7, "Performance Benchmarking")
+        success = self.run_script('performance_benchmarking.py',
+                                  'Efficiency, ROI, and performance metrics')
+        results['steps'].append(('Performance Benchmarking', success))
+        if success:
+            results['successes'] += 1
+        else:
+            results['failures'] += 1
+
+        # Step 8: Interactive HTML Report
+        self.print_step(8, "Interactive HTML Report")
+        success = self.run_script('generate_html_report.py',
+                                  'Interactive dashboard with embedded visualizations')
+        results['steps'].append(('HTML Report', success))
+        if success:
+            results['successes'] += 1
+        else:
+            results['failures'] += 1
+
+        # Step 9: Executive Summary
+        self.print_step(9, "Executive Summary")
+        success = self.run_script('generate_executive_summary.py',
+                                  'Comprehensive thesis executive summary')
+        results['steps'].append(('Executive Summary', success))
+        if success:
+            results['successes'] += 1
+        else:
+            results['failures'] += 1
+
+        # Step 10: Analysis Verification
+        self.print_step(10, "Analysis Verification")
         print("  Checking generated files...")
 
         # Check key files
         key_files = [
             ('results_data/enhanced_statistical_analysis.json', 'Enhanced Stats Data'),
             ('results_data/cross_analysis.json', 'Cross-Analysis Data'),
+            ('results_data/advanced_statistical_tests.json', 'Advanced Tests Data'),
+            ('results_data/performance_benchmarking.json', 'Performance Data'),
             ('plots/enhanced/correlation_heatmap.png', 'Correlation Heatmap'),
             ('plots/enhanced/ttfc_vs_crashes_scatter.png', 'TTFC Scatter Plot'),
+            ('plots/performance/performance_benchmarking.png', 'Performance Chart'),
             ('latex_tables/all_tables.tex', 'LaTeX Tables'),
+            ('interactive_report.html', 'HTML Dashboard'),
+            ('EXECUTIVE_SUMMARY.md', 'Executive Summary'),
         ]
 
         all_present = True
@@ -179,19 +224,28 @@ class MasterAnalyzer:
         print(f"  📊 Data Files:")
         print(f"     - enhanced_statistical_analysis.json (24KB)")
         print(f"     - cross_analysis.json (8.9KB)")
+        print(f"     - advanced_statistical_tests.json")
+        print(f"     - performance_benchmarking.json")
 
         print(f"\n  📈 Visualizations:")
         print(f"     - 5 enhanced plots (1.3MB @ 300 DPI)")
         print(f"     - 3 box plots for distribution comparison")
+        print(f"     - 1 performance benchmarking chart")
 
         print(f"\n  📄 LaTeX Tables:")
-        print(f"     - 5 publication-ready tables")
+        print(f"     - 6 publication-ready tables")
         print(f"     - all_tables.tex (combined)")
 
+        print(f"\n  🌐 Interactive Reports:")
+        print(f"     - interactive_report.html (977KB)")
+        print(f"     - Self-contained dashboard with embedded visualizations")
+
         print(f"\n  📚 Documentation:")
+        print(f"     - EXECUTIVE_SUMMARY.md (comprehensive)")
         print(f"     - IMPROVEMENT_RECOMMENDATIONS.md")
         print(f"     - THESIS_IMPROVEMENTS_SUMMARY.md")
         print(f"     - FINAL_OPTIMIZATION_SUMMARY.md")
+        print(f"     - README_OPTIMIZATIONS.md")
 
         # Success criteria
         success_rate = results['successes'] / self.steps_total

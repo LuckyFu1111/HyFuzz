@@ -11,7 +11,7 @@
 \toprule
 \textbf{Metric 1} & \textbf{Metric 2} & \textbf{Pearson's r} & \textbf{p-value} & \textbf{Interpretation} \\
 \midrule
-TTFC & Final Crashes & $-0.954$ & $0.0031$ & ** \\
+TTFC & Final Crashes & $-0.994$ & $0.0001$ & *** \\
 Coverage & Efficiency & $0.984$ & $0.0000$ & *** \\
 \bottomrule
 \end{tabular}
@@ -67,11 +67,11 @@ Efficiency measured as crashes per 1000 executions. ``vs Best'' shows percentage
 \midrule
 Empty (baseline) & 0 & nan & nan & --- \\
 \midrule
-minimal_random & 5 & 0.0 & 0.0 & nan\% \\
-minimal_valid & 5 & 0.0 & 0.0 & nan\% \\
-medium_random & 30 & 0.0 & 0.0 & nan\% \\
-medium_valid & 30 & 0.0 & 0.0 & nan\% \\
-large_valid & 100 & 0.0 & 0.0 & nan\% \\
+small_valid & 5 & 0.0 & 0.0 & nan\% \\
+medium_valid & 15 & 0.0 & 0.0 & nan\% \\
+large_valid & 30 & 0.0 & 0.0 & nan\% \\
+small_random & 5 & 0.0 & 0.0 & nan\% \\
+large_random & 30 & 0.0 & 0.0 & nan\% \\
 \bottomrule
 \end{tabular}
 \vspace{0.2cm}
@@ -93,11 +93,11 @@ TTFC = Time to First Crash. Improvement calculated relative to empty corpus base
 \toprule
 \textbf{Finding} & \textbf{Significance} & \textbf{Key Result} \\
 \midrule
-Seed Quality Impact on Payload Complexity & \textbf{High} & Best seed corpus achieves 25.6% more crashes. Crash payloads average 39.2 bytes, suggesting moderate... \\
+Seed Quality Impact on Payload Complexity & \textbf{High} & Best seed corpus achieves 22.6% more crashes. Crash payloads average 39.2 bytes, suggesting moderate... \\
 \midrule
 Mutation Complexity vs Reproducibility & Medium & Surprisingly, complex mutations (CV=12.6%) show similar variance to simple mutations (CV=13.6%), ind... \\
 \midrule
-TTFC as Predictor of Overall Effectiveness & \textbf{High} & Strong negative correlation (r=-0.95): configurations with faster TTFC (3.8s) discover 183 crashes v... \\
+TTFC as Predictor of Overall Effectiveness & \textbf{High} & Strong negative correlation (r=-0.99): configurations with faster TTFC (3.9s) discover 59 crashes vs... \\
 \midrule
 Coverage-Efficiency Relationship & \textbf{High} & Strong positive correlation (r=0.98): operators with high coverage (havoc: 545) also show high effic... \\
 \midrule
