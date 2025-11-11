@@ -319,7 +319,7 @@ class GlobalExceptionHandler:
                 'sanitized_traceback': sanitized_tb,
                 'timestamp': datetime.now().isoformat(),
                 'pid': os.getpid(),
-                'thread': threading.current_thread().name,
+                'thread_name': threading.current_thread().name,
             }
         )
 
