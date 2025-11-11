@@ -6,37 +6,670 @@
     "random_seed": 42,
     "duration_seconds": 60,
     "runs": [
-      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"},
-      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"},
-      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"},
-      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"},
-      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"}
+      {
+        "random_seed": 42,
+        "executions": 48775,
+        "unique_crashes": 147,
+        "crashes_found": 147,
+        "coverage": 12195,
+        "throughput": 812.9150353984321,
+        "execution_hash": "7a1e1d18dc7ce2f8c42c783dd9e481b30760ed01216ae5f01e0e093ffc97848b",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 1,
+            "coverage": 25
+          },
+          {
+            "exec": 200,
+            "crashes": 1,
+            "coverage": 50
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 75
+          },
+          {
+            "exec": 400,
+            "crashes": 1,
+            "coverage": 100
+          },
+          {
+            "exec": 500,
+            "crashes": 2,
+            "coverage": 125
+          },
+          {
+            "exec": 600,
+            "crashes": 2,
+            "coverage": 150
+          },
+          {
+            "exec": 700,
+            "crashes": 2,
+            "coverage": 175
+          },
+          {
+            "exec": 800,
+            "crashes": 3,
+            "coverage": 200
+          },
+          {
+            "exec": 900,
+            "crashes": 3,
+            "coverage": 225
+          }
+        ]
+      },
+      {
+        "random_seed": 42,
+        "executions": 48865,
+        "unique_crashes": 147,
+        "crashes_found": 147,
+        "coverage": 12215,
+        "throughput": 814.4120518700839,
+        "execution_hash": "638fe4e058264173916510fbf9a7e022c886e56af1ae6e83fb5bdef3c6b4ff17",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 1,
+            "coverage": 25
+          },
+          {
+            "exec": 200,
+            "crashes": 1,
+            "coverage": 50
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 75
+          },
+          {
+            "exec": 400,
+            "crashes": 1,
+            "coverage": 100
+          },
+          {
+            "exec": 500,
+            "crashes": 2,
+            "coverage": 125
+          },
+          {
+            "exec": 600,
+            "crashes": 2,
+            "coverage": 150
+          },
+          {
+            "exec": 700,
+            "crashes": 2,
+            "coverage": 175
+          },
+          {
+            "exec": 800,
+            "crashes": 3,
+            "coverage": 200
+          },
+          {
+            "exec": 900,
+            "crashes": 3,
+            "coverage": 225
+          }
+        ]
+      },
+      {
+        "random_seed": 42,
+        "executions": 49127,
+        "unique_crashes": 148,
+        "crashes_found": 148,
+        "coverage": 12280,
+        "throughput": 818.7827737226602,
+        "execution_hash": "3fea67b45101cf89c4f173a3c350ef4e7f22ff23f40a71d5ff3887e4dea2fc2d",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 1,
+            "coverage": 25
+          },
+          {
+            "exec": 200,
+            "crashes": 1,
+            "coverage": 50
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 75
+          },
+          {
+            "exec": 400,
+            "crashes": 1,
+            "coverage": 100
+          },
+          {
+            "exec": 500,
+            "crashes": 2,
+            "coverage": 125
+          },
+          {
+            "exec": 600,
+            "crashes": 2,
+            "coverage": 150
+          },
+          {
+            "exec": 700,
+            "crashes": 2,
+            "coverage": 175
+          },
+          {
+            "exec": 800,
+            "crashes": 3,
+            "coverage": 200
+          },
+          {
+            "exec": 900,
+            "crashes": 3,
+            "coverage": 225
+          }
+        ]
+      },
+      {
+        "random_seed": 42,
+        "executions": 48718,
+        "unique_crashes": 147,
+        "crashes_found": 147,
+        "coverage": 12180,
+        "throughput": 811.9559420365042,
+        "execution_hash": "7a1e1d18dc7ce2f8c42c783dd9e481b30760ed01216ae5f01e0e093ffc97848b",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 1,
+            "coverage": 25
+          },
+          {
+            "exec": 200,
+            "crashes": 1,
+            "coverage": 50
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 75
+          },
+          {
+            "exec": 400,
+            "crashes": 1,
+            "coverage": 100
+          },
+          {
+            "exec": 500,
+            "crashes": 2,
+            "coverage": 125
+          },
+          {
+            "exec": 600,
+            "crashes": 2,
+            "coverage": 150
+          },
+          {
+            "exec": 700,
+            "crashes": 2,
+            "coverage": 175
+          },
+          {
+            "exec": 800,
+            "crashes": 3,
+            "coverage": 200
+          },
+          {
+            "exec": 900,
+            "crashes": 3,
+            "coverage": 225
+          }
+        ]
+      },
+      {
+        "random_seed": 42,
+        "executions": 47611,
+        "unique_crashes": 143,
+        "crashes_found": 143,
+        "coverage": 11900,
+        "throughput": 793.507702356983,
+        "execution_hash": "5daad490fbd6162a4c105f679d1f4ac9d2a67cb6a54c7558561a4c89a07d88e0",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 1,
+            "coverage": 25
+          },
+          {
+            "exec": 200,
+            "crashes": 1,
+            "coverage": 50
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 75
+          },
+          {
+            "exec": 400,
+            "crashes": 1,
+            "coverage": 100
+          },
+          {
+            "exec": 500,
+            "crashes": 2,
+            "coverage": 125
+          },
+          {
+            "exec": 600,
+            "crashes": 2,
+            "coverage": 150
+          },
+          {
+            "exec": 700,
+            "crashes": 2,
+            "coverage": 175
+          },
+          {
+            "exec": 800,
+            "crashes": 3,
+            "coverage": 200
+          },
+          {
+            "exec": 900,
+            "crashes": 3,
+            "coverage": 225
+          }
+        ]
+      }
     ],
     "reproducibility_analysis": {
-      "reproducibility_score": 100.0,
-      "hash_matches": 5,
+      "reproducibility_score": 97.50371902474868,
+      "hash_matches": 2,
       "total_runs": 5,
-      "identical_runs": 5,
-      "crash_consistency": {"mean": 150.0, "stdev": 0.0, "cv_percent": 0.0},
-      "coverage_consistency": {"mean": 12435.0, "stdev": 0.0, "cv_percent": 0.0},
-      "execution_consistency": {"mean": 29850.0, "stdev": 0.0, "cv_percent": 0.0}
+      "identical_runs": 2,
+      "crash_consistency": {
+        "mean": 146.4,
+        "stdev": 1.949358868961793,
+        "cv_percent": 1.3315292820777274
+      },
+      "coverage_consistency": {
+        "mean": 12154,
+        "stdev": 147.0289087220605,
+        "cv_percent": 1.2097162145965155
+      },
+      "execution_consistency": {
+        "mean": 48619.2,
+        "stdev": 584.9745293600397,
+        "cv_percent": 1.2031759662027341
+      }
     }
   },
   "variance_test": {
     "test_type": "no_fixed_seed",
     "duration_seconds": 60,
     "runs": [
-      {"run_seed": 1234567, "executions": 29720, "unique_crashes": 148, "coverage": 12280},
-      {"run_seed": 2345678, "executions": 29980, "unique_crashes": 152, "coverage": 12510},
-      {"run_seed": 3456789, "executions": 29850, "unique_crashes": 151, "coverage": 12420},
-      {"run_seed": 4567890, "executions": 29905, "unique_crashes": 149, "coverage": 12385},
-      {"run_seed": 5678901, "executions": 29840, "unique_crashes": 150, "coverage": 12405}
+      {
+        "random_seed": 1357416221,
+        "executions": 49054,
+        "unique_crashes": 147,
+        "crashes_found": 147,
+        "coverage": 7356,
+        "throughput": 817.5565177974637,
+        "execution_hash": "51cab040426fe776a7ad2ae7190275bc171fabf6fccf3c4ccb0d91bc0993c5a5",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 0,
+            "coverage": 15
+          },
+          {
+            "exec": 200,
+            "crashes": 1,
+            "coverage": 30
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 45
+          },
+          {
+            "exec": 400,
+            "crashes": 1,
+            "coverage": 60
+          },
+          {
+            "exec": 500,
+            "crashes": 1,
+            "coverage": 75
+          },
+          {
+            "exec": 600,
+            "crashes": 2,
+            "coverage": 90
+          },
+          {
+            "exec": 700,
+            "crashes": 2,
+            "coverage": 105
+          },
+          {
+            "exec": 800,
+            "crashes": 2,
+            "coverage": 120
+          },
+          {
+            "exec": 900,
+            "crashes": 3,
+            "coverage": 135
+          }
+        ],
+        "run_seed": 1357416221
+      },
+      {
+        "random_seed": 1417417775,
+        "executions": 49026,
+        "unique_crashes": 148,
+        "crashes_found": 148,
+        "coverage": 2451,
+        "throughput": 817.097353814668,
+        "execution_hash": "58008c74beebf85ed74c75bd042fc278db0ad20abf61172dd2b08fee37bb9943",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 1,
+            "coverage": 5
+          },
+          {
+            "exec": 200,
+            "crashes": 1,
+            "coverage": 10
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 15
+          },
+          {
+            "exec": 400,
+            "crashes": 2,
+            "coverage": 20
+          },
+          {
+            "exec": 500,
+            "crashes": 2,
+            "coverage": 25
+          },
+          {
+            "exec": 600,
+            "crashes": 2,
+            "coverage": 30
+          },
+          {
+            "exec": 700,
+            "crashes": 3,
+            "coverage": 35
+          },
+          {
+            "exec": 800,
+            "crashes": 3,
+            "coverage": 40
+          },
+          {
+            "exec": 900,
+            "crashes": 3,
+            "coverage": 45
+          }
+        ],
+        "run_seed": 1417417775
+      },
+      {
+        "random_seed": 1477418719,
+        "executions": 48524,
+        "unique_crashes": 145,
+        "crashes_found": 145,
+        "coverage": 21843,
+        "throughput": 808.7331180210157,
+        "execution_hash": "bc3d7a852e0bd5a89348ce6e0fc39d50b36bd03109e57a5238b07b2c28a64919",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 0,
+            "coverage": 45
+          },
+          {
+            "exec": 200,
+            "crashes": 0,
+            "coverage": 90
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 135
+          },
+          {
+            "exec": 400,
+            "crashes": 1,
+            "coverage": 180
+          },
+          {
+            "exec": 500,
+            "crashes": 1,
+            "coverage": 225
+          },
+          {
+            "exec": 600,
+            "crashes": 1,
+            "coverage": 270
+          },
+          {
+            "exec": 700,
+            "crashes": 2,
+            "coverage": 315
+          },
+          {
+            "exec": 800,
+            "crashes": 2,
+            "coverage": 360
+          },
+          {
+            "exec": 900,
+            "crashes": 2,
+            "coverage": 405
+          }
+        ],
+        "run_seed": 1477418719
+      },
+      {
+        "random_seed": 1537420081,
+        "executions": 48254,
+        "unique_crashes": 145,
+        "crashes_found": 145,
+        "coverage": 7236,
+        "throughput": 804.217438055925,
+        "execution_hash": "a6896ed4f945cc8e6ab8ffd01b361ae965f4524c529edeb5fd01369c087d0794",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 0,
+            "coverage": 15
+          },
+          {
+            "exec": 200,
+            "crashes": 1,
+            "coverage": 30
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 45
+          },
+          {
+            "exec": 400,
+            "crashes": 1,
+            "coverage": 60
+          },
+          {
+            "exec": 500,
+            "crashes": 1,
+            "coverage": 75
+          },
+          {
+            "exec": 600,
+            "crashes": 2,
+            "coverage": 90
+          },
+          {
+            "exec": 700,
+            "crashes": 2,
+            "coverage": 105
+          },
+          {
+            "exec": 800,
+            "crashes": 2,
+            "coverage": 120
+          },
+          {
+            "exec": 900,
+            "crashes": 3,
+            "coverage": 135
+          }
+        ],
+        "run_seed": 1537420081
+      },
+      {
+        "random_seed": 1597422047,
+        "executions": 48153,
+        "unique_crashes": 144,
+        "crashes_found": 144,
+        "coverage": 12035,
+        "throughput": 802.5369633869079,
+        "execution_hash": "b014461d24b28658a59bc01c78782f457d8608a8d728a6bb4162b6e7519795bc",
+        "execution_log": [
+          {
+            "exec": 0,
+            "crashes": 0,
+            "coverage": 0
+          },
+          {
+            "exec": 100,
+            "crashes": 0,
+            "coverage": 25
+          },
+          {
+            "exec": 200,
+            "crashes": 0,
+            "coverage": 50
+          },
+          {
+            "exec": 300,
+            "crashes": 1,
+            "coverage": 75
+          },
+          {
+            "exec": 400,
+            "crashes": 1,
+            "coverage": 100
+          },
+          {
+            "exec": 500,
+            "crashes": 1,
+            "coverage": 125
+          },
+          {
+            "exec": 600,
+            "crashes": 2,
+            "coverage": 150
+          },
+          {
+            "exec": 700,
+            "crashes": 2,
+            "coverage": 175
+          },
+          {
+            "exec": 800,
+            "crashes": 2,
+            "coverage": 200
+          },
+          {
+            "exec": 900,
+            "crashes": 2,
+            "coverage": 225
+          }
+        ],
+        "run_seed": 1597422047
+      }
     ],
     "variance_analysis": {
-      "crashes": {"mean": 150.0, "stdev": 1.58, "cv_percent": 1.05, "min": 148, "max": 152},
-      "coverage": {"mean": 12400.0, "stdev": 86.0, "cv_percent": 0.69, "min": 12280, "max": 12510},
-      "throughput": {"mean": 497.5, "stdev": 4.3, "cv_percent": 0.86},
-      "acceptable_variance": true
+      "crashes": {
+        "mean": 145.8,
+        "stdev": 1.6431676725154984,
+        "cv_percent": 1.1270011471299715,
+        "min": 144,
+        "max": 148
+      },
+      "coverage": {
+        "mean": 10184.2,
+        "stdev": 7345.850168632627,
+        "cv_percent": 72.12986949031468,
+        "min": 2451,
+        "max": 21843
+      },
+      "throughput": {
+        "mean": 810.0282782151961,
+        "stdev": 7.039341627254433,
+        "cv_percent": 0.8690241830525731
+      },
+      "acceptable_variance": false
     }
   },
   "cross_platform_test": {
@@ -46,53 +679,653 @@
       {
         "platform_name": "platform_A",
         "runs": [
-          {"executions": 29850, "unique_crashes": 150, "coverage": 12435},
-          {"executions": 29850, "unique_crashes": 150, "coverage": 12435},
-          {"executions": 29850, "unique_crashes": 150, "coverage": 12435}
+          {
+            "random_seed": 12345,
+            "executions": 48714,
+            "unique_crashes": 146,
+            "crashes_found": 146,
+            "coverage": 2436,
+            "throughput": 811.8882987385609,
+            "execution_hash": "32fd27a83918aaf85c4463cc64b8c28f30052497813b6e7832dbc0f3ab069979",
+            "execution_log": [
+              {
+                "exec": 0,
+                "crashes": 0,
+                "coverage": 0
+              },
+              {
+                "exec": 100,
+                "crashes": 0,
+                "coverage": 5
+              },
+              {
+                "exec": 200,
+                "crashes": 0,
+                "coverage": 10
+              },
+              {
+                "exec": 300,
+                "crashes": 1,
+                "coverage": 15
+              },
+              {
+                "exec": 400,
+                "crashes": 1,
+                "coverage": 20
+              },
+              {
+                "exec": 500,
+                "crashes": 1,
+                "coverage": 25
+              },
+              {
+                "exec": 600,
+                "crashes": 2,
+                "coverage": 30
+              },
+              {
+                "exec": 700,
+                "crashes": 2,
+                "coverage": 35
+              },
+              {
+                "exec": 800,
+                "crashes": 2,
+                "coverage": 40
+              },
+              {
+                "exec": 900,
+                "crashes": 2,
+                "coverage": 45
+              }
+            ]
+          },
+          {
+            "random_seed": 12345,
+            "executions": 48552,
+            "unique_crashes": 146,
+            "crashes_found": 146,
+            "coverage": 2428,
+            "throughput": 809.1957909691716,
+            "execution_hash": "4abb42333864aaff6f3f479dd2bc84531ea760c1992007c56abc624a6d8c2f19",
+            "execution_log": [
+              {
+                "exec": 0,
+                "crashes": 0,
+                "coverage": 0
+              },
+              {
+                "exec": 100,
+                "crashes": 0,
+                "coverage": 5
+              },
+              {
+                "exec": 200,
+                "crashes": 0,
+                "coverage": 10
+              },
+              {
+                "exec": 300,
+                "crashes": 1,
+                "coverage": 15
+              },
+              {
+                "exec": 400,
+                "crashes": 1,
+                "coverage": 20
+              },
+              {
+                "exec": 500,
+                "crashes": 1,
+                "coverage": 25
+              },
+              {
+                "exec": 600,
+                "crashes": 2,
+                "coverage": 30
+              },
+              {
+                "exec": 700,
+                "crashes": 2,
+                "coverage": 35
+              },
+              {
+                "exec": 800,
+                "crashes": 2,
+                "coverage": 40
+              },
+              {
+                "exec": 900,
+                "crashes": 2,
+                "coverage": 45
+              }
+            ]
+          },
+          {
+            "random_seed": 12345,
+            "executions": 48546,
+            "unique_crashes": 146,
+            "crashes_found": 146,
+            "coverage": 2428,
+            "throughput": 809.085243077017,
+            "execution_hash": "4abb42333864aaff6f3f479dd2bc84531ea760c1992007c56abc624a6d8c2f19",
+            "execution_log": [
+              {
+                "exec": 0,
+                "crashes": 0,
+                "coverage": 0
+              },
+              {
+                "exec": 100,
+                "crashes": 0,
+                "coverage": 5
+              },
+              {
+                "exec": 200,
+                "crashes": 0,
+                "coverage": 10
+              },
+              {
+                "exec": 300,
+                "crashes": 1,
+                "coverage": 15
+              },
+              {
+                "exec": 400,
+                "crashes": 1,
+                "coverage": 20
+              },
+              {
+                "exec": 500,
+                "crashes": 1,
+                "coverage": 25
+              },
+              {
+                "exec": 600,
+                "crashes": 2,
+                "coverage": 30
+              },
+              {
+                "exec": 700,
+                "crashes": 2,
+                "coverage": 35
+              },
+              {
+                "exec": 800,
+                "crashes": 2,
+                "coverage": 40
+              },
+              {
+                "exec": 900,
+                "crashes": 2,
+                "coverage": 45
+              }
+            ]
+          }
         ],
-        "consistency": {"reproducibility_score": 100.0}
+        "consistency": {
+          "reproducibility_score": 99.74258863723098,
+          "hash_matches": 1,
+          "total_runs": 3,
+          "identical_runs": 1,
+          "crash_consistency": {
+            "mean": 146,
+            "stdev": 0.0,
+            "cv_percent": 0.0
+          },
+          "coverage_consistency": {
+            "mean": 2430.6666666666665,
+            "stdev": 4.618802153517006,
+            "cv_percent": 0.19002203045187901
+          },
+          "execution_consistency": {
+            "mean": 48604,
+            "stdev": 95.31002045955084,
+            "cv_percent": 0.19609501370165178
+          }
+        }
       },
       {
         "platform_name": "platform_B",
         "runs": [
-          {"executions": 29830, "unique_crashes": 149, "coverage": 12410},
-          {"executions": 29845, "unique_crashes": 150, "coverage": 12425},
-          {"executions": 29838, "unique_crashes": 149, "coverage": 12418}
+          {
+            "random_seed": 12345,
+            "executions": 48053,
+            "unique_crashes": 144,
+            "crashes_found": 144,
+            "coverage": 2403,
+            "throughput": 800.8727646412398,
+            "execution_hash": "fe4c9cdcc7b2449c884690b0524c0764a24ff423aeafcc342ebba22bc92dafe5",
+            "execution_log": [
+              {
+                "exec": 0,
+                "crashes": 0,
+                "coverage": 0
+              },
+              {
+                "exec": 100,
+                "crashes": 0,
+                "coverage": 5
+              },
+              {
+                "exec": 200,
+                "crashes": 0,
+                "coverage": 10
+              },
+              {
+                "exec": 300,
+                "crashes": 1,
+                "coverage": 15
+              },
+              {
+                "exec": 400,
+                "crashes": 1,
+                "coverage": 20
+              },
+              {
+                "exec": 500,
+                "crashes": 1,
+                "coverage": 25
+              },
+              {
+                "exec": 600,
+                "crashes": 2,
+                "coverage": 30
+              },
+              {
+                "exec": 700,
+                "crashes": 2,
+                "coverage": 35
+              },
+              {
+                "exec": 800,
+                "crashes": 2,
+                "coverage": 40
+              },
+              {
+                "exec": 900,
+                "crashes": 2,
+                "coverage": 45
+              }
+            ]
+          },
+          {
+            "random_seed": 12345,
+            "executions": 47965,
+            "unique_crashes": 144,
+            "crashes_found": 144,
+            "coverage": 2398,
+            "throughput": 799.4124386391806,
+            "execution_hash": "fb4000138c36b12951a3df9702bb3c90164d3f0462344fc4a4f9fe2404226e28",
+            "execution_log": [
+              {
+                "exec": 0,
+                "crashes": 0,
+                "coverage": 0
+              },
+              {
+                "exec": 100,
+                "crashes": 0,
+                "coverage": 5
+              },
+              {
+                "exec": 200,
+                "crashes": 0,
+                "coverage": 10
+              },
+              {
+                "exec": 300,
+                "crashes": 1,
+                "coverage": 15
+              },
+              {
+                "exec": 400,
+                "crashes": 1,
+                "coverage": 20
+              },
+              {
+                "exec": 500,
+                "crashes": 1,
+                "coverage": 25
+              },
+              {
+                "exec": 600,
+                "crashes": 2,
+                "coverage": 30
+              },
+              {
+                "exec": 700,
+                "crashes": 2,
+                "coverage": 35
+              },
+              {
+                "exec": 800,
+                "crashes": 2,
+                "coverage": 40
+              },
+              {
+                "exec": 900,
+                "crashes": 2,
+                "coverage": 45
+              }
+            ]
+          },
+          {
+            "random_seed": 12345,
+            "executions": 47213,
+            "unique_crashes": 142,
+            "crashes_found": 142,
+            "coverage": 2361,
+            "throughput": 786.8811352036871,
+            "execution_hash": "86a6b8e332278f315248bcc6ba26e4ff59724eef88630b7c47947132fd2c32a8",
+            "execution_log": [
+              {
+                "exec": 0,
+                "crashes": 0,
+                "coverage": 0
+              },
+              {
+                "exec": 100,
+                "crashes": 0,
+                "coverage": 5
+              },
+              {
+                "exec": 200,
+                "crashes": 0,
+                "coverage": 10
+              },
+              {
+                "exec": 300,
+                "crashes": 1,
+                "coverage": 15
+              },
+              {
+                "exec": 400,
+                "crashes": 1,
+                "coverage": 20
+              },
+              {
+                "exec": 500,
+                "crashes": 1,
+                "coverage": 25
+              },
+              {
+                "exec": 600,
+                "crashes": 2,
+                "coverage": 30
+              },
+              {
+                "exec": 700,
+                "crashes": 2,
+                "coverage": 35
+              },
+              {
+                "exec": 800,
+                "crashes": 2,
+                "coverage": 40
+              },
+              {
+                "exec": 900,
+                "crashes": 2,
+                "coverage": 45
+              }
+            ]
+          }
         ],
-        "consistency": {"reproducibility_score": 99.2}
+        "consistency": {
+          "reproducibility_score": 98.17761799279495,
+          "hash_matches": 1,
+          "total_runs": 3,
+          "identical_runs": 1,
+          "crash_consistency": {
+            "mean": 143.33333333333334,
+            "stdev": 1.1547005383792515,
+            "cv_percent": 0.8056050267762219
+          },
+          "coverage_consistency": {
+            "mean": 2387.3333333333335,
+            "stdev": 22.94195574342635,
+            "cv_percent": 0.9609866968762784
+          },
+          "execution_consistency": {
+            "mean": 47743.666666666664,
+            "stdev": 461.67232246836426,
+            "cv_percent": 0.9669812871550801
+          }
+        }
       },
       {
         "platform_name": "platform_C",
         "runs": [
-          {"executions": 29865, "unique_crashes": 151, "coverage": 12450},
-          {"executions": 29858, "unique_crashes": 150, "coverage": 12442},
-          {"executions": 29862, "unique_crashes": 151, "coverage": 12446}
+          {
+            "random_seed": 12345,
+            "executions": 47728,
+            "unique_crashes": 143,
+            "crashes_found": 143,
+            "coverage": 2387,
+            "throughput": 795.4579110685441,
+            "execution_hash": "511ffc85c547de3503fd4c572b7d3daca6bcbdbf44f29d9345691f3c57763197",
+            "execution_log": [
+              {
+                "exec": 0,
+                "crashes": 0,
+                "coverage": 0
+              },
+              {
+                "exec": 100,
+                "crashes": 0,
+                "coverage": 5
+              },
+              {
+                "exec": 200,
+                "crashes": 0,
+                "coverage": 10
+              },
+              {
+                "exec": 300,
+                "crashes": 1,
+                "coverage": 15
+              },
+              {
+                "exec": 400,
+                "crashes": 1,
+                "coverage": 20
+              },
+              {
+                "exec": 500,
+                "crashes": 1,
+                "coverage": 25
+              },
+              {
+                "exec": 600,
+                "crashes": 2,
+                "coverage": 30
+              },
+              {
+                "exec": 700,
+                "crashes": 2,
+                "coverage": 35
+              },
+              {
+                "exec": 800,
+                "crashes": 2,
+                "coverage": 40
+              },
+              {
+                "exec": 900,
+                "crashes": 2,
+                "coverage": 45
+              }
+            ]
+          },
+          {
+            "random_seed": 12345,
+            "executions": 46750,
+            "unique_crashes": 140,
+            "crashes_found": 140,
+            "coverage": 2338,
+            "throughput": 779.1621494389533,
+            "execution_hash": "4d54b02761bb554381394e76b565e1d2c332ad2efa487dc1bf6311705c11e3af",
+            "execution_log": [
+              {
+                "exec": 0,
+                "crashes": 0,
+                "coverage": 0
+              },
+              {
+                "exec": 100,
+                "crashes": 0,
+                "coverage": 5
+              },
+              {
+                "exec": 200,
+                "crashes": 0,
+                "coverage": 10
+              },
+              {
+                "exec": 300,
+                "crashes": 1,
+                "coverage": 15
+              },
+              {
+                "exec": 400,
+                "crashes": 1,
+                "coverage": 20
+              },
+              {
+                "exec": 500,
+                "crashes": 1,
+                "coverage": 25
+              },
+              {
+                "exec": 600,
+                "crashes": 2,
+                "coverage": 30
+              },
+              {
+                "exec": 700,
+                "crashes": 2,
+                "coverage": 35
+              },
+              {
+                "exec": 800,
+                "crashes": 2,
+                "coverage": 40
+              },
+              {
+                "exec": 900,
+                "crashes": 2,
+                "coverage": 45
+              }
+            ]
+          },
+          {
+            "random_seed": 12345,
+            "executions": 47956,
+            "unique_crashes": 144,
+            "crashes_found": 144,
+            "coverage": 2398,
+            "throughput": 799.2617947117762,
+            "execution_hash": "fb4000138c36b12951a3df9702bb3c90164d3f0462344fc4a4f9fe2404226e28",
+            "execution_log": [
+              {
+                "exec": 0,
+                "crashes": 0,
+                "coverage": 0
+              },
+              {
+                "exec": 100,
+                "crashes": 0,
+                "coverage": 5
+              },
+              {
+                "exec": 200,
+                "crashes": 0,
+                "coverage": 10
+              },
+              {
+                "exec": 300,
+                "crashes": 1,
+                "coverage": 15
+              },
+              {
+                "exec": 400,
+                "crashes": 1,
+                "coverage": 20
+              },
+              {
+                "exec": 500,
+                "crashes": 1,
+                "coverage": 25
+              },
+              {
+                "exec": 600,
+                "crashes": 2,
+                "coverage": 30
+              },
+              {
+                "exec": 700,
+                "crashes": 2,
+                "coverage": 35
+              },
+              {
+                "exec": 800,
+                "crashes": 2,
+                "coverage": 40
+              },
+              {
+                "exec": 900,
+                "crashes": 2,
+                "coverage": 45
+              }
+            ]
+          }
         ],
-        "consistency": {"reproducibility_score": 99.5}
+        "consistency": {
+          "reproducibility_score": 97.22846199275645,
+          "hash_matches": 1,
+          "total_runs": 3,
+          "identical_runs": 1,
+          "crash_consistency": {
+            "mean": 142.33333333333334,
+            "stdev": 2.0816659994661326,
+            "cv_percent": 1.4625288052455263
+          },
+          "coverage_consistency": {
+            "mean": 2374.3333333333335,
+            "stdev": 31.942656954820357,
+            "cv_percent": 1.3453316139893452
+          },
+          "execution_consistency": {
+            "mean": 47478,
+            "stdev": 640.6902527743027,
+            "cv_percent": 1.3494465916304452
+          }
+        }
       }
     ]
   },
   "summary": {
     "fixed_seed_reproducibility": {
-      "score": 100.0,
+      "score": 97.50371902474868,
       "status": "Excellent",
-      "hash_match_rate": "5/5"
+      "hash_match_rate": "2/5"
     },
     "natural_variance": {
-      "acceptable": true,
-      "crash_cv": 1.05,
-      "coverage_cv": 0.69,
-      "status": "Acceptable"
+      "acceptable": false,
+      "crash_cv": 1.1270011471299715,
+      "coverage_cv": 72.12986949031468,
+      "status": "High variance detected"
     },
     "cross_platform_consistency": {
-      "avg_score": 99.57,
+      "avg_score": 98.38288954092747,
       "status": "Consistent",
       "platforms_tested": 3
     },
     "overall_reproducibility": {
-      "score": 99.79,
-      "deterministic": true,
-      "production_ready": true
+      "score": 97.94330428283807,
+      "deterministic": false,
+      "production_ready": false
     }
   }
 }

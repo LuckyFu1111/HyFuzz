@@ -1,120 +1,143 @@
 {
-  "test_name": "seed_sensitivity_analysis",
-  "test_date": "2025-11-11",
+  "test_date": "2025-11-11 14:12:53",
   "configurations": [
     {
       "corpus_type": "empty",
       "corpus_size": 0,
-      "duration_seconds": 60,
-      "trials": [],
-      "aggregate": {
-        "unique_crashes": {"mean": 145.4, "stdev": 8.2, "cv_percent": 5.64, "min": 135, "max": 156, "median": 146},
-        "time_to_first_crash": {"mean": 15.3, "stdev": 2.1, "cv_percent": 13.7, "min": 12.8, "max": 18.2, "median": 15.1},
-        "final_coverage": {"mean": 9862, "stdev": 342, "cv_percent": 3.47, "min": 9450, "max": 10250, "median": 9880}
-      }
-    },
-    {
-      "corpus_type": "minimal_random",
-      "corpus_size": 5,
-      "duration_seconds": 60,
-      "trials": [],
-      "aggregate": {
-        "unique_crashes": {"mean": 148.2, "stdev": 7.5, "cv_percent": 5.06, "min": 138, "max": 158, "median": 149},
-        "time_to_first_crash": {"mean": 12.8, "stdev": 1.9, "cv_percent": 14.8, "min": 10.5, "max": 15.2, "median": 12.6},
-        "final_coverage": {"mean": 10120, "stdev": 298, "cv_percent": 2.94, "min": 9750, "max": 10480, "median": 10100}
-      }
-    },
-    {
-      "corpus_type": "minimal_valid",
-      "corpus_size": 5,
-      "duration_seconds": 60,
-      "trials": [],
-      "aggregate": {
-        "unique_crashes": {"mean": 162.8, "stdev": 6.8, "cv_percent": 4.18, "min": 154, "max": 171, "median": 163},
-        "time_to_first_crash": {"mean": 6.4, "stdev": 0.8, "cv_percent": 12.5, "min": 5.3, "max": 7.5, "median": 6.3},
-        "final_coverage": {"mean": 11250, "stdev": 315, "cv_percent": 2.80, "min": 10800, "max": 11680, "median": 11240}
-      }
-    },
-    {
-      "corpus_type": "medium_random",
-      "corpus_size": 30,
-      "duration_seconds": 60,
-      "trials": [],
-      "aggregate": {
-        "unique_crashes": {"mean": 156.5, "stdev": 8.1, "cv_percent": 5.17, "min": 146, "max": 167, "median": 157},
-        "time_to_first_crash": {"mean": 9.2, "stdev": 1.5, "cv_percent": 16.3, "min": 7.4, "max": 11.3, "median": 9.1},
-        "final_coverage": {"mean": 10580, "stdev": 287, "cv_percent": 2.71, "min": 10200, "max": 10950, "median": 10570}
-      }
-    },
-    {
-      "corpus_type": "medium_valid",
-      "corpus_size": 30,
-      "duration_seconds": 60,
-      "trials": [],
-      "aggregate": {
-        "unique_crashes": {"mean": 178.4, "stdev": 7.2, "cv_percent": 4.04, "min": 169, "max": 187, "median": 179},
-        "time_to_first_crash": {"mean": 4.2, "stdev": 0.6, "cv_percent": 14.3, "min": 3.5, "max": 5.1, "median": 4.1},
-        "final_coverage": {"mean": 12340, "stdev": 342, "cv_percent": 2.77, "min": 11890, "max": 12780, "median": 12320}
-      }
-    },
-    {
-      "corpus_type": "large_valid",
-      "corpus_size": 100,
-      "duration_seconds": 60,
-      "trials": [],
-      "aggregate": {
-        "unique_crashes": {"mean": 182.6, "stdev": 8.5, "cv_percent": 4.65, "min": 172, "max": 193, "median": 183},
-        "time_to_first_crash": {"mean": 3.8, "stdev": 0.7, "cv_percent": 18.4, "min": 2.9, "max": 4.9, "median": 3.7},
-        "final_coverage": {"mean": 12680, "stdev": 398, "cv_percent": 3.14, "min": 12180, "max": 13150, "median": 12650}
-      }
-    }
-  ],
-  "effect_sizes": {
-    "minimal_valid_5": {
-      "unique_crashes": {
-        "baseline_mean": 145.4,
-        "current_mean": 162.8,
-        "improvement_percent": 11.97
-      },
-      "time_to_first_crash": {
-        "baseline_mean": 15.3,
-        "current_mean": 6.4,
-        "improvement_percent": 58.17
-      }
-    },
-    "medium_valid_30": {
-      "unique_crashes": {
-        "baseline_mean": 145.4,
-        "current_mean": 178.4,
-        "improvement_percent": 22.69
-      },
-      "time_to_first_crash": {
-        "baseline_mean": 15.3,
-        "current_mean": 4.2,
-        "improvement_percent": 72.55
-      }
-    }
-  },
-  "summary": {
-    "best_for_crashes": {
-      "corpus_type": "large_valid",
-      "corpus_size": 100,
-      "mean_crashes": 182.6
-    },
-    "best_for_coverage": {
-      "corpus_type": "large_valid",
-      "corpus_size": 100,
-      "mean_coverage": 12680
-    },
-    "best_for_ttfc": {
-      "corpus_type": "large_valid",
-      "corpus_size": 100,
-      "mean_ttfc": 3.8
-    },
-    "key_findings": [
-      "Best seed corpus achieves 4.0x faster time-to-first-crash vs empty corpus",
-      "Medium corpus (30 seeds) improves coverage by 16.6% vs minimal (5 seeds)",
-      "Protocol-compliant seeds consistently outperform random seeds by 25-35%"
-    ]
-  }
-}
+      "num_trials": 5,
+      "trials": [
+        {
+          "seed_count": 0,
+          "total_execs": 49735,
+          "unique_crashes": [
+            "169_78671",
+            "236_74812",
+            "63_97022",
+            "72_775",
+            "74_2086",
+            "28_34469",
+            "111_23205",
+            "156_6673",
+            "134_9852",
+            "135_194",
+            "193_53645",
+            "120_68009",
+            "243_99218",
+            "252_40434",
+            "35_34909",
+            "44_76684",
+            "210_39217",
+            "92_94247",
+            "9_29455",
+            "238_88787",
+            "10_7237",
+            "12_87009",
+            "68_10860",
+            "21_71541",
+            "245_33124",
+            "163_82686",
+            "28_4796",
+            "75_35509",
+            "88_95315",
+            "95_34214",
+            "187_32306",
+            "133_27469",
+            "124_27518",
+            "4_50201",
+            "187_10358",
+            "135_74412",
+            "205_54950",
+            "121_20743",
+            "155_91782",
+            "182_97328",
+            "138_4296",
+            "193_27121",
+            "203_28550",
+            "76_81071",
+            "105_53753",
+            "34_83913",
+            "49_7562",
+            "102_5558",
+            "82_49173",
+            "194_17053",
+            "226_29257",
+            "128_88718",
+            "174_5451",
+            "233_97410",
+            "103_23075",
+            "31_48267",
+            "233_68147",
+            "77_25455",
+            "117_45125",
+            "129_60130",
+            "229_38871",
+            "108_87429",
+            "82_62714",
+            "20_96777",
+            "60_3870",
+            "13_10441",
+            "240_41179",
+            "92_71671",
+            "109_59496",
+            "31_20491",
+            "116_76968",
+            "141_44985",
+            "103_65489",
+            "218_30095",
+            "54_99421",
+            "239_76582",
+            "18_82913",
+            "99_1862",
+            "63_92921",
+            "70_10416",
+            "56_66070",
+            "252_9755",
+            "167_8451",
+            "228_7631",
+            "56_56476",
+            "178_70807",
+            "13_67255",
+            "123_67096",
+            "146_58090",
+            "232_75317",
+            "233_86381",
+            "206_61195",
+            "213_11315",
+            "110_66198",
+            "151_18743",
+            "2_99000",
+            "50_51945",
+            "153_29987",
+            "3_13184",
+            "90_34887",
+            "28_67394",
+            "23_47768",
+            "23_90999",
+            "221_38395",
+            "83_62707",
+            "82_73138",
+            "9_22839",
+            "67_19161",
+            "6_57601",
+            "89_18207",
+            "147_49913",
+            "53_75456",
+            "198_69523",
+            "5_54697",
+            "251_7413",
+            "230_41841",
+            "89_7891",
+            "216_54892",
+            "121_55830",
+            "198_86319",
+            "225_84221",
+            "81_4603",
+            "146_26507",
+            "17_60214",
+            "90_73438",
+            "201_20866",
+            "81_41980",
+            "229_35419"
+          ],
+          "time_to_first_crash": 0.07757949829101562,
+          "coverage": 
