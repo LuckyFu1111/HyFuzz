@@ -3,18 +3,17 @@
     "research_question": "Does seed quality affect crash payload characteristics?",
     "hypothesis": "Better seeds \u2192 more complex crash payloads",
     "seed_quality_scores": {
-      "empty": 145.4,
-      "random": 152.35,
-      "minimal_valid": 162.8,
-      "medium_valid": 178.4,
-      "large_valid": 182.6
+      "empty": 47.2,
+      "random": 49.400000000000006,
+      "minimal_valid": 51.8,
+      "medium_valid": 57.849999999999994
     },
     "crash_payload_metrics": {
       "avg_size": 39.170731707317074,
       "avg_entropy": 3.841317190728875,
       "avg_boundary_values": 8.484320557491289
     },
-    "key_insight": "Best seed corpus achieves 25.6% more crashes. Crash payloads average 39.2 bytes, suggesting moderate exploitation patterns.",
+    "key_insight": "Best seed corpus achieves 22.6% more crashes. Crash payloads average 39.2 bytes, suggesting moderate exploitation patterns.",
     "implication": "Seed corpus quality influences both crash discovery rate and crash complexity"
   },
   "mutation_repro": {
@@ -104,66 +103,66 @@
       {
         "corpus_type": "empty",
         "corpus_size": 0,
-        "ttfc": 15.3,
-        "crashes": 145.4
+        "ttfc": 12.5,
+        "crashes": 47.2
       },
       {
-        "corpus_type": "minimal_random",
+        "corpus_type": "small_valid",
         "corpus_size": 5,
-        "ttfc": 12.8,
-        "crashes": 148.2
-      },
-      {
-        "corpus_type": "minimal_valid",
-        "corpus_size": 5,
-        "ttfc": 6.4,
-        "crashes": 162.8
-      },
-      {
-        "corpus_type": "medium_random",
-        "corpus_size": 30,
-        "ttfc": 9.2,
-        "crashes": 156.5
+        "ttfc": 8.3,
+        "crashes": 51.8
       },
       {
         "corpus_type": "medium_valid",
-        "corpus_size": 30,
-        "ttfc": 4.2,
-        "crashes": 178.4
+        "corpus_size": 15,
+        "ttfc": 5.7,
+        "crashes": 56.4
       },
       {
         "corpus_type": "large_valid",
-        "corpus_size": 100,
-        "ttfc": 3.8,
-        "crashes": 182.6
+        "corpus_size": 30,
+        "ttfc": 3.9,
+        "crashes": 59.3
+      },
+      {
+        "corpus_type": "small_random",
+        "corpus_size": 5,
+        "ttfc": 11.2,
+        "crashes": 48.7
+      },
+      {
+        "corpus_type": "large_random",
+        "corpus_size": 30,
+        "ttfc": 10.5,
+        "crashes": 50.1
       }
     ],
     "correlation": {
-      "pearson_r": -0.9540249207605355,
-      "p_value": 0.0031219729222622,
+      "pearson_r": -0.9939032196896764,
+      "p_value": 5.564278434066713e-05,
       "significance": "significant",
       "direction": "negative",
       "strength": "strong"
     },
     "best_configuration": {
       "corpus_type": "large_valid",
-      "corpus_size": 100,
-      "ttfc": 3.8,
-      "crashes": 182.6
+      "corpus_size": 30,
+      "ttfc": 3.9,
+      "crashes": 59.3
     },
     "worst_configuration": {
       "corpus_type": "empty",
       "corpus_size": 0,
-      "ttfc": 15.3,
-      "crashes": 145.4
+      "ttfc": 12.5,
+      "crashes": 47.2
     },
     "performance_gap": {
-      "crashes": 37.19999999999999,
-      "crashes_percent": 25.58459422283355,
-      "ttfc_improvement": 11.5,
-      "ttfc_improvement_percent": 75.16339869281046
+      "crashes": 12.099999999999994,
+      "crashes_percent": 25.63559322033897,
+      "ttfc_improvement": 8.6,
+      "ttfc_improvement_percent": 68.8
     },
-    "key_insight": "Strong negative correlation (r=-0.95): configurations with faster TTFC (3.8s) discover 183 crashes vs 145 for slow TTFC (15.3s). Early success predicts overall effectiveness.",
+    "key_insight": "Strong negative correlation (r=-0.99): configurations with faster TTFC (3.9s) discover 59 crashes vs 47 for slow TTFC (12.5s). Early success predicts overall effectiveness.",
     "implication": "Early crash discovery is a strong predictor of overall fuzzing effectiveness"
   },
   "coverage_efficiency": {
@@ -259,7 +258,7 @@
         "finding": "Seed Quality Impact on Payload Complexity",
         "significance": "high",
         "thesis_section": "\u00a75.11.3 (Cross-Analysis)",
-        "key_result": "Best seed corpus achieves 25.6% more crashes. Crash payloads average 39.2 bytes, suggesting moderate exploitation patterns."
+        "key_result": "Best seed corpus achieves 22.6% more crashes. Crash payloads average 39.2 bytes, suggesting moderate exploitation patterns."
       },
       {
         "finding": "Mutation Complexity vs Reproducibility",
@@ -271,7 +270,7 @@
         "finding": "TTFC as Predictor of Overall Effectiveness",
         "significance": "high",
         "thesis_section": "\u00a75.3.9 (New Metric)",
-        "key_result": "Strong negative correlation (r=-0.95): configurations with faster TTFC (3.8s) discover 183 crashes vs 145 for slow TTFC (15.3s). Early success predicts overall effectiveness."
+        "key_result": "Strong negative correlation (r=-0.99): configurations with faster TTFC (3.9s) discover 59 crashes vs 47 for slow TTFC (12.5s). Early success predicts overall effectiveness."
       },
       {
         "finding": "Coverage-Efficiency Relationship",

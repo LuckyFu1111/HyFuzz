@@ -9,118 +9,8 @@
     },
     "comparisons": [
       {
-        "corpus_type": "minimal_random",
+        "corpus_type": "small_valid",
         "corpus_size": 5,
-        "crashes": {
-          "cohens_d": {
-            "d": null,
-            "interpretation": "insufficient_data"
-          },
-          "t_test": {
-            "t_statistic": null,
-            "p_value": null,
-            "significant_005": null,
-            "significant_001": null
-          },
-          "ci_95": {
-            "lower": null,
-            "upper": null,
-            "margin": null
-          }
-        },
-        "ttfc": {
-          "cohens_d": {
-            "d": null,
-            "interpretation": "insufficient_data"
-          },
-          "t_test": {
-            "t_statistic": null,
-            "p_value": null,
-            "significant_005": null,
-            "significant_001": null
-          },
-          "ci_95": {
-            "lower": null,
-            "upper": null,
-            "margin": null
-          }
-        },
-        "coverage": {
-          "cohens_d": {
-            "d": null,
-            "interpretation": "insufficient_data"
-          },
-          "t_test": {
-            "t_statistic": null,
-            "p_value": null,
-            "significant_005": null,
-            "significant_001": null
-          },
-          "ci_95": {
-            "lower": null,
-            "upper": null,
-            "margin": null
-          }
-        }
-      },
-      {
-        "corpus_type": "minimal_valid",
-        "corpus_size": 5,
-        "crashes": {
-          "cohens_d": {
-            "d": null,
-            "interpretation": "insufficient_data"
-          },
-          "t_test": {
-            "t_statistic": null,
-            "p_value": null,
-            "significant_005": null,
-            "significant_001": null
-          },
-          "ci_95": {
-            "lower": null,
-            "upper": null,
-            "margin": null
-          }
-        },
-        "ttfc": {
-          "cohens_d": {
-            "d": null,
-            "interpretation": "insufficient_data"
-          },
-          "t_test": {
-            "t_statistic": null,
-            "p_value": null,
-            "significant_005": null,
-            "significant_001": null
-          },
-          "ci_95": {
-            "lower": null,
-            "upper": null,
-            "margin": null
-          }
-        },
-        "coverage": {
-          "cohens_d": {
-            "d": null,
-            "interpretation": "insufficient_data"
-          },
-          "t_test": {
-            "t_statistic": null,
-            "p_value": null,
-            "significant_005": null,
-            "significant_001": null
-          },
-          "ci_95": {
-            "lower": null,
-            "upper": null,
-            "margin": null
-          }
-        }
-      },
-      {
-        "corpus_type": "medium_random",
-        "corpus_size": 30,
         "crashes": {
           "cohens_d": {
             "d": null,
@@ -175,7 +65,7 @@
       },
       {
         "corpus_type": "medium_valid",
-        "corpus_size": 30,
+        "corpus_size": 15,
         "crashes": {
           "cohens_d": {
             "d": null,
@@ -230,7 +120,117 @@
       },
       {
         "corpus_type": "large_valid",
-        "corpus_size": 100,
+        "corpus_size": 30,
+        "crashes": {
+          "cohens_d": {
+            "d": null,
+            "interpretation": "insufficient_data"
+          },
+          "t_test": {
+            "t_statistic": null,
+            "p_value": null,
+            "significant_005": null,
+            "significant_001": null
+          },
+          "ci_95": {
+            "lower": null,
+            "upper": null,
+            "margin": null
+          }
+        },
+        "ttfc": {
+          "cohens_d": {
+            "d": null,
+            "interpretation": "insufficient_data"
+          },
+          "t_test": {
+            "t_statistic": null,
+            "p_value": null,
+            "significant_005": null,
+            "significant_001": null
+          },
+          "ci_95": {
+            "lower": null,
+            "upper": null,
+            "margin": null
+          }
+        },
+        "coverage": {
+          "cohens_d": {
+            "d": null,
+            "interpretation": "insufficient_data"
+          },
+          "t_test": {
+            "t_statistic": null,
+            "p_value": null,
+            "significant_005": null,
+            "significant_001": null
+          },
+          "ci_95": {
+            "lower": null,
+            "upper": null,
+            "margin": null
+          }
+        }
+      },
+      {
+        "corpus_type": "small_random",
+        "corpus_size": 5,
+        "crashes": {
+          "cohens_d": {
+            "d": null,
+            "interpretation": "insufficient_data"
+          },
+          "t_test": {
+            "t_statistic": null,
+            "p_value": null,
+            "significant_005": null,
+            "significant_001": null
+          },
+          "ci_95": {
+            "lower": null,
+            "upper": null,
+            "margin": null
+          }
+        },
+        "ttfc": {
+          "cohens_d": {
+            "d": null,
+            "interpretation": "insufficient_data"
+          },
+          "t_test": {
+            "t_statistic": null,
+            "p_value": null,
+            "significant_005": null,
+            "significant_001": null
+          },
+          "ci_95": {
+            "lower": null,
+            "upper": null,
+            "margin": null
+          }
+        },
+        "coverage": {
+          "cohens_d": {
+            "d": null,
+            "interpretation": "insufficient_data"
+          },
+          "t_test": {
+            "t_statistic": null,
+            "p_value": null,
+            "significant_005": null,
+            "significant_001": null
+          },
+          "ci_95": {
+            "lower": null,
+            "upper": null,
+            "margin": null
+          }
+        }
+      },
+      {
+        "corpus_type": "large_random",
+        "corpus_size": 30,
         "crashes": {
           "cohens_d": {
             "d": null,
@@ -286,7 +286,7 @@
     ],
     "best_configurations": {
       "crashes": {
-        "corpus_type": "minimal_random",
+        "corpus_type": "small_valid",
         "corpus_size": 5,
         "crashes": {
           "cohens_d": {
@@ -341,7 +341,7 @@
         }
       },
       "ttfc": {
-        "corpus_type": "minimal_random",
+        "corpus_type": "small_valid",
         "corpus_size": 5,
         "crashes": {
           "cohens_d": {
@@ -396,7 +396,7 @@
         }
       },
       "coverage": {
-        "corpus_type": "minimal_random",
+        "corpus_type": "small_valid",
         "corpus_size": 5,
         "crashes": {
           "cohens_d": {
