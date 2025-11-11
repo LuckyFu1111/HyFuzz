@@ -1,0 +1,24 @@
+
+\begin{table}[h]
+\centering
+\caption{Impact of Seed Corpus Quality on Fuzzing Effectiveness}
+\label{tab:seed_sensitivity}
+\begin{tabular}{llrrr}
+\toprule
+\textbf{Corpus Type} & \textbf{Size} & \textbf{Crashes} & \textbf{TTFC (s)} & \textbf{Improvement} \\
+\midrule
+Empty (baseline) & 0 & nan & nan & --- \\
+\midrule
+minimal_random & 5 & 0.0 & 0.0 & nan\% \\
+minimal_valid & 5 & 0.0 & 0.0 & nan\% \\
+medium_random & 30 & 0.0 & 0.0 & nan\% \\
+medium_valid & 30 & 0.0 & 0.0 & nan\% \\
+large_valid & 100 & 0.0 & 0.0 & nan\% \\
+\bottomrule
+\end{tabular}
+\vspace{0.2cm}
+\begin{flushleft}
+\footnotesize
+TTFC = Time to First Crash. Improvement calculated relative to empty corpus baseline.
+\end{flushleft}
+\end{table}
