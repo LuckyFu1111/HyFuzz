@@ -1,0 +1,658 @@
+{
+  "mutation_operators": {
+    "alpha": 0.05,
+    "n_tests": 36,
+    "corrections": {
+      "bonferroni": {
+        "method": "Bonferroni",
+        "original_alpha": 0.05,
+        "adjusted_alpha": 0.001388888888888889,
+        "n_comparisons": 36,
+        "n_significant": 26,
+        "significant": [
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          true
+        ],
+        "interpretation": "Most conservative - controls family-wise error rate (FWER)"
+      },
+      "holm": {
+        "method": "Holm-Bonferroni",
+        "original_alpha": 0.05,
+        "n_comparisons": 36,
+        "n_significant": 26,
+        "significant": [
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          true
+        ],
+        "interpretation": "Less conservative than Bonferroni - controls FWER"
+      },
+      "fdr": {
+        "method": "Benjamini-Hochberg FDR",
+        "original_alpha": 0.05,
+        "fdr_level": 0.05,
+        "n_comparisons": 36,
+        "n_significant": 32,
+        "significant": [
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "interpretation": "Controls false discovery rate - less conservative, more power"
+      }
+    },
+    "results_table": [
+      {
+        "test": "bit_flip vs byte_flip",
+        "p_value": 0.15757525775932663,
+        "uncorrected_sig": false,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": false
+      },
+      {
+        "test": "bit_flip vs arithmetic",
+        "p_value": 5.34807035413493e-10,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "bit_flip vs interesting_values",
+        "p_value": 6.482715893317925e-15,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "bit_flip vs boundary_values",
+        "p_value": 2.066407980521909e-14,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "bit_flip vs block_delete",
+        "p_value": 3.0296721177626165e-05,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "bit_flip vs block_duplicate",
+        "p_value": 0.019804658509273668,
+        "uncorrected_sig": true,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": true
+      },
+      {
+        "test": "bit_flip vs block_shuffle",
+        "p_value": 2.3220974615847637e-08,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "bit_flip vs havoc",
+        "p_value": 1.4345242102171558e-17,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "byte_flip vs arithmetic",
+        "p_value": 1.3945695874812873e-08,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "byte_flip vs interesting_values",
+        "p_value": 2.2733051789493296e-13,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "byte_flip vs boundary_values",
+        "p_value": 4.6896237641412144e-15,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "byte_flip vs block_delete",
+        "p_value": 0.32645077467588013,
+        "uncorrected_sig": false,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": false
+      },
+      {
+        "test": "byte_flip vs block_duplicate",
+        "p_value": 0.43033687879662175,
+        "uncorrected_sig": false,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": false
+      },
+      {
+        "test": "byte_flip vs block_shuffle",
+        "p_value": 0.00032062657774934914,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "byte_flip vs havoc",
+        "p_value": 8.654534818290216e-16,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "arithmetic vs interesting_values",
+        "p_value": 6.502230330506883e-05,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "arithmetic vs boundary_values",
+        "p_value": 2.2489598283318404e-06,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "arithmetic vs block_delete",
+        "p_value": 0.011992170245173945,
+        "uncorrected_sig": true,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": true
+      },
+      {
+        "test": "arithmetic vs block_duplicate",
+        "p_value": 4.500938001141385e-06,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "arithmetic vs block_shuffle",
+        "p_value": 0.0053673417353516115,
+        "uncorrected_sig": true,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": true
+      },
+      {
+        "test": "arithmetic vs havoc",
+        "p_value": 1.5186323848349343e-12,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "interesting_values vs boundary_values",
+        "p_value": 0.08958281700173028,
+        "uncorrected_sig": false,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": false
+      },
+      {
+        "test": "interesting_values vs block_delete",
+        "p_value": 8.678718207430287e-10,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "interesting_values vs block_duplicate",
+        "p_value": 8.509521446915314e-08,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "interesting_values vs block_shuffle",
+        "p_value": 7.219548899424311e-07,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "interesting_values vs havoc",
+        "p_value": 0.010391094275823206,
+        "uncorrected_sig": true,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": true
+      },
+      {
+        "test": "boundary_values vs block_delete",
+        "p_value": 7.202729854878979e-13,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "boundary_values vs block_duplicate",
+        "p_value": 1.7197575345634222e-08,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "boundary_values vs block_shuffle",
+        "p_value": 1.050416495194037e-11,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "boundary_values vs havoc",
+        "p_value": 5.536535539171359e-06,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "block_delete vs block_duplicate",
+        "p_value": 0.006557702567380007,
+        "uncorrected_sig": true,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": true
+      },
+      {
+        "test": "block_delete vs block_shuffle",
+        "p_value": 8.601841503411559e-06,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "block_delete vs havoc",
+        "p_value": 1.2984548616115344e-16,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "block_duplicate vs block_shuffle",
+        "p_value": 0.028424541217952924,
+        "uncorrected_sig": true,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": true
+      },
+      {
+        "test": "block_duplicate vs havoc",
+        "p_value": 8.454850113573714e-12,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "block_shuffle vs havoc",
+        "p_value": 3.571631679302251e-13,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      }
+    ],
+    "summary": {
+      "uncorrected_significant": 32,
+      "bonferroni_significant": 26,
+      "holm_significant": 26,
+      "fdr_significant": 32
+    }
+  },
+  "seed_corpus": {
+    "alpha": 0.05,
+    "n_tests": 15,
+    "corrections": {
+      "bonferroni": {
+        "method": "Bonferroni",
+        "original_alpha": 0.05,
+        "adjusted_alpha": 0.0033333333333333335,
+        "n_comparisons": 15,
+        "n_significant": 9,
+        "significant": [
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "interpretation": "Most conservative - controls family-wise error rate (FWER)"
+      },
+      "holm": {
+        "method": "Holm-Bonferroni",
+        "original_alpha": 0.05,
+        "n_comparisons": 15,
+        "n_significant": 9,
+        "significant": [
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "interpretation": "Less conservative than Bonferroni - controls FWER"
+      },
+      "fdr": {
+        "method": "Benjamini-Hochberg FDR",
+        "original_alpha": 0.05,
+        "fdr_level": 0.05,
+        "n_comparisons": 15,
+        "n_significant": 10,
+        "significant": [
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "interpretation": "Controls false discovery rate - less conservative, more power"
+      }
+    },
+    "results_table": [
+      {
+        "test": "empty_0 vs small_valid_5",
+        "p_value": 0.0007991049130198114,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "empty_0 vs medium_valid_15",
+        "p_value": 5.126416192980265e-06,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "empty_0 vs large_valid_30",
+        "p_value": 1.0150572468051723e-13,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "empty_0 vs small_random_5",
+        "p_value": 0.9757687492065071,
+        "uncorrected_sig": false,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": false
+      },
+      {
+        "test": "empty_0 vs large_random_30",
+        "p_value": 0.3301554223606953,
+        "uncorrected_sig": false,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": false
+      },
+      {
+        "test": "small_valid_5 vs medium_valid_15",
+        "p_value": 0.000717033717143584,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "small_valid_5 vs large_valid_30",
+        "p_value": 2.584752994573179e-07,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "small_valid_5 vs small_random_5",
+        "p_value": 0.11702433746550187,
+        "uncorrected_sig": false,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": false
+      },
+      {
+        "test": "small_valid_5 vs large_random_30",
+        "p_value": 0.5963759917025376,
+        "uncorrected_sig": false,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": false
+      },
+      {
+        "test": "medium_valid_15 vs large_valid_30",
+        "p_value": 0.029716693114388664,
+        "uncorrected_sig": true,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": true
+      },
+      {
+        "test": "medium_valid_15 vs small_random_5",
+        "p_value": 0.00012834985507853596,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "medium_valid_15 vs large_random_30",
+        "p_value": 0.00036223584475225337,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "large_valid_30 vs small_random_5",
+        "p_value": 7.187649269911213e-08,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "large_valid_30 vs large_random_30",
+        "p_value": 8.591788569469216e-07,
+        "uncorrected_sig": true,
+        "bonferroni_sig": true,
+        "holm_sig": true,
+        "fdr_sig": true
+      },
+      {
+        "test": "small_random_5 vs large_random_30",
+        "p_value": 0.560671285502532,
+        "uncorrected_sig": false,
+        "bonferroni_sig": false,
+        "holm_sig": false,
+        "fdr_sig": false
+      }
+    ],
+    "summary": {
+      "uncorrected_significant": 10,
+      "bonferroni_significant": 9,
+      "holm_significant": 9,
+      "fdr_significant": 10
+    }
+  },
+  "metadata": {
+    "timestamp": "2025-11-11",
+    "corrections_applied": [
+      "Bonferroni",
+      "Holm-Bonferroni",
+      "Benjamini-Hochberg FDR"
+    ],
+    "significance_level": 0.05
+  }
+}

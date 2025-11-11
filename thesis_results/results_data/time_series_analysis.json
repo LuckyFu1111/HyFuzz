@@ -1,0 +1,69 @@
+{
+  "metrics": {
+    "mutation_operators": {
+      "bit_flip": {
+        "auc": 936.1298304541509,
+        "time_to_50pct": 6.006006006006006,
+        "time_to_90pct": 6.006006006006006,
+        "efficiency_score": 3.120432768180503
+      },
+      "byte_flip": {
+        "auc": 994.6379448575354,
+        "time_to_50pct": 6.006006006006006,
+        "time_to_90pct": 6.006006006006006,
+        "efficiency_score": 3.315459816191785
+      },
+      "arithmetic": {
+        "auc": 1345.6866312778418,
+        "time_to_50pct": 6.006006006006006,
+        "time_to_90pct": 6.006006006006006,
+        "efficiency_score": 4.485622104259472
+      },
+      "interesting_values": {
+        "auc": 1491.956917286303,
+        "time_to_50pct": 6.006006006006006,
+        "time_to_90pct": 6.006006006006006,
+        "efficiency_score": 4.973189724287677
+      },
+      "boundary_values": {
+        "auc": 1579.71908889138,
+        "time_to_50pct": 6.006006006006006,
+        "time_to_90pct": 6.006006006006006,
+        "efficiency_score": 5.2657302963046
+      },
+      "block_delete": {
+        "auc": 1111.6541736643046,
+        "time_to_50pct": 6.006006006006006,
+        "time_to_90pct": 6.006006006006006,
+        "efficiency_score": 3.705513912214349
+      },
+      "block_duplicate": {
+        "auc": 1053.1460592609199,
+        "time_to_50pct": 6.006006006006006,
+        "time_to_90pct": 6.006006006006006,
+        "efficiency_score": 3.510486864203066
+      },
+      "block_shuffle": {
+        "auc": 1228.670402471073,
+        "time_to_50pct": 6.006006006006006,
+        "time_to_90pct": 6.006006006006006,
+        "efficiency_score": 4.09556800823691
+      },
+      "havoc": {
+        "auc": 1813.7515465049178,
+        "time_to_50pct": 6.006006006006006,
+        "time_to_90pct": 6.006006006006006,
+        "efficiency_score": 6.045838488349726
+      }
+    }
+  },
+  "metadata": {
+    "duration_seconds": 300,
+    "timestamp": "2025-11-11",
+    "model": "Exponential saturation for crash discovery, Logarithmic for coverage"
+  },
+  "summary": {
+    "n_mutation_operators": 9,
+    "n_seed_configs": 6
+  }
+}
