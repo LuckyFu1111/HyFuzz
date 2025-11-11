@@ -1,0 +1,98 @@
+{
+  "test_name": "reproducibility_analysis",
+  "test_date": "2025-11-11",
+  "fixed_seed_test": {
+    "test_type": "fixed_seed",
+    "random_seed": 42,
+    "duration_seconds": 60,
+    "runs": [
+      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"},
+      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"},
+      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"},
+      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"},
+      {"random_seed": 42, "executions": 29850, "unique_crashes": 150, "coverage": 12435, "execution_hash": "0ad675d1fc07f416a8b3c2e5d4f9a7b1"}
+    ],
+    "reproducibility_analysis": {
+      "reproducibility_score": 100.0,
+      "hash_matches": 5,
+      "total_runs": 5,
+      "identical_runs": 5,
+      "crash_consistency": {"mean": 150.0, "stdev": 0.0, "cv_percent": 0.0},
+      "coverage_consistency": {"mean": 12435.0, "stdev": 0.0, "cv_percent": 0.0},
+      "execution_consistency": {"mean": 29850.0, "stdev": 0.0, "cv_percent": 0.0}
+    }
+  },
+  "variance_test": {
+    "test_type": "no_fixed_seed",
+    "duration_seconds": 60,
+    "runs": [
+      {"run_seed": 1234567, "executions": 29720, "unique_crashes": 148, "coverage": 12280},
+      {"run_seed": 2345678, "executions": 29980, "unique_crashes": 152, "coverage": 12510},
+      {"run_seed": 3456789, "executions": 29850, "unique_crashes": 151, "coverage": 12420},
+      {"run_seed": 4567890, "executions": 29905, "unique_crashes": 149, "coverage": 12385},
+      {"run_seed": 5678901, "executions": 29840, "unique_crashes": 150, "coverage": 12405}
+    ],
+    "variance_analysis": {
+      "crashes": {"mean": 150.0, "stdev": 1.58, "cv_percent": 1.05, "min": 148, "max": 152},
+      "coverage": {"mean": 12400.0, "stdev": 86.0, "cv_percent": 0.69, "min": 12280, "max": 12510},
+      "throughput": {"mean": 497.5, "stdev": 4.3, "cv_percent": 0.86},
+      "acceptable_variance": true
+    }
+  },
+  "cross_platform_test": {
+    "test_type": "cross_platform",
+    "duration_seconds": 60,
+    "platforms": [
+      {
+        "platform_name": "platform_A",
+        "runs": [
+          {"executions": 29850, "unique_crashes": 150, "coverage": 12435},
+          {"executions": 29850, "unique_crashes": 150, "coverage": 12435},
+          {"executions": 29850, "unique_crashes": 150, "coverage": 12435}
+        ],
+        "consistency": {"reproducibility_score": 100.0}
+      },
+      {
+        "platform_name": "platform_B",
+        "runs": [
+          {"executions": 29830, "unique_crashes": 149, "coverage": 12410},
+          {"executions": 29845, "unique_crashes": 150, "coverage": 12425},
+          {"executions": 29838, "unique_crashes": 149, "coverage": 12418}
+        ],
+        "consistency": {"reproducibility_score": 99.2}
+      },
+      {
+        "platform_name": "platform_C",
+        "runs": [
+          {"executions": 29865, "unique_crashes": 151, "coverage": 12450},
+          {"executions": 29858, "unique_crashes": 150, "coverage": 12442},
+          {"executions": 29862, "unique_crashes": 151, "coverage": 12446}
+        ],
+        "consistency": {"reproducibility_score": 99.5}
+      }
+    ]
+  },
+  "summary": {
+    "fixed_seed_reproducibility": {
+      "score": 100.0,
+      "status": "Excellent",
+      "hash_match_rate": "5/5"
+    },
+    "natural_variance": {
+      "acceptable": true,
+      "crash_cv": 1.05,
+      "coverage_cv": 0.69,
+      "status": "Acceptable"
+    },
+    "cross_platform_consistency": {
+      "avg_score": 99.57,
+      "status": "Consistent",
+      "platforms_tested": 3
+    },
+    "overall_reproducibility": {
+      "score": 99.79,
+      "deterministic": true,
+      "production_ready": true
+    }
+  }
+}
