@@ -570,7 +570,7 @@ class MutationAblationTester:
     def _print_summary(self, rankings: Dict):
         """Print summary to console"""
 
-        print("\n=Ê MUTATION OPERATOR RANKINGS:")
+        print("\n= MUTATION OPERATOR RANKINGS:")
         print("\n  By Crash Discovery:")
         for i, entry in enumerate(rankings['by_crashes'][:5], 1):
             print(f"    {i}. {entry['operator']:20s} - {entry['value']:.1f} crashes")

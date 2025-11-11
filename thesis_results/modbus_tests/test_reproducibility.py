@@ -423,7 +423,7 @@ class ReproducibilityTester:
     def _print_summary(self, summary: Dict):
         """Print summary to console"""
 
-        print("\n=Ê REPRODUCIBILITY SUMMARY:")
+        print("\n= REPRODUCIBILITY SUMMARY:")
         print(f"\n  Fixed Seed Reproducibility: {summary['fixed_seed_reproducibility']['score']:.1f}% "
               f"({summary['fixed_seed_reproducibility']['status']})")
         print(f"  Natural Variance: CV = {summary['natural_variance']['crash_cv']:.1f}% crashes, "
