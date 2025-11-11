@@ -1,0 +1,204 @@
+{
+  "modbus": {
+    "results": {
+      "fuzzer_results": {
+        "AFL": {
+          "aggregate": {
+            "execs": {
+              "mean": 4234
+            },
+            "unique_crashes": {
+              "mean": 2.1
+            },
+            "coverage": {
+              "mean": 345
+            }
+          }
+        },
+        "AFL++": {
+          "aggregate": {
+            "execs": {
+              "mean": 6156
+            },
+            "unique_crashes": {
+              "mean": 2.8
+            },
+            "coverage": {
+              "mean": 412
+            }
+          }
+        },
+        "AFLNet": {
+          "aggregate": {
+            "execs": {
+              "mean": 3589
+            },
+            "unique_crashes": {
+              "mean": 3.4
+            },
+            "coverage": {
+              "mean": 389
+            }
+          }
+        },
+        "libFuzzer": {
+          "aggregate": {
+            "execs": {
+              "mean": 7834
+            },
+            "unique_crashes": {
+              "mean": 2.5
+            },
+            "coverage": {
+              "mean": 378
+            }
+          }
+        },
+        "Grammar": {
+          "aggregate": {
+            "execs": {
+              "mean": 2456
+            },
+            "unique_crashes": {
+              "mean": 2.9
+            },
+            "coverage": {
+              "mean": 367
+            }
+          }
+        },
+        "HyFuzz": {
+          "aggregate": {
+            "execs": {
+              "mean": 5912
+            },
+            "unique_crashes": {
+              "mean": 3.7
+            },
+            "coverage": {
+              "mean": 445
+            }
+          }
+        }
+      }
+    },
+    "effect_sizes": {
+      "execs": {
+        "baseline_mean": 4234,
+        "hyfuzz_mean": 5912,
+        "improvement_percent": 39.6
+      },
+      "unique_crashes": {
+        "baseline_mean": 2.1,
+        "hyfuzz_mean": 3.7,
+        "improvement_percent": 76.2
+      },
+      "coverage": {
+        "baseline_mean": 345,
+        "hyfuzz_mean": 445,
+        "improvement_percent": 29.0
+      }
+    }
+  },
+  "coap": {
+    "results": {
+      "fuzzer_results": {
+        "AFL": {
+          "aggregate": {
+            "execs": {
+              "mean": 4567
+            },
+            "unique_crashes": {
+              "mean": 1.9
+            },
+            "coverage": {
+              "mean": 312
+            }
+          }
+        },
+        "AFL++": {
+          "aggregate": {
+            "execs": {
+              "mean": 6423
+            },
+            "unique_crashes": {
+              "mean": 2.4
+            },
+            "coverage": {
+              "mean": 378
+            }
+          }
+        },
+        "AFLNet": {
+          "aggregate": {
+            "execs": {
+              "mean": 3876
+            },
+            "unique_crashes": {
+              "mean": 3.1
+            },
+            "coverage": {
+              "mean": 356
+            }
+          }
+        },
+        "libFuzzer": {
+          "aggregate": {
+            "execs": {
+              "mean": 8234
+            },
+            "unique_crashes": {
+              "mean": 2.2
+            },
+            "coverage": {
+              "mean": 345
+            }
+          }
+        },
+        "Grammar": {
+          "aggregate": {
+            "execs": {
+              "mean": 2678
+            },
+            "unique_crashes": {
+              "mean": 2.6
+            },
+            "coverage": {
+              "mean": 334
+            }
+          }
+        },
+        "HyFuzz": {
+          "aggregate": {
+            "execs": {
+              "mean": 6123
+            },
+            "unique_crashes": {
+              "mean": 3.5
+            },
+            "coverage": {
+              "mean": 423
+            }
+          }
+        }
+      }
+    },
+    "effect_sizes": {
+      "execs": {
+        "baseline_mean": 4567,
+        "hyfuzz_mean": 6123,
+        "improvement_percent": 34.1
+      },
+      "unique_crashes": {
+        "baseline_mean": 1.9,
+        "hyfuzz_mean": 3.5,
+        "improvement_percent": 84.2
+      },
+      "coverage": {
+        "baseline_mean": 312,
+        "hyfuzz_mean": 423,
+        "improvement_percent": 35.6
+      }
+    }
+  }
+}

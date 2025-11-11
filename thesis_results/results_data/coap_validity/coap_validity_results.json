@@ -1,0 +1,58 @@
+{
+  "coherence_no_dtls": {
+    "ack_ratio": 0.947,
+    "token_coherence_rate": 0.991,
+    "response_mix": {
+      "2xx_percent": 0.753,
+      "4xx_percent": 0.198,
+      "5xx_percent": 0.049
+    }
+  },
+  "coherence_with_dtls": {
+    "ack_ratio": 0.943,
+    "token_coherence_rate": 0.989,
+    "response_mix": {
+      "2xx_percent": 0.748,
+      "4xx_percent": 0.203,
+      "5xx_percent": 0.049
+    }
+  },
+  "milestones_no_dtls": {
+    "observe": {
+      "registration_success": 48,
+      "notification_cycles": 42
+    },
+    "blockwise": {
+      "block1_completions": 12,
+      "block2_completions": 15,
+      "szx_diversity": [
+        16,
+        32,
+        64,
+        128,
+        256,
+        512,
+        1024
+      ]
+    }
+  },
+  "milestones_with_dtls": {
+    "observe": {
+      "registration_success": 45,
+      "notification_cycles": 39
+    },
+    "blockwise": {
+      "block1_completions": 11,
+      "block2_completions": 14,
+      "szx_diversity": [
+        16,
+        32,
+        64,
+        128,
+        256,
+        512,
+        1024
+      ]
+    }
+  }
+}

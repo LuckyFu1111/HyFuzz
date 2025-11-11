@@ -1,0 +1,2160 @@
+{
+  "test_date": "2025-11-10 15:28:57",
+  "configurations": [
+    {
+      "num_clients": 1,
+      "test_mode": "same_target",
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "total_executions": 50471,
+          "total_crashes": 165,
+          "total_unique_crashes": 165,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 841.1798002598728,
+          "per_client_throughput_mean": 841.1798002598728,
+          "per_client_throughput_stdev": 0,
+          "per_client_executions_mean": 50471,
+          "per_client_executions_stdev": 0,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 50471,
+              "crashes_found": 165,
+              "unique_crashes": 165,
+              "throughput": 841.1798002598728,
+              "elapsed_time": 60.00025200843811
+            }
+          ]
+        },
+        {
+          "total_executions": 50953,
+          "total_crashes": 157,
+          "total_unique_crashes": 157,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 849.2118344332897,
+          "per_client_throughput_mean": 849.2118344332897,
+          "per_client_throughput_stdev": 0,
+          "per_client_executions_mean": 50953,
+          "per_client_executions_stdev": 0,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 50953,
+              "crashes_found": 157,
+              "unique_crashes": 157,
+              "throughput": 849.2118344332897,
+              "elapsed_time": 60.00034141540527
+            }
+          ]
+        },
+        {
+          "total_executions": 51438,
+          "total_crashes": 155,
+          "total_unique_crashes": 155,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 857.2899574486631,
+          "per_client_throughput_mean": 857.2899574486631,
+          "per_client_throughput_stdev": 0,
+          "per_client_executions_mean": 51438,
+          "per_client_executions_stdev": 0,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 51438,
+              "crashes_found": 155,
+              "unique_crashes": 155,
+              "throughput": 857.2899574486631,
+              "elapsed_time": 60.00070285797119
+            }
+          ]
+        },
+        {
+          "total_executions": 50693,
+          "total_crashes": 161,
+          "total_unique_crashes": 161,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 844.8755076217323,
+          "per_client_throughput_mean": 844.8755076217323,
+          "per_client_throughput_stdev": 0,
+          "per_client_executions_mean": 50693,
+          "per_client_executions_stdev": 0,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 50693,
+              "crashes_found": 161,
+              "unique_crashes": 161,
+              "throughput": 844.8755076217323,
+              "elapsed_time": 60.000555753707886
+            }
+          ]
+        },
+        {
+          "total_executions": 50994,
+          "total_crashes": 174,
+          "total_unique_crashes": 174,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 849.8933571011487,
+          "per_client_throughput_mean": 849.8933571011487,
+          "per_client_throughput_stdev": 0,
+          "per_client_executions_mean": 50994,
+          "per_client_executions_stdev": 0,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 50994,
+              "crashes_found": 174,
+              "unique_crashes": 174,
+              "throughput": 849.8933571011487,
+              "elapsed_time": 60.00046896934509
+            }
+          ]
+        }
+      ],
+      "aggregate": {
+        "total_executions": {
+          "mean": 50909.8,
+          "stdev": 363.14556310107935,
+          "min": 50471,
+          "max": 51438
+        },
+        "total_crashes": {
+          "mean": 162.4,
+          "stdev": 7.536577472566709,
+          "min": 155,
+          "max": 174
+        },
+        "total_unique_crashes": {
+          "mean": 162.4,
+          "stdev": 7.536577472566709,
+          "min": 155,
+          "max": 174
+        },
+        "race_conditions_detected": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "aggregate_throughput": {
+          "mean": 848.4900913729413,
+          "stdev": 6.050481025341616,
+          "min": 841.1798002598728,
+          "max": 857.2899574486631
+        },
+        "per_client_throughput_mean": {
+          "mean": 848.4900913729413,
+          "stdev": 6.050481025341616,
+          "min": 841.1798002598728,
+          "max": 857.2899574486631
+        }
+      },
+      "scaling_analysis": {
+        "aggregate_throughput": 848.4900913729413,
+        "per_client_throughput": 848.4900913729413,
+        "normalized_per_client": 848.4900913729413,
+        "ideal_aggregate_throughput": 848.4900913729413,
+        "scaling_efficiency": 100,
+        "contention_detected": false
+      }
+    },
+    {
+      "num_clients": 2,
+      "test_mode": "same_target",
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "total_executions": 86324,
+          "total_crashes": 260,
+          "total_unique_crashes": 260,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 1438.6931781574751,
+          "per_client_throughput_mean": 719.3466466191833,
+          "per_client_throughput_stdev": 6.646699604745995,
+          "per_client_executions_mean": 43162,
+          "per_client_executions_stdev": 398.8082245892128,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 43444,
+              "crashes_found": 138,
+              "unique_crashes": 138,
+              "throughput": 724.0465729822091,
+              "elapsed_time": 60.001665115356445
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 42880,
+              "crashes_found": 122,
+              "unique_crashes": 122,
+              "throughput": 714.6467202561574,
+              "elapsed_time": 60.00167465209961
+            }
+          ]
+        },
+        {
+          "total_executions": 87198,
+          "total_crashes": 270,
+          "total_unique_crashes": 270,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 1453.2939132857935,
+          "per_client_throughput_mean": 726.6470572278007,
+          "per_client_throughput_stdev": 9.993876233351642,
+          "per_client_executions_mean": 43599,
+          "per_client_executions_stdev": 599.6265504461923,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 44023,
+              "crashes_found": 141,
+              "unique_crashes": 141,
+              "throughput": 733.7137948827427,
+              "elapsed_time": 60.000234842300415
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 43175,
+              "crashes_found": 129,
+              "unique_crashes": 129,
+              "throughput": 719.5803195728587,
+              "elapsed_time": 60.00025129318237
+            }
+          ]
+        },
+        {
+          "total_executions": 86528,
+          "total_crashes": 242,
+          "total_unique_crashes": 242,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 1442.1230528483518,
+          "per_client_throughput_mean": 721.0617406134224,
+          "per_client_throughput_stdev": 10.06411186320128,
+          "per_client_executions_mean": 43264,
+          "per_client_executions_stdev": 603.8691911333116,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 43691,
+              "crashes_found": 125,
+              "unique_crashes": 125,
+              "throughput": 728.1781423585121,
+              "elapsed_time": 60.00042772293091
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 42837,
+              "crashes_found": 117,
+              "unique_crashes": 117,
+              "throughput": 713.9453388683329,
+              "elapsed_time": 60.000391721725464
+            }
+          ]
+        },
+        {
+          "total_executions": 85049,
+          "total_crashes": 237,
+          "total_unique_crashes": 237,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 1417.462127014366,
+          "per_client_throughput_mean": 708.7311688252713,
+          "per_client_throughput_stdev": 10.759796156761675,
+          "per_client_executions_mean": 42524.5,
+          "per_client_executions_stdev": 645.5884912233179,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 42981,
+              "crashes_found": 118,
+              "unique_crashes": 118,
+              "throughput": 716.3394936519024,
+              "elapsed_time": 60.000880002975464
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 42068,
+              "crashes_found": 119,
+              "unique_crashes": 119,
+              "throughput": 701.1228439986402,
+              "elapsed_time": 60.00089764595032
+            }
+          ]
+        },
+        {
+          "total_executions": 86735,
+          "total_crashes": 242,
+          "total_unique_crashes": 242,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 1445.5612413544088,
+          "per_client_throughput_mean": 722.7807151212131,
+          "per_client_throughput_stdev": 12.079689801868453,
+          "per_client_executions_mean": 43367.5,
+          "per_client_executions_stdev": 724.7844507162113,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 43880,
+              "crashes_found": 127,
+              "unique_crashes": 127,
+              "throughput": 731.3223456947443,
+              "elapsed_time": 60.00090146064758
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 42855,
+              "crashes_found": 115,
+              "unique_crashes": 115,
+              "throughput": 714.239084547682,
+              "elapsed_time": 60.000916957855225
+            }
+          ]
+        }
+      ],
+      "aggregate": {
+        "total_executions": {
+          "mean": 86366.8,
+          "stdev": 804.8103503310579,
+          "min": 85049,
+          "max": 87198
+        },
+        "total_crashes": {
+          "mean": 250.2,
+          "stdev": 14.11382301150188,
+          "min": 237,
+          "max": 270
+        },
+        "total_unique_crashes": {
+          "mean": 250.2,
+          "stdev": 14.11382301150188,
+          "min": 237,
+          "max": 270
+        },
+        "race_conditions_detected": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "aggregate_throughput": {
+          "mean": 1439.426702532079,
+          "stdev": 13.418113143807963,
+          "min": 1417.462127014366,
+          "max": 1453.2939132857935
+        },
+        "per_client_throughput_mean": {
+          "mean": 719.7134656813781,
+          "stdev": 6.709060228735709,
+          "min": 708.7311688252713,
+          "max": 726.6470572278007
+        }
+      },
+      "scaling_analysis": {
+        "aggregate_throughput": 1439.426702532079,
+        "per_client_throughput": 719.7134656813781,
+        "normalized_per_client": 719.7133512660395,
+        "ideal_aggregate_throughput": 1439.4269313627562,
+        "scaling_efficiency": 99.99998410265417,
+        "contention_detected": false
+      }
+    },
+    {
+      "num_clients": 4,
+      "test_mode": "same_target",
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "total_executions": 120869,
+          "total_crashes": 342,
+          "total_unique_crashes": 342,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 2014.4225624398628,
+          "per_client_throughput_mean": 503.60574787010376,
+          "per_client_throughput_stdev": 5.477001276197541,
+          "per_client_executions_mean": 30217.25,
+          "per_client_executions_stdev": 328.6247860402499,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 30472,
+              "crashes_found": 89,
+              "unique_crashes": 89,
+              "throughput": 507.85158801450075,
+              "elapsed_time": 60.00178146362305
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 30398,
+              "crashes_found": 88,
+              "unique_crashes": 88,
+              "throughput": 506.61816648933757,
+              "elapsed_time": 60.00179624557495
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 30256,
+              "crashes_found": 87,
+              "unique_crashes": 87,
+              "throughput": 504.251524588381,
+              "elapsed_time": 60.00180172920227
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 29743,
+              "crashes_found": 78,
+              "unique_crashes": 78,
+              "throughput": 495.7017123881958,
+              "elapsed_time": 60.00181007385254
+            }
+          ]
+        },
+        {
+          "total_executions": 120641,
+          "total_crashes": 349,
+          "total_unique_crashes": 349,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 2010.6770374397217,
+          "per_client_throughput_mean": 502.6693574397755,
+          "per_client_throughput_stdev": 5.4734630442635765,
+          "per_client_executions_mean": 30160.25,
+          "per_client_executions_stdev": 328.40358808433666,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 30409,
+              "crashes_found": 79,
+              "unique_crashes": 79,
+              "throughput": 506.81533749054773,
+              "elapsed_time": 60.00015735626221
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 30341,
+              "crashes_found": 87,
+              "unique_crashes": 87,
+              "throughput": 505.681864462523,
+              "elapsed_time": 60.00017428398132
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 30207,
+              "crashes_found": 89,
+              "unique_crashes": 89,
+              "throughput": 503.4484435920353,
+              "elapsed_time": 60.00018548965454
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 29684,
+              "crashes_found": 94,
+              "unique_crashes": 94,
+              "throughput": 494.7317842139961,
+              "elapsed_time": 60.00018787384033
+            }
+          ]
+        },
+        {
+          "total_executions": 120723,
+          "total_crashes": 359,
+          "total_unique_crashes": 359,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 2012.0362484043947,
+          "per_client_throughput_mean": 503.0092163609167,
+          "per_client_throughput_stdev": 4.402528119003255,
+          "per_client_executions_mean": 30180.75,
+          "per_client_executions_stdev": 264.14563533525717,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 30375,
+              "crashes_found": 76,
+              "unique_crashes": 76,
+              "throughput": 506.2469121257062,
+              "elapsed_time": 60.00036597251892
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 30328,
+              "crashes_found": 100,
+              "unique_crashes": 100,
+              "throughput": 505.46341284621235,
+              "elapsed_time": 60.000386238098145
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 30224,
+              "crashes_found": 97,
+              "unique_crashes": 97,
+              "throughput": 503.7299345436539,
+              "elapsed_time": 60.000404834747314
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 29796,
+              "crashes_found": 86,
+              "unique_crashes": 86,
+              "throughput": 496.5966059280944,
+              "elapsed_time": 60.000410079956055
+            }
+          ]
+        },
+        {
+          "total_executions": 121010,
+          "total_crashes": 331,
+          "total_unique_crashes": 331,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 2016.8306165314555,
+          "per_client_throughput_mean": 504.20780982868393,
+          "per_client_throughput_stdev": 5.685243672482622,
+          "per_client_executions_mean": 30252.5,
+          "per_client_executions_stdev": 341.1084871415544,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 30512,
+              "crashes_found": 81,
+              "unique_crashes": 81,
+              "throughput": 508.5329089804058,
+              "elapsed_time": 60.00005006790161
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 30443,
+              "crashes_found": 100,
+              "unique_crashes": 100,
+              "throughput": 507.38284743918484,
+              "elapsed_time": 60.00005745887756
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 30296,
+              "crashes_found": 77,
+              "unique_crashes": 77,
+              "throughput": 504.93281768268685,
+              "elapsed_time": 60.00006127357483
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 29759,
+              "crashes_found": 73,
+              "unique_crashes": 73,
+              "throughput": 495.98266521245836,
+              "elapsed_time": 60.000080823898315
+            }
+          ]
+        },
+        {
+          "total_executions": 120733,
+          "total_crashes": 360,
+          "total_unique_crashes": 360,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 2012.1548368082324,
+          "per_client_throughput_mean": 503.0388552326243,
+          "per_client_throughput_stdev": 5.420106047876049,
+          "per_client_executions_mean": 30183.25,
+          "per_client_executions_stdev": 325.20801035644865,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 30443,
+              "crashes_found": 92,
+              "unique_crashes": 92,
+              "throughput": 507.36816419733594,
+              "elapsed_time": 60.00179386138916
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 30361,
+              "crashes_found": 102,
+              "unique_crashes": 102,
+              "throughput": 506.0012629362927,
+              "elapsed_time": 60.0018265247345
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 30212,
+              "crashes_found": 86,
+              "unique_crashes": 86,
+              "throughput": 503.5178791519063,
+              "elapsed_time": 60.00184154510498
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 29717,
+              "crashes_found": 80,
+              "unique_crashes": 80,
+              "throughput": 495.26811464496234,
+              "elapsed_time": 60.00184369087219
+            }
+          ]
+        }
+      ],
+      "aggregate": {
+        "total_executions": {
+          "mean": 120795.2,
+          "stdev": 145.29693733867896,
+          "min": 120641,
+          "max": 121010
+        },
+        "total_crashes": {
+          "mean": 348.2,
+          "stdev": 12.153188881935474,
+          "min": 331,
+          "max": 360
+        },
+        "total_unique_crashes": {
+          "mean": 348.2,
+          "stdev": 12.153188881935474,
+          "min": 331,
+          "max": 360
+        },
+        "race_conditions_detected": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "aggregate_throughput": {
+          "mean": 2013.2242603247335,
+          "stdev": 2.423072246927733,
+          "min": 2010.6770374397217,
+          "max": 2016.8306165314555
+        },
+        "per_client_throughput_mean": {
+          "mean": 503.30619734642084,
+          "stdev": 0.6057784584044629,
+          "min": 502.6693574397755,
+          "max": 504.20780982868393
+        }
+      },
+      "scaling_analysis": {
+        "aggregate_throughput": 2013.2242603247335,
+        "per_client_throughput": 503.30619734642084,
+        "normalized_per_client": 503.30606508118336,
+        "ideal_aggregate_throughput": 2013.2247893856834,
+        "scaling_efficiency": 99.99997372072147,
+        "contention_detected": false
+      }
+    },
+    {
+      "num_clients": 8,
+      "test_mode": "same_target",
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "total_executions": 250987,
+          "total_crashes": 710,
+          "total_unique_crashes": 710,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 4183.040903995671,
+          "per_client_throughput_mean": 522.8803591888177,
+          "per_client_throughput_stdev": 2.653424066260825,
+          "per_client_executions_mean": 31373.375,
+          "per_client_executions_stdev": 159.1979338523498,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 31619,
+              "crashes_found": 90,
+              "unique_crashes": 90,
+              "throughput": 526.9741008567386,
+              "elapsed_time": 60.00105118751526
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 31356,
+              "crashes_found": 69,
+              "unique_crashes": 69,
+              "throughput": 522.590696881922,
+              "elapsed_time": 60.001068115234375
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 31294,
+              "crashes_found": 96,
+              "unique_crashes": 96,
+              "throughput": 521.557220292846,
+              "elapsed_time": 60.001086711883545
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 31225,
+              "crashes_found": 91,
+              "unique_crashes": 91,
+              "throughput": 520.4072886822455,
+              "elapsed_time": 60.001081228256226
+            },
+            {
+              "client_id": 4,
+              "target_id": 0,
+              "executions": 31618,
+              "crashes_found": 89,
+              "unique_crashes": 89,
+              "throughput": 526.9578239485004,
+              "elapsed_time": 60.001006841659546
+            },
+            {
+              "client_id": 5,
+              "target_id": 0,
+              "executions": 31356,
+              "crashes_found": 100,
+              "unique_crashes": 100,
+              "throughput": 522.5909253027297,
+              "elapsed_time": 60.001041889190674
+            },
+            {
+              "client_id": 6,
+              "target_id": 0,
+              "executions": 31294,
+              "crashes_found": 93,
+              "unique_crashes": 93,
+              "throughput": 521.5574275373938,
+              "elapsed_time": 60.001062870025635
+            },
+            {
+              "client_id": 7,
+              "target_id": 0,
+              "executions": 31225,
+              "crashes_found": 82,
+              "unique_crashes": 82,
+              "throughput": 520.4073900081652,
+              "elapsed_time": 60.00106954574585
+            }
+          ]
+        },
+        {
+          "total_executions": 248083,
+          "total_crashes": 734,
+          "total_unique_crashes": 734,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 4134.568704391512,
+          "per_client_throughput_mean": 516.8213708431881,
+          "per_client_throughput_stdev": 0.38507064129755036,
+          "per_client_executions_mean": 31010.375,
+          "per_client_executions_stdev": 23.089499778037634,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 31045,
+              "crashes_found": 94,
+              "unique_crashes": 94,
+              "throughput": 517.3988271171932,
+              "elapsed_time": 60.002068758010864
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 31011,
+              "crashes_found": 98,
+              "unique_crashes": 98,
+              "throughput": 516.8317651540327,
+              "elapsed_time": 60.00211691856384
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 30998,
+              "crashes_found": 83,
+              "unique_crashes": 83,
+              "throughput": 516.6148495352061,
+              "elapsed_time": 60.00214672088623
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 30988,
+              "crashes_found": 92,
+              "unique_crashes": 92,
+              "throughput": 516.4481847272251,
+              "elapsed_time": 60.00214719772339
+            },
+            {
+              "client_id": 4,
+              "target_id": 0,
+              "executions": 31045,
+              "crashes_found": 88,
+              "unique_crashes": 88,
+              "throughput": 517.3988147818694,
+              "elapsed_time": 60.00207018852234
+            },
+            {
+              "client_id": 5,
+              "target_id": 0,
+              "executions": 31011,
+              "crashes_found": 93,
+              "unique_crashes": 93,
+              "throughput": 516.8318616747764,
+              "elapsed_time": 60.002105712890625
+            },
+            {
+              "client_id": 6,
+              "target_id": 0,
+              "executions": 30997,
+              "crashes_found": 94,
+              "unique_crashes": 94,
+              "throughput": 516.5983887352415,
+              "elapsed_time": 60.00212287902832
+            },
+            {
+              "client_id": 7,
+              "target_id": 0,
+              "executions": 30988,
+              "crashes_found": 92,
+              "unique_crashes": 92,
+              "throughput": 516.4482750199606,
+              "elapsed_time": 60.00213670730591
+            }
+          ]
+        },
+        {
+          "total_executions": 251161,
+          "total_crashes": 740,
+          "total_unique_crashes": 740,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 4186.005937934598,
+          "per_client_throughput_mean": 523.2509814758256,
+          "per_client_throughput_stdev": 0.3980424110808718,
+          "per_client_executions_mean": 31395.125,
+          "per_client_executions_stdev": 23.871306745008447,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 31432,
+              "crashes_found": 106,
+              "unique_crashes": 106,
+              "throughput": 523.8657944529539,
+              "elapsed_time": 60.000099897384644
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 31392,
+              "crashes_found": 76,
+              "unique_crashes": 76,
+              "throughput": 523.1988877320093,
+              "elapsed_time": 60.00012755393982
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 31384,
+              "crashes_found": 90,
+              "unique_crashes": 90,
+              "throughput": 523.065334364258,
+              "elapsed_time": 60.000152826309204
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 31373,
+              "crashes_found": 78,
+              "unique_crashes": 78,
+              "throughput": 522.8819931869284,
+              "elapsed_time": 60.00015377998352
+            },
+            {
+              "client_id": 4,
+              "target_id": 0,
+              "executions": 31432,
+              "crashes_found": 101,
+              "unique_crashes": 101,
+              "throughput": 523.8658860456654,
+              "elapsed_time": 60.00008940696716
+            },
+            {
+              "client_id": 5,
+              "target_id": 0,
+              "executions": 31392,
+              "crashes_found": 90,
+              "unique_crashes": 90,
+              "throughput": 523.1989958400925,
+              "elapsed_time": 60.000115156173706
+            },
+            {
+              "client_id": 6,
+              "target_id": 0,
+              "executions": 31383,
+              "crashes_found": 91,
+              "unique_crashes": 91,
+              "throughput": 523.0488651884381,
+              "elapsed_time": 60.00013017654419
+            },
+            {
+              "client_id": 7,
+              "target_id": 0,
+              "executions": 31373,
+              "crashes_found": 108,
+              "unique_crashes": 108,
+              "throughput": 522.8820949962592,
+              "elapsed_time": 60.000142097473145
+            }
+          ]
+        }
+      ],
+      "aggregate": {
+        "total_executions": {
+          "mean": 250077,
+          "stdev": 1729.0448230164538,
+          "min": 248083,
+          "max": 251161
+        },
+        "total_crashes": {
+          "mean": 728,
+          "stdev": 15.874507866387544,
+          "min": 710,
+          "max": 740
+        },
+        "total_unique_crashes": {
+          "mean": 728,
+          "stdev": 15.874507866387544,
+          "min": 710,
+          "max": 740
+        },
+        "race_conditions_detected": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "aggregate_throughput": {
+          "mean": 4167.871848773927,
+          "stdev": 28.879446426164733,
+          "min": 4134.568704391512,
+          "max": 4186.005937934598
+        },
+        "per_client_throughput_mean": {
+          "mean": 520.9842371692771,
+          "stdev": 3.6099075135758256,
+          "min": 516.8213708431881,
+          "max": 523.2509814758256
+        }
+      },
+      "scaling_analysis": {
+        "aggregate_throughput": 4167.871848773927,
+        "per_client_throughput": 520.9842371692771,
+        "normalized_per_client": 520.9839810967409,
+        "ideal_aggregate_throughput": 4167.873897354217,
+        "scaling_efficiency": 99.99995084831403,
+        "contention_detected": false
+      }
+    },
+    {
+      "num_clients": 16,
+      "test_mode": "same_target",
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "total_executions": 457133,
+          "total_crashes": 1423,
+          "total_unique_crashes": 1423,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 7618.74219519252,
+          "per_client_throughput_mean": 476.17197741699414,
+          "per_client_throughput_stdev": 2.3011275624214114,
+          "per_client_executions_mean": 28570.8125,
+          "per_client_executions_stdev": 138.05275259841798,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 28796,
+              "crashes_found": 87,
+              "unique_crashes": 87,
+              "throughput": 479.9251368274765,
+              "elapsed_time": 60.00102472305298
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 28542,
+              "crashes_found": 81,
+              "unique_crashes": 81,
+              "throughput": 475.6915544594712,
+              "elapsed_time": 60.001065254211426
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 28498,
+              "crashes_found": 68,
+              "unique_crashes": 68,
+              "throughput": 474.958166203576,
+              "elapsed_time": 60.00107383728027
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 28449,
+              "crashes_found": 89,
+              "unique_crashes": 89,
+              "throughput": 474.14121647536274,
+              "elapsed_time": 60.00111150741577
+            },
+            {
+              "client_id": 4,
+              "target_id": 0,
+              "executions": 28795,
+              "crashes_found": 80,
+              "unique_crashes": 80,
+              "throughput": 479.9088423014483,
+              "elapsed_time": 60.000978231430054
+            },
+            {
+              "client_id": 5,
+              "target_id": 0,
+              "executions": 28542,
+              "crashes_found": 106,
+              "unique_crashes": 106,
+              "throughput": 475.69167165158075,
+              "elapsed_time": 60.00105047225952
+            },
+            {
+              "client_id": 6,
+              "target_id": 0,
+              "executions": 28498,
+              "crashes_found": 90,
+              "unique_crashes": 90,
+              "throughput": 474.9582794404275,
+              "elapsed_time": 60.00105953216553
+            },
+            {
+              "client_id": 7,
+              "target_id": 0,
+              "executions": 28449,
+              "crashes_found": 94,
+              "unique_crashes": 94,
+              "throughput": 474.1413257493029,
+              "elapsed_time": 60.001097679138184
+            },
+            {
+              "client_id": 8,
+              "target_id": 0,
+              "executions": 28795,
+              "crashes_found": 84,
+              "unique_crashes": 84,
+              "throughput": 479.90889951011457,
+              "elapsed_time": 60.00097107887268
+            },
+            {
+              "client_id": 9,
+              "target_id": 0,
+              "executions": 28541,
+              "crashes_found": 90,
+              "unique_crashes": 90,
+              "throughput": 475.6752831259138,
+              "elapsed_time": 60.001015424728394
+            },
+            {
+              "client_id": 10,
+              "target_id": 0,
+              "executions": 28498,
+              "crashes_found": 96,
+              "unique_crashes": 96,
+              "throughput": 474.9583832409221,
+              "elapsed_time": 60.00104641914368
+            },
+            {
+              "client_id": 11,
+              "target_id": 0,
+              "executions": 28449,
+              "crashes_found": 97,
+              "unique_crashes": 97,
+              "throughput": 474.14142560311984,
+              "elapsed_time": 60.00108504295349
+            },
+            {
+              "client_id": 12,
+              "target_id": 0,
+              "executions": 28795,
+              "crashes_found": 88,
+              "unique_crashes": 88,
+              "throughput": 479.90901583444463,
+              "elapsed_time": 60.000956535339355
+            },
+            {
+              "client_id": 13,
+              "target_id": 0,
+              "executions": 28541,
+              "crashes_found": 104,
+              "unique_crashes": 104,
+              "throughput": 475.67538330291836,
+              "elapsed_time": 60.0010027885437
+            },
+            {
+              "client_id": 14,
+              "target_id": 0,
+              "executions": 28497,
+              "crashes_found": 82,
+              "unique_crashes": 82,
+              "throughput": 474.9419867369505,
+              "elapsed_time": 60.001012325286865
+            },
+            {
+              "client_id": 15,
+              "target_id": 0,
+              "executions": 28448,
+              "crashes_found": 87,
+              "unique_crashes": 87,
+              "throughput": 474.1250682088763,
+              "elapsed_time": 60.00104594230652
+            }
+          ]
+        },
+        {
+          "total_executions": 452655,
+          "total_crashes": 1366,
+          "total_unique_crashes": 1366,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 7544.19136318244,
+          "per_client_throughput_mean": 471.5125882383306,
+          "per_client_throughput_stdev": 1.5534779818759554,
+          "per_client_executions_mean": 28290.9375,
+          "per_client_executions_stdev": 93.19046356789949,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 28443,
+              "crashes_found": 92,
+              "unique_crashes": 92,
+              "throughput": 474.04714620341264,
+              "elapsed_time": 60.00036120414734
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 28272,
+              "crashes_found": 90,
+              "unique_crashes": 90,
+              "throughput": 471.1968207192358,
+              "elapsed_time": 60.000404834747314
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 28240,
+              "crashes_found": 86,
+              "unique_crashes": 86,
+              "throughput": 470.6634049535662,
+              "elapsed_time": 60.00041580200195
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 28210,
+              "crashes_found": 84,
+              "unique_crashes": 84,
+              "throughput": 470.163012350193,
+              "elapsed_time": 60.00046634674072
+            },
+            {
+              "client_id": 4,
+              "target_id": 0,
+              "executions": 28443,
+              "crashes_found": 87,
+              "unique_crashes": 87,
+              "throughput": 474.0472705265085,
+              "elapsed_time": 60.00034546852112
+            },
+            {
+              "client_id": 5,
+              "target_id": 0,
+              "executions": 28272,
+              "crashes_found": 80,
+              "unique_crashes": 80,
+              "throughput": 471.19691059230774,
+              "elapsed_time": 60.00039339065552
+            },
+            {
+              "client_id": 6,
+              "target_id": 0,
+              "executions": 28240,
+              "crashes_found": 89,
+              "unique_crashes": 89,
+              "throughput": 470.6634872439372,
+              "elapsed_time": 60.00040531158447
+            },
+            {
+              "client_id": 7,
+              "target_id": 0,
+              "executions": 28210,
+              "crashes_found": 89,
+              "unique_crashes": 89,
+              "throughput": 470.16309642125265,
+              "elapsed_time": 60.00045561790466
+            },
+            {
+              "client_id": 8,
+              "target_id": 0,
+              "executions": 28442,
+              "crashes_found": 96,
+              "unique_crashes": 96,
+              "throughput": 474.03092982186297,
+              "elapsed_time": 60.000304222106934
+            },
+            {
+              "client_id": 9,
+              "target_id": 0,
+              "executions": 28272,
+              "crashes_found": 79,
+              "unique_crashes": 79,
+              "throughput": 471.1969948483438,
+              "elapsed_time": 60.00038266181946
+            },
+            {
+              "client_id": 10,
+              "target_id": 0,
+              "executions": 28240,
+              "crashes_found": 78,
+              "unique_crashes": 78,
+              "throughput": 470.6635601831537,
+              "elapsed_time": 60.00039601325989
+            },
+            {
+              "client_id": 11,
+              "target_id": 0,
+              "executions": 28209,
+              "crashes_found": 75,
+              "unique_crashes": 75,
+              "throughput": 470.1466652719279,
+              "elapsed_time": 60.000425577163696
+            },
+            {
+              "client_id": 12,
+              "target_id": 0,
+              "executions": 28442,
+              "crashes_found": 100,
+              "unique_crashes": 100,
+              "throughput": 474.03100328305936,
+              "elapsed_time": 60.00029492378235
+            },
+            {
+              "client_id": 13,
+              "target_id": 0,
+              "executions": 28271,
+              "crashes_found": 82,
+              "unique_crashes": 82,
+              "throughput": 471.180631599222,
+              "elapsed_time": 60.000344038009644
+            },
+            {
+              "client_id": 14,
+              "target_id": 0,
+              "executions": 28240,
+              "crashes_found": 81,
+              "unique_crashes": 81,
+              "throughput": 470.66368361880234,
+              "elapsed_time": 60.00038027763367
+            },
+            {
+              "client_id": 15,
+              "target_id": 0,
+              "executions": 28209,
+              "crashes_found": 78,
+              "unique_crashes": 78,
+              "throughput": 470.1467941765038,
+              "elapsed_time": 60.00040912628174
+            }
+          ]
+        },
+        {
+          "total_executions": 448155,
+          "total_crashes": 1324,
+          "total_unique_crashes": 1324,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 7469.110120153442,
+          "per_client_throughput_mean": 466.82007987475185,
+          "per_client_throughput_stdev": 1.1848564948429117,
+          "per_client_executions_mean": 28009.6875,
+          "per_client_executions_stdev": 71.07153086855524,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 28125,
+              "crashes_found": 84,
+              "unique_crashes": 84,
+              "throughput": 468.7421844712653,
+              "elapsed_time": 60.00100040435791
+            },
+            {
+              "client_id": 1,
+              "target_id": 0,
+              "executions": 27998,
+              "crashes_found": 94,
+              "unique_crashes": 94,
+              "throughput": 466.62507472005365,
+              "elapsed_time": 60.00106191635132
+            },
+            {
+              "client_id": 2,
+              "target_id": 0,
+              "executions": 27972,
+              "crashes_found": 91,
+              "unique_crashes": 91,
+              "throughput": 466.19163420430795,
+              "elapsed_time": 60.00107669830322
+            },
+            {
+              "client_id": 3,
+              "target_id": 0,
+              "executions": 27946,
+              "crashes_found": 77,
+              "unique_crashes": 77,
+              "throughput": 465.757944054642,
+              "elapsed_time": 60.001123666763306
+            },
+            {
+              "client_id": 4,
+              "target_id": 0,
+              "executions": 28125,
+              "crashes_found": 75,
+              "unique_crashes": 75,
+              "throughput": 468.7423353405399,
+              "elapsed_time": 60.000981092453
+            },
+            {
+              "client_id": 5,
+              "target_id": 0,
+              "executions": 27998,
+              "crashes_found": 75,
+              "unique_crashes": 75,
+              "throughput": 466.6251729910122,
+              "elapsed_time": 60.001049280166626
+            },
+            {
+              "client_id": 6,
+              "target_id": 0,
+              "executions": 27972,
+              "crashes_found": 95,
+              "unique_crashes": 95,
+              "throughput": 466.19172867906667,
+              "elapsed_time": 60.00106453895569
+            },
+            {
+              "client_id": 7,
+              "target_id": 0,
+              "executions": 27945,
+              "crashes_found": 81,
+              "unique_crashes": 81,
+              "throughput": 465.74153123995876,
+              "elapsed_time": 60.00109100341797
+            },
+            {
+              "client_id": 8,
+              "target_id": 0,
+              "executions": 28124,
+              "crashes_found": 60,
+              "unique_crashes": 60,
+              "throughput": 468.725957636864,
+              "elapsed_time": 60.00094413757324
+            },
+            {
+              "client_id": 9,
+              "target_id": 0,
+              "executions": 27997,
+              "crashes_found": 98,
+              "unique_crashes": 98,
+              "throughput": 466.60881439714046,
+              "elapsed_time": 60.001009702682495
+            },
+            {
+              "client_id": 10,
+              "target_id": 0,
+              "executions": 27971,
+              "crashes_found": 86,
+              "unique_crashes": 86,
+              "throughput": 466.1753105272059,
+              "elapsed_time": 60.00103259086609
+            },
+            {
+              "client_id": 11,
+              "target_id": 0,
+              "executions": 27945,
+              "crashes_found": 80,
+              "unique_crashes": 80,
+              "throughput": 465.74161451953495,
+              "elapsed_time": 60.00108027458191
+            },
+            {
+              "client_id": 12,
+              "target_id": 0,
+              "executions": 28124,
+              "crashes_found": 89,
+              "unique_crashes": 89,
+              "throughput": 468.7260153750006,
+              "elapsed_time": 60.00093674659729
+            },
+            {
+              "client_id": 13,
+              "target_id": 0,
+              "executions": 27997,
+              "crashes_found": 80,
+              "unique_crashes": 80,
+              "throughput": 466.60886074978606,
+              "elapsed_time": 60.00100374221802
+            },
+            {
+              "client_id": 14,
+              "target_id": 0,
+              "executions": 27971,
+              "crashes_found": 81,
+              "unique_crashes": 81,
+              "throughput": 466.1753975891937,
+              "elapsed_time": 60.00102138519287
+            },
+            {
+              "client_id": 15,
+              "target_id": 0,
+              "executions": 27945,
+              "crashes_found": 78,
+              "unique_crashes": 78,
+              "throughput": 465.7417015004574,
+              "elapsed_time": 60.00106906890869
+            }
+          ]
+        }
+      ],
+      "aggregate": {
+        "total_executions": {
+          "mean": 452647.6666666667,
+          "stdev": 4489.00449246081,
+          "min": 448155,
+          "max": 457133
+        },
+        "total_crashes": {
+          "mean": 1371,
+          "stdev": 49.68903299521938,
+          "min": 1324,
+          "max": 1423
+        },
+        "total_unique_crashes": {
+          "mean": 1371,
+          "stdev": 49.68903299521938,
+          "min": 1324,
+          "max": 1423
+        },
+        "race_conditions_detected": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "aggregate_throughput": {
+          "mean": 7544.014559509467,
+          "stdev": 74.81619420138352,
+          "min": 7469.110120153442,
+          "max": 7618.74219519252
+        },
+        "per_client_throughput_mean": {
+          "mean": 471.50154851002554,
+          "stdev": 4.67595854524504,
+          "min": 466.82007987475185,
+          "max": 476.17197741699414
+        }
+      },
+      "scaling_analysis": {
+        "aggregate_throughput": 7544.014559509467,
+        "per_client_throughput": 471.50154851002554,
+        "normalized_per_client": 471.5009099693417,
+        "ideal_aggregate_throughput": 7544.024776160409,
+        "scaling_efficiency": 99.99986457294024,
+        "contention_detected": false
+      }
+    },
+    {
+      "num_clients": 2,
+      "test_mode": "different_targets",
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "total_executions": 103058,
+          "total_crashes": 322,
+          "total_unique_crashes": 322,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 1717.6283236058969,
+          "per_client_throughput_mean": 858.8141993416718,
+          "per_client_throughput_stdev": 5.30877716722798e-05,
+          "per_client_executions_mean": 51529,
+          "per_client_executions_stdev": 0.0,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 51529,
+              "crashes_found": 170,
+              "unique_crashes": 170,
+              "throughput": 858.8142368803951,
+              "elapsed_time": 60.00016975402832
+            },
+            {
+              "client_id": 1,
+              "target_id": 1,
+              "executions": 51529,
+              "crashes_found": 152,
+              "unique_crashes": 152,
+              "throughput": 858.8141618029484,
+              "elapsed_time": 60.00017499923706
+            }
+          ]
+        },
+        {
+          "total_executions": 102597,
+          "total_crashes": 290,
+          "total_unique_crashes": 290,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 1709.9225089610766,
+          "per_client_throughput_mean": 854.9614871904446,
+          "per_client_throughput_stdev": 0.011455822043800313,
+          "per_client_executions_mean": 51298.5,
+          "per_client_executions_stdev": 0.7071067811865476,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 51299,
+              "crashes_found": 146,
+              "unique_crashes": 146,
+              "throughput": 854.9695876798958,
+              "elapsed_time": 60.000964641571045
+            },
+            {
+              "client_id": 1,
+              "target_id": 1,
+              "executions": 51298,
+              "crashes_found": 144,
+              "unique_crashes": 144,
+              "throughput": 854.9533867009933,
+              "elapsed_time": 60.00093197822571
+            }
+          ]
+        },
+        {
+          "total_executions": 103186,
+          "total_crashes": 346,
+          "total_unique_crashes": 346,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 1719.759764618229,
+          "per_client_throughput_mean": 859.8799233112218,
+          "per_client_throughput_stdev": 5.7985736162435815e-05,
+          "per_client_executions_mean": 51593,
+          "per_client_executions_stdev": 0.0,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 51593,
+              "crashes_found": 185,
+              "unique_crashes": 185,
+              "throughput": 859.879964313329,
+              "elapsed_time": 60.000235080718994
+            },
+            {
+              "client_id": 1,
+              "target_id": 1,
+              "executions": 51593,
+              "crashes_found": 161,
+              "unique_crashes": 161,
+              "throughput": 859.8798823091145,
+              "elapsed_time": 60.00024080276489
+            }
+          ]
+        }
+      ],
+      "aggregate": {
+        "total_executions": {
+          "mean": 102947,
+          "stdev": 309.79186561302737,
+          "min": 102597,
+          "max": 103186
+        },
+        "total_crashes": {
+          "mean": 319.3333333333333,
+          "stdev": 28.09507667427397,
+          "min": 290,
+          "max": 346
+        },
+        "total_unique_crashes": {
+          "mean": 319.3333333333333,
+          "stdev": 28.09507667427397,
+          "min": 290,
+          "max": 346
+        },
+        "race_conditions_detected": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "aggregate_throughput": {
+          "mean": 1715.770199061734,
+          "stdev": 5.175168580081136,
+          "min": 1709.9225089610766,
+          "max": 1719.759764618229
+        },
+        "per_client_throughput_mean": {
+          "mean": 857.8852032811127,
+          "stdev": 2.5874753581323606,
+          "min": 854.9614871904446,
+          "max": 859.8799233112218
+        }
+      },
+      "scaling_analysis": {
+        "aggregate_throughput": 1715.770199061734,
+        "per_client_throughput": 857.8852032811127,
+        "normalized_per_client": 857.885099530867,
+        "ideal_aggregate_throughput": 1715.7704065622254,
+        "scaling_efficiency": 99.99998790627869,
+        "contention_detected": false
+      }
+    },
+    {
+      "num_clients": 4,
+      "test_mode": "different_targets",
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "total_executions": 193246,
+          "total_crashes": 558,
+          "total_unique_crashes": 558,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 3220.7431693853578,
+          "per_client_throughput_mean": 805.1860147093828,
+          "per_client_throughput_stdev": 0.009382415551149227,
+          "per_client_executions_mean": 48311.5,
+          "per_client_executions_stdev": 0.5773502691896257,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 48312,
+              "crashes_found": 135,
+              "unique_crashes": 135,
+              "throughput": 805.1941256188765,
+              "elapsed_time": 60.00043773651123
+            },
+            {
+              "client_id": 1,
+              "target_id": 1,
+              "executions": 48312,
+              "crashes_found": 122,
+              "unique_crashes": 122,
+              "throughput": 805.1941544146533,
+              "elapsed_time": 60.00043559074402
+            },
+            {
+              "client_id": 2,
+              "target_id": 2,
+              "executions": 48311,
+              "crashes_found": 137,
+              "unique_crashes": 137,
+              "throughput": 805.177945392688,
+              "elapsed_time": 60.00040149688721
+            },
+            {
+              "client_id": 3,
+              "target_id": 3,
+              "executions": 48311,
+              "crashes_found": 164,
+              "unique_crashes": 164,
+              "throughput": 805.1778334113136,
+              "elapsed_time": 60.000409841537476
+            }
+          ]
+        },
+        {
+          "total_executions": 195374,
+          "total_crashes": 566,
+          "total_unique_crashes": 566,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 3256.1793652052393,
+          "per_client_throughput_mean": 814.0450653002412,
+          "per_client_throughput_stdev": 0.00938809461590357,
+          "per_client_executions_mean": 48843.5,
+          "per_client_executions_stdev": 0.5773502691896257,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 48844,
+              "crashes_found": 151,
+              "unique_crashes": 151,
+              "throughput": 814.0531744965282,
+              "elapsed_time": 60.00099444389343
+            },
+            {
+              "client_id": 1,
+              "target_id": 1,
+              "executions": 48844,
+              "crashes_found": 154,
+              "unique_crashes": 154,
+              "throughput": 814.0532165476703,
+              "elapsed_time": 60.000991344451904
+            },
+            {
+              "client_id": 2,
+              "target_id": 2,
+              "executions": 48843,
+              "crashes_found": 125,
+              "unique_crashes": 125,
+              "throughput": 814.0369900672672,
+              "elapsed_time": 60.00095891952515
+            },
+            {
+              "client_id": 3,
+              "target_id": 3,
+              "executions": 48843,
+              "crashes_found": 136,
+              "unique_crashes": 136,
+              "throughput": 814.0368800894989,
+              "elapsed_time": 60.000967025756836
+            }
+          ]
+        },
+        {
+          "total_executions": 192431,
+          "total_crashes": 583,
+          "total_unique_crashes": 583,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 3207.1751388326716,
+          "per_client_throughput_mean": 801.7939344496715,
+          "per_client_throughput_stdev": 0.00805082732859597,
+          "per_client_executions_mean": 48107.75,
+          "per_client_executions_stdev": 0.5,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 48108,
+              "crashes_found": 124,
+              "unique_crashes": 124,
+              "throughput": 801.7979513641885,
+              "elapsed_time": 60.00015330314636
+            },
+            {
+              "client_id": 1,
+              "target_id": 1,
+              "executions": 48108,
+              "crashes_found": 153,
+              "unique_crashes": 153,
+              "throughput": 801.7979736665437,
+              "elapsed_time": 60.00015163421631
+            },
+            {
+              "client_id": 2,
+              "target_id": 2,
+              "executions": 48108,
+              "crashes_found": 168,
+              "unique_crashes": 168,
+              "throughput": 801.7979545502392,
+              "elapsed_time": 60.00015306472778
+            },
+            {
+              "client_id": 3,
+              "target_id": 3,
+              "executions": 48107,
+              "crashes_found": 138,
+              "unique_crashes": 138,
+              "throughput": 801.7818582177148,
+              "elapsed_time": 60.000110387802124
+            }
+          ]
+        }
+      ],
+      "aggregate": {
+        "total_executions": {
+          "mean": 193683.66666666666,
+          "stdev": 1519.5316164309754,
+          "min": 192431,
+          "max": 195374
+        },
+        "total_crashes": {
+          "mean": 569,
+          "stdev": 12.767145334803704,
+          "min": 558,
+          "max": 583
+        },
+        "total_unique_crashes": {
+          "mean": 569,
+          "stdev": 12.767145334803704,
+          "min": 558,
+          "max": 583
+        },
+        "race_conditions_detected": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "aggregate_throughput": {
+          "mean": 3228.0325578077563,
+          "stdev": 25.3022714054077,
+          "min": 3207.1751388326716,
+          "max": 3256.1793652052393
+        },
+        "per_client_throughput_mean": {
+          "mean": 807.0083381530985,
+          "stdev": 6.325598693371389,
+          "min": 801.7939344496715,
+          "max": 814.0450653002412
+        }
+      },
+      "scaling_analysis": {
+        "aggregate_throughput": 3228.0325578077563,
+        "per_client_throughput": 807.0083381530985,
+        "normalized_per_client": 807.0081394519391,
+        "ideal_aggregate_throughput": 3228.033352612394,
+        "scaling_efficiency": 99.99997537805373,
+        "contention_detected": false
+      }
+    },
+    {
+      "num_clients": 8,
+      "test_mode": "different_targets",
+      "duration_seconds": 60,
+      "trials": [
+        {
+          "total_executions": 336987,
+          "total_crashes": 1049,
+          "total_unique_crashes": 1049,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 5616.324621583128,
+          "per_client_throughput_mean": 702.0409748636404,
+          "per_client_throughput_stdev": 0.00831101446100798,
+          "per_client_executions_mean": 42123.375,
+          "per_client_executions_stdev": 0.5175491695067657,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 42124,
+              "crashes_found": 126,
+              "unique_crashes": 126,
+              "throughput": 702.050994132022,
+              "elapsed_time": 60.00133943557739
+            },
+            {
+              "client_id": 1,
+              "target_id": 1,
+              "executions": 42124,
+              "crashes_found": 141,
+              "unique_crashes": 141,
+              "throughput": 702.0510220284003,
+              "elapsed_time": 60.0013370513916
+            },
+            {
+              "client_id": 2,
+              "target_id": 2,
+              "executions": 42124,
+              "crashes_found": 152,
+              "unique_crashes": 152,
+              "throughput": 702.0510164491245,
+              "elapsed_time": 60.00133752822876
+            },
+            {
+              "client_id": 3,
+              "target_id": 3,
+              "executions": 42123,
+              "crashes_found": 124,
+              "unique_crashes": 124,
+              "throughput": 702.0351172870369,
+              "elapsed_time": 60.00127196311951
+            },
+            {
+              "client_id": 4,
+              "target_id": 4,
+              "executions": 42123,
+              "crashes_found": 129,
+              "unique_crashes": 129,
+              "throughput": 702.0350029143665,
+              "elapsed_time": 60.00128173828125
+            },
+            {
+              "client_id": 5,
+              "target_id": 5,
+              "executions": 42123,
+              "crashes_found": 127,
+              "unique_crashes": 127,
+              "throughput": 702.0349248062228,
+              "elapsed_time": 60.001288414001465
+            },
+            {
+              "client_id": 6,
+              "target_id": 6,
+              "executions": 42123,
+              "crashes_found": 126,
+              "unique_crashes": 126,
+              "throughput": 702.034869014702,
+              "elapsed_time": 60.00129318237305
+            },
+            {
+              "client_id": 7,
+              "target_id": 7,
+              "executions": 42123,
+              "crashes_found": 124,
+              "unique_crashes": 124,
+              "throughput": 702.0348522772476,
+              "elapsed_time": 60.00129461288452
+            }
+          ]
+        },
+        {
+          "total_executions": 338771,
+          "total_crashes": 1077,
+          "total_unique_crashes": 1077,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 5646.175772439498,
+          "per_client_throughput_mean": 705.7723284225328,
+          "per_client_throughput_stdev": 0.008342169800787053,
+          "per_client_executions_mean": 42346.375,
+          "per_client_executions_stdev": 0.5175491695067657,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 42347,
+              "crashes_found": 126,
+              "unique_crashes": 126,
+              "throughput": 705.7823882076549,
+              "elapsed_time": 60.00008034706116
+            },
+            {
+              "client_id": 1,
+              "target_id": 1,
+              "executions": 42347,
+              "crashes_found": 131,
+              "unique_crashes": 131,
+              "throughput": 705.782413448367,
+              "elapsed_time": 60.000078201293945
+            },
+            {
+              "client_id": 2,
+              "target_id": 2,
+              "executions": 42347,
+              "crashes_found": 151,
+              "unique_crashes": 151,
+              "throughput": 705.7824050347962,
+              "elapsed_time": 60.00007891654968
+            },
+            {
+              "client_id": 3,
+              "target_id": 3,
+              "executions": 42346,
+              "crashes_found": 125,
+              "unique_crashes": 125,
+              "throughput": 705.7664226783165,
+              "elapsed_time": 60.00002074241638
+            },
+            {
+              "client_id": 4,
+              "target_id": 4,
+              "executions": 42346,
+              "crashes_found": 129,
+              "unique_crashes": 129,
+              "throughput": 705.7663020864356,
+              "elapsed_time": 60.00003099441528
+            },
+            {
+              "client_id": 5,
+              "target_id": 5,
+              "executions": 42346,
+              "crashes_found": 138,
+              "unique_crashes": 138,
+              "throughput": 705.7662684328949,
+              "elapsed_time": 60.00003385543823
+            },
+            {
+              "client_id": 6,
+              "target_id": 6,
+              "executions": 42346,
+              "crashes_found": 138,
+              "unique_crashes": 138,
+              "throughput": 705.7662347793573,
+              "elapsed_time": 60.00003671646118
+            },
+            {
+              "client_id": 7,
+              "target_id": 7,
+              "executions": 42346,
+              "crashes_found": 139,
+              "unique_crashes": 139,
+              "throughput": 705.7661927124399,
+              "elapsed_time": 60.00004029273987
+            }
+          ]
+        },
+        {
+          "total_executions": 335418,
+          "total_crashes": 1006,
+          "total_unique_crashes": 1006,
+          "race_conditions_detected": 0,
+          "aggregate_throughput": 5590.213100744684,
+          "per_client_throughput_mean": 698.7770558232718,
+          "per_client_throughput_stdev": 0.0074658652052692,
+          "per_client_executions_mean": 41927.25,
+          "per_client_executions_stdev": 0.4629100498862757,
+          "client_results": [
+            {
+              "client_id": 0,
+              "target_id": 0,
+              "executions": 41928,
+              "crashes_found": 123,
+              "unique_crashes": 123,
+              "throughput": 698.7891373987774,
+              "elapsed_time": 60.000932693481445
+            },
+            {
+              "client_id": 1,
+              "target_id": 1,
+              "executions": 41928,
+              "crashes_found": 129,
+              "unique_crashes": 129,
+              "throughput": 698.7891651657324,
+              "elapsed_time": 60.000930309295654
+            },
+            {
+              "client_id": 2,
+              "target_id": 2,
+              "executions": 41927,
+              "crashes_found": 128,
+              "unique_crashes": 128,
+              "throughput": 698.7731707024385,
+              "elapsed_time": 60.00087261199951
+            },
+            {
+              "client_id": 3,
+              "target_id": 3,
+              "executions": 41927,
+              "crashes_found": 131,
+              "unique_crashes": 131,
+              "throughput": 698.7730707436026,
+              "elapsed_time": 60.00088119506836
+            },
+            {
+              "client_id": 4,
+              "target_id": 4,
+              "executions": 41927,
+              "crashes_found": 127,
+              "unique_crashes": 127,
+              "throughput": 698.7730346473634,
+              "elapsed_time": 60.00088429450989
+            },
+            {
+              "client_id": 5,
+              "target_id": 5,
+              "executions": 41927,
+              "crashes_found": 115,
+              "unique_crashes": 115,
+              "throughput": 698.7729874445946,
+              "elapsed_time": 60.00088834762573
+            },
+            {
+              "client_id": 6,
+              "target_id": 6,
+              "executions": 41927,
+              "crashes_found": 136,
+              "unique_crashes": 136,
+              "throughput": 698.7729596782631,
+              "elapsed_time": 60.00089073181152
+            },
+            {
+              "client_id": 7,
+              "target_id": 7,
+              "executions": 41927,
+              "crashes_found": 117,
+              "unique_crashes": 117,
+              "throughput": 698.7729208054025,
+              "elapsed_time": 60.00089406967163
+            }
+          ]
+        }
+      ],
+      "aggregate": {
+        "total_executions": {
+          "mean": 337058.6666666667,
+          "stdev": 1677.6484534411056,
+          "min": 335418,
+          "max": 338771
+        },
+        "total_crashes": {
+          "mean": 1044,
+          "stdev": 35.76310948449533,
+          "min": 1006,
+          "max": 1077
+        },
+        "total_unique_crashes": {
+          "mean": 1044,
+          "stdev": 35.76310948449533,
+          "min": 1006,
+          "max": 1077
+        },
+        "race_conditions_detected": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "aggregate_throughput": {
+          "mean": 5617.571164922437,
+          "stdev": 28.00215274810082,
+          "min": 5590.213100744684,
+          "max": 5646.175772439498
+        },
+        "per_client_throughput_mean": {
+          "mean": 702.196786369815,
+          "stdev": 3.5002382209766005,
+          "min": 698.7770558232718,
+          "max": 705.7723284225328
+        }
+      },
+      "scaling_analysis": {
+        "aggregate_throughput": 5617.571164922437,
+        "per_client_throughput": 702.196786369815,
+        "normalized_per_client": 702.1963956153046,
+        "ideal_aggregate_throughput": 5617.57429095852,
+        "scaling_efficiency": 99.99994435256356,
+        "contention_detected": false
+      }
+    }
+  ]
+}

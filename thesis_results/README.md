@@ -23,11 +23,19 @@ thesis_results/
 
 ## Quick Start
 
-### Run All Tests
+### Documentation
+
+- **[QUICK_START.md](QUICK_START.md)** - Quick start guide for basic tests
+- **[EXTENDED_TESTS_GUIDE.md](EXTENDED_TESTS_GUIDE.md)** - Extended testing with statistical analysis
+- **[ADVANCED_TESTS_GUIDE.md](ADVANCED_TESTS_GUIDE.md)** - ⭐ Advanced enhancements (NEW!)
+- **[COMMANDS.md](COMMANDS.md)** - Complete command reference
+- **[QUICK_ENHANCEMENTS.md](QUICK_ENHANCEMENTS.md)** - High-value quick wins
+
+### Run All Basic Tests
 
 ```bash
 # From the thesis_results directory
-python3 run_all_tests.py
+python3 run_all_tests_standalone.py
 ```
 
 This will:
@@ -36,6 +44,26 @@ This will:
 3. Run baseline comparisons
 4. Analyze results
 5. Generate plots
+
+### Run Advanced Enhancement Tests (NEW!)
+
+```bash
+# See ADVANCED_TESTS_GUIDE.md for complete documentation
+
+# High-priority enhancements
+python3 modbus_tests/test_long_term_stability.py --quick  # 10 min quick test
+python3 modbus_tests/test_coverage_analysis.py            # 7 min
+python3 coap_tests/test_network_conditions.py             # 12 min
+python3 modbus_tests/test_concurrent_clients.py           # 10 min
+python3 modbus_tests/test_dictionary_effectiveness.py     # 5 min
+python3 analysis_scripts/profile_resource_usage.py        # 5 min
+python3 modbus_tests/test_error_recovery.py               # 10 min
+
+# Medium-priority enhancements
+python3 analysis_scripts/test_protocol_versions.py        # 12 min
+python3 analysis_scripts/automate_crash_triage.py         # <1 min
+python3 baseline_comparisons/compare_real_implementations.py  # 20 min
+```
 
 ### Run Individual Test Suites
 

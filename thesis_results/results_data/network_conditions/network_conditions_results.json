@@ -1,0 +1,1553 @@
+{
+  "test_date": "2025-11-10 15:13:32",
+  "conditions": [
+    {
+      "condition_name": "perfect",
+      "parameters": {
+        "latency_ms": 0,
+        "packet_loss_percent": 0.0,
+        "bandwidth_mbps": null,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 19985,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 19985,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 333.06575746035946,
+          "mean_latency_ms": 2.4763792054493323,
+          "crashes_found": 57,
+          "bytes_transferred": 9012382,
+          "effective_bandwidth_mbps": 1.2015875255850326
+        },
+        {
+          "successful_requests": 19780,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 19780,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 329.62022271364054,
+          "mean_latency_ms": 2.5010067553168716,
+          "crashes_found": 61,
+          "bytes_transferred": 8907831,
+          "effective_bandwidth_mbps": 1.1875434734541845
+        },
+        {
+          "successful_requests": 20002,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 20002,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 333.30713160485914,
+          "mean_latency_ms": 2.468829037242817,
+          "crashes_found": 77,
+          "bytes_transferred": 9002917,
+          "effective_bandwidth_mbps": 1.200174559082741
+        },
+        {
+          "successful_requests": 19930,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 19930,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 332.1480094422441,
+          "mean_latency_ms": 2.4759515713450013,
+          "crashes_found": 54,
+          "bytes_transferred": 8943191,
+          "effective_bandwidth_mbps": 1.1923584902004183
+        },
+        {
+          "successful_requests": 19484,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 19484,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 324.72432935090774,
+          "mean_latency_ms": 2.5387241752194307,
+          "crashes_found": 62,
+          "bytes_transferred": 8781219,
+          "effective_bandwidth_mbps": 1.1707967360535614
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 19836.2,
+          "stdev": 215.42562521668586,
+          "min": 19484,
+          "max": 20002
+        },
+        "failed_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "timeout_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "retries_needed": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "success_rate": {
+          "mean": 100.0,
+          "stdev": 0.0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 0.0,
+          "stdev": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "throughput": {
+          "mean": 330.5730901144022,
+          "stdev": 3.5806669424276993,
+          "min": 324.72432935090774,
+          "max": 333.30713160485914
+        },
+        "mean_latency_ms": {
+          "mean": 2.492178148914691,
+          "stdev": 0.028733979474998474,
+          "min": 2.468829037242817,
+          "max": 2.5387241752194307
+        },
+        "crashes_found": {
+          "mean": 62.2,
+          "stdev": 8.87130204648675,
+          "min": 54,
+          "max": 77
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 1.1904921568751876,
+          "stdev": 0.012419175240886123,
+          "min": 1.1707967360535614,
+          "max": 1.2015875255850326
+        }
+      }
+    },
+    {
+      "condition_name": "low_latency",
+      "parameters": {
+        "latency_ms": 50,
+        "packet_loss_percent": 0.0,
+        "bandwidth_mbps": null,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 1167,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 1167,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 19.442131930651882,
+          "mean_latency_ms": 50.105181871343284,
+          "crashes_found": 6,
+          "bytes_transferred": 517541,
+          "effective_bandwidth_mbps": 0.06897755202414058
+        },
+        {
+          "successful_requests": 1169,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 1169,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 19.47635094380974,
+          "mean_latency_ms": 49.994809092910074,
+          "crashes_found": 3,
+          "bytes_transferred": 529625,
+          "effective_bandwidth_mbps": 0.07059135923774326
+        },
+        {
+          "successful_requests": 1168,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 1168,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 19.460027739677468,
+          "mean_latency_ms": 50.06323579571411,
+          "crashes_found": 6,
+          "bytes_transferred": 523300,
+          "effective_bandwidth_mbps": 0.06974953778200835
+        },
+        {
+          "successful_requests": 1169,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 1169,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 19.477417314749143,
+          "mean_latency_ms": 49.97399270843618,
+          "crashes_found": 5,
+          "bytes_transferred": 524495,
+          "effective_bandwidth_mbps": 0.0699114319555131
+        },
+        {
+          "successful_requests": 1178,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 1178,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 19.631530084413562,
+          "mean_latency_ms": 49.61245927524897,
+          "crashes_found": 4,
+          "bytes_transferred": 524813,
+          "effective_bandwidth_mbps": 0.06996863971607019
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 1170.2,
+          "stdev": 4.43846820423443,
+          "min": 1167,
+          "max": 1178
+        },
+        "failed_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "timeout_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "retries_needed": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "success_rate": {
+          "mean": 100.0,
+          "stdev": 0.0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 0.0,
+          "stdev": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "throughput": {
+          "mean": 19.49749160266036,
+          "stdev": 0.0762962210679062,
+          "min": 19.442131930651882,
+          "max": 19.631530084413562
+        },
+        "mean_latency_ms": {
+          "mean": 49.949935748730525,
+          "stdev": 0.19584495379920933,
+          "min": 49.61245927524897,
+          "max": 50.105181871343284
+        },
+        "crashes_found": {
+          "mean": 4.8,
+          "stdev": 1.3038404810405297,
+          "min": 3,
+          "max": 6
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.0698397041430951,
+          "stdev": 0.0005784010051972215,
+          "min": 0.06897755202414058,
+          "max": 0.07059135923774326
+        }
+      }
+    },
+    {
+      "condition_name": "medium_latency",
+      "parameters": {
+        "latency_ms": 100,
+        "packet_loss_percent": 0.0,
+        "bandwidth_mbps": null,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 591,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 591,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 9.83798491626569,
+          "mean_latency_ms": 100.33520897796569,
+          "crashes_found": 1,
+          "bytes_transferred": 268400,
+          "effective_bandwidth_mbps": 0.03574301389544109
+        },
+        {
+          "successful_requests": 593,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 593,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 9.88306718847618,
+          "mean_latency_ms": 99.87177975164147,
+          "crashes_found": 3,
+          "bytes_transferred": 268430,
+          "effective_bandwidth_mbps": 0.03578970287221128
+        },
+        {
+          "successful_requests": 592,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 592,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 9.85996148551024,
+          "mean_latency_ms": 100.05651347212071,
+          "crashes_found": 2,
+          "bytes_transferred": 256885,
+          "effective_bandwidth_mbps": 0.034228056840612135
+        },
+        {
+          "successful_requests": 590,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 590,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 9.830009441958017,
+          "mean_latency_ms": 100.40819221062117,
+          "crashes_found": 1,
+          "bytes_transferred": 265926,
+          "effective_bandwidth_mbps": 0.03544481479135088
+        },
+        {
+          "successful_requests": 593,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 593,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 9.87727199148046,
+          "mean_latency_ms": 99.92553087653543,
+          "crashes_found": 3,
+          "bytes_transferred": 271454,
+          "effective_bandwidth_mbps": 0.03617166935818329
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 591.8,
+          "stdev": 1.3038404810405297,
+          "min": 590,
+          "max": 593
+        },
+        "failed_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "timeout_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "retries_needed": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "success_rate": {
+          "mean": 100.0,
+          "stdev": 0.0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 0.0,
+          "stdev": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "throughput": {
+          "mean": 9.857659004738117,
+          "stdev": 0.02338329824190789,
+          "min": 9.830009441958017,
+          "max": 9.88306718847618
+        },
+        "mean_latency_ms": {
+          "mean": 100.1194450577769,
+          "stdev": 0.24126240152260198,
+          "min": 99.87177975164147,
+          "max": 100.40819221062117
+        },
+        "crashes_found": {
+          "mean": 2,
+          "stdev": 1.0,
+          "min": 1,
+          "max": 3
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.035475451551559734,
+          "stdev": 0.0007436388422195255,
+          "min": 0.034228056840612135,
+          "max": 0.03617166935818329
+        }
+      }
+    },
+    {
+      "condition_name": "high_latency",
+      "parameters": {
+        "latency_ms": 200,
+        "packet_loss_percent": 0.0,
+        "bandwidth_mbps": null,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 299,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 299,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 4.973923705152006,
+          "mean_latency_ms": 199.63369948270895,
+          "crashes_found": 0,
+          "bytes_transferred": 136217,
+          "effective_bandwidth_mbps": 0.018127972316914803
+        },
+        {
+          "successful_requests": 299,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 299,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 4.969376251034949,
+          "mean_latency_ms": 199.8515845766921,
+          "crashes_found": 0,
+          "bytes_transferred": 130365,
+          "effective_bandwidth_mbps": 0.017333317323509595
+        },
+        {
+          "successful_requests": 298,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 298,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 4.9641304173765795,
+          "mean_latency_ms": 200.07061090486434,
+          "crashes_found": 2,
+          "bytes_transferred": 135708,
+          "effective_bandwidth_mbps": 0.01808516001829103
+        },
+        {
+          "successful_requests": 298,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 298,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 4.961978031928926,
+          "mean_latency_ms": 200.13065561054293,
+          "crashes_found": 0,
+          "bytes_transferred": 134256,
+          "effective_bandwidth_mbps": 0.017883901279319464
+        },
+        {
+          "successful_requests": 299,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 299,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 4.973768436600751,
+          "mean_latency_ms": 199.6810776522775,
+          "crashes_found": 0,
+          "bytes_transferred": 133021,
+          "effective_bandwidth_mbps": 0.0177020910021423
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 298.6,
+          "stdev": 0.5477225575051661,
+          "min": 298,
+          "max": 299
+        },
+        "failed_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "timeout_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "retries_needed": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "success_rate": {
+          "mean": 100.0,
+          "stdev": 0.0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 0.0,
+          "stdev": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "throughput": {
+          "mean": 4.968635368418642,
+          "stdev": 0.005465311392030939,
+          "min": 4.961978031928926,
+          "max": 4.973923705152006
+        },
+        "mean_latency_ms": {
+          "mean": 199.87352564541717,
+          "stdev": 0.2236026874483874,
+          "min": 199.63369948270895,
+          "max": 200.13065561054293
+        },
+        "crashes_found": {
+          "mean": 0.4,
+          "stdev": 0.8944271909999159,
+          "min": 0,
+          "max": 2
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.01782648838803544,
+          "stdev": 0.00032395687222985987,
+          "min": 0.017333317323509595,
+          "max": 0.018127972316914803
+        }
+      }
+    },
+    {
+      "condition_name": "low_packet_loss",
+      "parameters": {
+        "latency_ms": 0,
+        "packet_loss_percent": 1.0,
+        "bandwidth_mbps": null,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 14940,
+          "failed_requests": 0,
+          "timeout_requests": 135,
+          "retries_needed": 135,
+          "total_requests": 14940,
+          "success_rate": 100.0,
+          "timeout_rate": 0.9036144578313252,
+          "throughput": 248.99801817325593,
+          "mean_latency_ms": 5.245638274834574,
+          "crashes_found": 48,
+          "bytes_transferred": 6738570,
+          "effective_bandwidth_mbps": 0.8984688489005394
+        },
+        {
+          "successful_requests": 14655,
+          "failed_requests": 1,
+          "timeout_requests": 151,
+          "retries_needed": 151,
+          "total_requests": 14656,
+          "success_rate": 99.9931768558952,
+          "timeout_rate": 1.0302947598253276,
+          "throughput": 244.23691363913412,
+          "mean_latency_ms": 5.576513069976757,
+          "crashes_found": 52,
+          "bytes_transferred": 6615327,
+          "effective_bandwidth_mbps": 0.8819963421050194
+        },
+        {
+          "successful_requests": 14542,
+          "failed_requests": 0,
+          "timeout_requests": 158,
+          "retries_needed": 158,
+          "total_requests": 14542,
+          "success_rate": 100.0,
+          "timeout_rate": 1.0865080456608445,
+          "throughput": 242.3271724344198,
+          "mean_latency_ms": 5.740400544157593,
+          "crashes_found": 35,
+          "bytes_transferred": 6561468,
+          "effective_bandwidth_mbps": 0.8747198390641879
+        },
+        {
+          "successful_requests": 14736,
+          "failed_requests": 2,
+          "timeout_requests": 148,
+          "retries_needed": 148,
+          "total_requests": 14738,
+          "success_rate": 99.98642963767132,
+          "timeout_rate": 1.004206812321889,
+          "throughput": 245.5985839384981,
+          "mean_latency_ms": 5.498506953214011,
+          "crashes_found": 49,
+          "bytes_transferred": 6627737,
+          "effective_bandwidth_mbps": 0.8836931715074863
+        },
+        {
+          "successful_requests": 14935,
+          "failed_requests": 0,
+          "timeout_requests": 133,
+          "retries_needed": 133,
+          "total_requests": 14935,
+          "success_rate": 100.0,
+          "timeout_rate": 0.8905256109809172,
+          "throughput": 248.907405023016,
+          "mean_latency_ms": 5.213611440908293,
+          "crashes_found": 53,
+          "bytes_transferred": 6692811,
+          "effective_bandwidth_mbps": 0.8923415966893856
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 14761.6,
+          "stdev": 174.7406649867168,
+          "min": 14542,
+          "max": 14940
+        },
+        "failed_requests": {
+          "mean": 0.6,
+          "stdev": 0.8944271909999159,
+          "min": 0,
+          "max": 2
+        },
+        "timeout_requests": {
+          "mean": 145,
+          "stdev": 10.700467279516348,
+          "min": 133,
+          "max": 158
+        },
+        "retries_needed": {
+          "mean": 145,
+          "stdev": 10.700467279516348,
+          "min": 133,
+          "max": 158
+        },
+        "success_rate": {
+          "mean": 99.9959212987133,
+          "stdev": 0.006073117162463213,
+          "min": 99.98642963767132,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 0.9830299373240607,
+          "stdev": 0.08404464760020258,
+          "min": 0.8905256109809172,
+          "max": 1.0865080456608445
+        },
+        "throughput": {
+          "mean": 246.01361864166478,
+          "stdev": 2.924015231441875,
+          "min": 242.3271724344198,
+          "max": 248.99801817325593
+        },
+        "mean_latency_ms": {
+          "mean": 5.454934056618246,
+          "stdev": 0.22372555645285488,
+          "min": 5.213611440908293,
+          "max": 5.740400544157593
+        },
+        "crashes_found": {
+          "mean": 47.4,
+          "stdev": 7.231873892705818,
+          "min": 35,
+          "max": 53
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.8862439596533237,
+          "stdev": 0.009273392379339841,
+          "min": 0.8747198390641879,
+          "max": 0.8984688489005394
+        }
+      }
+    },
+    {
+      "condition_name": "medium_packet_loss",
+      "parameters": {
+        "latency_ms": 0,
+        "packet_loss_percent": 5.0,
+        "bandwidth_mbps": null,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 7562,
+          "failed_requests": 10,
+          "timeout_requests": 350,
+          "retries_needed": 350,
+          "total_requests": 7572,
+          "success_rate": 99.86793449550977,
+          "timeout_rate": 4.62229265715795,
+          "throughput": 126.01608624435062,
+          "mean_latency_ms": 16.392000518322995,
+          "crashes_found": 21,
+          "bytes_transferred": 3423980,
+          "effective_bandwidth_mbps": 0.456468192519367
+        },
+        {
+          "successful_requests": 7358,
+          "failed_requests": 7,
+          "timeout_requests": 362,
+          "retries_needed": 362,
+          "total_requests": 7365,
+          "success_rate": 99.90495587236931,
+          "timeout_rate": 4.915139171758316,
+          "throughput": 122.44104078124028,
+          "mean_latency_ms": 17.245930574812213,
+          "crashes_found": 22,
+          "bytes_transferred": 3309020,
+          "effective_bandwidth_mbps": 0.44051084834568055
+        },
+        {
+          "successful_requests": 7033,
+          "failed_requests": 10,
+          "timeout_requests": 368,
+          "retries_needed": 368,
+          "total_requests": 7043,
+          "success_rate": 99.85801505040466,
+          "timeout_rate": 5.225046145108618,
+          "throughput": 117.0908417529454,
+          "mean_latency_ms": 18.18307446979171,
+          "crashes_found": 25,
+          "bytes_transferred": 3152879,
+          "effective_bandwidth_mbps": 0.4199326103286617
+        },
+        {
+          "successful_requests": 7398,
+          "failed_requests": 4,
+          "timeout_requests": 361,
+          "retries_needed": 361,
+          "total_requests": 7402,
+          "success_rate": 99.94596055120238,
+          "timeout_rate": 4.87706025398541,
+          "throughput": 123.17444449256037,
+          "mean_latency_ms": 17.14884601342465,
+          "crashes_found": 22,
+          "bytes_transferred": 3331082,
+          "effective_bandwidth_mbps": 0.4436919977390289
+        },
+        {
+          "successful_requests": 6813,
+          "failed_requests": 14,
+          "timeout_requests": 365,
+          "retries_needed": 365,
+          "total_requests": 6827,
+          "success_rate": 99.7949318880914,
+          "timeout_rate": 5.346418631902739,
+          "throughput": 113.49852977509478,
+          "mean_latency_ms": 18.62876365529425,
+          "crashes_found": 21,
+          "bytes_transferred": 3048371,
+          "effective_bandwidth_mbps": 0.40626523024692257
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 7232.8,
+          "stdev": 303.1050972847537,
+          "min": 6813,
+          "max": 7562
+        },
+        "failed_requests": {
+          "mean": 9,
+          "stdev": 3.7416573867739413,
+          "min": 4,
+          "max": 14
+        },
+        "timeout_requests": {
+          "mean": 361.2,
+          "stdev": 6.833739825307955,
+          "min": 350,
+          "max": 368
+        },
+        "retries_needed": {
+          "mean": 361.2,
+          "stdev": 6.833739825307955,
+          "min": 350,
+          "max": 368
+        },
+        "success_rate": {
+          "mean": 99.8743595715155,
+          "stdev": 0.05630278808415918,
+          "min": 99.7949318880914,
+          "max": 99.94596055120238
+        },
+        "timeout_rate": {
+          "mean": 4.997191371982606,
+          "stdev": 0.2896508985648554,
+          "min": 4.62229265715795,
+          "max": 5.346418631902739
+        },
+        "throughput": {
+          "mean": 120.44418860923828,
+          "stdev": 5.0491303909767336,
+          "min": 113.49852977509478,
+          "max": 126.01608624435062
+        },
+        "mean_latency_ms": {
+          "mean": 17.51972304632916,
+          "stdev": 0.888014129182565,
+          "min": 16.392000518322995,
+          "max": 18.62876365529425
+        },
+        "crashes_found": {
+          "mean": 22.2,
+          "stdev": 1.6431676725154984,
+          "min": 21,
+          "max": 25
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.4333737758359321,
+          "stdev": 0.020039297413733802,
+          "min": 0.40626523024692257,
+          "max": 0.456468192519367
+        }
+      }
+    },
+    {
+      "condition_name": "high_packet_loss",
+      "parameters": {
+        "latency_ms": 0,
+        "packet_loss_percent": 10.0,
+        "bandwidth_mbps": null,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 4655,
+          "failed_requests": 23,
+          "timeout_requests": 430,
+          "retries_needed": 430,
+          "total_requests": 4678,
+          "success_rate": 99.50833689610945,
+          "timeout_rate": 9.191962377084224,
+          "throughput": 77.57708667880512,
+          "mean_latency_ms": 30.1305067681697,
+          "crashes_found": 16,
+          "bytes_transferred": 2093531,
+          "effective_bandwidth_mbps": 0.2791149917968044
+        },
+        {
+          "successful_requests": 4378,
+          "failed_requests": 21,
+          "timeout_requests": 438,
+          "retries_needed": 438,
+          "total_requests": 4399,
+          "success_rate": 99.52261877699478,
+          "timeout_rate": 9.956808365537622,
+          "throughput": 72.92265950719771,
+          "mean_latency_ms": 32.49333782500986,
+          "crashes_found": 15,
+          "bytes_transferred": 1958391,
+          "effective_bandwidth_mbps": 0.26096131580623194
+        },
+        {
+          "successful_requests": 4030,
+          "failed_requests": 19,
+          "timeout_requests": 447,
+          "retries_needed": 447,
+          "total_requests": 4049,
+          "success_rate": 99.5307483329217,
+          "timeout_rate": 11.039762904420845,
+          "throughput": 67.15616700431923,
+          "mean_latency_ms": 35.80981815196384,
+          "crashes_found": 11,
+          "bytes_transferred": 1801405,
+          "effective_bandwidth_mbps": 0.24014978664499387
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 4354.333333333333,
+          "stdev": 313.17141206268064,
+          "min": 4030,
+          "max": 4655
+        },
+        "failed_requests": {
+          "mean": 21,
+          "stdev": 2.0,
+          "min": 19,
+          "max": 23
+        },
+        "timeout_requests": {
+          "mean": 438.3333333333333,
+          "stdev": 8.504900548115382,
+          "min": 430,
+          "max": 447
+        },
+        "retries_needed": {
+          "mean": 438.3333333333333,
+          "stdev": 8.504900548115382,
+          "min": 430,
+          "max": 447
+        },
+        "success_rate": {
+          "mean": 99.52056800200864,
+          "stdev": 0.011345588725586594,
+          "min": 99.50833689610945,
+          "max": 99.5307483329217
+        },
+        "timeout_rate": {
+          "mean": 10.06284454901423,
+          "stdev": 0.9284527189690858,
+          "min": 9.191962377084224,
+          "max": 11.039762904420845
+        },
+        "throughput": {
+          "mean": 72.55197106344069,
+          "stdev": 5.220339946523887,
+          "min": 67.15616700431923,
+          "max": 77.57708667880512
+        },
+        "mean_latency_ms": {
+          "mean": 32.8112209150478,
+          "stdev": 2.852968926000155,
+          "min": 30.1305067681697,
+          "max": 35.80981815196384
+        },
+        "crashes_found": {
+          "mean": 14,
+          "stdev": 2.6457513110645907,
+          "min": 11,
+          "max": 16
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.2600753647493434,
+          "stdev": 0.019497704610724607,
+          "min": 0.24014978664499387,
+          "max": 0.2791149917968044
+        }
+      }
+    },
+    {
+      "condition_name": "limited_bandwidth_10mbps",
+      "parameters": {
+        "latency_ms": 0,
+        "packet_loss_percent": 0.0,
+        "bandwidth_mbps": 10.0,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 15761,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 15761,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 262.6654551324011,
+          "mean_latency_ms": 2.849365069549024,
+          "crashes_found": 52,
+          "bytes_transferred": 7087914,
+          "effective_bandwidth_mbps": 0.9449908796392705
+        },
+        {
+          "successful_requests": 15851,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 15851,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 264.1789632120774,
+          "mean_latency_ms": 2.833102481087077,
+          "crashes_found": 53,
+          "bytes_transferred": 7149617,
+          "effective_bandwidth_mbps": 0.9532664974694055
+        },
+        {
+          "successful_requests": 15844,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 15844,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 264.05731977381487,
+          "mean_latency_ms": 2.8390390691715983,
+          "crashes_found": 31,
+          "bytes_transferred": 7130757,
+          "effective_bandwidth_mbps": 0.9507339466692093
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 15818.666666666666,
+          "stdev": 50.06329327294932,
+          "min": 15761,
+          "max": 15851
+        },
+        "failed_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "timeout_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "retries_needed": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "success_rate": {
+          "mean": 100.0,
+          "stdev": 0.0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 0.0,
+          "stdev": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "throughput": {
+          "mean": 263.6339127060978,
+          "stdev": 0.8409113125389172,
+          "min": 262.6654551324011,
+          "max": 264.1789632120774
+        },
+        "mean_latency_ms": {
+          "mean": 2.8405022066025665,
+          "stdev": 0.008229430370753955,
+          "min": 2.833102481087077,
+          "max": 2.849365069549024
+        },
+        "crashes_found": {
+          "mean": 45.333333333333336,
+          "stdev": 12.42309676905615,
+          "min": 31,
+          "max": 53
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.9496637745926284,
+          "stdev": 0.0042403318057354904,
+          "min": 0.9449908796392705,
+          "max": 0.9532664974694055
+        }
+      }
+    },
+    {
+      "condition_name": "limited_bandwidth_1mbps",
+      "parameters": {
+        "latency_ms": 0,
+        "packet_loss_percent": 0.0,
+        "bandwidth_mbps": 1.0,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 8433,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 8433,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 140.53585640734343,
+          "mean_latency_ms": 6.05036971981854,
+          "crashes_found": 29,
+          "bytes_transferred": 3791446,
+          "effective_bandwidth_mbps": 0.5054752620725214
+        },
+        {
+          "successful_requests": 8375,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 8375,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 139.57583813716337,
+          "mean_latency_ms": 6.084569077641227,
+          "crashes_found": 24,
+          "bytes_transferred": 3763317,
+          "effective_bandwidth_mbps": 0.5017486561918426
+        },
+        {
+          "successful_requests": 8415,
+          "failed_requests": 0,
+          "timeout_requests": 0,
+          "retries_needed": 0,
+          "total_requests": 8415,
+          "success_rate": 100.0,
+          "timeout_rate": 0.0,
+          "throughput": 140.21880240764455,
+          "mean_latency_ms": 6.051789506962084,
+          "crashes_found": 32,
+          "bytes_transferred": 3796703,
+          "effective_bandwidth_mbps": 0.5061144601378598
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 8407.666666666666,
+          "stdev": 29.687258770949757,
+          "min": 8375,
+          "max": 8433
+        },
+        "failed_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "timeout_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "retries_needed": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "success_rate": {
+          "mean": 100.0,
+          "stdev": 0.0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 0.0,
+          "stdev": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "throughput": {
+          "mean": 140.1101656507171,
+          "stdev": 0.4891423396994576,
+          "min": 139.57583813716337,
+          "max": 140.53585640734343
+        },
+        "mean_latency_ms": {
+          "mean": 6.062242768140617,
+          "stdev": 0.01934817874687468,
+          "min": 6.05036971981854,
+          "max": 6.084569077641227
+        },
+        "crashes_found": {
+          "mean": 28.333333333333332,
+          "stdev": 4.041451884327381,
+          "min": 24,
+          "max": 32
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.5044461261340746,
+          "stdev": 0.0023578383338593825,
+          "min": 0.5017486561918426,
+          "max": 0.5061144601378598
+        }
+      }
+    },
+    {
+      "condition_name": "mobile_3g",
+      "parameters": {
+        "latency_ms": 150,
+        "packet_loss_percent": 2.0,
+        "bandwidth_mbps": 2.0,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 389,
+          "failed_requests": 0,
+          "timeout_requests": 2,
+          "retries_needed": 2,
+          "total_requests": 389,
+          "success_rate": 100.0,
+          "timeout_rate": 0.5141388174807198,
+          "throughput": 6.477689755312913,
+          "mean_latency_ms": 155.67585010546492,
+          "crashes_found": 0,
+          "bytes_transferred": 177548,
+          "effective_bandwidth_mbps": 0.02365245985966678
+        },
+        {
+          "successful_requests": 380,
+          "failed_requests": 0,
+          "timeout_requests": 8,
+          "retries_needed": 8,
+          "total_requests": 380,
+          "success_rate": 100.0,
+          "timeout_rate": 2.1052631578947367,
+          "throughput": 6.3229147973331585,
+          "mean_latency_ms": 167.34352527950597,
+          "crashes_found": 0,
+          "bytes_transferred": 171056,
+          "effective_bandwidth_mbps": 0.02276994765416044
+        },
+        {
+          "successful_requests": 374,
+          "failed_requests": 0,
+          "timeout_requests": 11,
+          "retries_needed": 11,
+          "total_requests": 374,
+          "success_rate": 100.0,
+          "timeout_rate": 2.941176470588235,
+          "throughput": 6.226708792321166,
+          "mean_latency_ms": 173.97600384559811,
+          "crashes_found": 0,
+          "bytes_transferred": 169392,
+          "effective_bandwidth_mbps": 0.02256159691441427
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 381,
+          "stdev": 7.54983443527075,
+          "min": 374,
+          "max": 389
+        },
+        "failed_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "timeout_requests": {
+          "mean": 7,
+          "stdev": 4.58257569495584,
+          "min": 2,
+          "max": 11
+        },
+        "retries_needed": {
+          "mean": 7,
+          "stdev": 4.58257569495584,
+          "min": 2,
+          "max": 11
+        },
+        "success_rate": {
+          "mean": 100.0,
+          "stdev": 0.0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 1.8535261486545638,
+          "stdev": 1.232946302061164,
+          "min": 0.5141388174807198,
+          "max": 2.941176470588235
+        },
+        "throughput": {
+          "mean": 6.342437781655746,
+          "stdev": 0.12662433073351728,
+          "min": 6.226708792321166,
+          "max": 6.477689755312913
+        },
+        "mean_latency_ms": {
+          "mean": 165.66512641018966,
+          "stdev": 9.264808352120374,
+          "min": 155.67585010546492,
+          "max": 173.97600384559811
+        },
+        "crashes_found": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.022994668142747164,
+          "stdev": 0.0005791113578788079,
+          "min": 0.02256159691441427,
+          "max": 0.02365245985966678
+        }
+      }
+    },
+    {
+      "condition_name": "mobile_4g",
+      "parameters": {
+        "latency_ms": 50,
+        "packet_loss_percent": 0.5,
+        "bandwidth_mbps": 20.0,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 1154,
+          "failed_requests": 0,
+          "timeout_requests": 3,
+          "retries_needed": 3,
+          "total_requests": 1154,
+          "success_rate": 100.0,
+          "timeout_rate": 0.25996533795493937,
+          "throughput": 19.232801725988363,
+          "mean_latency_ms": 51.53810843372921,
+          "crashes_found": 2,
+          "bytes_transferred": 522181,
+          "effective_bandwidth_mbps": 0.06962220892948583
+        },
+        {
+          "successful_requests": 1149,
+          "failed_requests": 0,
+          "timeout_requests": 5,
+          "retries_needed": 5,
+          "total_requests": 1149,
+          "success_rate": 100.0,
+          "timeout_rate": 0.4351610095735422,
+          "throughput": 19.14380587126067,
+          "mean_latency_ms": 52.35202632326899,
+          "crashes_found": 3,
+          "bytes_transferred": 523277,
+          "effective_bandwidth_mbps": 0.06974769925079664
+        },
+        {
+          "successful_requests": 1146,
+          "failed_requests": 0,
+          "timeout_requests": 7,
+          "retries_needed": 7,
+          "total_requests": 1146,
+          "success_rate": 100.0,
+          "timeout_rate": 0.6108202443280977,
+          "throughput": 19.09618286139703,
+          "mean_latency_ms": 52.975570066720785,
+          "crashes_found": 3,
+          "bytes_transferred": 521678,
+          "effective_bandwidth_mbps": 0.06954316567377228
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 1149.6666666666667,
+          "stdev": 4.041451884327381,
+          "min": 1146,
+          "max": 1154
+        },
+        "failed_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "timeout_requests": {
+          "mean": 5,
+          "stdev": 2.0,
+          "min": 3,
+          "max": 7
+        },
+        "retries_needed": {
+          "mean": 5,
+          "stdev": 2.0,
+          "min": 3,
+          "max": 7
+        },
+        "success_rate": {
+          "mean": 100.0,
+          "stdev": 0.0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 0.43531553061885975,
+          "stdev": 0.1754275042263741,
+          "min": 0.25996533795493937,
+          "max": 0.6108202443280977
+        },
+        "throughput": {
+          "mean": 19.157596819548687,
+          "stdev": 0.06934566483615522,
+          "min": 19.09618286139703,
+          "max": 19.232801725988363
+        },
+        "mean_latency_ms": {
+          "mean": 52.288568274572995,
+          "stdev": 0.7208288143095634,
+          "min": 51.53810843372921,
+          "max": 52.975570066720785
+        },
+        "crashes_found": {
+          "mean": 2.6666666666666665,
+          "stdev": 0.5773502691896257,
+          "min": 2,
+          "max": 3
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.06963769128468492,
+          "stdev": 0.00010314200659517248,
+          "min": 0.06954316567377228,
+          "max": 0.06974769925079664
+        }
+      }
+    },
+    {
+      "condition_name": "wifi_poor",
+      "parameters": {
+        "latency_ms": 100,
+        "packet_loss_percent": 3.0,
+        "bandwidth_mbps": 5.0,
+        "duration_seconds": 60
+      },
+      "trials": [
+        {
+          "successful_requests": 543,
+          "failed_requests": 0,
+          "timeout_requests": 22,
+          "retries_needed": 22,
+          "total_requests": 543,
+          "success_rate": 100.0,
+          "timeout_rate": 4.051565377532229,
+          "throughput": 9.040721430419575,
+          "mean_latency_ms": 125.48431687184225,
+          "crashes_found": 1,
+          "bytes_transferred": 239620,
+          "effective_bandwidth_mbps": 0.03191657707782156
+        },
+        {
+          "successful_requests": 561,
+          "failed_requests": 0,
+          "timeout_requests": 14,
+          "retries_needed": 14,
+          "total_requests": 561,
+          "success_rate": 100.0,
+          "timeout_rate": 2.4955436720142603,
+          "throughput": 9.338216866051498,
+          "mean_latency_ms": 115.75151020347901,
+          "crashes_found": 2,
+          "bytes_transferred": 248242,
+          "effective_bandwidth_mbps": 0.03305722112317086
+        },
+        {
+          "successful_requests": 568,
+          "failed_requests": 0,
+          "timeout_requests": 11,
+          "retries_needed": 11,
+          "total_requests": 568,
+          "success_rate": 100.0,
+          "timeout_rate": 1.936619718309859,
+          "throughput": 9.464042506924905,
+          "mean_latency_ms": 112.13666460712183,
+          "crashes_found": 5,
+          "bytes_transferred": 258120,
+          "effective_bandwidth_mbps": 0.034406459885738816
+        }
+      ],
+      "aggregate": {
+        "successful_requests": {
+          "mean": 557.3333333333334,
+          "stdev": 12.897028081435403,
+          "min": 543,
+          "max": 568
+        },
+        "failed_requests": {
+          "mean": 0,
+          "stdev": 0.0,
+          "min": 0,
+          "max": 0
+        },
+        "timeout_requests": {
+          "mean": 15.666666666666666,
+          "stdev": 5.686240703077327,
+          "min": 11,
+          "max": 22
+        },
+        "retries_needed": {
+          "mean": 15.666666666666666,
+          "stdev": 5.686240703077327,
+          "min": 11,
+          "max": 22
+        },
+        "success_rate": {
+          "mean": 100.0,
+          "stdev": 0.0,
+          "min": 100.0,
+          "max": 100.0
+        },
+        "timeout_rate": {
+          "mean": 2.8279095892854493,
+          "stdev": 1.0959466741536859,
+          "min": 1.936619718309859,
+          "max": 4.051565377532229
+        },
+        "throughput": {
+          "mean": 9.280993601131993,
+          "stdev": 0.21738459004594535,
+          "min": 9.040721430419575,
+          "max": 9.464042506924905
+        },
+        "mean_latency_ms": {
+          "mean": 117.79083056081437,
+          "stdev": 6.903555307582887,
+          "min": 112.13666460712183,
+          "max": 125.48431687184225
+        },
+        "crashes_found": {
+          "mean": 2.6666666666666665,
+          "stdev": 2.0816659994661326,
+          "min": 1,
+          "max": 5
+        },
+        "effective_bandwidth_mbps": {
+          "mean": 0.03312675269557708,
+          "stdev": 0.0012463968384753858,
+          "min": 0.03191657707782156,
+          "max": 0.034406459885738816
+        }
+      }
+    }
+  ]
+}
