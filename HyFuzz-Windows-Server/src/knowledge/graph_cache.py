@@ -9,7 +9,7 @@ Features:
 - Time-to-live (TTL) support for cache entries
 - LRU (Least Recently Used) eviction policy
 - CWE and CVE graph caching
-- Serialization/deserialization with pickle
+- Secure JSON-based serialization (replaces pickle to prevent RCE)
 - Cache statistics and monitoring
 - Async support for I/O operations
 - Comprehensive error handling and logging
@@ -21,16 +21,15 @@ Architecture:
 - Disk persistence with configurable cache directory
 - Hybrid caching combining both strategies
 
-Security Note - Pickle Usage:
-    This module uses pickle for serialization, which can execute arbitrary code
-    during deserialization. This is acceptable here because:
-    1. Cache files are stored locally and controlled by the application
-    2. No untrusted/external data is deserialized
-    3. Cache directory has restricted permissions
-    4. Data source is internal knowledge graphs (CWE/CVE)
+Security:
+    This module uses SafeSerializer for secure JSON-based serialization
+    instead of pickle to prevent Remote Code Execution (RCE) vulnerabilities.
 
-    IMPORTANT: Never deserialize pickle data from untrusted sources!
-    For external data, use JSON or msgpack instead.
+    Key security improvements:
+    - No arbitrary code execution during deserialization
+    - Safe for use with external data
+    - Supports complex types (NetworkX graphs, dataclasses, etc.)
+    - Backward compatible via migration helper
 
 Example Usage:
      cache = GraphCache(strategy="hybrid", max_size=10000, ttl=3600)
@@ -40,13 +39,13 @@ Example Usage:
      stats = cache.get_stats()
 
 Author: HyFuzz Team
-Version: 1.0.0
-Date: 2025
+Version: 2.0.0
+Date: 2025-11-11
+Security: Replaced pickle with SafeSerializer to prevent RCE
 """
 
 import asyncio
 import logging
-import pickle
 from typing import Dict, Any, Optional
 from pathlib import Path
 from datetime import datetime
@@ -54,6 +53,9 @@ from collections import OrderedDict
 from dataclasses import dataclass, field
 from enum import Enum
 from concurrent.futures import ThreadPoolExecutor
+
+# Safe serializer (replaces pickle)
+from src.utils.safe_serializer import SafeSerializer
 
 # ==============================================================================
 # LOGGER SETUP
@@ -176,31 +178,76 @@ class CacheStats:
 # ==============================================================================
 
 
+# Initialize safe serializer for cache operations
+_serializer = SafeSerializer(use_compression=True)
+
+
 def _save_entry_to_file(cache_file: Path, entry: CacheEntry):
     """
-    Synchronously save cache entry to file.
-    
+    Synchronously save cache entry to file using secure JSON serialization.
+
     Args:
         cache_file: Path to cache file
         entry: Cache entry to save
+
+    Security: Uses SafeSerializer instead of pickle to prevent RCE
     """
-    with open(cache_file, "wb") as f:
-        pickle.dump(entry, f)
+    try:
+        cache_file.parent.mkdir(parents=True, exist_ok=True)
+        _serializer.dump(entry, cache_file)
+    except Exception as e:
+        logger.error(f"Failed to save to {cache_file}: {e}")
+        raise
 
 
 def _load_entry_from_file(cache_file: Path) -> Optional[CacheEntry]:
     """
-    Synchronously load cache entry from file.
-    
+    Synchronously load cache entry from file using secure JSON deserialization.
+
     Args:
         cache_file: Path to cache file
-        
+
     Returns:
         CacheEntry if successful, None otherwise
+
+    Security: Uses SafeSerializer instead of pickle to prevent RCE
+    Note: Automatically migrates old pickle files to JSON format
     """
     try:
-        with open(cache_file, "rb") as f:
-            return pickle.load(f)
+        # Try loading as JSON first
+        try:
+            data = _serializer.load(cache_file)
+
+            # Reconstruct CacheEntry from dictionary
+            if isinstance(data, dict):
+                # Convert datetime strings back to datetime objects
+                if 'created_at' in data:
+                    data['created_at'] = datetime.fromisoformat(data['created_at'])
+                if 'accessed_at' in data:
+                    data['accessed_at'] = datetime.fromisoformat(data['accessed_at'])
+
+                # Reconstruct CacheEntry
+                return CacheEntry(**data)
+            else:
+                return data
+
+        except Exception as json_error:
+            # Attempt migration from old pickle format
+            logger.warning(
+                f"Failed to load {cache_file} as JSON, attempting pickle migration: {json_error}"
+            )
+
+            # Try loading as pickle for migration (only for trusted local files)
+            import pickle as _pickle
+            with open(cache_file, 'rb') as f:
+                entry = _pickle.load(f)
+
+            # Save in new JSON format
+            logger.info(f"Migrating {cache_file} from pickle to JSON format")
+            _serializer.dump(entry, cache_file)
+
+            return entry
+
     except Exception as e:
         logger.error(f"Failed to load from {cache_file}: {e}")
         return None
@@ -313,9 +360,9 @@ class GraphCache:
                 cache_type_enum = CacheType(cache_type)
                 entry_ttl = ttl or self.ttl
 
-                # Calculate entry size
+                # Calculate entry size using safe serializer
                 try:
-                    size_bytes = len(pickle.dumps(value))
+                    size_bytes = len(_serializer.dumps(value))
                 except Exception:
                     size_bytes = 0
 

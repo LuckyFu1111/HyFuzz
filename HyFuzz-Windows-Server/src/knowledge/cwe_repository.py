@@ -44,7 +44,11 @@ import logging
 from typing import Dict, Any, Optional, List, Tuple
 from pathlib import Path
 from datetime import datetime
-import pickle
+# Safe serializer (replaces pickle to prevent RCE)
+from src.utils.safe_serializer import SafeSerializer
+
+# Initialize safe serializer for caching
+_serializer = SafeSerializer(use_compression=True)
 from collections import defaultdict, OrderedDict
 from dataclasses import dataclass, asdict, field
 from enum import Enum
@@ -271,10 +275,10 @@ class CWERepository:
                 return False
 
             with open(cache_path, "rb") as f:
-                self.cwe_data = pickle.load(f)
+                self.cwe_data = _serializer.load(f.name)
 
             with open(index_path, "rb") as f:
-                self.index = pickle.load(f)
+                self.index = _serializer.load(f.name)
 
             self._rebuild_indices()
             self._update_stats()
@@ -400,10 +404,10 @@ class CWERepository:
             index_path = self._get_index_path()
 
             with open(cache_path, "wb") as f:
-                pickle.dump(self.cwe_data, f)
+                _serializer.dump(self.cwe_data, f)
 
             with open(index_path, "wb") as f:
-                pickle.dump(self.index, f)
+                _serializer.dump(self.index, f)
 
             logger.debug("CWE cache saved")
 
