@@ -1,11 +1,11 @@
 # Complete Command Reference
 
-## 所有命令速查表 (All Commands Quick Reference)
+## All Commands Quick Reference
 
-### 一键运行 (One-Command Run)
+### One-Command Run
 
 ```bash
-# 运行所有测试 + 分析 + 绘图
+# Run all tests + analysis + plotting
 cd /home/user/HyFuzz/thesis_results && \
 python3 run_all_tests.py && \
 python3 analysis_scripts/analyze_results.py && \
@@ -14,44 +14,44 @@ python3 analysis_scripts/plot_results.py
 
 ---
 
-## 分类命令 (Categorized Commands)
+## Categorized Commands
 
-### 1. Modbus/TCP 测试
+### 1. Modbus/TCP Tests
 
-#### 1.1 有效性测试 (Validity Tests)
+#### 1.1 Validity Tests
 ```bash
-# 基本运行
+# Basic run
 python3 modbus_tests/test_modbus_validity.py
 
-# 自定义试验次数
+# Custom trial count
 python3 -c "
 import asyncio
 from modbus_tests.test_modbus_validity import ModbusValidityTester
 from pathlib import Path
 async def run():
     tester = ModbusValidityTester(Path('results_data/modbus_validity'))
-    await tester.run_all_tests(num_trials=2000)  # 自定义为 2000
+    await tester.run_all_tests(num_trials=2000)  # Customize to 2000
 asyncio.run(run())
 "
 ```
 
-**输出文件:**
+**Output Files:**
 - `results_data/modbus_validity/modbus_validity_results.json`
 - `results_data/modbus_validity/modbus_state_progress.json`
 
-**关键指标:**
+**Key Metrics:**
 - `PSR` - Protocol Success Rate
 - `EXR` - Exception Rate
-- `per_function_code` - 每个功能码的详细数据
-- `unique_states` - 发现的唯一状态数
-- `fc_address_coverage` - FC×地址覆盖
+- `per_function_code` - Per function code detailed data
+- `unique_states` - Number of unique states discovered
+- `fc_address_coverage` - FC×address coverage
 
-#### 1.2 模糊测试 (Fuzzing Tests)
+#### 1.2 Fuzzing Tests
 ```bash
-# 基本运行
+# Basic run
 python3 modbus_tests/test_modbus_fuzzing.py
 
-# 自定义参数
+# Custom parameters
 python3 -c "
 import asyncio
 from modbus_tests.test_modbus_fuzzing import ModbusFuzzingTester
@@ -59,31 +59,31 @@ from pathlib import Path
 async def run():
     tester = ModbusFuzzingTester(Path('results_data/modbus_fuzzing'))
     await tester.multi_trial_campaign(
-        num_trials=10,           # 10 次试验
-        duration_per_trial=120   # 每次 120 秒
+        num_trials=10,           # 10 trials
+        duration_per_trial=120   # 120 seconds each
     )
 asyncio.run(run())
 "
 ```
 
-**输出文件:**
+**Output Files:**
 - `results_data/modbus_fuzzing/modbus_fuzzing_results.json`
 
-**关键指标:**
-- `aggregate.execs.mean` - 平均执行次数
-- `aggregate.unique_crashes.mean` - 平均唯一崩溃数
-- `aggregate.throughput_exec_per_sec.mean` - 平均吞吐量
+**Key Metrics:**
+- `aggregate.execs.mean` - Mean execution count
+- `aggregate.unique_crashes.mean` - Mean unique crashes
+- `aggregate.throughput_exec_per_sec.mean` - Mean throughput
 
 ---
 
-### 2. CoAP 测试
+### 2. CoAP Tests
 
-#### 2.1 有效性和一致性测试 (Validity & Coherence)
+#### 2.1 Validity & Coherence Tests
 ```bash
-# 基本运行 (测试 DTLS ON 和 OFF)
+# Basic run (tests both DTLS ON and OFF)
 python3 coap_tests/test_coap_validity.py
 
-# 仅测试无 DTLS
+# Test only without DTLS
 python3 -c "
 import asyncio
 from coap_tests.test_coap_validity import CoAPValidityTester
@@ -95,7 +95,7 @@ async def run():
 asyncio.run(run())
 "
 
-# 仅测试 Observe & Blockwise
+# Test only Observe & Blockwise
 python3 -c "
 import asyncio
 from coap_tests.test_coap_validity import CoAPValidityTester
@@ -108,22 +108,22 @@ asyncio.run(run())
 "
 ```
 
-**输出文件:**
+**Output Files:**
 - `results_data/coap_validity/coap_validity_results.json`
 
-**关键指标:**
-- `ack_ratio` - ACK 比率
-- `token_coherence_rate` - Token 一致性
-- `response_mix` - 响应码分布 (2xx/4xx/5xx)
-- `observe.registration_success` - Observe 注册成功数
-- `blockwise.block1_completions` - Block1 完成数
+**Key Metrics:**
+- `ack_ratio` - ACK ratio
+- `token_coherence_rate` - Token coherence
+- `response_mix` - Response code distribution (2xx/4xx/5xx)
+- `observe.registration_success` - Successful Observe registrations
+- `blockwise.block1_completions` - Block1 completions
 
-#### 2.2 模糊测试和 DTLS 对比
+#### 2.2 Fuzzing Tests and DTLS Comparison
 ```bash
-# 基本运行
+# Basic run
 python3 coap_tests/test_coap_fuzzing.py
 
-# 单独运行 DTLS 影响对比
+# Run DTLS impact comparison separately
 python3 -c "
 import asyncio
 from coap_tests.test_coap_fuzzing import CoAPFuzzingTester
@@ -136,23 +136,23 @@ asyncio.run(run())
 "
 ```
 
-**输出文件:**
+**Output Files:**
 - `results_data/coap_fuzzing/coap_fuzzing_results.json`
 
-**关键指标:**
-- `comparison.dtls_overhead_percent` - DTLS 开销百分比
-- `no_dtls_trials` - 无 DTLS 试验结果
-- `with_dtls_trials` - 有 DTLS 试验结果
+**Key Metrics:**
+- `comparison.dtls_overhead_percent` - DTLS overhead percentage
+- `no_dtls_trials` - No DTLS trial results
+- `with_dtls_trials` - With DTLS trial results
 
 ---
 
-### 3. 基线对比 (Baseline Comparison)
+### 3. Baseline Comparison
 
 ```bash
-# 基本运行 (对比所有模糊器)
+# Basic run (compare all fuzzers)
 python3 baseline_comparisons/compare_baselines.py
 
-# 仅对比 Modbus
+# Compare Modbus only
 python3 -c "
 import asyncio
 from baseline_comparisons.compare_baselines import BaselineComparer
@@ -166,7 +166,7 @@ async def run():
 asyncio.run(run())
 "
 
-# 仅对比 CoAP
+# Compare CoAP only
 python3 -c "
 import asyncio
 from baseline_comparisons.compare_baselines import BaselineComparer
@@ -178,38 +178,38 @@ asyncio.run(run())
 "
 ```
 
-**输出文件:**
+**Output Files:**
 - `results_data/baseline_comparison/baseline_comparison_results.json`
 
-**对比的模糊器:**
-- AFL (基线)
+**Compared Fuzzers:**
+- AFL (baseline)
 - AFL++
-- AFLNet (协议感知)
+- AFLNet (protocol-aware)
 - libFuzzer
 - Grammar-based
 - HyFuzz
 
-**关键指标:**
-- `effect_sizes.unique_crashes.improvement_percent` - 崩溃发现改进
-- `effect_sizes.coverage.improvement_percent` - 覆盖率改进
-- `fuzzer_rankings` - 模糊器排名
+**Key Metrics:**
+- `effect_sizes.unique_crashes.improvement_percent` - Crash finding improvement
+- `effect_sizes.coverage.improvement_percent` - Coverage improvement
+- `fuzzer_rankings` - Fuzzer rankings
 
 ---
 
-### 4. 结果分析 (Analysis)
+### 4. Results Analysis
 
-#### 4.1 数据分析
+#### 4.1 Data Analysis
 ```bash
-# 完整分析
+# Full analysis
 python3 analysis_scripts/analyze_results.py
 
-# 查看汇总
+# View summary
 cat results_data/summary.txt
 
-# 查看 JSON 数据
+# View JSON data
 cat results_data/analysis_summary.json | python3 -m json.tool
 
-# 提取特定指标
+# Extract specific metrics
 python3 -c "
 import json
 with open('results_data/analysis_summary.json') as f:
@@ -219,72 +219,72 @@ with open('results_data/analysis_summary.json') as f:
 "
 ```
 
-**输出文件:**
-- `results_data/analysis_summary.json` - 结构化分析
-- `results_data/summary.txt` - 文本汇总
+**Output Files:**
+- `results_data/analysis_summary.json` - Structured analysis
+- `results_data/summary.txt` - Text summary
 
-#### 4.2 生成图表
+#### 4.2 Generate Plots
 ```bash
-# 生成所有图表
+# Generate all plots
 python3 analysis_scripts/plot_results.py
 
-# 查看生成的图表
+# View generated plots
 ls -lh plots/
 
-# 在 LaTeX 中使用
+# Use in LaTeX
 echo "\\includegraphics[width=0.9\\linewidth]{plots/modbus_psr_exr.png}"
 ```
 
-**生成的图表 (300 DPI):**
+**Generated Plots (300 DPI):**
 1. `modbus_psr_exr.png` - Modbus PSR vs EXR
-2. `modbus_state_coverage.png` - 状态覆盖增长
-3. `coap_coherence_dtls.png` - CoAP 一致性 (DTLS 影响)
-4. `baseline_comparison_modbus.png` - Modbus 基线对比
-5. `baseline_comparison_coap.png` - CoAP 基线对比
-6. `fuzzing_efficiency.png` - 模糊测试效率
+2. `modbus_state_coverage.png` - State coverage growth
+3. `coap_coherence_dtls.png` - CoAP coherence (DTLS impact)
+4. `baseline_comparison_modbus.png` - Modbus baseline comparison
+5. `baseline_comparison_coap.png` - CoAP baseline comparison
+6. `fuzzing_efficiency.png` - Fuzzing efficiency
 
 ---
 
-### 5. 批处理命令 (Batch Commands)
+### 5. Batch Commands
 
-#### 5.1 运行所有 Modbus 测试
+#### 5.1 Run All Modbus Tests
 ```bash
 python3 modbus_tests/test_modbus_validity.py && \
 python3 modbus_tests/test_modbus_fuzzing.py
 ```
 
-#### 5.2 运行所有 CoAP 测试
+#### 5.2 Run All CoAP Tests
 ```bash
 python3 coap_tests/test_coap_validity.py && \
 python3 coap_tests/test_coap_fuzzing.py
 ```
 
-#### 5.3 完整流程 (测试 + 分析 + 绘图)
+#### 5.3 Complete Workflow (Test + Analysis + Plotting)
 ```bash
-# 完整运行
+# Full run
 cd /home/user/HyFuzz/thesis_results
 
-# 步骤 1: 所有测试
+# Step 1: All tests
 python3 run_all_tests.py
 
-# 步骤 2: 分析
+# Step 2: Analysis
 python3 analysis_scripts/analyze_results.py
 
-# 步骤 3: 绘图
+# Step 3: Plotting
 python3 analysis_scripts/plot_results.py
 
-# 步骤 4: 查看结果
+# Step 4: View results
 cat results_data/summary.txt
 ls plots/
 ```
 
 ---
 
-### 6. 数据查询命令 (Data Query)
+### 6. Data Query Commands
 
-#### 6.1 Modbus 数据查询
+#### 6.1 Modbus Data Queries
 ```bash
-# 查询 PSR
+# Query PSR
 python3 -c "
 import json
 with open('results_data/modbus_validity/modbus_validity_results.json') as f:
@@ -293,7 +293,7 @@ with open('results_data/modbus_validity/modbus_validity_results.json') as f:
     print(f'EXR: {data[\"EXR\"]:.2%}')
 "
 
-# 查询唯一状态数
+# Query unique states
 python3 -c "
 import json
 with open('results_data/modbus_validity/modbus_state_progress.json') as f:
@@ -301,7 +301,7 @@ with open('results_data/modbus_validity/modbus_state_progress.json') as f:
     print(f'Unique States: {data[\"unique_states\"]}')
 "
 
-# 查询平均崩溃数
+# Query average crashes
 python3 -c "
 import json
 with open('results_data/modbus_fuzzing/modbus_fuzzing_results.json') as f:
@@ -310,9 +310,9 @@ with open('results_data/modbus_fuzzing/modbus_fuzzing_results.json') as f:
 "
 ```
 
-#### 6.2 CoAP 数据查询
+#### 6.2 CoAP Data Queries
 ```bash
-# 查询 ACK 比率
+# Query ACK ratio
 python3 -c "
 import json
 with open('results_data/coap_validity/coap_validity_results.json') as f:
@@ -321,7 +321,7 @@ with open('results_data/coap_validity/coap_validity_results.json') as f:
     print(f'ACK Ratio (with DTLS): {data[\"coherence_with_dtls\"][\"ack_ratio\"]:.2%}')
 "
 
-# 查询 DTLS 开销
+# Query DTLS overhead
 python3 -c "
 import json
 with open('results_data/coap_fuzzing/coap_fuzzing_results.json') as f:
@@ -330,9 +330,9 @@ with open('results_data/coap_fuzzing/coap_fuzzing_results.json') as f:
 "
 ```
 
-#### 6.3 基线对比查询
+#### 6.3 Baseline Comparison Queries
 ```bash
-# 查询改进百分比
+# Query improvement percentages
 python3 -c "
 import json
 with open('results_data/baseline_comparison/baseline_comparison_results.json') as f:
@@ -345,33 +345,33 @@ with open('results_data/baseline_comparison/baseline_comparison_results.json') a
 
 ---
 
-### 7. 清理命令 (Cleanup)
+### 7. Cleanup Commands
 
 ```bash
-# 清理所有结果
+# Clean all results
 rm -rf results_data/* plots/*
 
-# 仅清理图表
+# Clean plots only
 rm -rf plots/*
 
-# 仅清理特定测试结果
+# Clean specific test results
 rm -rf results_data/modbus_validity/*
 rm -rf results_data/coap_fuzzing/*
 ```
 
 ---
 
-### 8. 调试命令 (Debugging)
+### 8. Debugging Commands
 
 ```bash
-# 检查目录结构
+# Check directory structure
 tree thesis_results/ -L 2
 
-# 检查脚本语法
+# Check script syntax
 python3 -m py_compile modbus_tests/test_modbus_validity.py
 python3 -m py_compile coap_tests/test_coap_validity.py
 
-# 测试单个函数
+# Test individual function
 python3 -c "
 import asyncio
 from modbus_tests.test_modbus_validity import ModbusValidityTester
@@ -386,33 +386,33 @@ asyncio.run(test())
 
 ---
 
-### 9. 性能监控 (Performance Monitoring)
+### 9. Performance Monitoring
 
 ```bash
-# 监控执行时间
+# Monitor execution time
 time python3 run_all_tests.py
 
-# 监控单个测试
+# Monitor individual test
 time python3 modbus_tests/test_modbus_validity.py
 
-# 监控内存使用
+# Monitor memory usage
 /usr/bin/time -v python3 run_all_tests.py
 ```
 
 ---
 
-### 10. 生成论文表格 (Generate Thesis Tables)
+### 10. Generate Thesis Tables
 
 ```bash
-# 生成 LaTeX 表格数据
+# Generate LaTeX table data
 python3 -c "
 import json
 
-# 加载分析数据
+# Load analysis data
 with open('results_data/analysis_summary.json') as f:
     data = json.load(f)
 
-# Modbus 表格
+# Modbus table
 print('\\begin{table}[t]')
 print('\\centering')
 print('\\caption{Modbus/TCP Results Summary}')
@@ -431,11 +431,11 @@ print('\\end{table}')
 
 ---
 
-## 常见工作流 (Common Workflows)
+## Common Workflows
 
-### 工作流 1: 快速测试
+### Workflow 1: Quick Test
 ```bash
-# 快速验证 (减少试验次数)
+# Quick validation (reduced trial count)
 cd /home/user/HyFuzz/thesis_results
 python3 -c "
 import asyncio
@@ -443,70 +443,70 @@ from modbus_tests.test_modbus_validity import ModbusValidityTester
 from pathlib import Path
 async def quick_test():
     tester = ModbusValidityTester(Path('results_data/quick_test'))
-    await tester.run_all_tests(num_trials=100)  # 仅 100 次
+    await tester.run_all_tests(num_trials=100)  # Only 100 trials
 asyncio.run(quick_test())
 "
 ```
 
-### 工作流 2: 完整论文数据收集
+### Workflow 2: Complete Thesis Data Collection
 ```bash
-# 按顺序运行所有测试
+# Run all tests in sequence
 cd /home/user/HyFuzz/thesis_results
 python3 run_all_tests.py
 python3 analysis_scripts/analyze_results.py
 python3 analysis_scripts/plot_results.py
 
-# 检查结果
+# Check results
 cat results_data/summary.txt
 ls -lh plots/
 ```
 
-### 工作流 3: 仅更新图表
+### Workflow 3: Update Plots Only
 ```bash
-# 如果已有数据，仅重新生成图表
+# If data already exists, regenerate plots only
 cd /home/user/HyFuzz/thesis_results
 python3 analysis_scripts/plot_results.py
 ```
 
 ---
 
-## 环境准备 (Environment Setup)
+## Environment Setup
 
 ```bash
-# 安装依赖 (如需绘图)
+# Install dependencies (if plotting is needed)
 pip3 install matplotlib numpy seaborn
 
-# 检查 Python 版本
-python3 --version  # 需要 3.9+
+# Check Python version
+python3 --version  # Requires 3.9+
 
-# 检查磁盘空间
+# Check disk space
 df -h /home/user/HyFuzz/thesis_results/
 ```
 
 ---
 
-## 故障排除命令 (Troubleshooting)
+## Troubleshooting Commands
 
 ```bash
-# 问题 1: 导入错误
+# Issue 1: Import errors
 cd /home/user/HyFuzz/thesis_results
 export PYTHONPATH="/home/user/HyFuzz/HyFuzz-Ubuntu-Client/src:$PYTHONPATH"
 
-# 问题 2: 权限错误
+# Issue 2: Permission errors
 chmod -R 755 /home/user/HyFuzz/thesis_results/
 chmod +x *.py */*.py
 
-# 问题 3: 结果目录不存在
+# Issue 3: Results directories don't exist
 mkdir -p results_data/{modbus_validity,modbus_fuzzing,coap_validity,coap_fuzzing,baseline_comparison}
 mkdir -p plots/
 ```
 
 ---
 
-**提示:** 将常用命令添加到 shell 别名:
+**Tip:** Add commonly used commands to shell aliases:
 
 ```bash
-# 添加到 ~/.bashrc
+# Add to ~/.bashrc
 alias thesis-test='cd /home/user/HyFuzz/thesis_results && python3 run_all_tests.py'
 alias thesis-analyze='cd /home/user/HyFuzz/thesis_results && python3 analysis_scripts/analyze_results.py'
 alias thesis-plot='cd /home/user/HyFuzz/thesis_results && python3 analysis_scripts/plot_results.py'
