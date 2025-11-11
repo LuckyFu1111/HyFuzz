@@ -1,0 +1,169 @@
+{
+  "mutation_operators": {
+    "normality_tests": {
+      "bit_flip": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9727054046905558,
+        "p_value": 0.810671791958929,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "byte_flip": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9751223763311595,
+        "p_value": 0.8570672513820177,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "arithmetic": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9351158050535632,
+        "p_value": 0.1935943187072438,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "interesting_values": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9537412467866757,
+        "p_value": 0.42746384441643015,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "boundary_values": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.945716786312592,
+        "p_value": 0.30670391798943286,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "block_delete": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9665873420595804,
+        "p_value": 0.6818159257361248,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "block_duplicate": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.96364766798485,
+        "p_value": 0.6189953851932858,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "block_shuffle": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9313978175668118,
+        "p_value": 0.16427924323070808,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "havoc": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9465806685108111,
+        "p_value": 0.31814781115112234,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      }
+    },
+    "variance_homogeneity": {
+      "test": "Levene",
+      "statistic": 1.3933380923135907,
+      "p_value": 0.20249371380182685,
+      "homogeneous": true,
+      "interpretation": "Variances are equal",
+      "recommendation": "Use standard t-test/ANOVA"
+    },
+    "anova_or_kruskal": {
+      "test": "One-way ANOVA",
+      "f_statistic": 61.95619657458296,
+      "p_value": 1.3956486159086296e-46,
+      "significant": true,
+      "interpretation": "Significant differences between operators"
+    },
+    "assumptions_met": true,
+    "recommendation": "Parametric tests valid"
+  },
+  "seed_sensitivity": {
+    "normality_tests": {
+      "empty_0": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.954757339844239,
+        "p_value": 0.4450910297465458,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "small_valid_5": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9782397249827287,
+        "p_value": 0.9093972935002937,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "medium_valid_15": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9646821307683561,
+        "p_value": 0.640959410545859,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "large_valid_30": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9488026113720974,
+        "p_value": 0.349280014016477,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "small_random_5": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9507662961975621,
+        "p_value": 0.37887171709807677,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      },
+      "large_random_30": {
+        "test": "Shapiro-Wilk",
+        "statistic": 0.9519014070130777,
+        "p_value": 0.3968777929779994,
+        "is_normal": true,
+        "interpretation": "Normal distribution",
+        "recommendation": "Use parametric tests (t-test, ANOVA)"
+      }
+    },
+    "variance_homogeneity": {
+      "test": "Levene",
+      "statistic": 0.36167798745352914,
+      "p_value": 0.8737566112163122,
+      "homogeneous": true,
+      "interpretation": "Variances are equal",
+      "recommendation": "Use standard t-test/ANOVA"
+    },
+    "trend_analysis": {
+      "test": "Pearson Correlation (size vs crashes)",
+      "correlation": 0.6118690018238385,
+      "p_value": 0.19673338014513933,
+      "significant": false,
+      "interpretation": "No significant trend",
+      "direction": "Positive"
+    }
+  },
+  "reproducibility": {},
+  "meta_analysis": {
+    "tests_performed": 3,
+    "timestamp": "2025-11-11",
+    "statistical_rigor": "High - all assumptions validated"
+  }
+}

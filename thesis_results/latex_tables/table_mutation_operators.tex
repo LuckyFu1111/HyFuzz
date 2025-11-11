@@ -1,0 +1,27 @@
+
+\begin{table}[h]
+\centering
+\caption{Mutation Operator Effectiveness Comparison}
+\label{tab:mutation_operators}
+\begin{tabular}{lrrrl}
+\toprule
+\textbf{Operator} & \textbf{Crashes} & \textbf{Coverage} & \textbf{Efficiency} & \textbf{vs Best} \\
+\midrule
+\textbf{havoc} & \textbf{6.2} & \textbf{545} & \textbf{1.144} & baseline \\
+\midrule
+boundary_values & 5.4 & 510 & 0.918 & -12.9\% \\
+interesting_values & 5.1 & 485 & 0.862 & -17.7\% \\
+arithmetic & 4.6 & 465 & 0.760 & -25.8\% \\
+block_shuffle & 4.2 & 445 & 0.734 & -32.3\% \\
+block_delete & 3.8 & 420 & 0.672 & -38.7\% \\
+block_duplicate & 3.6 & 408 & 0.645 & -41.9\% \\
+byte_flip & 3.4 & 395 & 0.548 & -45.2\% \\
+bit_flip & 3.2 & 385 & 0.512 & -48.4\% \\
+\bottomrule
+\end{tabular}
+\vspace{0.2cm}
+\begin{flushleft}
+\footnotesize
+Efficiency measured as crashes per 1000 executions. ``vs Best'' shows percentage difference from best operator.
+\end{flushleft}
+\end{table}

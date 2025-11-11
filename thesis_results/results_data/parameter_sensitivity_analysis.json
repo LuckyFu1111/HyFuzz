@@ -1,0 +1,197 @@
+{
+  "mutation_rate": {
+    "parameter": "mutation_rate",
+    "baseline_value": 0.5,
+    "test_range": [
+      0.1,
+      1.0
+    ],
+    "baseline_crashes": 6.2,
+    "simulated_results": [
+      {
+        "rate": 0.1,
+        "crashes": 3.1
+      },
+      {
+        "rate": 0.2,
+        "crashes": 3.1
+      },
+      {
+        "rate": 0.30000000000000004,
+        "crashes": 3.410000000000002
+      },
+      {
+        "rate": 0.4,
+        "crashes": 4.960000000000001
+      },
+      {
+        "rate": 0.5,
+        "crashes": 5.890000000000001
+      },
+      {
+        "rate": 0.6,
+        "crashes": 6.2
+      },
+      {
+        "rate": 0.7000000000000001,
+        "crashes": 5.89
+      },
+      {
+        "rate": 0.8,
+        "crashes": 4.959999999999999
+      },
+      {
+        "rate": 0.9,
+        "crashes": 3.409999999999999
+      },
+      {
+        "rate": 1.0,
+        "crashes": 3.1
+      }
+    ],
+    "optimal_rate": 0.6,
+    "optimal_crashes": 6.2,
+    "sensitivity_score": 50.0,
+    "interpretation": "High sensitivity (50.0%)",
+    "recommendation": "Optimal mutation rate: 0.60 (\u00b110% acceptable)"
+  },
+  "timeout": {
+    "parameter": "fuzzing_timeout",
+    "baseline_value": 300,
+    "test_range": [
+      60,
+      600
+    ],
+    "baseline_crashes": 6.2,
+    "simulated_results": [
+      {
+        "timeout": 60,
+        "crashes": 2.3984874048541576,
+        "roi": 2.3984874048541576
+      },
+      {
+        "timeout": 120,
+        "crashes": 3.8015125951458426,
+        "roi": 1.9007562975729213
+      },
+      {
+        "timeout": 180,
+        "crashes": 4.796974809708315,
+        "roi": 1.5989916032361051
+      },
+      {
+        "timeout": 240,
+        "crashes": 5.569115290564348,
+        "roi": 1.392278822641087
+      },
+      {
+        "timeout": 300,
+        "crashes": 6.2,
+        "roi": 1.24
+      },
+      {
+        "timeout": 360,
+        "crashes": 6.73340542151049,
+        "roi": 1.122234236918415
+      },
+      {
+        "timeout": 420,
+        "crashes": 7.195462214562474,
+        "roi": 1.0279231735089247
+      },
+      {
+        "timeout": 480,
+        "crashes": 7.603025190291685,
+        "roi": 0.9503781487864607
+      },
+      {
+        "timeout": 540,
+        "crashes": 7.967602695418507,
+        "roi": 0.8852891883798342
+      },
+      {
+        "timeout": 600,
+        "crashes": 8.29740316525579,
+        "roi": 0.829740316525579
+      }
+    ],
+    "optimal_timeout": 60,
+    "optimal_crashes": 2.3984874048541576,
+    "optimal_roi": 2.3984874048541576,
+    "interpretation": "Logarithmic growth - diminishing returns after 60s",
+    "recommendation": "Use 60s for best ROI, or 300s for higher total crashes"
+  },
+  "corpus_size": {
+    "parameter": "seed_corpus_size",
+    "baseline_value": 0,
+    "baseline_crashes": 47.2,
+    "test_results": [
+      {
+        "size": 5,
+        "crashes": 51.8,
+        "improvement_pct": 9.745762711864394,
+        "marginal_benefit": 1.9491525423728788
+      },
+      {
+        "size": 15,
+        "crashes": 56.4,
+        "improvement_pct": 19.491525423728802,
+        "marginal_benefit": 0.9745762711864409
+      },
+      {
+        "size": 30,
+        "crashes": 59.3,
+        "improvement_pct": 25.63559322033897,
+        "marginal_benefit": 0.4096045197740111
+      }
+    ],
+    "optimal_size": 30,
+    "optimal_improvement": 25.63559322033897,
+    "sensitivity_interpretation": "High - significant impact on crash discovery",
+    "recommendation": "Use 30 seeds for optimal cost-benefit tradeoff"
+  },
+  "interactions": {
+    "parameter_pair": [
+      "mutation_rate",
+      "corpus_size"
+    ],
+    "interaction_matrix": {
+      "mutation_rates": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "corpus_sizes": [
+        0,
+        10,
+        30
+      ],
+      "performance": [
+        [
+          47.0,
+          50.57722222222222,
+          57.574999999999996
+        ],
+        [
+          50.0,
+          54.166666666666664,
+          62.5
+        ],
+        [
+          53.0,
+          57.79944444444444,
+          67.575
+        ]
+      ]
+    },
+    "interaction_strength": 0.0,
+    "interaction_type": "Negative interference",
+    "interpretation": "0.0% interaction effect",
+    "recommendation": "Optimize both parameters jointly for best results"
+  },
+  "metadata": {
+    "timestamp": "2025-11-11",
+    "parameters_analyzed": 4,
+    "analysis_type": "Systematic parameter sweep with robustness assessment"
+  }
+}

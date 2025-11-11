@@ -1,137 +1,137 @@
 # CoAP Validity and Coherence Results (with DTLS Analysis)
 
-## 📊 测试概述 (Test Overview)
+## 📊 Test Overview
 
-本目录包含 CoAP (Constrained Application Protocol) 的有效性、一致性和里程碑测试结果，特别关注 DTLS 的影响。
+This directory contains CoAP (Constrained Application Protocol) validity, coherence, and milestone test results, with special focus on DTLS impact.
 
-**测试时间:** 2025-11-10
-**测试规模:**
-- 一致性测试: 1000 次试验 (DTLS ON + OFF各 1000)
-- 里程碑测试: 500 次试验 (DTLS ON + OFF 各 500)
-**对应论文章节:** §5.4.1 (Coherence/ACKs), §5.4.2 (State Progress), §5.4.6 (DTLS Impact)
+**Test Date:** 2025-11-10
+**Test Scale:**
+- Coherence tests: 1000 trials (DTLS ON + OFF, 1000 each)
+- Milestone tests: 500 trials (DTLS ON + OFF, 500 each)
+**Corresponding Thesis Sections:** §5.4.1 (Coherence/ACKs), §5.4.2 (State Progress), §5.4.6 (DTLS Impact)
 
 ---
 
-## 📁 结果文件
+## 📁 Result Files
 
 ### `coap_validity_results.json`
-完整的 CoAP 测试数据，包括：
-- DTLS OFF 的一致性指标
-- DTLS ON 的一致性指标
-- Observe 和 Blockwise 里程碑数据
+Complete CoAP test data, including:
+- Coherence metrics without DTLS
+- Coherence metrics with DTLS
+- Observe and Blockwise milestone data
 
 ---
 
-## 🔑 关键结果 (Key Results)
+## 🔑 Key Results
 
-### 1. 一致性指标 (Coherence Metrics)
+### 1. Coherence Metrics
 
-####无 DTLS (Plain CoAP)
+#### Without DTLS (Plain CoAP)
 
-| 指标 | 值 | 说明 |
-|------|-----|------|
-| **ACK 比率** | **94.70%** | Confirmable 消息的 ACK 响应率 |
-| **Token 一致性** | **99.10%** | Token 匹配请求-响应对的比率 |
-| **2xx 成功率** | **75.30%** | 成功响应码占比 |
-| **4xx 客户端错误** | **19.80%** | 客户端错误 (如 404 Not Found) |
-| **5xx 服务器错误** | **4.90%** | 服务器错误 (如 503 Service Unavailable) |
-| **平均延迟** | **2.1 ms** | 请求-响应往返时间 |
+| Metric | Value | Description |
+|--------|-------|-------------|
+| **ACK Ratio** | **94.70%** | ACK response rate for Confirmable messages |
+| **Token Coherence** | **99.10%** | Token matching rate for request-response pairs |
+| **2xx Success** | **75.30%** | Success response code percentage |
+| **4xx Client Errors** | **19.80%** | Client errors (e.g., 404 Not Found) |
+| **5xx Server Errors** | **4.90%** | Server errors (e.g., 503 Service Unavailable) |
+| **Average Latency** | **2.1 ms** | Request-response round-trip time |
 
-#### 有 DTLS (Secured CoAP)
+#### With DTLS (Secured CoAP)
 
-| 指标 | 值 | 变化 |
-|------|-----|------|
-| **ACK 比率** | **94.30%** | -0.4% |
-| **Token 一致性** | **98.90%** | -0.2% |
-| **2xx 成功率** | **74.80%** | -0.5% |
-| **4xx 客户端错误** | **20.30%** | +0.5% |
-| **5xx 服务器错误** | **4.90%** | 0% |
-| **平均延迟** | **2.4 ms** | +0.3 ms (+14.3%) |
+| Metric | Value | Change |
+|--------|-------|--------|
+| **ACK Ratio** | **94.30%** | -0.4% |
+| **Token Coherence** | **98.90%** | -0.2% |
+| **2xx Success** | **74.80%** | -0.5% |
+| **4xx Client Errors** | **20.30%** | +0.5% |
+| **5xx Server Errors** | **4.90%** | 0% |
+| **Average Latency** | **2.4 ms** | +0.3 ms (+14.3%) |
 
-**关键观察:**
-- ✅ DTLS 对一致性影响极小 (<0.5%)
-- ✅ Token 一致性保持在 99% 高水平
-- ⚠️ DTLS 增加 14.3% 延迟 (仍在可接受范围)
+**Key Observations:**
+- ✅ DTLS has minimal impact on coherence (<0.5%)
+- ✅ Token coherence remains at 99% high level
+- ⚠️ DTLS adds 14.3% latency (still within acceptable range)
 
-### 2. Observe 模式结果
+### 2. Observe Mode Results
 
-| 指标 | 无 DTLS | 有 DTLS | 变化 |
-|------|---------|---------|------|
-| **注册成功数** | 48 | 45 | -6.3% |
-| **通知周期数** | 42 | 39 | -7.1% |
-| **注册成功率** | 96.0% | 90.0% | -6.0% |
-| **周期/注册比** | 0.875 | 0.867 | -0.9% |
+| Metric | No DTLS | With DTLS | Change |
+|--------|---------|-----------|--------|
+| **Registrations Successful** | 48 | 45 | -6.3% |
+| **Notification Cycles** | 42 | 39 | -7.1% |
+| **Registration Success Rate** | 96.0% | 90.0% | -6.0% |
+| **Cycles per Registration** | 0.875 | 0.867 | -0.9% |
 
-**分析:**
-- Observe 是 CoAP 的资源观察机制
-- DTLS 略微降低注册成功率 (加密开销)
-- 但周期/注册比保持稳定，表明机制健壮
+**Analysis:**
+- Observe is CoAP's resource observation mechanism
+- DTLS slightly reduces registration success rate (encryption overhead)
+- But cycles-per-registration ratio remains stable, indicating robust mechanism
 
-### 3. Blockwise 传输结果
+### 3. Blockwise Transfer Results
 
-#### Block1 (上传到服务器)
+#### Block1 (Upload to Server)
 
-| 指标 | 无 DTLS | 有 DTLS | 变化 |
-|------|---------|---------|------|
-| **完成数** | 12 | 11 | -8.3% |
-| **尝试数** | 50 | 48 | -4.0% |
-| **完成率** | 96.0% | 91.7% | -4.3% |
+| Metric | No DTLS | With DTLS | Change |
+|--------|---------|-----------|--------|
+| **Completions** | 12 | 11 | -8.3% |
+| **Attempts** | 50 | 48 | -4.0% |
+| **Completion Rate** | 96.0% | 91.7% | -4.3% |
 
-#### Block2 (从服务器下载)
+#### Block2 (Download from Server)
 
-| 指标 | 无 DTLS | 有 DTLS | 变化 |
-|------|---------|---------|------|
-| **完成数** | 15 | 14 | -6.7% |
-| **尝试数** | 50 | 47 | -6.0% |
-| **完成率** | 100% | 96.6% | -3.4% |
+| Metric | No DTLS | With DTLS | Change |
+|--------|---------|-----------|--------|
+| **Completions** | 15 | 14 | -6.7% |
+| **Attempts** | 50 | 47 | -6.0% |
+| **Completion Rate** | 100% | 96.6% | -3.4% |
 
-#### SZX (块大小) 多样性
+#### SZX (Block Size) Diversity
 
-**探索的块大小 (两种模式相同):**
-- 16, 32, 64, 128, 256, 512, 1024 字节
-- **多样性:** 7/7 (100% 覆盖)
+**Block sizes explored (same for both modes):**
+- 16, 32, 64, 128, 256, 512, 1024 bytes
+- **Diversity:** 7/7 (100% coverage)
 
-**分析:**
-- Blockwise 传输用于大消息分块
-- DTLS 对 Block2 (下载) 影响小于 Block1 (上传)
-- 所有标准块大小均被测试
+**Analysis:**
+- Blockwise transfer used for large message fragmentation
+- DTLS impact on Block2 (download) less than Block1 (upload)
+- All standard block sizes were tested
 
 ---
 
-## 📈 详细数据分析
+## 📈 Detailed Data Analysis
 
-### 1. DTLS 开销详细分解
+### 1. DTLS Overhead Detailed Breakdown
 
-| 方面 | 无 DTLS | 有 DTLS | 开销 |
-|------|---------|---------|------|
-| **握手时间** | N/A | ~100 ms | N/A |
-| **每请求延迟** | 2.1 ms | 2.4 ms | +14.3% |
-| **ACK 比率** | 94.70% | 94.30% | -0.4% |
-| **成功率** | 75.30% | 74.80% | -0.7% |
-| **Observe 注册** | 96.0% | 90.0% | -6.3% |
-| **Block 完成** | 98.0% | 94.2% | -3.9% |
+| Aspect | No DTLS | With DTLS | Overhead |
+|--------|---------|-----------|----------|
+| **Handshake Time** | N/A | ~100 ms | N/A |
+| **Per-Request Latency** | 2.1 ms | 2.4 ms | +14.3% |
+| **ACK Ratio** | 94.70% | 94.30% | -0.4% |
+| **Success Rate** | 75.30% | 74.80% | -0.7% |
+| **Observe Registration** | 96.0% | 90.0% | -6.3% |
+| **Block Completion** | 98.0% | 94.2% | -3.9% |
 
-**总体评估:**
-- 延迟增加 14.3% 是 DTLS 加密/解密开销
-- 握手开销一次性，后续请求摊销
-- 协议一致性几乎不受影响
+**Overall Assessment:**
+- 14.3% latency increase is DTLS encryption/decryption overhead
+- Handshake overhead is one-time, amortized over subsequent requests
+- Protocol coherence almost unaffected
 
-### 2. 响应码分布
+### 2. Response Code Distribution
 
-#### 无 DTLS
+#### Without DTLS
 
 ```
 2.01 Created:     12%
 2.02 Deleted:      8%
 2.03 Valid:        5%
 2.04 Changed:     15%
-2.05 Content:     35% ← 最常见
+2.05 Content:     35% ← Most common
 ───────────────────────
 Total 2xx:        75%
 
 4.00 Bad Request:  5%
 4.01 Unauthorized: 3%
-4.04 Not Found:    8% ← 路径测试
+4.04 Not Found:    8% ← Path testing
 4.05 Method N/A:   4%
 ───────────────────────
 Total 4xx:        20%
@@ -142,32 +142,32 @@ Total 4xx:        20%
 Total 5xx:         5%
 ```
 
-#### 有 DTLS
+#### With DTLS
 
 ```
-2.05 Content:     33% (略降)
-Total 2xx:        75% (基本持平)
-4.xx:             20% (略升)
-5.xx:              5% (持平)
+2.05 Content:     33% (slight decrease)
+Total 2xx:        75% (basically unchanged)
+4.xx:             20% (slight increase)
+5.xx:              5% (unchanged)
 ```
 
 ### 3. Confirmable vs Non-Confirmable
 
-| 消息类型 | 占比 | ACK 需求 | ACK 接收率 |
-|---------|------|---------|-----------|
-| **Confirmable (CON)** | 52% | 是 | 94.7% |
-| **Non-confirmable (NON)** | 48% | 否 | N/A |
+| Message Type | Percentage | ACK Required | ACK Reception Rate |
+|--------------|------------|--------------|-------------------|
+| **Confirmable (CON)** | 52% | Yes | 94.7% |
+| **Non-confirmable (NON)** | 48% | No | N/A |
 
-**分析:**
-- CON 消息占比略高，反映可靠性需求
-- 94.7% ACK 率说明网络质量良好
-- NON 消息用于不需要确认的场景 (如流数据)
+**Analysis:**
+- CON messages slightly higher percentage, reflecting reliability needs
+- 94.7% ACK rate indicates good network quality
+- NON messages used for scenarios not requiring confirmation (e.g., streaming data)
 
 ---
 
-## 🎯 论文使用建议
+## 🎯 Thesis Usage Recommendations
 
-### 表格1: 一致性对比
+### Table 1: Coherence Comparison
 
 ```latex
 \begin{table}[t]
@@ -187,7 +187,7 @@ Total 2xx:        75% (基本持平)
 \end{table}
 ```
 
-### 表格2: Observe & Blockwise 里程碑
+### Table 2: Observe & Blockwise Milestones
 
 ```latex
 \begin{table}[t]
@@ -209,7 +209,7 @@ Total 2xx:        75% (基本持平)
 \end{table}
 ```
 
-### 文字描述示例
+### Text Description Example
 
 ```
 HyFuzz achieved high CoAP protocol coherence across both plain and
@@ -235,71 +235,71 @@ explored, confirming comprehensive SZX coverage.
 
 ---
 
-## 🔍 深入分析
+## 🔍 In-Depth Analysis
 
-### 为什么 ACK 比率不是 100%?
+### Why is ACK Ratio Not 100%?
 
-1. **网络现实:** 模拟真实网络丢包和超时
-2. **Non-confirmable 混合:** 48% 的消息不需要 ACK
-3. **服务器状态:** 某些情况下服务器可能无法及时响应
+1. **Network Realism:** Simulates real-world packet loss and timeouts
+2. **Non-confirmable Mix:** 48% of messages don't require ACK
+3. **Server State:** In some cases, server may not respond in time
 
-### Token 一致性 99.1% 的含义
+### Token Coherence 99.1% Meaning
 
-- **接近完美:** 仅 0.9% 的请求-响应对 Token 不匹配
-- **实现质量:** 反映 CoAP 协议实现的成熟度
-- **可追踪性:** 几乎所有响应都可准确关联到请求
+- **Near Perfect:** Only 0.9% of request-response pairs have token mismatches
+- **Implementation Quality:** Reflects maturity of CoAP protocol implementation
+- **Traceability:** Almost all responses can be accurately linked to requests
 
-### DTLS 握手开销
+### DTLS Handshake Overhead
 
-虽然每请求仅增加 14.3% 延迟，但需考虑：
-- **初始握手:** ~100 ms (一次性成本)
-- **会话重用:** 后续请求摊销握手成本
-- **总体影响:** 长连接场景下开销可忽略
+While per-request latency increases only 14.3%, consider:
+- **Initial Handshake:** ~100 ms (one-time cost)
+- **Session Reuse:** Subsequent requests amortize handshake cost
+- **Overall Impact:** Overhead negligible in long connection scenarios
 
-### Observe vs Blockwise 的 DTLS 敏感性
+### Observe vs Blockwise DTLS Sensitivity
 
-| 特性 | DTLS 影响 | 原因 |
-|------|----------|------|
-| **Observe** | -6.3% | 需要维持长期状态，DTLS 会话管理复杂 |
-| **Block1 (上传)** | -8.3% | 客户端加密开销 + 服务器解密压力 |
-| **Block2 (下载)** | -6.7% | 服务器加密开销相对小 |
+| Feature | DTLS Impact | Reason |
+|---------|-------------|--------|
+| **Observe** | -6.3% | Requires maintaining long-term state, DTLS session management complex |
+| **Block1 (upload)** | -8.3% | Client encryption overhead + server decryption pressure |
+| **Block2 (download)** | -6.7% | Server encryption overhead relatively smaller |
 
 ---
 
-## 📊 与论文测量矩阵的对应
+## 📊 Mapping to Thesis Measurement Matrix
 
-| 矩阵维度 | 本测试指标 | 结果文件字段 |
-|---------|-----------|------------|
-| **Validity** | ACK 比率, 成功率 | `ack_ratio`, `response_mix` |
+| Matrix Dimension | Test Metrics | Result File Fields |
+|------------------|--------------|-------------------|
+| **Validity** | ACK ratio, success rate | `ack_ratio`, `response_mix` |
 | **Protocol Progress** | Observe, Blockwise | `observe`, `blockwise` |
-| **Coherence** | Token 一致性 | `token_coherence_rate` |
-| **Efficiency (with DTLS)** | 延迟, 里程碑影响 | `latency_stats`, milestone counts |
+| **Coherence** | Token coherence | `token_coherence_rate` |
+| **Efficiency (with DTLS)** | Latency, milestone impact | `latency_stats`, milestone counts |
 
 ---
 
-## 💡 关键结论 (Key Takeaways)
+## 💡 Key Takeaways
 
-1. ✅ **高协议一致性:** 94.7% ACK, 99.1% Token 一致性
-2. ✅ **DTLS 可行性:** 开销可接受 (延迟 +14.3%, 一致性 -0.5%)
-3. ✅ **完整功能支持:** Observe 和 Blockwise 均工作正常
-4. ✅ **全面 SZX 覆盖:** 所有标准块大小都被测试
-5. ⚠️ **DTLS 对状态特性影响:** Observe 和 Blockwise 成功率降低 6-8%
-6. 📊 **响应分布合理:** 75% 成功, 20% 客户端错误, 5% 服务器错误
-
----
-
-## 🔗 相关文件
-
-- **模糊测试结果:** `../coap_fuzzing/README.md`
-- **基线对比:** `../baseline_comparison/README.md`
-- **整体分析:** `../README.md`
-- **绘图数据:** `../plots_data_export.txt`
+1. ✅ **High Protocol Coherence:** 94.7% ACK, 99.1% Token coherence
+2. ✅ **DTLS Feasibility:** Acceptable overhead (latency +14.3%, coherence -0.5%)
+3. ✅ **Complete Functionality Support:** Both Observe and Blockwise work correctly
+4. ✅ **Comprehensive SZX Coverage:** All standard block sizes tested
+5. ⚠️ **DTLS Impact on Stateful Features:** Observe and Blockwise success rates decrease 6-8%
+6. 📊 **Reasonable Response Distribution:** 75% success, 20% client errors, 5% server errors
 
 ---
 
-## 📝 引用数据示例
+## 🔗 Related Files
 
-从 JSON 提取数据的 Python 代码：
+- **Fuzzing Results:** `../coap_fuzzing/README.md`
+- **Baseline Comparison:** `../baseline_comparison/README.md`
+- **Overall Analysis:** `../README.md`
+- **Plot Data:** `../plots_data_export.txt`
+
+---
+
+## 📝 Example Data Citation
+
+Python code to extract data from JSON:
 
 ```python
 import json
@@ -307,13 +307,13 @@ import json
 with open('coap_validity_results.json') as f:
     data = json.load(f)
 
-# 无 DTLS
+# Without DTLS
 no_dtls = data['coherence_no_dtls']
 print(f"ACK Ratio (no DTLS): {no_dtls['ack_ratio']:.2%}")
 print(f"Token Coherence: {no_dtls['token_coherence_rate']:.2%}")
 print(f"2xx Success: {no_dtls['response_mix']['2xx_percent']:.2%}")
 
-# 有 DTLS
+# With DTLS
 with_dtls = data['coherence_with_dtls']
 ack_change = (with_dtls['ack_ratio'] - no_dtls['ack_ratio']) / no_dtls['ack_ratio']
 print(f"DTLS ACK Impact: {ack_change:+.1%}")
@@ -327,20 +327,20 @@ print(f"Observe Registrations: {observe_no['registration_success']} (no DTLS), "
 
 ---
 
-## 🌐 CoAP 协议背景
+## 🌐 CoAP Protocol Background
 
-CoAP (RFC 7252) 是为物联网 (IoT) 设计的轻量级协议：
-- **类似 HTTP:** 但针对受限设备优化
-- **UDP 基础:** 低开销，适合低功耗设备
-- **DTLS 安全:** 可选加密层 (CoAP over DTLS)
-- **Observe扩展:** 资源观察/订阅 (RFC 7641)
-- **Blockwise:** 大消息分块传输 (RFC 7959)
+CoAP (RFC 7252) is a lightweight protocol designed for IoT (Internet of Things):
+- **HTTP-like:** But optimized for constrained devices
+- **UDP-based:** Low overhead, suitable for low-power devices
+- **DTLS Security:** Optional encryption layer (CoAP over DTLS)
+- **Observe Extension:** Resource observation/subscription (RFC 7641)
+- **Blockwise:** Large message fragmentation transfer (RFC 7959)
 
-本测试覆盖 CoAP 核心功能和主要扩展。
+This test covers CoAP core functionality and major extensions.
 
 ---
 
-**生成时间:** 2025-11-10
-**数据版本:** v1.0
-**协议规范:** RFC 7252 (CoAP), RFC 6347 (DTLS 1.2)
-**联系:** 如有问题请参考主 README 或论文方法论章节
+**Generation Time:** 2025-11-10
+**Data Version:** v1.0
+**Protocol Specifications:** RFC 7252 (CoAP), RFC 6347 (DTLS 1.2)
+**Contact:** For questions, refer to main README or thesis methodology chapter

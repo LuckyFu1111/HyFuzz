@@ -1,131 +1,131 @@
 # Modbus/TCP Fuzzing Campaign Results
 
-## 📊 测试概述 (Test Overview)
+## 📊 Test Overview
 
-本目录包含 Modbus/TCP 协议的模糊测试活动结果，聚焦于漏洞发现、崩溃检测和吞吐量效率。
+This directory contains Modbus/TCP protocol fuzzing campaign results, focusing on vulnerability discovery, crash detection, and throughput efficiency.
 
-**测试时间:** 2025-11-10
-**测试规模:** 5 次独立试验，每次 60 秒
-**对应论文章节:** §5.3.3 (Bug-Finding), §5.3.4 (Efficiency)
+**Test Date:** 2025-11-10
+**Test Scale:** 5 independent trials, 60 seconds each
+**Corresponding Thesis Sections:** §5.3.3 (Bug-Finding), §5.3.4 (Efficiency)
 
 ---
 
-## 📁 结果文件
+## 📁 Result Files
 
 ### `modbus_fuzzing_results.json`
-完整的模糊测试数据，包括：
-- 每次试验的详细执行数据
-- 崩溃发现和去重
-- 吞吐量统计
-- 聚合指标 (均值、中位数、标准差)
+Complete fuzzing data, including:
+- Detailed execution data for each trial
+- Crash discovery and deduplication
+- Throughput statistics
+- Aggregate metrics (mean, median, standard deviation)
 
 ---
 
-## 🔑 关键结果 (Key Results)
+## 🔑 Key Results
 
-### 聚合指标 (5次试验)
+### Aggregate Metrics (5 trials)
 
-| 指标 | 均值 | 中位数 | 标准差 | 说明 |
-|------|------|--------|--------|------|
-| **总执行数** | 40,592 | 40,334 | ±986 | 每次试验的执行次数 |
-| **唯一崩溃数** | 124.0 | 126 | ±10.4 | 去重后的崩溃数 |
-| **平均吞吐量** | 666.6 exec/s | 662.2 exec/s | ±16.2 | 执行速率 |
-| **首次崩溃时间** | ~1.4s | ~1.4s | ±0.3s | TTFC (Time To First Crash) |
+| Metric | Mean | Median | Std Dev | Description |
+|--------|------|--------|---------|-------------|
+| **Total Executions** | 40,592 | 40,334 | ±986 | Executions per trial |
+| **Unique Crashes** | 124.0 | 126 | ±10.4 | Crashes after deduplication |
+| **Average Throughput** | 666.6 exec/s | 662.2 exec/s | ±16.2 | Execution rate |
+| **Time to First Crash** | ~1.4s | ~1.4s | ±0.3s | TTFC (Time To First Crash) |
 
-###每次试验详情
+### Per-Trial Details
 
-| 试验 | 执行数 | 唯一崩溃 | 吞吐量 (exec/s) | TTFC (s) | 运行时间 |
-|------|--------|---------|----------------|----------|---------|
+| Trial | Executions | Unique Crashes | Throughput (exec/s) | TTFC (s) | Runtime |
+|-------|------------|----------------|---------------------|----------|---------|
 | **Trial 1** | 42,065 | 136 | 691.4 | 1.2 | 60.0s |
 | **Trial 2** | 39,642 | 109 | 651.6 | 1.4 | 60.0s |
 | **Trial 3** | 39,861 | 119 | 653.6 | 1.6 | 60.0s |
 | **Trial 4** | 40,334 | 130 | 662.2 | 1.4 | 60.0s |
 | **Trial 5** | 41,060 | 126 | 674.4 | 1.4 | 60.0s |
-| **平均** | **40,592** | **124.0** | **666.6** | **1.4** | **60.0s** |
+| **Average** | **40,592** | **124.0** | **666.6** | **1.4** | **60.0s** |
 
-**变异系数 (CV):**
-- 执行数: 2.4% (非常稳定)
-- 崩溃数: 8.4% (稳定)
-- 吞吐量: 2.4% (非常稳定)
+**Coefficient of Variation (CV):**
+- Executions: 2.4% (very stable)
+- Crashes: 8.4% (stable)
+- Throughput: 2.4% (very stable)
 
 ---
 
-## 📈 详细数据分析
+## 📈 Detailed Data Analysis
 
-### 1. 崩溃发现统计
+### 1. Crash Discovery Statistics
 
-**崩溃率:** 0.3% (每 1000 次执行约 3 次崩溃)
+**Crash Rate:** 0.3% (approximately 3 crashes per 1000 executions)
 
-**崩溃类型分布 (从试验数据推断):**
+**Crash Type Distribution (inferred from trial data):**
 - Segmentation Fault: ~40%
 - Assertion Failure: ~30%
 - Null Pointer Dereference: ~20%
 - Abort Signal: ~10%
 
-**崩溃发现时间线 (平均):**
+**Crash Discovery Timeline (average):**
 ```
-0-10s:   快速发现初始崩溃 (20-35 个)
-10-30s:  持续发现 (35-70 个)
-30-45s:  发现率降低 (70-95 个)
-45-60s:  接近饱和 (95-124 个)
-```
-
-### 2. 吞吐量分析
-
-**吞吐量稳定性:**
-- 最高: 691.4 exec/s (Trial 1)
-- 最低: 651.6 exec/s (Trial 2)
-- 范围: 39.8 exec/s (5.8% 差异)
-
-**每秒执行数时间序列 (典型试验):**
-```
-秒 0-10:   650-680 exec/s (预热阶段)
-秒 10-40:  660-670 exec/s (稳定阶段)
-秒 40-60:  665-675 exec/s (持续稳定)
+0-10s:   Rapid initial crash discovery (20-35)
+10-30s:  Continuous discovery (35-70)
+30-45s:  Discovery rate decreases (70-95)
+45-60s:  Approaching saturation (95-124)
 ```
 
-**关键观察:**
-- ✅ 吞吐量在整个测试过程中保持稳定
-- ✅ 无显著性能衰退
-- ✅ 资源使用高效
+### 2. Throughput Analysis
 
-### 3. 执行时间分布
+**Throughput Stability:**
+- Highest: 691.4 exec/s (Trial 1)
+- Lowest: 651.6 exec/s (Trial 2)
+- Range: 39.8 exec/s (5.8% variance)
 
-| 统计量 | 值 (ms) |
-|--------|---------|
-| 平均 | 0.10 |
-| 中位数 | 0.09 |
-| 最小值 | 0.05 |
-| 最大值 | 0.35 |
+**Executions per Second Time Series (typical trial):**
+```
+Seconds 0-10:   650-680 exec/s (warmup phase)
+Seconds 10-40:  660-670 exec/s (stable phase)
+Seconds 40-60:  665-675 exec/s (continued stability)
+```
+
+**Key Observations:**
+- ✅ Throughput remains stable throughout test
+- ✅ No significant performance degradation
+- ✅ Efficient resource usage
+
+### 3. Execution Time Distribution
+
+| Statistic | Value (ms) |
+|-----------|------------|
+| Mean | 0.10 |
+| Median | 0.09 |
+| Minimum | 0.05 |
+| Maximum | 0.35 |
 | P95 | 0.15 |
 | P99 | 0.20 |
 
-**延迟特征:**
-- 非常低的执行时间 (~0.1 ms)
-- 无显著异常值
-- 支持高吞吐量
+**Latency Characteristics:**
+- Very low execution time (~0.1 ms)
+- No significant outliers
+- Supports high throughput
 
-### 4. 崩溃覆盖增长
+### 4. Crash Coverage Growth
 
-从 `coverage_growth` 数据:
+From `coverage_growth` data:
 
 ```
-执行 0-5,000:    快速增长 (0 → 15 崩溃)
-执行 5,000-15,000:  稳定增长 (15 → 45 崩溃)
-执行 15,000-30,000: 持续发现 (45 → 85 崩溃)
-执行 30,000-42,000: 接近饱和 (85 → 124 崩溃)
+Executions 0-5,000:      Rapid growth (0 → 15 crashes)
+Executions 5,000-15,000:  Steady growth (15 → 45 crashes)
+Executions 15,000-30,000: Continued discovery (45 → 85 crashes)
+Executions 30,000-42,000: Approaching saturation (85 → 124 crashes)
 ```
 
-**增长率:**
-- 前10,000次: 3.5 崩溃/1000次执行
-- 后10,000次: 1.2 崩溃/1000次执行
-- 表明边际收益递减
+**Growth Rate:**
+- First 10,000: 3.5 crashes/1000 executions
+- Last 10,000: 1.2 crashes/1000 executions
+- Indicates diminishing marginal returns
 
 ---
 
-## 🎯 论文使用建议
+## 🎯 Thesis Usage Recommendations
 
-### 表格引用示例
+### Table Reference Example
 
 ```latex
 \begin{table}[t]
@@ -145,7 +145,7 @@
 \end{table}
 ```
 
-### 每次试验对比表格
+### Per-Trial Comparison Table
 
 ```latex
 \begin{table}[t]
@@ -170,7 +170,7 @@
 \end{table}
 ```
 
-### 文字描述示例
+### Text Description Example
 
 ```
 HyFuzz's Modbus fuzzing campaigns demonstrated high throughput and
@@ -193,84 +193,84 @@ tested Modbus implementation.
 
 ---
 
-## 🔍 深入分析
+## 🔍 In-Depth Analysis
 
-### 吞吐量对比
+### Throughput Comparison
 
-**HyFuzz Modbus 吞吐量: 666.6 exec/s**
+**HyFuzz Modbus Throughput: 666.6 exec/s**
 
-与其他模糊器对比 (参考基线测试):
+Compared to other fuzzers (reference baseline tests):
 - AFL: ~480 exec/s (**+38.9%**)
 - AFL++: ~680 exec/s (**-2.0%**)
 - AFLNet: ~420 exec/s (**+58.7%**)
 - libFuzzer: ~850 exec/s (**-21.6%**)
 - Grammar: ~320 exec/s (**+108.3%**)
 
-**分析:**
-- HyFuzz 在协议感知模糊器中吞吐量领先 (vs AFLNet)
-- 与通用高性能模糊器 (libFuzzer) 有差距，但崩溃发现更有效
-- 平衡了吞吐量和协议深度探索
+**Analysis:**
+- HyFuzz leads in throughput among protocol-aware fuzzers (vs AFLNet)
+- Gap exists with general-purpose high-performance fuzzers (libFuzzer), but crash discovery more effective
+- Balances throughput with protocol depth exploration
 
-### 崩溃有效性
+### Crash Effectiveness
 
-每次试验平均发现 124 个唯一崩溃：
-- **去重方法:** 基于 (function_code, address) 签名
-- **潜在漏洞:** 每个崩溃可能对应一个独特的漏洞路径
-- **可重现性:** 所有崩溃可通过输入重放验证
+Average of 124 unique crashes per trial:
+- **Deduplication Method:** Based on (function_code, address) signature
+- **Potential Vulnerabilities:** Each crash may correspond to a unique vulnerability path
+- **Reproducibility:** All crashes can be verified through input replay
 
-### 首次崩溃时间 (TTFC)
+### Time to First Crash (TTFC)
 
-平均 TTFC 1.4 秒 (~930 次执行):
-- ✅ **快速验证:** 可快速评估目标脆弱性
-- ✅ **早期反馈:** 支持快速迭代开发
-- ⚠️ **易发现漏洞:** 表明测试目标存在明显漏洞
+Average TTFC of 1.4 seconds (~930 executions):
+- ✅ **Quick Validation:** Can rapidly assess target vulnerability
+- ✅ **Early Feedback:** Supports fast iterative development
+- ⚠️ **Easy-to-Find Vulnerabilities:** Indicates test target has obvious vulnerabilities
 
-### 执行效率
+### Execution Efficiency
 
-单次执行平均 0.1 ms:
-- **包含:** 输入生成 + 协议编码 + 传输 + 解析
-- **开销分配:**
-  - 输入生成: ~30%
-  - 协议编码: ~20%
-  - 网络/执行: ~40%
-  - 响应解析: ~10%
-
----
-
-## 📊 与论文测量矩阵的对应
-
-| 矩阵维度 | 本测试指标 | 结果文件字段 |
-|---------|-----------|------------|
-| **Bug-Finding** | 唯一崩溃数 | `unique_crashes` |
-| **Efficiency** | 吞吐量 | `throughput_stats` |
-| **Robustness** | 试验间方差 | `aggregate.*.stdev` |
-| **TTFC** | 首次崩溃时间 | `time_to_first_crash` |
+Single execution average 0.1 ms:
+- **Includes:** Input generation + protocol encoding + transmission + parsing
+- **Overhead Breakdown:**
+  - Input generation: ~30%
+  - Protocol encoding: ~20%
+  - Network/execution: ~40%
+  - Response parsing: ~10%
 
 ---
 
-## 💡 关键结论 (Key Takeaways)
+## 📊 Mapping to Thesis Measurement Matrix
 
-1. ✅ **高吞吐量:** 666.6 exec/s 支持大规模测试
-2. ✅ **有效漏洞发现:** 平均 124 个唯一崩溃，覆盖多种漏洞类型
-3. ✅ **快速反馈:** 1.4 秒 TTFC 允许快速漏洞验证
-4. ✅ **稳定性能:** 低变异系数 (2.4%) 保证可重现结果
-5. ✅ **可扩展性:** 60 秒内 ~40K 执行，支持长时间测试
-6. ⚠️ **覆盖饱和:** 30K 执行后新崩溃发现率降低
-
----
-
-## 🔗 相关文件
-
-- **测试脚本:** `../../modbus_tests/test_modbus_fuzzing_standalone.py`
-- **有效性结果:** `../modbus_validity/README.md`
-- **基线对比:** `../baseline_comparison/README.md`
-- **绘图数据:** `../plots_data_export.txt`
+| Matrix Dimension | Test Metrics | Result File Fields |
+|------------------|--------------|-------------------|
+| **Bug-Finding** | Unique crashes | `unique_crashes` |
+| **Efficiency** | Throughput | `throughput_stats` |
+| **Robustness** | Inter-trial variance | `aggregate.*.stdev` |
+| **TTFC** | Time to first crash | `time_to_first_crash` |
 
 ---
 
-## 📝 引用数据示例
+## 💡 Key Takeaways
 
-从 JSON 提取数据的 Python 代码：
+1. ✅ **High Throughput:** 666.6 exec/s supports large-scale testing
+2. ✅ **Effective Vulnerability Discovery:** Average of 124 unique crashes, covering multiple vulnerability types
+3. ✅ **Fast Feedback:** 1.4 second TTFC allows rapid vulnerability validation
+4. ✅ **Stable Performance:** Low CV (2.4%) ensures reproducible results
+5. ✅ **Scalability:** ~40K executions in 60 seconds, supports long-duration testing
+6. ⚠️ **Coverage Saturation:** New crash discovery rate decreases after 30K executions
+
+---
+
+## 🔗 Related Files
+
+- **Test Script:** `../../modbus_tests/test_modbus_fuzzing_standalone.py`
+- **Validity Results:** `../modbus_validity/README.md`
+- **Baseline Comparison:** `../baseline_comparison/README.md`
+- **Plot Data:** `../plots_data_export.txt`
+
+---
+
+## 📝 Example Data Citation
+
+Python code to extract data from JSON:
 
 ```python
 import json
@@ -278,13 +278,13 @@ import json
 with open('modbus_fuzzing_results.json') as f:
     data = json.load(f)
 
-# 聚合统计
+# Aggregate statistics
 agg = data['aggregate']
 print(f"Mean Executions: {agg['execs']['mean']:.0f} ± {agg['execs']['stdev']:.0f}")
 print(f"Mean Crashes: {agg['unique_crashes']['mean']:.1f} ± {agg['unique_crashes']['stdev']:.1f}")
 print(f"Mean Throughput: {agg['throughput_exec_per_sec']['mean']:.1f} exec/s")
 
-# 每次试验
+# Per trial
 for i, trial in enumerate(data['trials'], 1):
     print(f"Trial {i}: {trial['total_execs']} execs, "
           f"{len(trial['unique_crashes'])} crashes, "
@@ -293,23 +293,23 @@ for i, trial in enumerate(data['trials'], 1):
 
 ---
 
-## 🎓 研究意义
+## 🎓 Research Significance
 
-### 对 Modbus 安全的启示
+### Implications for Modbus Security
 
-1. **高崩溃率 (0.3%)** 表明 Modbus 实现存在大量潜在漏洞
-2. **多样化崩溃** 反映不同代码路径的安全问题
-3. **快速发现** 说明常见漏洞容易被模糊测试检测
+1. **High Crash Rate (0.3%)** indicates Modbus implementations have many potential vulnerabilities
+2. **Diverse Crashes** reflect security issues in different code paths
+3. **Rapid Discovery** suggests common vulnerabilities are easily detected by fuzzing
 
-### 对工业控制系统 (ICS) 的影响
+### Impact on Industrial Control Systems (ICS)
 
-- ⚠️ **安全风险:** Modbus 广泛用于关键基础设施
-- ✅ **测试价值:** 模糊测试可有效发现协议实现缺陷
-- 📊 **成本效益:** 高吞吐量允许快速安全评估
+- ⚠️ **Security Risk:** Modbus widely used in critical infrastructure
+- ✅ **Testing Value:** Fuzzing can effectively discover protocol implementation flaws
+- 📊 **Cost-Effectiveness:** High throughput allows rapid security assessment
 
 ---
 
-**生成时间:** 2025-11-10
-**数据版本:** v1.0
-**测试环境:** 独立模拟环境
-**联系:** 如有问题请参考主 README 或论文方法论章节
+**Generation Time:** 2025-11-10
+**Data Version:** v1.0
+**Test Environment:** Independent simulated environment
+**Contact:** For questions, refer to main README or thesis methodology chapter

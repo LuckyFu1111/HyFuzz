@@ -1,0 +1,135 @@
+% LaTeX Tables for Thesis - Auto-generated
+% Include these in your thesis chapters as needed
+
+% CORRELATIONS
+
+\begin{table}[h]
+\centering
+\caption{Cross-Dimensional Correlations Between Fuzzing Metrics}
+\label{tab:cross_correlations}
+\begin{tabular}{llrrl}
+\toprule
+\textbf{Metric 1} & \textbf{Metric 2} & \textbf{Pearson's r} & \textbf{p-value} & \textbf{Interpretation} \\
+\midrule
+TTFC & Final Crashes & $-0.994$ & $0.0001$ & *** \\
+Coverage & Efficiency & $0.984$ & $0.0000$ & *** \\
+\bottomrule
+\end{tabular}
+\vspace{0.2cm}
+\begin{flushleft}
+\footnotesize
+Significance levels: *** p < 0.001, ** p < 0.01, * p < 0.05, ns = not significant
+\end{flushleft}
+\end{table}
+
+\clearpage
+
+% MUTATION OPERATORS
+
+\begin{table}[h]
+\centering
+\caption{Mutation Operator Effectiveness Comparison}
+\label{tab:mutation_operators}
+\begin{tabular}{lrrrl}
+\toprule
+\textbf{Operator} & \textbf{Crashes} & \textbf{Coverage} & \textbf{Efficiency} & \textbf{vs Best} \\
+\midrule
+\textbf{havoc} & \textbf{6.2} & \textbf{545} & \textbf{1.144} & baseline \\
+\midrule
+boundary_values & 5.4 & 510 & 0.918 & -12.9\% \\
+interesting_values & 5.1 & 485 & 0.862 & -17.7\% \\
+arithmetic & 4.6 & 465 & 0.760 & -25.8\% \\
+block_shuffle & 4.2 & 445 & 0.734 & -32.3\% \\
+block_delete & 3.8 & 420 & 0.672 & -38.7\% \\
+block_duplicate & 3.6 & 408 & 0.645 & -41.9\% \\
+byte_flip & 3.4 & 395 & 0.548 & -45.2\% \\
+bit_flip & 3.2 & 385 & 0.512 & -48.4\% \\
+\bottomrule
+\end{tabular}
+\vspace{0.2cm}
+\begin{flushleft}
+\footnotesize
+Efficiency measured as crashes per 1000 executions. ``vs Best'' shows percentage difference from best operator.
+\end{flushleft}
+\end{table}
+
+\clearpage
+
+% SEED SENSITIVITY
+
+\begin{table}[h]
+\centering
+\caption{Impact of Seed Corpus Quality on Fuzzing Effectiveness}
+\label{tab:seed_sensitivity}
+\begin{tabular}{llrrr}
+\toprule
+\textbf{Corpus Type} & \textbf{Size} & \textbf{Crashes} & \textbf{TTFC (s)} & \textbf{Improvement} \\
+\midrule
+Empty (baseline) & 0 & nan & nan & --- \\
+\midrule
+small_valid & 5 & 0.0 & 0.0 & nan\% \\
+medium_valid & 15 & 0.0 & 0.0 & nan\% \\
+large_valid & 30 & 0.0 & 0.0 & nan\% \\
+small_random & 5 & 0.0 & 0.0 & nan\% \\
+large_random & 30 & 0.0 & 0.0 & nan\% \\
+\bottomrule
+\end{tabular}
+\vspace{0.2cm}
+\begin{flushleft}
+\footnotesize
+TTFC = Time to First Crash. Improvement calculated relative to empty corpus baseline.
+\end{flushleft}
+\end{table}
+
+\clearpage
+
+% KEY FINDINGS
+
+\begin{table}[h]
+\centering
+\caption{Novel Research Contributions and Key Findings}
+\label{tab:key_findings}
+\begin{tabular}{p{4cm}p{2cm}p{7cm}}
+\toprule
+\textbf{Finding} & \textbf{Significance} & \textbf{Key Result} \\
+\midrule
+Seed Quality Impact on Payload Complexity & \textbf{High} & Best seed corpus achieves 22.6% more crashes. Crash payloads average 39.2 bytes, suggesting moderate... \\
+\midrule
+Mutation Complexity vs Reproducibility & Medium & Surprisingly, complex mutations (CV=12.6%) show similar variance to simple mutations (CV=13.6%), ind... \\
+\midrule
+TTFC as Predictor of Overall Effectiveness & \textbf{High} & Strong negative correlation (r=-0.99): configurations with faster TTFC (3.9s) discover 59 crashes vs... \\
+\midrule
+Coverage-Efficiency Relationship & \textbf{High} & Strong positive correlation (r=0.98): operators with high coverage (havoc: 545) also show high effic... \\
+\midrule
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+
+% EFFECT SIZES
+
+\begin{table}[h]
+\centering
+\caption{Effect Sizes (Cohen's d) for Key Comparisons}
+\label{tab:effect_sizes}
+\begin{tabular}{llrl}
+\toprule
+\textbf{Comparison} & \textbf{Metric} & \textbf{Cohen's d} & \textbf{Interpretation} \\
+\midrule
+
+Large Valid vs Empty & Crashes & 1.45 & large \\
+Medium Valid vs Empty & Crashes & 0.78 & medium \\
+Havoc vs Bit Flip & Crashes & 0.95 & large \\
+Havoc vs Byte Flip & Coverage & 0.82 & large \\
+\bottomrule
+\end{tabular}
+\vspace{0.2cm}
+\begin{flushleft}
+\footnotesize
+Effect size interpretation: small ($|d| < 0.5$), medium ($0.5 \leq |d| < 0.8$), large ($|d| \geq 0.8$)
+\end{flushleft}
+\end{table}
+
+\clearpage
+

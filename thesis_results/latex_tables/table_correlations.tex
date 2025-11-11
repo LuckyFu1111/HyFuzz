@@ -1,0 +1,19 @@
+
+\begin{table}[h]
+\centering
+\caption{Cross-Dimensional Correlations Between Fuzzing Metrics}
+\label{tab:cross_correlations}
+\begin{tabular}{llrrl}
+\toprule
+\textbf{Metric 1} & \textbf{Metric 2} & \textbf{Pearson's r} & \textbf{p-value} & \textbf{Interpretation} \\
+\midrule
+TTFC & Final Crashes & $-0.994$ & $0.0001$ & *** \\
+Coverage & Efficiency & $0.984$ & $0.0000$ & *** \\
+\bottomrule
+\end{tabular}
+\vspace{0.2cm}
+\begin{flushleft}
+\footnotesize
+Significance levels: *** p < 0.001, ** p < 0.01, * p < 0.05, ns = not significant
+\end{flushleft}
+\end{table}

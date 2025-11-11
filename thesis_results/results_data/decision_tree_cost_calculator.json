@@ -1,0 +1,259 @@
+{
+  "decision_tree": {
+    "root": {
+      "question": "What is your primary goal?",
+      "options": {
+        "max_crashes": {
+          "next": "q2_crashes",
+          "description": "Maximize total unique crashes discovered"
+        },
+        "fast_discovery": {
+          "next": "q2_speed",
+          "description": "Find crashes quickly (minimize TTFC)"
+        },
+        "resource_efficient": {
+          "next": "q2_efficiency",
+          "description": "Best ROI (crashes per compute time)"
+        },
+        "reproducible": {
+          "next": "q2_reproducible",
+          "description": "Consistent results across runs"
+        }
+      }
+    },
+    "q2_crashes": {
+      "question": "What is your time budget?",
+      "options": {
+        "short": {
+          "recommendation": {
+            "operator": "havoc",
+            "corpus": "large_valid_30",
+            "timeout": 300,
+            "mutation_rate": 0.6,
+            "expected_crashes": 59,
+            "rationale": "Havoc with quality seeds maximizes crashes in short time"
+          }
+        },
+        "medium": {
+          "recommendation": {
+            "operator": "block_shuffle",
+            "corpus": "large_valid_30",
+            "timeout": 600,
+            "mutation_rate": 0.5,
+            "expected_crashes": 65,
+            "rationale": "Extended time allows block shuffle to excel"
+          }
+        },
+        "long": {
+          "recommendation": {
+            "operator": "havoc",
+            "corpus": "large_valid_30",
+            "timeout": 1800,
+            "mutation_rate": 0.7,
+            "expected_crashes": 75,
+            "rationale": "Long campaigns benefit from aggressive mutation"
+          }
+        }
+      }
+    },
+    "q2_speed": {
+      "question": "Do you have a seed corpus?",
+      "options": {
+        "yes": {
+          "recommendation": {
+            "operator": "interesting_values",
+            "corpus": "medium_valid_15",
+            "timeout": 180,
+            "mutation_rate": 0.7,
+            "expected_ttfc": 3.5,
+            "rationale": "Interesting values with seeds provides fastest TTFC"
+          }
+        },
+        "no": {
+          "recommendation": {
+            "operator": "boundary_values",
+            "corpus": "empty",
+            "timeout": 180,
+            "mutation_rate": 0.8,
+            "expected_ttfc": 8.5,
+            "rationale": "Boundary mutations find crashes quickly from scratch"
+          }
+        }
+      }
+    },
+    "q2_efficiency": {
+      "question": "What is your compute budget?",
+      "options": {
+        "low": {
+          "recommendation": {
+            "operator": "arithmetic",
+            "corpus": "small_valid_5",
+            "timeout": 60,
+            "mutation_rate": 0.5,
+            "expected_roi": 0.85,
+            "rationale": "Short runs with simple mutations maximize ROI"
+          }
+        },
+        "medium": {
+          "recommendation": {
+            "operator": "havoc",
+            "corpus": "medium_valid_15",
+            "timeout": 300,
+            "mutation_rate": 0.6,
+            "expected_roi": 0.2,
+            "rationale": "Balanced configuration for good overall efficiency"
+          }
+        },
+        "high": {
+          "recommendation": {
+            "operator": "havoc",
+            "corpus": "large_valid_30",
+            "timeout": 600,
+            "mutation_rate": 0.6,
+            "expected_roi": 0.11,
+            "rationale": "High budget allows optimal configuration"
+          }
+        }
+      }
+    },
+    "q2_reproducible": {
+      "question": "N/A - Direct recommendation",
+      "options": {
+        "default": {
+          "recommendation": {
+            "operator": "arithmetic",
+            "corpus": "medium_valid_15",
+            "timeout": 300,
+            "mutation_rate": 0.5,
+            "expected_cv": 8.5,
+            "rationale": "Simple mutations provide most consistent results (CV<10%)"
+          }
+        }
+      }
+    }
+  },
+  "cost_comparison": {
+    "comparisons": [
+      {
+        "configuration": {
+          "name": "Minimal",
+          "operator": "bit_flip",
+          "timeout": 60,
+          "corpus_size": 0,
+          "mutation_rate": 0.3,
+          "expected_crashes": 15
+        },
+        "cost_analysis": {
+          "compute_cost": 0.0008333333333333334,
+          "seed_generation_cost": 0.0,
+          "human_setup_cost": 25.0,
+          "total_cost": 25.000833333333333,
+          "expected_crashes": 15,
+          "cost_per_crash": 1.6667222222222222,
+          "roi_crashes_per_dollar": 0.5999800006666445,
+          "cost_breakdown_pct": {
+            "compute": 0.0033332222259258026,
+            "seeds": 0.0,
+            "human": 99.99666677777408
+          }
+        }
+      },
+      {
+        "configuration": {
+          "name": "Balanced",
+          "operator": "havoc",
+          "timeout": 300,
+          "corpus_size": 15,
+          "mutation_rate": 0.5,
+          "expected_crashes": 55
+        },
+        "cost_analysis": {
+          "compute_cost": 0.004166666666666667,
+          "seed_generation_cost": 1.5,
+          "human_setup_cost": 62.5,
+          "total_cost": 64.00416666666666,
+          "expected_crashes": 55,
+          "cost_per_crash": 1.163712121212121,
+          "roi_crashes_per_dollar": 0.8593190547490398,
+          "cost_breakdown_pct": {
+            "compute": 0.006509992839007877,
+            "seeds": 2.3435974220428357,
+            "human": 97.64989258511815
+          }
+        }
+      },
+      {
+        "configuration": {
+          "name": "Maximum",
+          "operator": "havoc",
+          "timeout": 600,
+          "corpus_size": 30,
+          "mutation_rate": 0.6,
+          "expected_crashes": 68
+        },
+        "cost_analysis": {
+          "compute_cost": 0.008333333333333333,
+          "seed_generation_cost": 3.0,
+          "human_setup_cost": 75.0,
+          "total_cost": 78.00833333333334,
+          "expected_crashes": 68,
+          "cost_per_crash": 1.1471813725490196,
+          "roi_crashes_per_dollar": 0.8717017412669585,
+          "cost_breakdown_pct": {
+            "compute": 0.01068261937827155,
+            "seeds": 3.8457429761777586,
+            "human": 96.14357440444397
+          }
+        }
+      },
+      {
+        "configuration": {
+          "name": "Optimized",
+          "operator": "arithmetic",
+          "timeout": 180,
+          "corpus_size": 10,
+          "mutation_rate": 0.5,
+          "expected_crashes": 48
+        },
+        "cost_analysis": {
+          "compute_cost": 0.0025000000000000005,
+          "seed_generation_cost": 1.0,
+          "human_setup_cost": 58.333333333333336,
+          "total_cost": 59.33583333333333,
+          "expected_crashes": 48,
+          "cost_per_crash": 1.2361631944444444,
+          "roi_crashes_per_dollar": 0.80895467887589,
+          "cost_breakdown_pct": {
+            "compute": 0.004213305619145262,
+            "seeds": 1.6853222476581042,
+            "human": 98.31046444672276
+          }
+        }
+      }
+    ],
+    "recommendations": {
+      "best_roi": {
+        "config": "Maximum",
+        "roi": 0.8717017412669585,
+        "total_cost": 78.00833333333334
+      },
+      "lowest_cost": {
+        "config": "Minimal",
+        "cost": 25.000833333333333
+      },
+      "most_crashes": {
+        "config": "Maximum",
+        "crashes": 68,
+        "cost": 78.00833333333334
+      }
+    }
+  },
+  "metadata": {
+    "timestamp": "2025-11-11",
+    "cost_assumptions": {
+      "cpu_per_hour": 0.05,
+      "seed_generation_per_seed": 0.1,
+      "engineer_time_per_hour": 50.0
+    }
+  }
+}

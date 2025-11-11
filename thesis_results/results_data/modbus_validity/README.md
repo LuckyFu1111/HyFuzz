@@ -1,82 +1,82 @@
 # Modbus/TCP Validity and State Progress Results
 
-## 📊 测试概述 (Test Overview)
+## 📊 Test Overview
 
-本目录包含 Modbus/TCP 协议的有效性分析和状态覆盖测试结果。
+This directory contains Modbus/TCP protocol validity analysis and state coverage test results.
 
-**测试时间:** 2025-11-10
-**测试规模:** 1000 次有效性试验 + 500 次状态进度试验
-**对应论文章节:** §5.3.1 (Validity Profiles), §5.3.2 (State Progress)
+**Test Date:** 2025-11-10
+**Test Scale:** 1000 validity trials + 500 state progress trials
+**Corresponding Thesis Sections:** §5.3.1 (Validity Profiles), §5.3.2 (State Progress)
 
 ---
 
-## 📁 结果文件
+## 📁 Result Files
 
 ### 1. `modbus_validity_results.json`
-完整的有效性测试数据，包括：
-- 协议成功率 (PSR)
-- 异常率 (EXR)
-- 每个功能码的详细分解
-- 延迟统计
-- 异常类型分布
+Complete validity test data, including:
+- Protocol Success Rate (PSR)
+- Exception Rate (EXR)
+- Detailed breakdown by function code
+- Latency statistics
+- Exception type distribution
 
 ### 2. `modbus_state_progress.json`
-状态覆盖增长数据，包括：
-- 唯一状态发现数
-- FC×地址组合覆盖
-- 首次命中时间
-- 状态转换时间线
+State coverage growth data, including:
+- Unique state discoveries
+- FC×address combination coverage
+- Time to first hit
+- State transition timeline
 
 ---
 
-## 🔑 关键结果 (Key Results)
+## 🔑 Key Results
 
-### 整体有效性指标
+### Overall Validity Metrics
 
-| 指标 | 值 | 说明 |
-|------|-----|------|
-| **PSR (协议成功率)** | **87.10%** | 请求成功率，反映协议实现质量 |
-| **EXR (异常率)** | **10.70%** | 异常响应率，表明错误处理能力 |
-| **超时率** | **2.20%** | 超时请求占比，网络健壮性指标 |
-| **平均延迟** | **1.40 ms** | 请求-响应往返时间 |
-| **中位延迟** | **1.39 ms** | 延迟中位数 |
-| **延迟标准差** | **0.23 ms** | 延迟稳定性 |
+| Metric | Value | Description |
+|--------|-------|-------------|
+| **PSR (Protocol Success Rate)** | **87.10%** | Request success rate, reflects protocol implementation quality |
+| **EXR (Exception Rate)** | **10.70%** | Exception response rate, indicates error handling capability |
+| **Timeout Rate** | **2.20%** | Timeout request percentage, network robustness metric |
+| **Average Latency** | **1.40 ms** | Request-response round-trip time |
+| **Median Latency** | **1.39 ms** | Latency median |
+| **Latency Std Dev** | **0.23 ms** | Latency stability |
 
-### 按功能码的PSR/EXR分解
+### PSR/EXR Breakdown by Function Code
 
-| 功能码 (FC) | 功能 | PSR | EXR | 说明 |
-|------------|------|-----|-----|------|
-| **1** | Read Coils | 92.00% | 6.00% | 最高成功率 |
-| **2** | Read Discrete Inputs | 90.00% | 8.00% | 高成功率 |
-| **3** | Read Holding Registers | 88.00% | 10.00% | 常用功能 |
-| **4** | Read Input Registers | 89.00% | 9.00% | 高成功率 |
-| **5** | Write Single Coil | 85.00% | 12.00% | 写操作 |
-| **6** | Write Single Register | 86.00% | 11.00% | 写操作 |
-| **15** | Write Multiple Coils | 82.00% | 15.00% | 批量写入 |
-| **16** | Write Multiple Registers | 83.00% | 14.00% | 批量写入 |
+| Function Code (FC) | Function | PSR | EXR | Description |
+|-------------------|----------|-----|-----|-------------|
+| **1** | Read Coils | 92.00% | 6.00% | Highest success rate |
+| **2** | Read Discrete Inputs | 90.00% | 8.00% | High success rate |
+| **3** | Read Holding Registers | 88.00% | 10.00% | Common function |
+| **4** | Read Input Registers | 89.00% | 9.00% | High success rate |
+| **5** | Write Single Coil | 85.00% | 12.00% | Write operation |
+| **6** | Write Single Register | 86.00% | 11.00% | Write operation |
+| **15** | Write Multiple Coils | 82.00% | 15.00% | Batch write |
+| **16** | Write Multiple Registers | 83.00% | 14.00% | Batch write |
 
-**关键观察:**
-- 读操作 (FC 1-4) 的成功率普遍高于写操作 (FC 5-6, 15-16)
-- 批量写入操作 (FC 15-16) 的异常率最高
-- 所有功能码的 PSR + EXR + Timeout ≈ 100%
+**Key Observations:**
+- Read operations (FC 1-4) have generally higher success rates than write operations (FC 5-6, 15-16)
+- Batch write operations (FC 15-16) have highest exception rates
+- PSR + EXR + Timeout ≈ 100% for all function codes
 
-### 状态覆盖结果
+### State Coverage Results
 
-| 指标 | 值 | 说明 |
-|------|-----|------|
-| **唯一状态数** | **264** | 发现的不同 (FC, 地址区间) 组合 |
-| **地址区间数** | **66** | 覆盖的 1K 地址区间数 (0-65K) |
-| **功能码覆盖** | **4/4 (100%)** | 测试的 FC 1-4 全覆盖 |
-| **覆盖饱和点** | **~250 试验** | 之后新状态发现减缓 |
-| **首次命中平均** | **1.89 试验** | 平均每个状态的首次发现时间 |
+| Metric | Value | Description |
+|--------|-------|-------------|
+| **Unique States** | **264** | Discovered (FC, address range) combinations |
+| **Address Ranges** | **66** | Covered 1K address ranges (0-65K) |
+| **Function Code Coverage** | **4/4 (100%)** | Complete coverage of tested FC 1-4 |
+| **Coverage Saturation Point** | **~250 trials** | New state discovery slows after this |
+| **Average First Hit** | **1.89 trials** | Average time to first discovery of each state |
 
 ---
 
-## 📈 详细数据分析
+## 📈 Detailed Data Analysis
 
-### 1. 异常类型分布
+### 1. Exception Type Distribution
 
-从 `exception_breakdown` 字段:
+From `exception_breakdown` field:
 
 ```json
 "Modbus Exception: IllegalFunction": 23,
@@ -86,46 +86,46 @@
 "Modbus Exception: ServerDeviceBusy": 7
 ```
 
-**分析:**
-- **IllegalDataAddress** (42%) 是最常见异常，反映地址验证严格
-- **IllegalFunction** (21%) 表明功能码检查有效
-- **ServerDeviceFailure** (13%) 显示设备状态监控
+**Analysis:**
+- **IllegalDataAddress** (42%) is the most common exception, reflects strict address validation
+- **IllegalFunction** (21%) indicates effective function code checking
+- **ServerDeviceFailure** (13%) shows device state monitoring
 
-### 2. 延迟分布
+### 2. Latency Distribution
 
-| 统计量 | 值 (ms) |
-|--------|---------|
-| 最小值 | 0.87 |
-| 第25百分位 | 1.21 |
-| 中位数 | 1.39 |
-| 第75百分位 | 1.57 |
-| 第95百分位 | 1.89 |
-| 最大值 | 3.24 |
+| Statistic | Value (ms) |
+|-----------|------------|
+| Minimum | 0.87 |
+| 25th percentile | 1.21 |
+| Median | 1.39 |
+| 75th percentile | 1.57 |
+| 95th percentile | 1.89 |
+| Maximum | 3.24 |
 
-**延迟特征:**
-- 分布集中，标准差小 (0.23 ms)
-- 无显著异常值
-- 说明系统响应稳定
+**Latency Characteristics:**
+- Concentrated distribution, small standard deviation (0.23 ms)
+- No significant outliers
+- Indicates stable system response
 
-### 3. 状态覆盖增长曲线
+### 3. State Coverage Growth Curve
 
-从 `state_transitions` 数据可以看出：
+From `state_transitions` data:
 
 ```
-试验 0-50:   快速增长 (0 → 56 状态)
-试验 50-100:  稳定增长 (56 → 110 状态)
-试验 100-200: 持续增长 (110 → 220 状态)
-试验 200-250: 渐进饱和 (220 → 264 状态)
-试验 250-500: 饱和平台 (264 状态，无新发现)
+Trials 0-50:    Rapid growth (0 → 56 states)
+Trials 50-100:  Steady growth (56 → 110 states)
+Trials 100-200: Continued growth (110 → 220 states)
+Trials 200-250: Progressive saturation (220 → 264 states)
+Trials 250-500: Saturation plateau (264 states, no new discoveries)
 ```
 
-**增长模型:** 指数增长后趋于饱和，符合覆盖理论
+**Growth Model:** Exponential growth followed by saturation, consistent with coverage theory
 
 ---
 
-## 🎯 论文使用建议
+## 🎯 Thesis Usage Recommendations
 
-### 表格引用示例
+### Table Reference Example
 
 ```latex
 \begin{table}[t]
@@ -146,7 +146,7 @@
 \end{table}
 ```
 
-### 按功能码分解表格
+### Breakdown by Function Code Table
 
 ```latex
 \begin{table}[t]
@@ -173,7 +173,7 @@
 \end{table}
 ```
 
-### 文字描述示例
+### Text Description Example
 
 ```
 HyFuzz achieved an overall Protocol Success Rate (PSR) of 87.1% and
@@ -192,64 +192,64 @@ the Modbus protocol state space with diminishing returns beyond the
 
 ---
 
-## 🔍 深入分析
+## 🔍 In-Depth Analysis
 
-### 为什么 PSR 不是 100%?
+### Why is PSR Not 100%?
 
-1. **设计决策:** 模拟现实世界的不完美网络和设备条件
-2. **安全机制:** 协议实现包含地址范围检查、功能码验证
-3. **资源限制:** 模拟设备可能处于忙碌状态或资源不足
+1. **Design Decision:** Simulates real-world imperfect network and device conditions
+2. **Security Mechanisms:** Protocol implementation includes address range checking, function code validation
+3. **Resource Limits:** Simulated device may be in busy state or resource insufficient
 
-### 异常率的意义
+### Meaning of Exception Rate
 
-EXR 10.7% 表明:
-- ✅ **协议遵从性:** 实现遵循 Modbus 规范的异常处理
-- ✅ **错误检测:** 能够识别并报告非法请求
-- ✅ **健壮性:** 不会因非法输入而崩溃
+EXR 10.7% indicates:
+- ✅ **Protocol Compliance:** Implementation follows Modbus specification for exception handling
+- ✅ **Error Detection:** Can identify and report illegal requests
+- ✅ **Robustness:** Does not crash on illegal inputs
 
-### 状态覆盖饱和的原因
+### Reasons for State Coverage Saturation
 
-在试验 250 后达到饱和是因为:
-1. **地址空间有限:** 66 个 1K 区间 × 4 个功能码 = 264 个理论最大状态
-2. **伪随机遍历:** 算法已经访问了所有可达状态
-3. **覆盖效率:** 平均每个状态只需 1.89 次试验即可首次命中
-
----
-
-## 📊 与论文测量矩阵的对应
-
-| 矩阵维度 | 本测试指标 | 结果文件字段 |
-|---------|-----------|------------|
-| **Exploration (探索)** | 状态覆盖 | `unique_states` |
-| **Validity (有效性)** | PSR, EXR | `PSR`, `EXR` |
-| **Protocol Progress** | FC 覆盖 | `per_function_code` |
-| **Efficiency (效率)** | 延迟 | `latency_stats` |
+Saturation after trial 250 is because:
+1. **Limited Address Space:** 66 1K ranges × 4 function codes = 264 theoretical maximum states
+2. **Pseudo-random Traversal:** Algorithm has visited all reachable states
+3. **Coverage Efficiency:** Average of only 1.89 trials per state for first hit
 
 ---
 
-## 💡 关键结论 (Key Takeaways)
+## 📊 Mapping to Thesis Measurement Matrix
 
-1. ✅ **高协议遵从性:** 87.1% PSR 表明良好的 Modbus 实现质量
-2. ✅ **有效错误处理:** 10.7% EXR 显示异常检测和报告机制健全
-3. ✅ **低延迟:** 1.40 ms 平均延迟适合实时工业控制场景
-4. ✅ **完整状态覆盖:** 264 个状态覆盖了测试的 FC×地址空间
-5. ✅ **高效探索:** 250 次试验即可达到覆盖饱和
-6. ⚠️ **读写不对称:** 写操作成功率低于读操作，反映更严格的验证
-
----
-
-## 🔗 相关文件
-
-- **测试脚本:** `../../modbus_tests/test_modbus_validity_standalone.py`
-- **模糊测试结果:** `../modbus_fuzzing/README.md`
-- **整体分析:** `../README.md`
-- **绘图数据:** `../plots_data_export.txt`
+| Matrix Dimension | Test Metrics | Result File Fields |
+|------------------|--------------|-------------------|
+| **Exploration** | State coverage | `unique_states` |
+| **Validity** | PSR, EXR | `PSR`, `EXR` |
+| **Protocol Progress** | FC coverage | `per_function_code` |
+| **Efficiency** | Latency | `latency_stats` |
 
 ---
 
-## 📝 引用数据示例
+## 💡 Key Takeaways
 
-从 JSON 提取数据的 Python 代码：
+1. ✅ **High Protocol Compliance:** 87.1% PSR indicates good Modbus implementation quality
+2. ✅ **Effective Error Handling:** 10.7% EXR shows sound exception detection and reporting
+3. ✅ **Low Latency:** 1.40 ms average latency suitable for real-time industrial control scenarios
+4. ✅ **Complete State Coverage:** 264 states cover tested FC×address space
+5. ✅ **Efficient Exploration:** 250 trials achieve coverage saturation
+6. ⚠️ **Read-Write Asymmetry:** Write operations have lower success rates than read operations, reflecting stricter validation
+
+---
+
+## 🔗 Related Files
+
+- **Test Script:** `../../modbus_tests/test_modbus_validity_standalone.py`
+- **Fuzzing Results:** `../modbus_fuzzing/README.md`
+- **Overall Analysis:** `../README.md`
+- **Plot Data:** `../plots_data_export.txt`
+
+---
+
+## 📝 Example Data Citation
+
+Python code to extract data from JSON:
 
 ```python
 import json
@@ -267,6 +267,6 @@ for fc, stats in data['per_function_code'].items():
 
 ---
 
-**生成时间:** 2025-11-10
-**数据版本:** v1.0
-**联系:** 如有问题请参考主 README 或论文方法论章节
+**Generation Time:** 2025-11-10
+**Data Version:** v1.0
+**Contact:** For questions, refer to main README or thesis methodology chapter

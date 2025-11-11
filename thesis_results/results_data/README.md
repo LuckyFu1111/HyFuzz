@@ -1,175 +1,175 @@
 # Thesis Results Data - Complete Overview
 
-## 📊 总览 (Overview)
+## 📊 Overview
 
-本目录包含论文 Chapter 5 (Results) 的完整实验数据和分析结果。
+This directory contains complete experimental data and analysis results for Chapter 5 (Results) of the thesis.
 
-**生成时间:** 2025-11-10
-**数据版本:** v1.0
-**测试环境:** 独立模拟环境，保证可重现性
+**Generation Time:** 2025-11-10
+**Data Version:** v1.0
+**Test Environment:** Independent simulated environment, ensuring reproducibility
 
 ---
 
-## 📁 目录结构
+## 📁 Directory Structure
 
 ```
 results_data/
-├── README.md (本文件)                    # 总体概览
-├── modbus_validity/                     # Modbus 有效性和状态进度
-│   ├── README.md                        # 详细分析文档
+├── README.md (this file)                # Overall overview
+├── modbus_validity/                     # Modbus validity and state progress
+│   ├── README.md                        # Detailed analysis documentation
 │   ├── modbus_validity_results.json
 │   └── modbus_state_progress.json
-├── modbus_fuzzing/                      # Modbus 模糊测试
-│   ├── README.md                        # 详细分析文档
+├── modbus_fuzzing/                      # Modbus fuzzing
+│   ├── README.md                        # Detailed analysis documentation
 │   └── modbus_fuzzing_results.json
-├── coap_validity/                       # CoAP 有效性和一致性
-│   ├── README.md                        # 详细分析文档
+├── coap_validity/                       # CoAP validity and coherence
+│   ├── README.md                        # Detailed analysis documentation
 │   └── coap_validity_results.json
-├── coap_fuzzing/                        # CoAP 模糊测试 (DTLS)
-│   ├── README.md                        # 详细分析文档
+├── coap_fuzzing/                        # CoAP fuzzing (DTLS)
+│   ├── README.md                        # Detailed analysis documentation
 │   └── coap_fuzzing_results.json
-├── baseline_comparison/                 # 基线模糊器对比
-│   ├── README.md                        # 详细分析文档
+├── baseline_comparison/                 # Baseline fuzzer comparison
+│   ├── README.md                        # Detailed analysis documentation
 │   └── baseline_comparison_results.json
-├── analysis_summary.json                # 整体分析汇总
-├── summary.txt                          # 文本汇总报告
-└── plots_data_export.txt                # 绘图数据导出
+├── analysis_summary.json                # Overall analysis summary
+├── summary.txt                          # Text summary report
+└── plots_data_export.txt                # Plot data export
 ```
 
 ---
 
-## 🔑 关键结果速览 (Key Results Summary)
+## 🔑 Key Results Summary
 
-### Modbus/TCP 结果
+### Modbus/TCP Results
 
-| 测试类型 | 关键指标 | 值 | 论文章节 |
-|---------|---------|-----|---------|
-| **有效性** | PSR (成功率) | 87.10% | §5.3.1 |
-| | EXR (异常率) | 10.70% | §5.3.1 |
-| | 平均延迟 | 1.40 ms | §5.3.1 |
-| **状态覆盖** | 唯一状态数 | 264 | §5.3.2 |
-| | 覆盖饱和点 | ~250 试验 | §5.3.2 |
-| **模糊测试** | 平均吞吐量 | 666.6 exec/s | §5.3.4 |
-| | 平均崩溃数 | 124.0 | §5.3.3 |
+| Test Type | Key Metric | Value | Thesis Section |
+|-----------|------------|-------|----------------|
+| **Validity** | PSR (Success Rate) | 87.10% | §5.3.1 |
+| | EXR (Exception Rate) | 10.70% | §5.3.1 |
+| | Average Latency | 1.40 ms | §5.3.1 |
+| **State Coverage** | Unique States | 264 | §5.3.2 |
+| | Coverage Saturation | ~250 trials | §5.3.2 |
+| **Fuzzing** | Average Throughput | 666.6 exec/s | §5.3.4 |
+| | Average Crashes | 124.0 | §5.3.3 |
 | | TTFC | 1.4 s | §5.3.3 |
-| **vs AFL** | 崩溃改进 | **+76.2%** | §5.3.5 |
-| | 覆盖改进 | **+29.0%** | §5.3.5 |
+| **vs AFL** | Crash Improvement | **+76.2%** | §5.3.5 |
+| | Coverage Improvement | **+29.0%** | §5.3.5 |
 
-### CoAP 结果
+### CoAP Results
 
-| 测试类型 | 关键指标 | 无 DTLS | 有 DTLS | 影响 | 论文章节 |
-|---------|---------|---------|---------|------|---------|
-| **一致性** | ACK 比率 | 94.70% | 94.30% | -0.4% | §5.4.1 |
-| | Token 一致性 | 99.10% | 98.90% | -0.2% | §5.4.1 |
-| | 2xx 成功率 | 75.30% | 74.80% | -0.5% | §5.4.1 |
-| **里程碑** | Observe 注册 | 48 | 45 | -6.3% | §5.4.2 |
-| | Block1 完成 | 12 | 11 | -8.3% | §5.4.2 |
-| **模糊测试** | 平均执行数 | 9,245 | 7,835 | **-15.3%** | §5.4.4 |
-| | 平均崩溃数 | 3.6 | 3.2 | -11.1% | §5.4.3 |
-| **vs AFL** | 崩溃改进 | **+84.2%** | -- | -- | §5.4.5 |
-| | 覆盖改进 | **+35.6%** | -- | -- | §5.4.5 |
+| Test Type | Key Metric | No DTLS | With DTLS | Impact | Thesis Section |
+|-----------|------------|---------|-----------|--------|----------------|
+| **Coherence** | ACK Ratio | 94.70% | 94.30% | -0.4% | §5.4.1 |
+| | Token Coherence | 99.10% | 98.90% | -0.2% | §5.4.1 |
+| | 2xx Success | 75.30% | 74.80% | -0.5% | §5.4.1 |
+| **Milestones** | Observe Registration | 48 | 45 | -6.3% | §5.4.2 |
+| | Block1 Completion | 12 | 11 | -8.3% | §5.4.2 |
+| **Fuzzing** | Average Executions | 9,245 | 7,835 | **-15.3%** | §5.4.4 |
+| | Average Crashes | 3.6 | 3.2 | -11.1% | §5.4.3 |
+| **vs AFL** | Crash Improvement | **+84.2%** | -- | -- | §5.4.5 |
+| | Coverage Improvement | **+35.6%** | -- | -- | §5.4.5 |
 
-### 基线对比总结
+### Baseline Comparison Summary
 
-| 模糊器 | Modbus 崩溃排名 | CoAP 崩溃排名 | 综合评价 |
-|--------|----------------|--------------|---------|
-| **HyFuzz** | 🥇 1st (3.7) | 🥇 1st (3.5) | ⭐⭐⭐⭐⭐ 最佳 |
-| **AFLNet** | 🥈 2nd (3.4) | 🥈 2nd (3.1) | ⭐⭐⭐⭐ 协议感知优势 |
-| **Grammar** | 🥉 3rd (2.9) | 🥉 3rd (2.6) | ⭐⭐⭐ 语法正确性 |
-| **AFL++** | 4th (2.8) | 4th (2.4) | ⭐⭐⭐ 高吞吐量 |
-| **libFuzzer** | 5th (2.5) | 5th (2.2) | ⭐⭐ 最高吞吐但低崩溃 |
-| **AFL** | 6th (2.1) | 6th (1.9) | ⭐⭐ 基线 |
+| Fuzzer | Modbus Crash Rank | CoAP Crash Rank | Overall Rating |
+|--------|-------------------|-----------------|----------------|
+| **HyFuzz** | 🥇 1st (3.7) | 🥇 1st (3.5) | ⭐⭐⭐⭐⭐ Best |
+| **AFLNet** | 🥈 2nd (3.4) | 🥈 2nd (3.1) | ⭐⭐⭐⭐ Protocol-aware advantage |
+| **Grammar** | 🥉 3rd (2.9) | 🥉 3rd (2.6) | ⭐⭐⭐ Grammar correctness |
+| **AFL++** | 4th (2.8) | 4th (2.4) | ⭐⭐⭐ High throughput |
+| **libFuzzer** | 5th (2.5) | 5th (2.2) | ⭐⭐ Highest throughput but low crashes |
+| **AFL** | 6th (2.1) | 6th (1.9) | ⭐⭐ Baseline |
 
 ---
 
-## 📈 主要发现 (Main Findings)
+## 📈 Main Findings
 
-### 1. HyFuzz 的核心优势
+### 1. HyFuzz's Core Advantages
 
-✅ **漏洞发现能力卓越:**
-- Modbus: 比 AFL 多 76.2% 崩溃
-- CoAP: 比 AFL 多 84.2% 崩溃
-- Cohen's d > 1.45 (非常大的统计效果)
+✅ **Exceptional Vulnerability Discovery:**
+- Modbus: 76.2% more crashes than AFL
+- CoAP: 84.2% more crashes than AFL
+- Cohen's d > 1.45 (very large statistical effect)
 
-✅ **代码覆盖率领先:**
-- Modbus: +29.0% 覆盖
-- CoAP: +35.6% 覆盖
-- 表明更深入的协议探索
+✅ **Leading Code Coverage:**
+- Modbus: +29.0% coverage
+- CoAP: +35.6% coverage
+- Indicates deeper protocol exploration
 
-✅ **平衡效率与效果:**
-- 吞吐量排名第三 (Modbus: 666 ex/s, CoAP: 154 ex/s)
-- 不牺牲质量追求纯速度
+✅ **Balanced Efficiency and Effectiveness:**
+- Throughput ranked 3rd (Modbus: 666 ex/s, CoAP: 154 ex/s)
+- Doesn't sacrifice quality for pure speed
 
-### 2. 协议特性
+### 2. Protocol Characteristics
 
 **Modbus/TCP:**
-- 高 PSR (87.1%) 表明实现质量好
-- 读操作 (FC 1-4) 比写操作 (FC 5-16) 成功率高 5-8%
-- 崩溃率高 (0.3%)，表明存在大量潜在漏洞
+- High PSR (87.1%) indicates good implementation quality
+- Read operations (FC 1-4) have 5-8% higher success than write operations (FC 5-16)
+- High crash rate (0.3%) indicates many potential vulnerabilities
 
 **CoAP:**
-- 极高 Token 一致性 (99.1%) 表明协议实现成熟
-- Observe 和 Blockwise 等高级特性工作正常
-- 崩溃率较低 (0.039%)，协议实现相对安全
+- Very high Token coherence (99.1%) indicates mature protocol implementation
+- Advanced features like Observe and Blockwise work correctly
+- Lower crash rate (0.039%), relatively secure protocol implementation
 
-### 3. DTLS 影响评估
+### 3. DTLS Impact Assessment
 
-✅ **协议一致性影响微小:**
-- ACK 比率: -0.4%
-- Token 一致性: -0.2%
-- 功能正确性基本不受影响
+✅ **Minimal Protocol Coherence Impact:**
+- ACK ratio: -0.4%
+- Token coherence: -0.2%
+- Functional correctness essentially unaffected
 
-⚠️ **性能开销在可接受范围:**
-- 吞吐量: -15.3%
-- 延迟: +14.3%
-- 里程碑成功率: -6~8%
+⚠️ **Acceptable Performance Overhead:**
+- Throughput: -15.3%
+- Latency: +14.3%
+- Milestone success rate: -6~8%
 
-💡 **结论:** DTLS 可以用于生产环境的 CoAP 模糊测试，安全与性能平衡良好。
+💡 **Conclusion:** DTLS can be used for production CoAP fuzzing with good security-performance balance.
 
-### 4. 基线对比启示
+### 4. Baseline Comparison Insights
 
-📊 **吞吐量 ≠ 有效性:**
-- libFuzzer 最高吞吐 (7834 ex/s Modbus)
-- 但崩溃发现仅排名第5
-- 说明输入质量比数量更重要
+📊 **Throughput ≠ Effectiveness:**
+- libFuzzer highest throughput (7834 ex/s Modbus)
+- But crash discovery only ranked 5th
+- Demonstrates input quality > quantity
 
-🎯 **协议感知的价值:**
-- AFLNet (协议感知) 崩溃发现排名第2
-- HyFuzz (LLM 协议理解) 排名第1
-- 通用模糊器 (AFL, AFL++, libFuzzer) 表现中等
+🎯 **Value of Protocol Awareness:**
+- AFLNet (protocol-aware) crash discovery ranked 2nd
+- HyFuzz (LLM protocol understanding) ranked 1st
+- General-purpose fuzzers (AFL, AFL++, libFuzzer) performed moderately
 
 ---
 
-## 🎯 论文章节对应
+## 🎯 Thesis Section Mapping
 
 ### Chapter 5.3: Modbus/TCP Results
 
-| 小节 | 内容 | 数据文件 | 关键指标 |
-|------|------|---------|---------|
-| §5.3.1 | Validity Profiles | `modbus_validity/` | PSR, EXR, 延迟 |
-| §5.3.2 | State Progress | `modbus_validity/` | 唯一状态, FC×地址覆盖 |
-| §5.3.3 | Bug-Finding | `modbus_fuzzing/` | 崩溃数, TTFC |
-| §5.3.4 | Efficiency | `modbus_fuzzing/` | 吞吐量, exec/s |
+| Subsection | Content | Data File | Key Metrics |
+|------------|---------|-----------|-------------|
+| §5.3.1 | Validity Profiles | `modbus_validity/` | PSR, EXR, latency |
+| §5.3.2 | State Progress | `modbus_validity/` | Unique states, FC×address coverage |
+| §5.3.3 | Bug-Finding | `modbus_fuzzing/` | Crashes, TTFC |
+| §5.3.4 | Efficiency | `modbus_fuzzing/` | Throughput, exec/s |
 | §5.3.5 | vs Baselines | `baseline_comparison/` | vs AFL/AFL++/AFLNet |
 
 ### Chapter 5.4: CoAP Results
 
-| 小节 | 内容 | 数据文件 | 关键指标 |
-|------|------|---------|---------|
-| §5.4.1 | Coherence/ACKs | `coap_validity/` | ACK 比率, Token 一致性 |
+| Subsection | Content | Data File | Key Metrics |
+|------------|---------|-----------|-------------|
+| §5.4.1 | Coherence/ACKs | `coap_validity/` | ACK ratio, Token coherence |
 | §5.4.2 | State Progress | `coap_validity/` | Observe, Blockwise |
-| §5.4.3 | Bug-Finding | `coap_fuzzing/` | 崩溃数, TTFC |
-| §5.4.4 | Efficiency | `coap_fuzzing/` | 吞吐量, 延迟 |
+| §5.4.3 | Bug-Finding | `coap_fuzzing/` | Crashes, TTFC |
+| §5.4.4 | Efficiency | `coap_fuzzing/` | Throughput, latency |
 | §5.4.5 | vs Baselines | `baseline_comparison/` | vs AFL/AFL++/AFLNet |
-| §5.4.6 | DTLS Impact | `coap_validity/`, `coap_fuzzing/` | DTLS 开销分析 |
+| §5.4.6 | DTLS Impact | `coap_validity/`, `coap_fuzzing/` | DTLS overhead analysis |
 
 ---
 
-## 📊 数据文件说明
+## 📊 Data File Description
 
-### JSON 文件结构
+### JSON File Structure
 
-所有 JSON 文件遵循以下结构:
+All JSON files follow this structure:
 
 ```json
 {
@@ -192,26 +192,26 @@ results_data/
 }
 ```
 
-### 文本汇总文件
+### Text Summary Files
 
-- **`summary.txt`**: 适合直接阅读的文本汇总
-- **`plots_data_export.txt`**: 表格化的绘图数据，可手动绘制
+- **`summary.txt`**: Text summary suitable for direct reading
+- **`plots_data_export.txt`**: Tabular plot data, can be manually plotted
 
 ---
 
-## 🔍 如何使用这些数据
+## 🔍 How to Use This Data
 
-### 1. 快速查看关键指标
+### 1. Quick View of Key Metrics
 
 ```bash
-# 查看文本汇总
+# View text summary
 cat summary.txt
 
-# 查看绘图数据
+# View plot data
 cat plots_data_export.txt
 ```
 
-### 2. 提取特定数据
+### 2. Extract Specific Data
 
 ```python
 import json
@@ -221,112 +221,112 @@ with open('modbus_validity/modbus_validity_results.json') as f:
     data = json.load(f)
     print(f"PSR: {data['PSR']:.2%}")
 
-# HyFuzz vs AFL 改进
+# HyFuzz vs AFL improvement
 with open('baseline_comparison/baseline_comparison_results.json') as f:
     data = json.load(f)
     improvement = data['modbus']['effect_sizes']['unique_crashes']['improvement_percent']
     print(f"Crash Discovery Improvement: {improvement:+.1f}%")
 ```
 
-### 3. 生成 LaTeX 表格
+### 3. Generate LaTeX Tables
 
-每个子目录的 README.md 包含完整的 LaTeX 表格示例，可直接复制到论文中。
+Each subdirectory's README.md contains complete LaTeX table examples that can be directly copied into the thesis.
 
-### 4. 绘图
+### 4. Plotting
 
 ```python
-# 推荐安装 matplotlib
+# Recommended: install matplotlib
 pip3 install matplotlib numpy
 
-# 运行绘图脚本
+# Run plotting script
 python3 ../analysis_scripts/plot_results.py
 ```
 
 ---
 
-## 💡 数据解读指南
+## 💡 Data Interpretation Guide
 
-### 统计显著性
+### Statistical Significance
 
-所有改进都具有统计显著性：
-- **Cohen's d > 0.8:** 大效果
-- **Cohen's d > 1.2:** 非常大效果
-- HyFuzz 的崩溃发现改进: Cohen's d > 1.45
+All improvements are statistically significant:
+- **Cohen's d > 0.8:** Large effect
+- **Cohen's d > 1.2:** Very large effect
+- HyFuzz crash discovery improvement: Cohen's d > 1.45
 
-### 变异系数 (CV)
+### Coefficient of Variation (CV)
 
-衡量结果稳定性：
-- **CV < 5%:** 非常稳定
-- **CV 5-10%:** 稳定
-- **CV > 10%:** 不稳定
+Measures result stability:
+- **CV < 5%:** Very stable
+- **CV 5-10%:** Stable
+- **CV > 10%:** Unstable
 
-示例:
-- Modbus 吞吐量 CV = 2.4% (非常稳定)
-- Modbus 崩溃数 CV = 8.4% (稳定)
+Examples:
+- Modbus throughput CV = 2.4% (very stable)
+- Modbus crashes CV = 8.4% (stable)
 
-### 改进百分比
+### Improvement Percentage
 
-- **< 10%:** 小改进
-- **10-30%:** 中等改进
-- **30-50%:** 大改进
-- **> 50%:** 显著改进
+- **< 10%:** Small improvement
+- **10-30%:** Medium improvement
+- **30-50%:** Large improvement
+- **> 50%:** Significant improvement
 
-HyFuzz 崩溃发现改进 >76%，属于显著改进。
+HyFuzz crash discovery improvement >76%, classified as significant improvement.
 
 ---
 
-## 📖 详细文档链接
+## 📖 Detailed Documentation Links
 
-每个子目录都有详细的 README.md：
+Each subdirectory has detailed README.md:
 
 1. **[Modbus Validity](modbus_validity/README.md)**
-   - PSR/EXR 详细分析
-   - 按功能码的分解
-   - 状态覆盖增长
+   - PSR/EXR detailed analysis
+   - Breakdown by function code
+   - State coverage growth
 
 2. **[Modbus Fuzzing](modbus_fuzzing/README.md)**
-   - 5 次试验详情
-   - 崩溃类型分布
-   - 吞吐量分析
+   - 5 trial details
+   - Crash type distribution
+   - Throughput analysis
 
 3. **[CoAP Validity](coap_validity/README.md)**
-   - DTLS ON/OFF 对比
-   - Observe & Blockwise 里程碑
-   - Token 一致性分析
+   - DTLS ON/OFF comparison
+   - Observe & Blockwise milestones
+   - Token coherence analysis
 
 4. **[CoAP Fuzzing](coap_fuzzing/README.md)**
-   - DTLS 开销详细分解
-   - 崩溃发现对比
-   - 吞吐量影响
+   - Detailed DTLS overhead breakdown
+   - Crash discovery comparison
+   - Throughput impact
 
 5. **[Baseline Comparison](baseline_comparison/README.md)**
-   - 6 个模糊器详细对比
-   - 效果大小计算
-   - 统计显著性分析
+   - Detailed comparison of 6 fuzzers
+   - Effect size calculations
+   - Statistical significance analysis
 
 ---
 
-## 🔗 相关文件
+## 🔗 Related Files
 
-- **测试脚本:** `../modbus_tests/`, `../coap_tests/`, `../baseline_comparisons/`
-- **分析脚本:** `../analysis_scripts/`
-- **主文档:** `../README.md`, `../QUICK_START.md`
-
----
-
-## 📞 联系与支持
-
-如有问题或需要进一步的数据分析：
-
-1. 查看各子目录的详细 README
-2. 参考论文方法论章节 (Chapter 4)
-3. 检查测试脚本源代码
+- **Test Scripts:** `../modbus_tests/`, `../coap_tests/`, `../baseline_comparisons/`
+- **Analysis Scripts:** `../analysis_scripts/`
+- **Main Documentation:** `../README.md`, `../QUICK_START.md`
 
 ---
 
-## 🎓 引用建议
+## 📞 Contact and Support
 
-在论文中引用这些数据时：
+For questions or further data analysis needs:
+
+1. Consult detailed READMEs in each subdirectory
+2. Refer to thesis methodology chapter (Chapter 4)
+3. Check test script source code
+
+---
+
+## 🎓 Citation Recommendations
+
+When citing this data in the thesis:
 
 ```
 All experimental results were obtained using the HyFuzz testing
@@ -338,19 +338,19 @@ thesis_results/results_data/ directory of the project repository.
 
 ---
 
-**数据完整性声明:**
-所有数据均通过自动化脚本生成，保证可重现性。原始数据未经人工修改，仅进行统计聚合和格式化。
+**Data Integrity Statement:**
+All data generated through automated scripts, ensuring reproducibility. Raw data unmodified by humans, only statistical aggregation and formatting applied.
 
-**测试环境:**
+**Test Environment:**
 - Python 3.9+
-- 独立模拟环境
-- 无外部网络依赖
+- Independent simulated environment
+- No external network dependencies
 
-**数据许可:**
-本数据集作为 HyFuzz 项目的一部分，遵循项目主许可证。
+**Data License:**
+This dataset is part of the HyFuzz project and follows the project's main license.
 
 ---
 
-**最后更新:** 2025-11-10
-**数据版本:** v1.0
-**文档版本:** 1.0
+**Last Updated:** 2025-11-10
+**Data Version:** v1.0
+**Documentation Version:** 1.0

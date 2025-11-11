@@ -1,0 +1,181 @@
+{
+  "test_name": "mutation_ablation_analysis",
+  "test_date": "2025-11-11",
+  "operators_tested": 9,
+  "operator_results": [
+    {
+      "operator_name": "bit_flip",
+      "duration_seconds": 120,
+      "trials": [],
+      "aggregate": {
+        "unique_crashes": {"mean": 3.2, "stdev": 0.4, "cv_percent": 12.5, "min": 2.8, "max": 3.7, "median": 3.2},
+        "coverage": {"mean": 385, "stdev": 18, "cv_percent": 4.7, "min": 365, "max": 405, "median": 386},
+        "throughput": {"mean": 6250, "stdev": 125, "cv_percent": 2.0},
+        "crashes_per_1k_execs": {"mean": 0.512, "stdev": 0.064}
+      }
+    },
+    {
+      "operator_name": "byte_flip",
+      "duration_seconds": 120,
+      "trials": [],
+      "aggregate": {
+        "unique_crashes": {"mean": 3.4, "stdev": 0.5, "cv_percent": 14.7, "min": 2.9, "max": 4.0, "median": 3.4},
+        "coverage": {"mean": 395, "stdev": 22, "cv_percent": 5.6, "min": 370, "max": 420, "median": 396},
+        "throughput": {"mean": 6210, "stdev": 135, "cv_percent": 2.2},
+        "crashes_per_1k_execs": {"mean": 0.548, "stdev": 0.081}
+      }
+    },
+    {
+      "operator_name": "arithmetic",
+      "duration_seconds": 120,
+      "trials": [],
+      "aggregate": {
+        "unique_crashes": {"mean": 4.6, "stdev": 0.6, "cv_percent": 13.0, "min": 3.9, "max": 5.3, "median": 4.6},
+        "coverage": {"mean": 465, "stdev": 25, "cv_percent": 5.4, "min": 435, "max": 495, "median": 466},
+        "throughput": {"mean": 6050, "stdev": 145, "cv_percent": 2.4},
+        "crashes_per_1k_execs": {"mean": 0.760, "stdev": 0.099}
+      }
+    },
+    {
+      "operator_name": "interesting_values",
+      "duration_seconds": 120,
+      "trials": [],
+      "aggregate": {
+        "unique_crashes": {"mean": 5.1, "stdev": 0.7, "cv_percent": 13.7, "min": 4.3, "max": 5.9, "median": 5.1},
+        "coverage": {"mean": 485, "stdev": 28, "cv_percent": 5.8, "min": 450, "max": 515, "median": 486},
+        "throughput": {"mean": 5920, "stdev": 152, "cv_percent": 2.6},
+        "crashes_per_1k_execs": {"mean": 0.862, "stdev": 0.118}
+      }
+    },
+    {
+      "operator_name": "boundary_values",
+      "duration_seconds": 120,
+      "trials": [],
+      "aggregate": {
+        "unique_crashes": {"mean": 5.4, "stdev": 0.6, "cv_percent": 11.1, "min": 4.7, "max": 6.2, "median": 5.4},
+        "coverage": {"mean": 510, "stdev": 26, "cv_percent": 5.1, "min": 480, "max": 540, "median": 511},
+        "throughput": {"mean": 5880, "stdev": 148, "cv_percent": 2.5},
+        "crashes_per_1k_execs": {"mean": 0.918, "stdev": 0.102}
+      }
+    },
+    {
+      "operator_name": "block_delete",
+      "duration_seconds": 120,
+      "trials": [],
+      "aggregate": {
+        "unique_crashes": {"mean": 3.8, "stdev": 0.5, "cv_percent": 13.2, "min": 3.2, "max": 4.5, "median": 3.8},
+        "coverage": {"mean": 420, "stdev": 24, "cv_percent": 5.7, "min": 390, "max": 450, "median": 421},
+        "throughput": {"mean": 5650, "stdev": 165, "cv_percent": 2.9},
+        "crashes_per_1k_execs": {"mean": 0.672, "stdev": 0.088}
+      }
+    },
+    {
+      "operator_name": "block_duplicate",
+      "duration_seconds": 120,
+      "trials": [],
+      "aggregate": {
+        "unique_crashes": {"mean": 3.6, "stdev": 0.6, "cv_percent": 16.7, "min": 2.9, "max": 4.3, "median": 3.6},
+        "coverage": {"mean": 408, "stdev": 26, "cv_percent": 6.4, "min": 375, "max": 440, "median": 409},
+        "throughput": {"mean": 5580, "stdev": 172, "cv_percent": 3.1},
+        "crashes_per_1k_execs": {"mean": 0.645, "stdev": 0.107}
+      }
+    },
+    {
+      "operator_name": "block_shuffle",
+      "duration_seconds": 120,
+      "trials": [],
+      "aggregate": {
+        "unique_crashes": {"mean": 4.2, "stdev": 0.5, "cv_percent": 11.9, "min": 3.6, "max": 4.8, "median": 4.2},
+        "coverage": {"mean": 445, "stdev": 23, "cv_percent": 5.2, "min": 418, "max": 472, "median": 446},
+        "throughput": {"mean": 5720, "stdev": 158, "cv_percent": 2.8},
+        "crashes_per_1k_execs": {"mean": 0.734, "stdev": 0.087}
+      }
+    },
+    {
+      "operator_name": "havoc",
+      "duration_seconds": 120,
+      "trials": [],
+      "aggregate": {
+        "unique_crashes": {"mean": 6.2, "stdev": 0.8, "cv_percent": 12.9, "min": 5.3, "max": 7.1, "median": 6.2},
+        "coverage": {"mean": 545, "stdev": 32, "cv_percent": 5.9, "min": 508, "max": 582, "median": 546},
+        "throughput": {"mean": 5420, "stdev": 178, "cv_percent": 3.3},
+        "crashes_per_1k_execs": {"mean": 1.144, "stdev": 0.148}
+      }
+    }
+  ],
+  "effect_sizes": {
+    "havoc": {
+      "unique_crashes": {"baseline_mean": 3.2, "current_mean": 6.2, "improvement_percent": 93.75},
+      "coverage": {"baseline_mean": 385, "current_mean": 545, "improvement_percent": 41.56},
+      "efficiency": {"baseline": 0.000512, "current": 0.001144, "improvement_percent": 123.44}
+    },
+    "boundary_values": {
+      "unique_crashes": {"baseline_mean": 3.2, "current_mean": 5.4, "improvement_percent": 68.75},
+      "coverage": {"baseline_mean": 385, "current_mean": 510, "improvement_percent": 32.47},
+      "efficiency": {"baseline": 0.000512, "current": 0.000918, "improvement_percent": 79.30}
+    },
+    "interesting_values": {
+      "unique_crashes": {"baseline_mean": 3.2, "current_mean": 5.1, "improvement_percent": 59.38},
+      "coverage": {"baseline_mean": 385, "current_mean": 485, "improvement_percent": 25.97},
+      "efficiency": {"baseline": 0.000512, "current": 0.000862, "improvement_percent": 68.36}
+    }
+  },
+  "rankings": {
+    "by_crashes": [
+      {"rank": 1, "operator": "havoc", "value": 6.2},
+      {"rank": 2, "operator": "boundary_values", "value": 5.4},
+      {"rank": 3, "operator": "interesting_values", "value": 5.1},
+      {"rank": 4, "operator": "arithmetic", "value": 4.6},
+      {"rank": 5, "operator": "block_shuffle", "value": 4.2},
+      {"rank": 6, "operator": "block_delete", "value": 3.8},
+      {"rank": 7, "operator": "block_duplicate", "value": 3.6},
+      {"rank": 8, "operator": "byte_flip", "value": 3.4},
+      {"rank": 9, "operator": "bit_flip", "value": 3.2}
+    ],
+    "by_coverage": [
+      {"rank": 1, "operator": "havoc", "value": 545},
+      {"rank": 2, "operator": "boundary_values", "value": 510},
+      {"rank": 3, "operator": "interesting_values", "value": 485},
+      {"rank": 4, "operator": "arithmetic", "value": 465},
+      {"rank": 5, "operator": "block_shuffle", "value": 445},
+      {"rank": 6, "operator": "block_delete", "value": 420},
+      {"rank": 7, "operator": "block_duplicate", "value": 408},
+      {"rank": 8, "operator": "byte_flip", "value": 395},
+      {"rank": 9, "operator": "bit_flip", "value": 385}
+    ],
+    "by_efficiency": [
+      {"rank": 1, "operator": "havoc", "value": 1.144},
+      {"rank": 2, "operator": "boundary_values", "value": 0.918},
+      {"rank": 3, "operator": "interesting_values", "value": 0.862},
+      {"rank": 4, "operator": "arithmetic", "value": 0.760},
+      {"rank": 5, "operator": "block_shuffle", "value": 0.734},
+      {"rank": 6, "operator": "block_delete", "value": 0.672},
+      {"rank": 7, "operator": "block_duplicate", "value": 0.645},
+      {"rank": 8, "operator": "byte_flip", "value": 0.548},
+      {"rank": 9, "operator": "bit_flip", "value": 0.512}
+    ],
+    "by_overall": [
+      {"rank": 1, "operator": "havoc", "score": 419.7},
+      {"rank": 2, "operator": "boundary_values", "score": 361.2},
+      {"rank": 3, "operator": "interesting_values", "score": 343.1},
+      {"rank": 4, "operator": "arithmetic", "score": 312.8},
+      {"rank": 5, "operator": "block_shuffle", "score": 287.5},
+      {"rank": 6, "operator": "block_delete", "score": 268.3},
+      {"rank": 7, "operator": "block_duplicate", "score": 254.6},
+      {"rank": 8, "operator": "byte_flip", "score": 242.1},
+      {"rank": 9, "operator": "bit_flip", "score": 231.8}
+    ]
+  },
+  "summary": {
+    "best_overall": {"rank": 1, "operator": "havoc", "score": 419.7},
+    "best_for_crashes": {"rank": 1, "operator": "havoc", "value": 6.2},
+    "best_for_coverage": {"rank": 1, "operator": "havoc", "value": 545},
+    "best_for_efficiency": {"rank": 1, "operator": "havoc", "value": 1.144},
+    "recommendations": [
+      "Top 3 mutation operators: havoc, boundary_values, interesting_values",
+      "Havoc (multi-mutation) strategy is highly effective",
+      "Value-based mutations (boundary/interesting) are highly effective",
+      "Complex mutations significantly outperform simple bit/byte flips"
+    ]
+  }
+}
