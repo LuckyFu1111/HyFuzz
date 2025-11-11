@@ -204,8 +204,16 @@ def __getattr__(name: str) -> Any:
         module_name, class_name = module_path.rsplit(".", 1)
 
         try:
-            module = __import__(module_path, fromlist=[class_name])
-            return getattr(module, class_name, None)
+            # SECURITY: Use safe_import_from_path instead of __import__
+            # This prevents arbitrary module injection (CWE-94)
+            from src.utils.safe_imports import safe_import_from_path
+
+            return safe_import_from_path(module_path, class_name)
+        except ValueError as e:
+            # Module not in whitelist
+            logger = logging.getLogger(__name__)
+            logger.error(f"Module not whitelisted: {module_path} - {e}")
+            raise AttributeError(f"module '{__name__}' has no attribute '{name}' (not whitelisted)")
         except (ImportError, AttributeError) as e:
             logger = logging.getLogger(__name__)
             logger.warning(f"Failed to lazy import {name} from {module_path}: {e}")

@@ -7,13 +7,21 @@ error handling, logging, authentication, CORS, and rate limiting.
 Key Features:
 - Error handling and exception transformation
 - Request/response logging with structured format
-- Token-based authentication
+- Secure JWT-based authentication (no hardcoded secrets)
 - CORS (Cross-Origin Resource Sharing) support
 - Rate limiting with multiple strategies
 - Performance monitoring and tracing
 
+Security:
+- JWT authentication with environment-based secrets
+- No hardcoded credentials
+- Protection against timing attacks
+- Token expiration validation
+
 Author: HyFuzz Team
-Version: 1.0.0
+Version: 2.0.0
+Date: 2025-11-11
+Security: Replaced hardcoded secrets with SecureAuth module
 """
 
 import time
@@ -23,11 +31,10 @@ from datetime import datetime, timezone
 from functools import wraps
 from collections import defaultdict
 from dataclasses import dataclass, field
-import hashlib
-import hmac
 
 from ..config.settings import Settings
 from ..utils.logger import get_logger
+from ..utils.secure_auth import SecureAuth  # Secure authentication
 from ..utils.exceptions import (
     MCPProtocolError,
     ValidationError,
@@ -385,14 +392,27 @@ class AuthMiddleware:
 
     def __init__(self, settings: Optional[Settings] = None):
         """
-        Initialize authentication middleware.
-        
+        Initialize authentication middleware with secure JWT-based auth.
+
         Args:
             settings: Application settings
+
+        Security:
+            Uses SecureAuth module which loads secrets from environment variables.
+            No hardcoded secrets are used.
         """
         self.settings = settings or Settings()
         self.logger = get_logger(__name__)
-        self.secret_key = getattr(settings, 'auth_secret_key', 'default-secret-key')
+
+        # SECURITY: Use SecureAuth instead of hardcoded secrets
+        # Secret key is loaded from JWT_SECRET_KEY environment variable
+        try:
+            self.auth_manager = SecureAuth(required_claims=True)
+            self.logger.info("Authentication initialized with secure JWT")
+        except ValueError as e:
+            self.logger.error(f"Failed to initialize authentication: {e}")
+            raise
+
         self.auth_enabled = getattr(settings, 'auth_enabled', True)
 
     def __call__(self, func: Callable) -> Callable:
@@ -439,61 +459,90 @@ class AuthMiddleware:
 
     def _validate_token(self, auth_header: str) -> str:
         """
-        Validate authentication token.
-        
+        Validate JWT authentication token securely.
+
         Args:
-            auth_header: Authorization header value
-            
+            auth_header: Authorization header value (Bearer token)
+
         Returns:
-            User ID extracted from token
-            
+            User ID extracted from validated token
+
         Raises:
-            AuthenticationError: If token is invalid
+            AuthenticationError: If token is invalid, expired, or malformed
+
+        Security:
+            - Uses JWT with signature validation
+            - Verifies token expiration
+            - Protection against timing attacks
+            - No hardcoded secrets
         """
         # Parse Bearer token
         if not auth_header.startswith("Bearer "):
-            raise AuthenticationError("Invalid token format")
+            raise AuthenticationError("Invalid token format. Expected: Bearer <token>")
 
         token = auth_header[7:]  # Remove "Bearer " prefix
 
-        # Validate token (simple HMAC validation)
+        # Validate token using SecureAuth
         try:
-            # For production, use proper JWT validation
-            parts = token.split(".")
-            if len(parts) != 3:
-                raise AuthenticationError("Invalid token structure")
+            payload = self.auth_manager.validate_token(token)
 
-            # Extract user_id from token payload
-            user_id = parts[0]
-            
+            # Extract user_id from validated payload
+            user_id = payload.get('user_id')
+            if not user_id:
+                raise AuthenticationError("Token missing user_id claim")
+
+            self.logger.debug(f"Token validated for user: {user_id}")
             return user_id
 
+        except ValueError as e:
+            # SecureAuth raises ValueError for invalid tokens
+            self.logger.warning(f"Token validation failed: {str(e)}")
+            raise AuthenticationError(f"Invalid token: {str(e)}")
         except Exception as e:
-            raise AuthenticationError(f"Token validation failed: {str(e)}")
+            self.logger.error(f"Unexpected error during token validation: {str(e)}")
+            raise AuthenticationError(f"Token validation error: {str(e)}")
 
-    def generate_token(self, user_id: str, expires_in: int = 3600) -> str:
+    def generate_token(
+        self,
+        user_id: str,
+        expires_in: int = 3600,
+        additional_claims: Optional[Dict[str, Any]] = None
+    ) -> str:
         """
-        Generate authentication token.
-        
+        Generate secure JWT authentication token.
+
         Args:
             user_id: User identifier
-            expires_in: Token expiration time in seconds
-            
+            expires_in: Token expiration time in seconds (default: 1 hour)
+            additional_claims: Optional additional claims to include in token
+
         Returns:
-            Generated token
+            Signed JWT token string
+
+        Security:
+            - Uses JWT with HMAC-SHA256 signature
+            - Includes expiration (exp), issued-at (iat), and not-before (nbf) claims
+            - Unique token ID (jti) prevents replay attacks
+            - Secret key loaded from environment variable
+
+        Example:
+            >>> auth = AuthenticationMiddleware()
+            >>> token = auth.generate_token("user123", expires_in=3600)
+            >>> # Use token in Authorization header: Bearer <token>
         """
-        timestamp = str(int(time.time()))
-        expiry = str(int(time.time()) + expires_in)
-        
-        # Simple token generation (use JWT in production)
-        payload = f"{user_id}.{timestamp}.{expiry}"
-        signature = hmac.new(
-            self.secret_key.encode(),
-            payload.encode(),
-            hashlib.sha256
-        ).hexdigest()
-        
-        return f"{payload}.{signature}"
+        try:
+            token = self.auth_manager.generate_token(
+                user_id=user_id,
+                expires_in=expires_in,
+                additional_claims=additional_claims
+            )
+
+            self.logger.debug(f"Generated token for user: {user_id}, expires in: {expires_in}s")
+            return token
+
+        except Exception as e:
+            self.logger.error(f"Token generation failed: {str(e)}")
+            raise ServerError(f"Failed to generate authentication token: {str(e)}")
 
 
 # ==============================================================================
