@@ -37,7 +37,11 @@ Date: 2025
 import asyncio
 import json
 import logging
-import pickle
+# Safe serializer (replaces pickle to prevent RCE)
+from src.utils.safe_serializer import SafeSerializer
+
+# Initialize safe serializer for caching
+_serializer = SafeSerializer(use_compression=True)
 from typing import Dict, Any, Optional, List
 from pathlib import Path
 from datetime import datetime
@@ -763,7 +767,7 @@ class KnowledgeLoader:
         """Synchronously load pickle file"""
         try:
             with open(file_path, "rb") as f:
-                return pickle.load(f)
+                return _serializer.load(f.name)
         except Exception as e:
             logger.error(f"Failed to load pickle file {file_path}: {e}")
             return None
@@ -774,7 +778,7 @@ class KnowledgeLoader:
         try:
             file_path.parent.mkdir(parents=True, exist_ok=True)
             with open(file_path, "wb") as f:
-                pickle.dump(data, f)
+                _serializer.dump(data, f)
             return True
         except Exception as e:
             logger.error(f"Failed to save pickle file {file_path}: {e}")

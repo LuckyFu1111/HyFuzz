@@ -6,13 +6,20 @@ It handles:
 - Command-line argument parsing
 - Server initialization and lifecycle management
 - Component orchestration
-- Error handling and graceful shutdown
+- Global exception handling and graceful shutdown
 - Different runtime modes (server, client, test, debug)
+
+SECURITY UPDATES (v2.0.0):
+- Added global exception handler for crash recovery
+- Graceful shutdown with resource cleanup
+- Comprehensive error logging
+- Signal handler integration (SIGTERM, SIGINT)
 
 FIXED:
 - Removed duplicate -h/--help argument (argparse adds it by default)
 - Fixed import error handling
 - Better error messages
+- Added global exception handling
 
 Phase 3 Architecture Integration:
 - MCP Core/Client layer initialization
@@ -22,7 +29,7 @@ Phase 3 Architecture Integration:
 - Vulnerability scanning integration
 
 Author: HyFuzz Development Team
-Version: 1.0.0-phase3-fixed
+Version: 2.0.0-security-hardened
 License: MIT
 """
 
@@ -47,6 +54,11 @@ try:
         set_logging_level,
         __version__,
         __title__,
+    )
+    from src.utils.exception_handler import (
+        GlobalExceptionHandler,
+        handle_exceptions,
+        register_cleanup
     )
 except ImportError as e:
     print(f"Error: Failed to import HyFuzz package: {e}")
@@ -789,12 +801,28 @@ def run_verification_tests() -> int:
 # ============================================================================
 
 if __name__ == '__main__':
-    # Run verification tests if requested
-    if '--verify' in sys.argv or '--test' in sys.argv:
-        sys.argv.remove('--verify' if '--verify' in sys.argv else '--test')
-        exit_code = run_verification_tests()
-        sys.exit(exit_code)
+    # Setup logging first (before exception handler)
+    temp_logger = logging.getLogger(__name__)
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
 
-    # Otherwise run the main server
-    exit_code = main()
-    sys.exit(exit_code)
+    # SECURITY: Wrap entire application in global exception handler
+    # This ensures all uncaught exceptions are logged and handled gracefully
+    with GlobalExceptionHandler(temp_logger, exit_on_exception=True):
+        try:
+            # Run verification tests if requested
+            if '--verify' in sys.argv or '--test' in sys.argv:
+                sys.argv.remove('--verify' if '--verify' in sys.argv else '--test')
+                exit_code = run_verification_tests()
+                sys.exit(exit_code)
+
+            # Otherwise run the main server
+            exit_code = main()
+            sys.exit(exit_code)
+
+        except Exception as e:
+            # Exception will be handled by GlobalExceptionHandler
+            temp_logger.critical(f"Fatal error in main: {e}")
+            sys.exit(1)

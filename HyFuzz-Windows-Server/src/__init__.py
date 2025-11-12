@@ -97,23 +97,47 @@ def _initialize_logging() -> logging.Logger:
 _logger: logging.Logger = _initialize_logging()
 
 
-# Lazy imports with error handling
+# SECURITY: Import safe_import module for secure dynamic imports
+# This prevents arbitrary module injection attacks (CWE-94)
+from src.utils.safe_imports import safe_import_from_path
+
+
+# Lazy imports with error handling (DEPRECATED - use safe_import_from_path)
 def _safe_import(module_path: str, item_name: str, fallback: Optional[Any] = None) -> Any:
     """
-    Safely import a module component with fallback.
+    Safely import a module component with whitelist validation.
+
+    SECURITY NOTE: This function now uses safe_import_from_path which validates
+    that the module path is in the whitelist. This prevents arbitrary module
+    injection attacks.
 
     Args:
-        module_path: Full module path (e.g., 'src.mcp_server.server')
+        module_path: Full module path (e.g., 'src.llm.llm_client')
+                    Must be in the whitelist to be imported.
         item_name: Name of the component to import
         fallback: Fallback value if import fails
 
     Returns:
         Imported component or fallback value
+
+    Security:
+        - Only whitelisted modules can be imported
+        - Path traversal protection
+        - All import attempts are logged
+
+    Deprecated:
+        Use safe_import_from_path() directly for new code
     """
     try:
-        module = __import__(module_path, fromlist=[item_name])
-        return getattr(module, item_name)
-    except (ImportError, AttributeError) as e:
+        # Use secure import with whitelist validation
+        return safe_import_from_path(module_path, item_name, fallback)
+    except ValueError as e:
+        # Module not in whitelist
+        _logger.error(f"Module not whitelisted: {module_path} - {e}")
+        if fallback is not None:
+            return fallback
+        raise
+    except ImportError as e:
         _logger.warning(f"Failed to import {item_name} from {module_path}: {e}")
         return fallback
 

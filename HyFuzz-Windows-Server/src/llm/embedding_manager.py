@@ -125,7 +125,11 @@ License: MIT
 import asyncio
 import logging
 import hashlib
-import pickle
+# Safe serializer (replaces pickle to prevent RCE)
+from src.utils.safe_serializer import SafeSerializer
+
+# Initialize safe serializer for caching
+_serializer = SafeSerializer(use_compression=True)
 import time
 from typing import Any, Dict, List, Optional, Tuple, Union
 from dataclasses import dataclass, field

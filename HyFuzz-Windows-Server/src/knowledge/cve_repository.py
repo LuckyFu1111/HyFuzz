@@ -31,8 +31,9 @@ Example Usage:
     >>> stats = repo.get_stats()
 
 Author: HyFuzz Team
-Version: 1.0.0
+Version: 2.0.0
 Date: 2024-10-24
+Security: Replaced pickle with SafeSerializer to prevent RCE
 """
 
 import json
@@ -40,11 +41,16 @@ import logging
 from typing import Dict, Any, Optional, List, Tuple
 from pathlib import Path
 from datetime import datetime
-import pickle
 from collections import defaultdict, OrderedDict
 from dataclasses import dataclass, asdict, field
 from enum import Enum
 import re
+
+# Safe serializer (replaces pickle to prevent RCE)
+from src.utils.safe_serializer import SafeSerializer
+
+# Initialize safe serializer for caching
+_serializer = SafeSerializer(use_compression=True)
 
 # ==============================================================================
 # LOGGER SETUP
@@ -257,7 +263,7 @@ class CVERepository:
             self.stats["load_time_ms"] = round(load_time, 2)
 
     def _load_from_cache(self) -> bool:
-        """Load CVE data from cache file"""
+        """Load CVE data from cache file using secure serialization"""
         try:
             cache_path = self._get_cache_path()
             index_path = self._get_index_path()
@@ -265,19 +271,41 @@ class CVERepository:
             if not cache_path.exists() or not index_path.exists():
                 return False
 
-            with open(cache_path, "rb") as f:
-                self.cve_data = pickle.load(f)
+            # Load CVE data using safe serializer
+            self.cve_data = _serializer.load(cache_path)
 
-            with open(index_path, "rb") as f:
-                self.index = pickle.load(f)
+            # Load index using safe serializer
+            self.index = _serializer.load(index_path)
 
             self._rebuild_indices()
             self._update_stats()
+            logger.info("CVE cache loaded successfully from JSON format")
             return True
 
         except Exception as e:
-            logger.error(f"Failed to load cache: {e}")
-            return False
+            # Attempt migration from old pickle format
+            logger.warning(f"Failed to load JSON cache, attempting pickle migration: {e}")
+            try:
+                import pickle as _pickle
+
+                with open(cache_path, "rb") as f:
+                    self.cve_data = _pickle.load(f)
+
+                with open(index_path, "rb") as f:
+                    self.index = _pickle.load(f)
+
+                # Save in new JSON format
+                logger.info("Migrating CVE cache from pickle to JSON format")
+                _serializer.dump(self.cve_data, cache_path)
+                _serializer.dump(self.index, index_path)
+
+                self._rebuild_indices()
+                self._update_stats()
+                return True
+
+            except Exception as migration_error:
+                logger.error(f"Failed to load cache (including migration): {migration_error}")
+                return False
 
     def _load_from_file(self) -> bool:
         """Load CVE data from JSON file"""
@@ -371,16 +399,20 @@ class CVERepository:
         self.stats["last_updated"] = datetime.now().isoformat()
 
     def _save_cache(self) -> None:
-        """Save CVE data and index to cache"""
+        """Save CVE data and index to cache using secure serialization"""
         try:
             cache_path = self._get_cache_path()
             index_path = self._get_index_path()
 
-            with open(cache_path, "wb") as f:
-                pickle.dump(self.cve_data, f)
+            # Save CVE data using safe serializer
 
-            with open(index_path, "wb") as f:
-                pickle.dump(self.index, f)
+
+            _serializer.dump(self.cve_data, cache_path)
+
+            # Save index using safe serializer
+
+
+            _serializer.dump(self.index, index_path)
 
             logger.debug("CVE cache saved")
 
