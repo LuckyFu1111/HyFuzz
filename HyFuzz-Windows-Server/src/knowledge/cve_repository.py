@@ -31,9 +31,8 @@ Example Usage:
     >>> stats = repo.get_stats()
 
 Author: HyFuzz Team
-Version: 2.0.0
+Version: 1.0.0
 Date: 2024-10-24
-Security: Replaced pickle with SafeSerializer to prevent RCE
 """
 
 import json
@@ -46,11 +45,8 @@ from dataclasses import dataclass, asdict, field
 from enum import Enum
 import re
 
-# Safe serializer (replaces pickle to prevent RCE)
-from src.utils.safe_serializer import SafeSerializer
-
-# Initialize safe serializer for caching
-_serializer = SafeSerializer(use_compression=True)
+# Import secure serialization
+from src.utils.secure_serializer import SecureSerializer
 
 # ==============================================================================
 # LOGGER SETUP
@@ -224,16 +220,19 @@ class CVERepository:
         # Initialize cache directory
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
+        # Initialize secure serializer
+        self._serializer = SecureSerializer()
+
         # Load data
         self._load_data()
 
     def _get_cache_path(self) -> Path:
-        """Get path to cache file"""
-        return self.cache_dir / "cve_data.pkl"
+        """Get path to cache file (using signed pickle)"""
+        return self.cache_dir / "cve_data.signed.pkl"
 
     def _get_index_path(self) -> Path:
-        """Get path to index file"""
-        return self.cache_dir / "cve_index.pkl"
+        """Get path to index file (using signed pickle)"""
+        return self.cache_dir / "cve_index.signed.pkl"
 
     def _load_data(self) -> None:
         """Load CVE data from cache or file"""
@@ -263,7 +262,7 @@ class CVERepository:
             self.stats["load_time_ms"] = round(load_time, 2)
 
     def _load_from_cache(self) -> bool:
-        """Load CVE data from cache file using secure serialization"""
+        """Load CVE data from cache file (using secure deserialization)"""
         try:
             cache_path = self._get_cache_path()
             index_path = self._get_index_path()
@@ -271,41 +270,27 @@ class CVERepository:
             if not cache_path.exists() or not index_path.exists():
                 return False
 
-            # Load CVE data using safe serializer
-            self.cve_data = _serializer.load(cache_path)
-
-            # Load index using safe serializer
-            self.index = _serializer.load(index_path)
+            # Load using secure signed pickle deserialization
+            self.cve_data = self._serializer.load_signed_pickle(cache_path)
+            self.index = self._serializer.load_signed_pickle(index_path)
 
             self._rebuild_indices()
             self._update_stats()
-            logger.info("CVE cache loaded successfully from JSON format")
+            logger.info("CVE data loaded from secure cache")
             return True
 
         except Exception as e:
-            # Attempt migration from old pickle format
-            logger.warning(f"Failed to load JSON cache, attempting pickle migration: {e}")
+            logger.error(f"Failed to load cache: {e}")
+            # If cache is corrupted or tampered, delete it
             try:
-                import pickle as _pickle
-
-                with open(cache_path, "rb") as f:
-                    self.cve_data = _pickle.load(f)
-
-                with open(index_path, "rb") as f:
-                    self.index = _pickle.load(f)
-
-                # Save in new JSON format
-                logger.info("Migrating CVE cache from pickle to JSON format")
-                _serializer.dump(self.cve_data, cache_path)
-                _serializer.dump(self.index, index_path)
-
-                self._rebuild_indices()
-                self._update_stats()
-                return True
-
-            except Exception as migration_error:
-                logger.error(f"Failed to load cache (including migration): {migration_error}")
-                return False
+                if cache_path.exists():
+                    cache_path.unlink()
+                if index_path.exists():
+                    index_path.unlink()
+                logger.info("Corrupted cache files removed")
+            except Exception:
+                pass
+            return False
 
     def _load_from_file(self) -> bool:
         """Load CVE data from JSON file"""
@@ -399,22 +384,16 @@ class CVERepository:
         self.stats["last_updated"] = datetime.now().isoformat()
 
     def _save_cache(self) -> None:
-        """Save CVE data and index to cache using secure serialization"""
+        """Save CVE data and index to cache (using secure serialization)"""
         try:
             cache_path = self._get_cache_path()
             index_path = self._get_index_path()
 
-            # Save CVE data using safe serializer
+            # Save using secure signed pickle serialization
+            self._serializer.dump_signed_pickle(self.cve_data, cache_path)
+            self._serializer.dump_signed_pickle(self.index, index_path)
 
-
-            _serializer.dump(self.cve_data, cache_path)
-
-            # Save index using safe serializer
-
-
-            _serializer.dump(self.index, index_path)
-
-            logger.debug("CVE cache saved")
+            logger.debug("CVE cache saved securely with HMAC signature")
 
         except Exception as e:
             logger.error(f"Failed to save cache: {e}")
