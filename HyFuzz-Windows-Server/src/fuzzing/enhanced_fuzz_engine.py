@@ -1,15 +1,169 @@
 """
 Enhanced Fuzzing Engine for HyFuzz
 
-This module implements a complete, coverage-guided fuzzing engine with:
-- LLM-powered semantic payload generation
-- Advanced mutation strategies
-- Coverage feedback and adaptive scheduling
-- Performance monitoring and optimization
+This module implements a complete, production-ready coverage-guided fuzzing
+engine that combines traditional fuzzing techniques with LLM-powered semantic
+payload generation for intelligent vulnerability discovery.
+
+Key Features:
+- Coverage-guided fuzzing with edge tracking
+- LLM-powered semantic mutation strategies
+- Adaptive energy scheduling based on seed performance
+- Multiple mutation strategies (bit flip, arithmetic, dictionary, etc.)
+- Intelligent corpus management with minimization
+- Crash deduplication and triage
+- Real-time performance metrics and monitoring
+- Protocol-aware fuzzing support
+
+Architecture:
+    The fuzzing engine consists of several cooperating components:
+
+    ┌──────────────────────────────────────────────────┐
+    │           Enhanced Fuzz Engine                   │
+    │                                                  │
+    │  ┌──────────────┐  ┌──────────────────────┐   │
+    │  │   Corpus     │  │   Coverage Tracker   │   │
+    │  │   Manager    │  │   • Edge detection   │   │
+    │  │   • Seeds    │  │   • Virgin edges     │   │
+    │  │   • Crashes  │  │   • Hit counts       │   │
+    │  │   • Hangs    │  │                      │   │
+    │  └──────┬───────┘  └──────────┬───────────┘   │
+    │         │                     │               │
+    │         ▼                     ▼               │
+    │  ┌──────────────────────────────────────┐    │
+    │  │      Energy Scheduler                │    │
+    │  │      • Priority calculation          │    │
+    │  │      • Resource allocation           │    │
+    │  └──────────────┬───────────────────────┘    │
+    │                 │                             │
+    │                 ▼                             │
+    │  ┌──────────────────────────────────────┐    │
+    │  │      Mutation Engine                 │    │
+    │  │      • Bit flips                     │    │
+    │  │      • Byte flips                    │    │
+    │  │      • Arithmetic                    │    │
+    │  │      • Dictionary                    │    │
+    │  │      • LLM semantic                  │    │
+    │  │      • Protocol-aware                │    │
+    │  └──────────────┬───────────────────────┘    │
+    │                 │                             │
+    │                 ▼                             │
+    │  ┌──────────────────────────────────────┐    │
+    │  │      Execution Engine                │    │
+    │  │      • Payload execution             │    │
+    │  │      • Coverage collection           │    │
+    │  │      • Crash detection               │    │
+    │  └──────────────────────────────────────┘    │
+    └──────────────────────────────────────────────┘
+
+Fuzzing Workflow:
+    1. Load initial corpus from seed directory
+    2. Select next seed based on energy scheduling
+    3. Apply mutation strategy to generate new payloads
+    4. Execute payload against target
+    5. Collect coverage information
+    6. Detect crashes and hangs
+    7. Update corpus with interesting inputs
+    8. Calculate new energy for seeds
+    9. Generate metrics and reports
+    10. Repeat until duration/coverage goals met
+
+Mutation Strategies:
+    - BIT_FLIP: Flip individual bits for small variations
+    - BYTE_FLIP: Flip entire bytes for larger changes
+    - ARITHMETIC: Add/subtract small integers
+    - INTERESTING_VALUES: Insert boundary values (0, -1, MAX_INT, etc.)
+    - BLOCK_DELETE: Remove chunks of data
+    - BLOCK_DUPLICATE: Duplicate data blocks
+    - BLOCK_SWAP: Swap data block positions
+    - DICTIONARY: Insert tokens from dictionary
+    - LLM_SEMANTIC: LLM-generated semantic variations
+    - PROTOCOL_AWARE: Protocol-specific mutations
+    - HYBRID: Combination of multiple strategies
+
+Energy Scheduling:
+    Seeds are assigned energy (fuzzing iterations) based on:
+    - Coverage contribution: Unique edges discovered
+    - Execution speed: Faster = higher priority
+    - Discovery rate: Crashes/hangs found
+    - Age factor: Newer seeds get slight boost
+
+Coverage Tracking:
+    - Edge-based coverage (AFL-style)
+    - Virgin edge detection for new paths
+    - Hit count bucketing for frequent paths
+    - Coverage percentage estimation
+
+Corpus Management:
+    - Automatic deduplication of seeds
+    - Crash deduplication using stack hashes
+    - Corpus minimization to remove redundant seeds
+    - Size limits with smart eviction
+
+Performance Metrics:
+    - Executions per second (execs/s)
+    - Total unique crashes found
+    - Code coverage (edges discovered)
+    - Time since last new coverage
+    - Strategy success rates
+
+Example Usage:
+    >>> from fuzzing.enhanced_fuzz_engine import EnhancedFuzzEngine
+    >>> from pathlib import Path
+    >>>
+    >>> # Initialize engine
+    >>> engine = EnhancedFuzzEngine(
+    ...     target_command="./target @@",
+    ...     corpus_dir=Path("./seeds"),
+    ...     output_dir=Path("./findings"),
+    ...     config={
+    ...         "corpus_size": 10000,
+    ...         "timeout_ms": 1000
+    ...     }
+    ... )
+    >>>
+    >>> # Start fuzzing campaign
+    >>> await engine.start(duration_seconds=3600)  # Run for 1 hour
+    >>>
+    >>> # Get final metrics
+    >>> metrics = engine.get_metrics()
+    >>> print(f"Total executions: {metrics['total_execs']}")
+    >>> print(f"Crashes found: {metrics['unique_crashes']}")
+    >>> print(f"Code coverage: {metrics['edge_coverage_pct']}%")
+
+Performance Characteristics:
+    - Execution speed: 100-10,000 execs/sec (target-dependent)
+    - Memory usage: ~100-500 MB base + corpus size
+    - Corpus scaling: O(n) for seed selection
+    - Coverage tracking: O(1) per edge
+    - Crash dedup: O(1) hash lookup
+
+Integration Points:
+    - LLM client for semantic mutations
+    - Protocol handlers for protocol-aware fuzzing
+    - Coverage instrumentation (AFL, ASAN, etc.)
+    - Crash analysis tools
+    - Reporting systems
+
+Best Practices:
+    - Start with small, valid seed corpus
+    - Use protocol-aware handlers when possible
+    - Enable LLM semantic mutations for complex targets
+    - Monitor coverage plateaus and adjust strategies
+    - Regularly review crashes for true positives
+    - Use corpus minimization to reduce redundancy
+
+Limitations:
+    - Coverage requires instrumented target
+    - LLM mutations add latency (1-5s per payload)
+    - Memory grows with corpus size
+    - State-dependent bugs may be missed
+    - Path explosion in complex programs
 
 Author: HyFuzz Team
 Version: 2.0.0
 Date: 2025-01-13
+License: MIT
 """
 
 import asyncio
