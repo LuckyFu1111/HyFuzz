@@ -33,76 +33,16 @@ try:
     from aiohttp import web, ClientSession
     from aiohttp.web import Request, Response, StreamResponse, middleware
     import aiohttp.web_exceptions as web_exc
-except ImportError:
-    # Create mock classes for testing when aiohttp is not available
-    class MockWeb:
-        class Application:
-            def __init__(self, **kwargs):
-                self.router = MockRouter()
-
-        class AppRunner:
-            async def setup(self): pass
-
-            async def cleanup(self): pass
-
-        class TCPSite:
-            def __init__(self, runner, host, port, ssl_context=None): pass
-
-            async def start(self): pass
-
-            async def stop(self): pass
-
-        class Response: pass
-
-        @staticmethod
-        def json_response(data, status=200):
-            class MockResponse:
-                def __init__(self, data, status):
-                    self.data = data
-                    self.status = status
-                    self.headers = {}
-
-            return MockResponse(data, status)
-
-
-    class MockRouter:
-        def __init__(self):
-            self._routes = []
-
-        def add_post(self, path, handler):
-            self._routes.append(("POST", path, handler))
-
-        def add_get(self, path, handler):
-            self._routes.append(("GET", path, handler))
-
-        def add_delete(self, path, handler):
-            self._routes.append(("DELETE", path, handler))
-
-        def routes(self):
-            return self._routes
-
-
-    web = MockWeb()
-    ClientSession = None
-
-
-    class Request:
-        pass
-
-
-    Response = web.Response
-    StreamResponse = web.Response
-    middleware = lambda x: x
-
-
-    class MockExceptions:
-        class HTTPException:
-            def __init__(self):
-                self.status = 500
-                self.reason = "Error"
-
-
-    web_exc = MockExceptions()
+except ImportError as e:
+    # aiohttp is required for HTTP transport
+    raise ImportError(
+        "HTTP transport requires aiohttp library.\n\n"
+        "Please install it with:\n"
+        "    pip install aiohttp\n\n"
+        "Or install the full MCP server dependencies:\n"
+        "    pip install 'hyfuzz[server]'\n\n"
+        f"Original error: {e}"
+    ) from e
 
 try:
     from ..models.message_models import (
@@ -121,58 +61,73 @@ try:
     )
     from ..utils.validators import validate_request_payload
     from ..utils.json_utils import safe_json_dumps, safe_json_loads
-except (ImportError, ModuleNotFoundError):
-    # Create mock implementations for testing
-    class MCPRequest:
-        pass
+except (ImportError, ModuleNotFoundError) as e:
+    # Models and utilities are required for HTTP transport
+    # Provide fallback implementations only for truly optional components
+    try:
+        from ..models.message_models import MCPRequest, MCPResponse, MCPErrorResponse
+        from ..models.common_models import ErrorResponse
+    except ImportError:
+        raise ImportError(
+            "HTTP transport requires MCP models.\n\n"
+            "Please ensure the project structure is correct and models are available.\n"
+            f"Original error: {e}"
+        ) from e
 
+    # Provide fallback for optional utilities
+    try:
+        from ..utils.logger import get_logger
+    except ImportError:
+        def get_logger(name):
+            return logging.getLogger(name)
 
-    class MCPResponse:
-        pass
+    try:
+        from ..utils.exceptions import (
+            MCPProtocolError,
+            ValidationError,
+            AuthenticationError,
+            ServerError,
+            TimeoutError as MCPTimeoutError,
+        )
+    except ImportError:
+        # Define minimal exception classes
+        class MCPProtocolError(Exception):
+            """MCP Protocol Error"""
+            pass
 
+        class ValidationError(ValueError):
+            """Validation Error"""
+            pass
 
-    class MCPErrorResponse:
-        pass
+        class AuthenticationError(PermissionError):
+            """Authentication Error"""
+            pass
 
+        class ServerError(RuntimeError):
+            """Server Error"""
+            pass
 
-    class ErrorResponse:
-        pass
+        class MCPTimeoutError(TimeoutError):
+            """Timeout Error"""
+            pass
 
+    try:
+        from ..utils.validators import validate_request_payload
+    except ImportError:
+        def validate_request_payload(data):
+            """Minimal validation - just pass through"""
+            return data
 
-    def get_logger(name):
-        return logging.getLogger(name)
+    try:
+        from ..utils.json_utils import safe_json_dumps, safe_json_loads
+    except ImportError:
+        def safe_json_dumps(obj):
+            """Safe JSON serialization"""
+            return json.dumps(obj)
 
-
-    class MCPProtocolError(Exception):
-        pass
-
-
-    class ValidationError(Exception):
-        pass
-
-
-    class AuthenticationError(Exception):
-        pass
-
-
-    class ServerError(Exception):
-        pass
-
-
-    class MCPTimeoutError(Exception):
-        pass
-
-
-    def validate_request_payload(data):
-        return data
-
-
-    def safe_json_dumps(obj):
-        return json.dumps(obj)
-
-
-    def safe_json_loads(text):
-        return json.loads(text)
+        def safe_json_loads(text):
+            """Safe JSON deserialization"""
+            return json.loads(text)
 
 # ============================================================================
 # Constants
