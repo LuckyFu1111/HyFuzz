@@ -46,7 +46,6 @@ Date: 2025
 
 import asyncio
 import logging
-import pickle
 from typing import Dict, Any, Optional
 from pathlib import Path
 from datetime import datetime
@@ -54,6 +53,9 @@ from collections import OrderedDict
 from dataclasses import dataclass, field
 from enum import Enum
 from concurrent.futures import ThreadPoolExecutor
+
+# Import secure serialization
+from src.utils.secure_serializer import SecureSerializer
 
 # ==============================================================================
 # LOGGER SETUP
@@ -176,31 +178,31 @@ class CacheStats:
 # ==============================================================================
 
 
-def _save_entry_to_file(cache_file: Path, entry: CacheEntry):
+def _save_entry_to_file(cache_file: Path, entry: CacheEntry, serializer: SecureSerializer):
     """
-    Synchronously save cache entry to file.
-    
+    Synchronously save cache entry to file using secure serialization.
+
     Args:
         cache_file: Path to cache file
         entry: Cache entry to save
+        serializer: Secure serializer instance
     """
-    with open(cache_file, "wb") as f:
-        pickle.dump(entry, f)
+    serializer.dump_signed_pickle(entry, cache_file)
 
 
-def _load_entry_from_file(cache_file: Path) -> Optional[CacheEntry]:
+def _load_entry_from_file(cache_file: Path, serializer: SecureSerializer) -> Optional[CacheEntry]:
     """
-    Synchronously load cache entry from file.
-    
+    Synchronously load cache entry from file using secure deserialization.
+
     Args:
         cache_file: Path to cache file
-        
+        serializer: Secure serializer instance
+
     Returns:
         CacheEntry if successful, None otherwise
     """
     try:
-        with open(cache_file, "rb") as f:
-            return pickle.load(f)
+        return serializer.load_signed_pickle(cache_file)
     except Exception as e:
         logger.error(f"Failed to load from {cache_file}: {e}")
         return None
@@ -251,6 +253,9 @@ class GraphCache:
 
         # In-memory cache: LRU cache using OrderedDict
         self._memory_cache: OrderedDict[str, CacheEntry] = OrderedDict()
+
+        # Initialize secure serializer
+        self._serializer = SecureSerializer()
 
         # Metadata and statistics
         self._stats = CacheStats()
@@ -315,7 +320,7 @@ class GraphCache:
 
                 # Calculate entry size
                 try:
-                    size_bytes = len(pickle.dumps(value))
+                    size_bytes = len(self._serializer.dumps_signed_pickle(value))
                 except Exception:
                     size_bytes = 0
 
@@ -647,7 +652,7 @@ class GraphCache:
 
     async def _save_to_disk(self, entry: CacheEntry) -> bool:
         """
-        Save cache entry to disk asynchronously.
+        Save cache entry to disk asynchronously using secure serialization.
 
         Args:
             entry: Cache entry to save
@@ -656,7 +661,7 @@ class GraphCache:
             True if successful, False otherwise
         """
         try:
-            cache_file = self.cache_dir / f"{entry.key}.pkl"
+            cache_file = self.cache_dir / f"{entry.key}.signed.pkl"
 
             # Run in thread pool to avoid blocking
             loop = asyncio.get_event_loop()
@@ -665,9 +670,10 @@ class GraphCache:
                 _save_entry_to_file,
                 cache_file,
                 entry,
+                self._serializer,
             )
 
-            logger.debug(f"Saved to disk: {cache_file}")
+            logger.debug(f"Saved to disk (secure): {cache_file}")
             return True
 
         except Exception as e:
@@ -676,7 +682,7 @@ class GraphCache:
 
     async def _load_from_disk(self) -> bool:
         """
-        Load all cache entries from disk.
+        Load all cache entries from disk using secure deserialization.
 
         Returns:
             True if successful, False otherwise
@@ -685,8 +691,9 @@ class GraphCache:
             if not self.cache_dir.exists():
                 return True
 
-            cache_files = list(self.cache_dir.glob("*.pkl"))
+            cache_files = list(self.cache_dir.glob("*.signed.pkl"))
             loaded_count = 0
+            corrupted_count = 0
 
             for cache_file in cache_files:
                 try:
@@ -696,9 +703,17 @@ class GraphCache:
                         loaded_count += 1
                 except Exception as e:
                     logger.warning(f"Failed to load cache file {cache_file}: {e}")
+                    corrupted_count += 1
+                    # Delete corrupted files
+                    try:
+                        cache_file.unlink()
+                    except Exception:
+                        pass
 
             if loaded_count > 0:
                 logger.info(f"Loaded {loaded_count} entries from disk cache")
+            if corrupted_count > 0:
+                logger.warning(f"Removed {corrupted_count} corrupted cache files")
 
             return True
 
@@ -708,7 +723,7 @@ class GraphCache:
 
     async def _load_from_disk_by_key(self, key: str) -> Optional[CacheEntry]:
         """
-        Load specific cache entry from disk.
+        Load specific cache entry from disk using secure deserialization.
 
         Args:
             key: Cache key to load
@@ -717,7 +732,7 @@ class GraphCache:
             CacheEntry if found, None otherwise
         """
         try:
-            cache_file = self.cache_dir / f"{key}.pkl"
+            cache_file = self.cache_dir / f"{key}.signed.pkl"
 
             if not cache_file.exists():
                 return None
@@ -730,11 +745,11 @@ class GraphCache:
 
     async def _load_entry_from_file(self, cache_file: Path) -> Optional[CacheEntry]:
         """
-        Load cache entry from file asynchronously.
-        
+        Load cache entry from file asynchronously using secure deserialization.
+
         Args:
             cache_file: Path to cache file
-            
+
         Returns:
             CacheEntry if successful, None otherwise
         """
@@ -744,6 +759,7 @@ class GraphCache:
                 self._thread_pool,
                 _load_entry_from_file,
                 cache_file,
+                self._serializer,
             )
             return entry
         except Exception as e:
@@ -761,7 +777,7 @@ class GraphCache:
             True if successful, False otherwise
         """
         try:
-            cache_file = self.cache_dir / f"{key}.pkl"
+            cache_file = self.cache_dir / f"{key}.signed.pkl"
 
             if cache_file.exists():
                 cache_file.unlink()
@@ -782,7 +798,7 @@ class GraphCache:
         """
         try:
             if self.cache_dir.exists():
-                for cache_file in self.cache_dir.glob("*.pkl"):
+                for cache_file in self.cache_dir.glob("*.signed.pkl"):
                     cache_file.unlink()
 
             logger.info("Disk cache cleared")
