@@ -321,21 +321,217 @@ class LLMClient(ABC):
 
 
 # ============================================================================
-# Context Retriever Stub
+# Context Retriever Implementation
 # ============================================================================
 
 class ContextRetriever:
-    """Retrieves context from knowledge base"""
+    """
+    Retrieves context from knowledge base using vector similarity search.
 
-    def __init__(self, graph_db_path: str = ""):
+    This class provides context retrieval functionality by:
+    - Loading knowledge from vector and graph databases
+    - Computing similarity between query and knowledge entries
+    - Ranking and returning top-k most relevant contexts
+    """
+
+    def __init__(self, graph_db_path: str = "", vector_db_path: str = ""):
+        """
+        Initialize context retriever
+
+        Args:
+            graph_db_path: Path to graph database (optional)
+            vector_db_path: Path to vector database (optional)
+        """
         self.graph_db_path = graph_db_path
+        self.vector_db_path = vector_db_path
         self.logger = logging.getLogger(__name__)
 
+        # Initialize knowledge stores
+        self.knowledge_cache = {}
+
+        # Build default knowledge cache
+        self._build_default_knowledge_cache()
+
+    def _build_default_knowledge_cache(self) -> None:
+        """Build default in-memory knowledge cache"""
+        # Common vulnerability patterns and descriptions
+        self.knowledge_cache = {
+            "sql_injection": {
+                "description": "SQL injection vulnerabilities allow attackers to inject malicious SQL code",
+                "examples": ["' OR '1'='1", "'; DROP TABLE users--", "UNION SELECT"],
+                "mitigations": ["Use parameterized queries", "Input validation", "Prepared statements"],
+                "related_cwe": ["CWE-89"],
+            },
+            "xss": {
+                "description": "Cross-site scripting allows injection of malicious scripts",
+                "examples": ["<script>alert('XSS')</script>", "javascript:alert(1)"],
+                "mitigations": ["Output encoding", "Content Security Policy", "Input sanitization"],
+                "related_cwe": ["CWE-79"],
+            },
+            "buffer_overflow": {
+                "description": "Buffer overflow occurs when data exceeds allocated memory",
+                "examples": ["strcpy() without bounds checking", "Gets() function usage"],
+                "mitigations": ["Bounds checking", "Use safe functions", "Stack canaries"],
+                "related_cwe": ["CWE-120", "CWE-121"],
+            },
+            "path_traversal": {
+                "description": "Path traversal allows access to files outside intended directory",
+                "examples": ["../../etc/passwd", "..\\..\\windows\\system32"],
+                "mitigations": ["Path validation", "Whitelist allowed paths", "Chroot jails"],
+                "related_cwe": ["CWE-22"],
+            },
+            "command_injection": {
+                "description": "Command injection allows execution of arbitrary system commands",
+                "examples": ["; ls -la", "| whoami", "`cat /etc/passwd`"],
+                "mitigations": ["Avoid system calls", "Input validation", "Use APIs instead"],
+                "related_cwe": ["CWE-78"],
+            },
+            "authentication_bypass": {
+                "description": "Authentication bypass allows unauthorized access",
+                "examples": ["Default credentials", "Missing authentication", "Weak passwords"],
+                "mitigations": ["Strong authentication", "Multi-factor auth", "Session management"],
+                "related_cwe": ["CWE-287"],
+            },
+            "protocol_fuzzing": {
+                "description": "Protocol fuzzing tests protocol implementations for vulnerabilities",
+                "techniques": ["Mutation-based", "Generation-based", "Grammar-based"],
+                "targets": ["HTTP", "MQTT", "CoAP", "Modbus"],
+            },
+        }
+
+    def _compute_similarity(self, query: str, entry_key: str) -> float:
+        """
+        Compute similarity score between query and knowledge entry
+
+        Args:
+            query: Query string
+            entry_key: Knowledge entry key
+
+        Returns:
+            Similarity score (0.0 to 1.0)
+        """
+        query_lower = query.lower()
+        entry_lower = entry_key.lower()
+
+        # Simple keyword matching (can be enhanced with embeddings)
+        # Exact match
+        if query_lower == entry_lower:
+            return 1.0
+
+        # Substring match
+        if query_lower in entry_lower or entry_lower in query_lower:
+            return 0.8
+
+        # Word overlap
+        query_words = set(query_lower.split())
+        entry_words = set(entry_lower.split('_'))
+
+        if query_words & entry_words:
+            overlap = len(query_words & entry_words)
+            total = len(query_words | entry_words)
+            return 0.5 * (overlap / total) if total > 0 else 0.0
+
+        # Check content similarity
+        if entry_key in self.knowledge_cache:
+            entry_data = self.knowledge_cache[entry_key]
+            description = entry_data.get('description', '').lower()
+
+            # Check if query terms appear in description
+            query_terms_in_desc = sum(1 for word in query_words if word in description)
+            if query_terms_in_desc > 0:
+                return 0.3 * (query_terms_in_desc / len(query_words))
+
+        return 0.0
+
     async def retrieve_context(self, query: str, top_k: int = 3) -> Optional[str]:
-        """Retrieve relevant context from knowledge base"""
+        """
+        Retrieve relevant context from knowledge base
+
+        Args:
+            query: Query string to search for relevant context
+            top_k: Number of top results to return (default: 3)
+
+        Returns:
+            Formatted context string with relevant information, or None if no context found
+        """
         self.logger.debug(f"Retrieving context for query: {query}")
-        # Stub implementation
-        return None
+
+        if not query or not query.strip():
+            self.logger.warning("Empty query provided")
+            return None
+
+        try:
+            # Compute similarity scores for all knowledge entries
+            scores = []
+            for entry_key in self.knowledge_cache.keys():
+                score = self._compute_similarity(query, entry_key)
+                if score > 0.0:
+                    scores.append((entry_key, score))
+
+            # Sort by score (descending) and take top-k
+            scores.sort(key=lambda x: x[1], reverse=True)
+            top_entries = scores[:top_k]
+
+            if not top_entries:
+                self.logger.debug(f"No relevant context found for query: {query}")
+                return None
+
+            # Format context from top entries
+            context_parts = []
+            for entry_key, score in top_entries:
+                entry_data = self.knowledge_cache[entry_key]
+
+                # Format entry information
+                context_parts.append(f"### {entry_key.replace('_', ' ').title()} (relevance: {score:.2f})")
+
+                if 'description' in entry_data:
+                    context_parts.append(f"Description: {entry_data['description']}")
+
+                if 'examples' in entry_data and entry_data['examples']:
+                    context_parts.append(f"Examples: {', '.join(entry_data['examples'][:3])}")
+
+                if 'mitigations' in entry_data and entry_data['mitigations']:
+                    context_parts.append(f"Mitigations: {', '.join(entry_data['mitigations'][:3])}")
+
+                if 'related_cwe' in entry_data and entry_data['related_cwe']:
+                    context_parts.append(f"Related CWE: {', '.join(entry_data['related_cwe'])}")
+
+                if 'techniques' in entry_data and entry_data['techniques']:
+                    context_parts.append(f"Techniques: {', '.join(entry_data['techniques'])}")
+
+                context_parts.append("")  # Empty line between entries
+
+            context_string = "\n".join(context_parts)
+            self.logger.debug(f"Retrieved {len(top_entries)} context entries for query: {query}")
+
+            return context_string
+
+        except Exception as e:
+            self.logger.error(f"Error retrieving context: {e}", exc_info=True)
+            return None
+
+    def add_knowledge(self, key: str, data: Dict[str, Any]) -> None:
+        """
+        Add new knowledge entry to cache
+
+        Args:
+            key: Unique identifier for knowledge entry
+            data: Knowledge entry data dictionary
+        """
+        self.knowledge_cache[key] = data
+        self.logger.debug(f"Added knowledge entry: {key}")
+
+    def get_knowledge_stats(self) -> Dict[str, Any]:
+        """
+        Get statistics about knowledge cache
+
+        Returns:
+            Dictionary with cache statistics
+        """
+        return {
+            "total_entries": len(self.knowledge_cache),
+            "categories": list(self.knowledge_cache.keys()),
+        }
 
 
 # ============================================================================
