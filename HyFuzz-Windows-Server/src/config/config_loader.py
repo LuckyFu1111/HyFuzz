@@ -605,14 +605,16 @@ class ConfigLoader:
             try:
                 if "." not in value:
                     return int(value)
-            except ValueError:
-                pass
+            except ValueError as e:
+                # Not an integer, try other types
+                self.logger.debug(f"Could not convert '{value}' to int: {e}")
 
             # Float
             try:
                 return float(value)
-            except ValueError:
-                pass
+            except ValueError as e:
+                # Not a float either, continue with other checks
+                self.logger.debug(f"Could not convert '{value}' to float: {e}")
 
             # List (comma-separated)
             if "," in value:

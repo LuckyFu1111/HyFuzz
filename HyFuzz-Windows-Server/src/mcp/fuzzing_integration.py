@@ -394,8 +394,12 @@ class MCPFuzzingCoordinator:
         for queue in self.event_subscribers:
             try:
                 await queue.put(event)
-            except:
-                pass
+            except asyncio.QueueFull:
+                # Queue is full, subscriber might be slow - log and skip
+                self.logger.warning(f"Event queue full for subscriber, dropping event: {event.get('type', 'unknown')}")
+            except Exception as e:
+                # Other errors (e.g., queue closed) - log and continue
+                self.logger.error(f"Failed to send event to subscriber: {e}", exc_info=True)
 
     async def get_global_statistics(self) -> Dict[str, Any]:
         """Get global fuzzing statistics"""
