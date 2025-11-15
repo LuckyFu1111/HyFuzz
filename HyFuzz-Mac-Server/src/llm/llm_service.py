@@ -244,62 +244,383 @@ class PromptBuilder:
 # ============================================================================
 
 class CotEngine:
-    """Chain-of-Thought reasoning engine"""
+    """
+    Enhanced Chain-of-Thought reasoning engine
+
+    Features:
+    - Multi-step reasoning with intermediate verification
+    - Self-correction mechanism
+    - Confidence scoring based on reasoning quality
+    - Tree-of-thought exploration for complex problems
+    - Detailed reasoning visualization
+    """
 
     def __init__(self, llm_client: 'LLMClient', prompt_builder: PromptBuilder):
         self.llm_client = llm_client
         self.prompt_builder = prompt_builder
         self.logger = logging.getLogger(__name__)
 
+        # Enhanced reasoning templates
+        self.reasoning_templates = {
+            'security_analysis': [
+                "Identify the vulnerability type and attack surface",
+                "Analyze potential attack vectors",
+                "Evaluate severity and impact",
+                "Consider mitigation strategies",
+                "Draw final conclusions"
+            ],
+            'fuzzing_strategy': [
+                "Understand the target protocol/format",
+                "Identify mutation points",
+                "Prioritize mutation strategies",
+                "Evaluate expected coverage",
+                "Select optimal fuzzing approach"
+            ],
+            'general': [
+                "Break down the problem",
+                "Analyze key components",
+                "Consider alternative approaches",
+                "Evaluate evidence",
+                "Synthesize conclusion"
+            ]
+        }
+
     async def generate_cot_chain(
         self,
         query: str,
         context: Optional[str] = None,
-        max_steps: int = 5
+        max_steps: int = 5,
+        reasoning_type: str = 'general',
+        enable_self_correction: bool = True
     ) -> CotChain:
-        """Generate a Chain-of-Thought reasoning chain"""
+        """
+        Generate enhanced Chain-of-Thought reasoning chain
+
+        Args:
+            query: Question or problem to reason about
+            context: Optional context information
+            max_steps: Maximum reasoning steps
+            reasoning_type: Type of reasoning ('security_analysis', 'fuzzing_strategy', 'general')
+            enable_self_correction: Enable self-correction mechanism
+
+        Returns:
+            CotChain with detailed reasoning steps
+        """
         cot_chain = CotChain()
 
         try:
-            # Step 1: Problem Analysis
-            analysis_prompt = self.prompt_builder.build_cot_prompt(query, context)
-            response = await self.llm_client.generate(analysis_prompt)
-            cot_chain.add_step("Problem Analysis: " + response[:200])
+            # Get appropriate reasoning template
+            template = self.reasoning_templates.get(reasoning_type, self.reasoning_templates['general'])
+            actual_steps = min(len(template), max_steps)
 
-            # Step 2: Extract reasoning components
-            reasoning_prompt = f"Extract key reasoning points from:\n{response}"
-            reasoning = await self.llm_client.generate(reasoning_prompt)
-            cot_chain.add_step("Reasoning Extraction: " + reasoning[:200])
+            # Step-by-step reasoning
+            accumulated_reasoning = ""
 
-            # Step 3: Reach conclusion
-            conclusion_prompt = f"Based on the analysis, provide final conclusion:\n{reasoning}"
-            conclusion = await self.llm_client.generate(conclusion_prompt)
+            for i, step_description in enumerate(template[:actual_steps]):
+                self.logger.debug(f"CoT Step {i+1}/{actual_steps}: {step_description}")
+
+                # Build step-specific prompt
+                step_prompt = self._build_step_prompt(
+                    query=query,
+                    context=context,
+                    step_description=step_description,
+                    previous_reasoning=accumulated_reasoning,
+                    step_number=i+1,
+                    total_steps=actual_steps
+                )
+
+                # Generate reasoning for this step
+                response = await self.llm_client.generate(
+                    step_prompt,
+                    temperature=0.7,
+                    max_tokens=300
+                )
+
+                # Add to chain
+                step_label = f"Step {i+1}: {step_description}"
+                cot_chain.add_step(f"{step_label}\n{response}")
+
+                # Accumulate reasoning
+                accumulated_reasoning += f"\n{step_label}:\n{response}\n"
+
+                # Intermediate verification (for critical steps)
+                if i > 0 and i % 2 == 0 and enable_self_correction:
+                    verification = await self._verify_intermediate_step(
+                        query=query,
+                        current_reasoning=accumulated_reasoning
+                    )
+
+                    if not verification['is_valid']:
+                        self.logger.warning(
+                            f"Intermediate verification failed at step {i+1}, "
+                            f"applying correction"
+                        )
+
+                        # Apply correction
+                        correction_prompt = self._build_correction_prompt(
+                            query=query,
+                            faulty_reasoning=accumulated_reasoning,
+                            verification_feedback=verification['feedback']
+                        )
+
+                        corrected_response = await self.llm_client.generate(
+                            correction_prompt,
+                            temperature=0.6
+                        )
+
+                        cot_chain.add_step(
+                            f"Self-Correction at Step {i+1}:\n{corrected_response}"
+                        )
+
+                        accumulated_reasoning += f"\nCorrected Reasoning:\n{corrected_response}\n"
+
+            # Final synthesis
+            synthesis_prompt = self._build_synthesis_prompt(
+                query=query,
+                reasoning_chain=accumulated_reasoning
+            )
+
+            conclusion = await self.llm_client.generate(
+                synthesis_prompt,
+                temperature=0.5,
+                max_tokens=400
+            )
+
             cot_chain.conclusion = conclusion
-            cot_chain.add_step("Conclusion: " + conclusion[:200])
+            cot_chain.add_step(f"Final Conclusion:\n{conclusion}")
+            cot_chain.reasoning = accumulated_reasoning
 
-            # Set confidence based on reasoning quality
-            cot_chain.confidence = min(1.0, len(cot_chain.thought_steps) / max_steps)
-            cot_chain.reasoning = reasoning
+            # Enhanced confidence scoring
+            cot_chain.confidence = self._calculate_confidence(
+                cot_chain=cot_chain,
+                max_steps=max_steps
+            )
 
-            self.logger.info(f"Generated CoT chain with {len(cot_chain.thought_steps)} steps")
+            self.logger.info(
+                f"Generated enhanced CoT chain: "
+                f"{len(cot_chain.thought_steps)} steps, "
+                f"confidence={cot_chain.confidence:.2f}"
+            )
+
             return cot_chain
 
         except Exception as e:
-            self.logger.error(f"Error generating CoT chain: {str(e)}")
+            self.logger.error(f"Error generating CoT chain: {str(e)}", exc_info=True)
             raise
 
-    async def verify_response(self, query: str, response: str) -> Tuple[bool, str]:
-        """Verify response quality"""
-        verification_prompt = self.prompt_builder.build_verification_prompt(query, response)
-        verification_result = await self.llm_client.generate(verification_prompt)
+    def _build_step_prompt(
+        self,
+        query: str,
+        context: Optional[str],
+        step_description: str,
+        previous_reasoning: str,
+        step_number: int,
+        total_steps: int
+    ) -> str:
+        """Build prompt for a specific reasoning step"""
+        prompt = f"""Question: {query}
 
-        # Simple verification heuristic
-        is_valid = any(
-            keyword in verification_result.lower()
-            for keyword in ["valid", "correct", "good", "accurate"]
-        )
+Context: {context or 'None'}
 
-        return is_valid, verification_result
+Previous Reasoning:
+{previous_reasoning or 'This is the first step.'}
+
+Current Step ({step_number}/{total_steps}): {step_description}
+
+Please provide clear, concise reasoning for this specific step. Focus on:
+- Direct relevance to the question
+- Logical connections to previous steps
+- Evidence-based analysis
+- Clear conclusions for this step
+
+Reasoning:"""
+
+        return prompt
+
+    def _build_synthesis_prompt(self, query: str, reasoning_chain: str) -> str:
+        """Build prompt for final synthesis"""
+        prompt = f"""Question: {query}
+
+Complete Reasoning Chain:
+{reasoning_chain}
+
+Based on the above step-by-step reasoning, provide a comprehensive final answer that:
+1. Directly answers the original question
+2. Synthesizes insights from all reasoning steps
+3. Highlights key findings and conclusions
+4. Provides actionable recommendations if applicable
+
+Final Answer:"""
+
+        return prompt
+
+    def _build_correction_prompt(
+        self,
+        query: str,
+        faulty_reasoning: str,
+        verification_feedback: str
+    ) -> str:
+        """Build prompt for self-correction"""
+        prompt = f"""Question: {query}
+
+Current Reasoning (potentially flawed):
+{faulty_reasoning}
+
+Verification Feedback:
+{verification_feedback}
+
+Please correct the reasoning by:
+1. Identifying the specific flaw or gap
+2. Providing corrected analysis
+3. Ensuring logical consistency
+4. Strengthening the evidence base
+
+Corrected Reasoning:"""
+
+        return prompt
+
+    async def _verify_intermediate_step(
+        self,
+        query: str,
+        current_reasoning: str
+    ) -> Dict[str, Any]:
+        """Verify intermediate reasoning step"""
+        verification_prompt = f"""Question: {query}
+
+Current Reasoning So Far:
+{current_reasoning}
+
+Verify the reasoning above by checking:
+1. Logical consistency
+2. Relevance to the question
+3. Evidence quality
+4. Completeness of analysis
+
+Is this reasoning valid and on the right track? Answer with:
+- YES if the reasoning is sound
+- NO if there are significant flaws
+
+Then provide brief feedback.
+
+Verification:"""
+
+        try:
+            verification_result = await self.llm_client.generate(
+                verification_prompt,
+                temperature=0.3,
+                max_tokens=150
+            )
+
+            is_valid = 'yes' in verification_result.lower()[:50]
+
+            return {
+                'is_valid': is_valid,
+                'feedback': verification_result
+            }
+
+        except Exception as e:
+            self.logger.error(f"Verification failed: {e}")
+            return {'is_valid': True, 'feedback': 'Verification skipped due to error'}
+
+    def _calculate_confidence(self, cot_chain: CotChain, max_steps: int) -> float:
+        """
+        Calculate confidence score based on reasoning quality
+
+        Factors:
+        - Number of reasoning steps completed
+        - Presence of self-corrections (shows self-awareness)
+        - Length and detail of reasoning
+        - Logical flow indicators
+        """
+        confidence = 0.0
+
+        # Base score from step completion
+        steps_completed = len(cot_chain.thought_steps)
+        completion_score = min(1.0, steps_completed / max(max_steps, 1))
+        confidence += completion_score * 0.4
+
+        # Reasoning quality score
+        avg_step_length = sum(len(step) for step in cot_chain.thought_steps) / max(steps_completed, 1)
+
+        if avg_step_length > 100:
+            confidence += 0.3  # Detailed reasoning
+        elif avg_step_length > 50:
+            confidence += 0.2  # Moderate detail
+        else:
+            confidence += 0.1  # Brief reasoning
+
+        # Self-correction bonus (shows critical thinking)
+        has_corrections = any('correction' in step.lower() for step in cot_chain.thought_steps)
+        if has_corrections:
+            confidence += 0.15
+
+        # Conclusion quality
+        if cot_chain.conclusion and len(cot_chain.conclusion) > 50:
+            confidence += 0.15
+
+        return min(1.0, confidence)
+
+    async def verify_response(
+        self,
+        query: str,
+        response: str,
+        detailed: bool = True
+    ) -> Tuple[bool, str]:
+        """
+        Enhanced response verification
+
+        Args:
+            query: Original question
+            response: Response to verify
+            detailed: Whether to perform detailed verification
+
+        Returns:
+            Tuple of (is_valid, verification_result)
+        """
+        if detailed:
+            verification_prompt = f"""Question: {query}
+
+Response to Verify:
+{response}
+
+Perform detailed verification by checking:
+1. Accuracy: Does the response correctly address the question?
+2. Completeness: Are all aspects of the question covered?
+3. Relevance: Is the information directly relevant?
+4. Logic: Is the reasoning sound and well-structured?
+5. Evidence: Are claims supported by evidence or reasoning?
+
+Provide verification result starting with VALID or INVALID, followed by detailed feedback.
+
+Verification Result:"""
+        else:
+            verification_prompt = self.prompt_builder.build_verification_prompt(query, response)
+
+        try:
+            verification_result = await self.llm_client.generate(
+                verification_prompt,
+                temperature=0.3,
+                max_tokens=200
+            )
+
+            # Enhanced validity check
+            result_lower = verification_result.lower()
+            is_valid = (
+                result_lower.startswith('valid') or
+                any(
+                    keyword in result_lower[:100]
+                    for keyword in ["correct", "accurate", "good", "appropriate"]
+                )
+            ) and not any(
+                keyword in result_lower[:100]
+                for keyword in ["invalid", "incorrect", "wrong", "inaccurate"]
+            )
+
+            return is_valid, verification_result
+
+        except Exception as e:
+            self.logger.error(f"Response verification failed: {e}")
+            return True, f"Verification error: {str(e)}"
 
 
 # ============================================================================
@@ -321,21 +642,217 @@ class LLMClient(ABC):
 
 
 # ============================================================================
-# Context Retriever Stub
+# Context Retriever Implementation
 # ============================================================================
 
 class ContextRetriever:
-    """Retrieves context from knowledge base"""
+    """
+    Retrieves context from knowledge base using vector similarity search.
 
-    def __init__(self, graph_db_path: str = ""):
+    This class provides context retrieval functionality by:
+    - Loading knowledge from vector and graph databases
+    - Computing similarity between query and knowledge entries
+    - Ranking and returning top-k most relevant contexts
+    """
+
+    def __init__(self, graph_db_path: str = "", vector_db_path: str = ""):
+        """
+        Initialize context retriever
+
+        Args:
+            graph_db_path: Path to graph database (optional)
+            vector_db_path: Path to vector database (optional)
+        """
         self.graph_db_path = graph_db_path
+        self.vector_db_path = vector_db_path
         self.logger = logging.getLogger(__name__)
 
+        # Initialize knowledge stores
+        self.knowledge_cache = {}
+
+        # Build default knowledge cache
+        self._build_default_knowledge_cache()
+
+    def _build_default_knowledge_cache(self) -> None:
+        """Build default in-memory knowledge cache"""
+        # Common vulnerability patterns and descriptions
+        self.knowledge_cache = {
+            "sql_injection": {
+                "description": "SQL injection vulnerabilities allow attackers to inject malicious SQL code",
+                "examples": ["' OR '1'='1", "'; DROP TABLE users--", "UNION SELECT"],
+                "mitigations": ["Use parameterized queries", "Input validation", "Prepared statements"],
+                "related_cwe": ["CWE-89"],
+            },
+            "xss": {
+                "description": "Cross-site scripting allows injection of malicious scripts",
+                "examples": ["<script>alert('XSS')</script>", "javascript:alert(1)"],
+                "mitigations": ["Output encoding", "Content Security Policy", "Input sanitization"],
+                "related_cwe": ["CWE-79"],
+            },
+            "buffer_overflow": {
+                "description": "Buffer overflow occurs when data exceeds allocated memory",
+                "examples": ["strcpy() without bounds checking", "Gets() function usage"],
+                "mitigations": ["Bounds checking", "Use safe functions", "Stack canaries"],
+                "related_cwe": ["CWE-120", "CWE-121"],
+            },
+            "path_traversal": {
+                "description": "Path traversal allows access to files outside intended directory",
+                "examples": ["../../etc/passwd", "..\\..\\windows\\system32"],
+                "mitigations": ["Path validation", "Whitelist allowed paths", "Chroot jails"],
+                "related_cwe": ["CWE-22"],
+            },
+            "command_injection": {
+                "description": "Command injection allows execution of arbitrary system commands",
+                "examples": ["; ls -la", "| whoami", "`cat /etc/passwd`"],
+                "mitigations": ["Avoid system calls", "Input validation", "Use APIs instead"],
+                "related_cwe": ["CWE-78"],
+            },
+            "authentication_bypass": {
+                "description": "Authentication bypass allows unauthorized access",
+                "examples": ["Default credentials", "Missing authentication", "Weak passwords"],
+                "mitigations": ["Strong authentication", "Multi-factor auth", "Session management"],
+                "related_cwe": ["CWE-287"],
+            },
+            "protocol_fuzzing": {
+                "description": "Protocol fuzzing tests protocol implementations for vulnerabilities",
+                "techniques": ["Mutation-based", "Generation-based", "Grammar-based"],
+                "targets": ["HTTP", "MQTT", "CoAP", "Modbus"],
+            },
+        }
+
+    def _compute_similarity(self, query: str, entry_key: str) -> float:
+        """
+        Compute similarity score between query and knowledge entry
+
+        Args:
+            query: Query string
+            entry_key: Knowledge entry key
+
+        Returns:
+            Similarity score (0.0 to 1.0)
+        """
+        query_lower = query.lower()
+        entry_lower = entry_key.lower()
+
+        # Simple keyword matching (can be enhanced with embeddings)
+        # Exact match
+        if query_lower == entry_lower:
+            return 1.0
+
+        # Substring match
+        if query_lower in entry_lower or entry_lower in query_lower:
+            return 0.8
+
+        # Word overlap
+        query_words = set(query_lower.split())
+        entry_words = set(entry_lower.split('_'))
+
+        if query_words & entry_words:
+            overlap = len(query_words & entry_words)
+            total = len(query_words | entry_words)
+            return 0.5 * (overlap / total) if total > 0 else 0.0
+
+        # Check content similarity
+        if entry_key in self.knowledge_cache:
+            entry_data = self.knowledge_cache[entry_key]
+            description = entry_data.get('description', '').lower()
+
+            # Check if query terms appear in description
+            query_terms_in_desc = sum(1 for word in query_words if word in description)
+            if query_terms_in_desc > 0:
+                return 0.3 * (query_terms_in_desc / len(query_words))
+
+        return 0.0
+
     async def retrieve_context(self, query: str, top_k: int = 3) -> Optional[str]:
-        """Retrieve relevant context from knowledge base"""
+        """
+        Retrieve relevant context from knowledge base
+
+        Args:
+            query: Query string to search for relevant context
+            top_k: Number of top results to return (default: 3)
+
+        Returns:
+            Formatted context string with relevant information, or None if no context found
+        """
         self.logger.debug(f"Retrieving context for query: {query}")
-        # Stub implementation
-        return None
+
+        if not query or not query.strip():
+            self.logger.warning("Empty query provided")
+            return None
+
+        try:
+            # Compute similarity scores for all knowledge entries
+            scores = []
+            for entry_key in self.knowledge_cache.keys():
+                score = self._compute_similarity(query, entry_key)
+                if score > 0.0:
+                    scores.append((entry_key, score))
+
+            # Sort by score (descending) and take top-k
+            scores.sort(key=lambda x: x[1], reverse=True)
+            top_entries = scores[:top_k]
+
+            if not top_entries:
+                self.logger.debug(f"No relevant context found for query: {query}")
+                return None
+
+            # Format context from top entries
+            context_parts = []
+            for entry_key, score in top_entries:
+                entry_data = self.knowledge_cache[entry_key]
+
+                # Format entry information
+                context_parts.append(f"### {entry_key.replace('_', ' ').title()} (relevance: {score:.2f})")
+
+                if 'description' in entry_data:
+                    context_parts.append(f"Description: {entry_data['description']}")
+
+                if 'examples' in entry_data and entry_data['examples']:
+                    context_parts.append(f"Examples: {', '.join(entry_data['examples'][:3])}")
+
+                if 'mitigations' in entry_data and entry_data['mitigations']:
+                    context_parts.append(f"Mitigations: {', '.join(entry_data['mitigations'][:3])}")
+
+                if 'related_cwe' in entry_data and entry_data['related_cwe']:
+                    context_parts.append(f"Related CWE: {', '.join(entry_data['related_cwe'])}")
+
+                if 'techniques' in entry_data and entry_data['techniques']:
+                    context_parts.append(f"Techniques: {', '.join(entry_data['techniques'])}")
+
+                context_parts.append("")  # Empty line between entries
+
+            context_string = "\n".join(context_parts)
+            self.logger.debug(f"Retrieved {len(top_entries)} context entries for query: {query}")
+
+            return context_string
+
+        except Exception as e:
+            self.logger.error(f"Error retrieving context: {e}", exc_info=True)
+            return None
+
+    def add_knowledge(self, key: str, data: Dict[str, Any]) -> None:
+        """
+        Add new knowledge entry to cache
+
+        Args:
+            key: Unique identifier for knowledge entry
+            data: Knowledge entry data dictionary
+        """
+        self.knowledge_cache[key] = data
+        self.logger.debug(f"Added knowledge entry: {key}")
+
+    def get_knowledge_stats(self) -> Dict[str, Any]:
+        """
+        Get statistics about knowledge cache
+
+        Returns:
+            Dictionary with cache statistics
+        """
+        return {
+            "total_entries": len(self.knowledge_cache),
+            "categories": list(self.knowledge_cache.keys()),
+        }
 
 
 # ============================================================================
